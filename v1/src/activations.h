@@ -23,6 +23,10 @@
 #include <cmath>
 #include "ap_fixed.h"
 #include "nnet_common.h"
+#include "activation_lut.h"
+#ifndef ACT_LUT
+#define ACT_LUT 1
+#endif
 
 
 
@@ -49,12 +53,34 @@ struct activ_config
 // This establishes C-sim behavior; II/resource feasibility is not established.
 template <typename in_T, typename out_T>
 void reference_sigmoid(in_T in, out_T &out) {
+#pragma HLS INLINE
+#if ACT_LUT
+#pragma HLS ARRAY_PARTITION variable=activation_tables::sigmoid_lut complete dim=1
+    ap_int<16> raw = in.range(15,0);
+    ap_uint<17> magnitude = raw < 0 ? ap_uint<17>(-ap_int<17>(raw)) : ap_uint<17>(raw);
+    ap_uint<12> index = (magnitude + 8) >> 4;
+    ap_int<16> result = activation_tables::sigmoid_lut[index];
+    if (raw < 0) result = 8192 - result;
+    out.range(15,0) = result.range(15,0);
+#else
     out = out_T(1.0 / (1.0 + std::exp(-in.to_double())));
+#endif
 }
 
 template <typename in_T, typename out_T>
 void reference_tanh(in_T in, out_T &out) {
+#pragma HLS INLINE
+#if ACT_LUT
+#pragma HLS ARRAY_PARTITION variable=activation_tables::tanh_lut complete dim=1
+    ap_int<16> raw = in.range(15,0);
+    ap_uint<17> magnitude = raw < 0 ? ap_uint<17>(-ap_int<17>(raw)) : ap_uint<17>(raw);
+    ap_uint<12> index = (magnitude + 8) >> 4;
+    ap_int<16> result = activation_tables::tanh_lut[index];
+    if (raw < 0) result = -result;
+    out.range(15,0) = result.range(15,0);
+#else
     out = out_T(std::tanh(in.to_double()));
+#endif
 }
 
 // 함수 정의 (벡터 아닌 스칼라 버전)

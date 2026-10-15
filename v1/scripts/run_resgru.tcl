@@ -15,7 +15,7 @@ set ROOT  [file normalize [file join [file dirname [info script]] ..]]
 set STEPS [expr {[info exists ::env(STEPS)] ? $::env(STEPS) : "csim"}]
 set NT    [expr {[info exists ::env(NT)] ? $::env(NT) : 7680}]
 set CFLAGS "-I$ROOT/src -DRESET_ARG"
-foreach DEFINE {FEX_INTERNAL_FIXED FEX_INV_I} {
+foreach DEFINE {FEX_INTERNAL_FIXED FEX_INV_I ACT_LUT} {
     if {[info exists ::env($DEFINE)]} {
         if {![string is integer -strict $::env($DEFINE)]} { error "$DEFINE must be an integer" }
         append CFLAGS " -D$DEFINE=$::env($DEFINE)"
