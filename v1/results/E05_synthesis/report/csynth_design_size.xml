@@ -1,0 +1,119 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">, 39878, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll, 83219, user unroll pragmas are applied</column>
+            <column name="">(2) simplification, 38404, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline, 37139, user inline pragmas are applied</column>
+            <column name="">(4) simplification, 32184, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition, 66475, user array partition pragmas are applied</column>
+            <column name="">(2) simplification, 31527, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate , 32111, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape, 32205, apply array reshape pragmas</column>
+            <column name="">(5) access patterns, 32205, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification, 31037, loop and instruction simplification</column>
+            <column name="">(2) parallelization, 31037, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition, 31037, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification, 31037, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering, 32080, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations, 32080, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="ResGRU" col1="multi_gru.cpp:254" col2="39878" col3="32184" col4="32205" col5="31037" col6="32080">
+                    <row id="23" col0="FExLayer&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:57" col2="6067" col3="" col4="" col5="" col6=""/>
+                    <row id="25" col0="Linear&lt;6, 5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:33" col2="1207" col3="" col4="" col5="" col6="">
+                        <row id="17" col0="MAC_PE&lt;6, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:5" col2="846" col3="" col4="" col5="" col6=""/>
+                    </row>
+                    <row id="30" col0="prelu&lt;ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, 5&gt;" col1="activations.h:79" col2="1617" col3="" col4="" col5="" col6=""/>
+                    <row id="28" col0="copy_row&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="utils.h:9" col2="48" col2_disp="   48 (3 calls)" col3="" col4="" col5="" col6=""/>
+                    <row id="22" col0="GRU_single" col1="multi_gru.cpp:10" col2="28554" col3="" col4="" col5="" col6="">
+                        <row id="11" col0="GRU_Kernel_PE&lt;5, 5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="gru_cell.h:35" col2="5245" col3="" col4="" col5="" col6="">
+                            <row id="29" col0="MVM_PE&lt;5, 5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:18" col2="5238" col2_disp="5,238 (6 calls)" col3="" col4="" col5="" col6="">
+                                <row id="16" col0="MAC_PE&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:5" col2="5076" col2_disp="5,076 (6 calls)" col3="" col4="" col5="" col6=""/>
+                            </row>
+                        </row>
+                        <row id="35" col0="Gate_Calc_PE&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="gru_cell.h:61" col2="22920" col3="" col4="" col5="" col6="">
+                            <row id="36" col0="Copy_Bias_PE&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="gru_cell.h:13" col2="46" col3="" col4="" col5="" col6=""/>
+                            <row id="34" col0="reference_sigmoid&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="activations.h:51" col2="2150" col2_disp="2,150 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="33" col0="reference_tanh&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="activations.h:56" col2="15437" col3="" col4="" col5="" col6="">
+                                <row id="14" col0="tanh" col1="tanhdouble.cpp:6" col2="14365" col3="" col4="" col5="" col6="">
+                                    <row id="10" col0="generic_tanh&lt;double&gt;" col1="hls_tanh.h:28" col2="14363" col3="" col4="" col5="" col6="">
+                                        <row id="13" col0="fp_struct" col1="x_hls_utils.h:456" col2="319" col3="" col4="" col5="" col6=""/>
+                                        <row id="15" col0="generic_fabs&lt;double&gt;" col1="hls_fabs.h:12" col2="961" col3="" col4="" col5="" col6="">
+                                            <row id="1" col0="generic_copysign&lt;double&gt;" col1="hls_copysign.h:10" col2="959" col3="" col4="" col5="" col6="">
+                                                <row id="13" col0="fp_struct" col1="x_hls_utils.h:456" col2="638" col2_disp="  638 (2 calls)" col3="" col4="" col5="" col6=""/>
+                                                <row id="7" col0="to_ieee" col1="x_hls_utils.h:509" col2="303" col3="" col4="" col5="" col6="">
+                                                    <row id="32" col0="to_double" col1="x_hls_utils.h:494" col2="301" col3="" col4="" col5="" col6="">
+                                                        <row id="5" col0="data" col1="x_hls_utils.h:475" col2="279" col3="" col4="" col5="" col6=""/>
+                                                    </row>
+                                                </row>
+                                            </row>
+                                        </row>
+                                        <row id="12" col0="generic_nan&lt;double&gt;" col1="hls_nan.h:10" col2="393" col3="" col4="" col5="" col6="">
+                                            <row id="21" col0="fp_struct" col1="x_hls_utils.h:454" col2="4" col3="" col4="" col5="" col6=""/>
+                                            <row id="7" col0="to_ieee" col1="x_hls_utils.h:509" col2="303" col3="" col4="" col5="" col6="">
+                                                <row id="32" col0="to_double" col1="x_hls_utils.h:494" col2="301" col3="" col4="" col5="" col6="">
+                                                    <row id="5" col0="data" col1="x_hls_utils.h:475" col2="279" col3="" col4="" col5="" col6=""/>
+                                                </row>
+                                            </row>
+                                        </row>
+                                        <row id="20" col0="expm1" col1="hls_exp_double.cpp:7" col2="12416" col3="" col4="" col5="" col6="">
+                                            <row id="13" col0="fp_struct" col1="x_hls_utils.h:456" col2="319" col3="" col4="" col5="" col6=""/>
+                                            <row id="19" col0="exp_generic&lt;double&gt;" col1="hls_exp_.h:156" col2="11898" col3="" col4="" col5="" col6="">
+                                                <row id="13" col0="fp_struct" col1="x_hls_utils.h:456" col2="319" col3="" col4="" col5="" col6=""/>
+                                                <row id="21" col0="fp_struct" col1="x_hls_utils.h:454" col2="4" col3="" col4="" col5="" col6=""/>
+                                                <row id="24" col0="generic_isnan&lt;double&gt;" col1="hls_isnan.h:16" col2="390" col3="" col4="" col5="" col6="">
+                                                    <row id="13" col0="fp_struct" col1="x_hls_utils.h:456" col2="319" col3="" col4="" col5="" col6=""/>
+                                                </row>
+                                                <row id="18" col0="generic_isinf&lt;double&gt;" col1="hls_isinf.h:16" col2="389" col3="" col4="" col5="" col6="">
+                                                    <row id="13" col0="fp_struct" col1="x_hls_utils.h:456" col2="319" col3="" col4="" col5="" col6=""/>
+                                                </row>
+                                                <row id="7" col0="to_ieee" col1="x_hls_utils.h:509" col2="2121" col2_disp="2,121 (7 calls)" col3="" col4="" col5="" col6="">
+                                                    <row id="32" col0="to_double" col1="x_hls_utils.h:494" col2="2107" col2_disp="2,107 (7 calls)" col3="" col4="" col5="" col6="">
+                                                        <row id="5" col0="data" col1="x_hls_utils.h:475" col2="1953" col2_disp="1,953 (7 calls)" col3="" col4="" col5="" col6=""/>
+                                                    </row>
+                                                </row>
+                                                <row id="9" col0="expv" col1="x_hls_utils.h:485" col2="109" col3="" col4="" col5="" col6=""/>
+                                                <row id="8" col0="exp_Z1P_m_1" col1="hls_exp_.h:90" col2="2725" col3="" col4="" col5="" col6=""/>
+                                            </row>
+                                        </row>
+                                    </row>
+                                </row>
+                            </row>
+                        </row>
+                    </row>
+                    <row id="27" col0="Linear&lt;5, 2, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:33" col2="1475" col3="" col4="" col5="" col6="">
+                        <row id="26" col0="MAC_PE&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:5" col2="1121" col3="" col4="" col5="" col6=""/>
+                    </row>
+                    <row id="34" col0="reference_sigmoid&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="activations.h:51" col2="" col3="6000" col3_disp="6,000 (30 calls)" col4="6000" col4_disp="6,000 (30 calls)" col5="6000" col5_disp="6,000 (30 calls)" col6="6000" col6_disp="6,000 (30 calls)"/>
+                    <row id="33" col0="reference_tanh&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="activations.h:56" col2="" col3="6600" col3_disp="6,600 (15 calls)" col4="6555" col4_disp="6,555 (15 calls)" col5="6555" col5_disp="6,555 (15 calls)" col6="6570" col6_disp="6,570 (15 calls)">
+                        <row id="10" col0="generic_tanh&lt;double&gt;" col1="hls_tanh.h:28" col2="" col3="3645" col3_disp="3,645 (15 calls)" col4="3600" col4_disp="3,600 (15 calls)" col5="3600" col5_disp="3,600 (15 calls)" col6="3615" col6_disp="3,615 (15 calls)">
+                            <row id="19" col0="exp_generic&lt;double&gt;" col1="hls_exp_.h:156" col2="" col3="2715" col3_disp="2,715 (15 calls)" col4="2670" col4_disp="2,670 (15 calls)" col5="2670" col5_disp="2,670 (15 calls)" col6="2685" col6_disp="2,685 (15 calls)"/>
+                        </row>
+                    </row>
+                </row>
+            </rows>
+            <notes/>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>
+
