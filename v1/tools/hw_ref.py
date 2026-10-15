@@ -75,15 +75,29 @@ def fex(I, Q, mode):
 
 
 def sigmoid(x, mode):
+    if mode == "lut":
+        return activation_lut(x, False)
     if mode == "exact":
         return 1 / (1 + np.exp(-x))
     return np.clip(0.2 * x + 0.5, 0.0, 1.0)
 
 
 def tanh(x, mode):
+    if mode == "lut":
+        return activation_lut(x, True)
     if mode == "exact":
         return np.tanh(x)
     return np.clip(x, -1.0, 1.0)
+
+
+def activation_lut(x, is_tanh):
+    # Mirrors activation_lut.h: abs, round index, table, restore symmetry.
+    v = np.asarray(x)
+    index = np.clip(np.floor(np.abs(v) * 512.0 + 0.5), 0, 2048).astype(int)
+    grid = index / 512.0
+    value = np.tanh(grid) if is_tanh else 1 / (1 + np.exp(-grid))
+    value = np.floor(value * 8192.0 + 0.5) / 8192.0
+    return np.where(v < 0, -value if is_tanh else 1 - value, value)
 
 
 def run(w, cfg, x_iq, act="exact", fex_mode="exact", reset_every=0, dump=None):
@@ -137,11 +151,21 @@ def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every
         return acc
 
     def sig(v):
+        if act == "lut_direct":
+            grid = np.floor(v * 512.0) / 512.0 + 1/1024.0
+            return qd(1 / (1 + np.exp(-grid)))
+        if act == "lut":
+            return qd(activation_lut(v, False))
         if act == "exact":
             return qd(1 / (1 + np.exp(-v)))
         return np.clip(qd(c02 * v + c05), 0.0, 1.0)
 
     def th(v):
+        if act == "lut_direct":
+            grid = np.floor(v * 512.0) / 512.0 + 1/1024.0
+            return qd(np.tanh(grid))
+        if act == "lut":
+            return qd(activation_lut(v, True))
         if act == "exact":
             return qd(np.tanh(v))
         return np.clip(v, -1.0, 1.0)
@@ -192,7 +216,7 @@ def nmse_db(pred, ref):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--golden", required=True, help="export_golden.py의 --out 폴더")
-    ap.add_argument("--act", choices=["exact", "hard"], default="exact")
+    ap.add_argument("--act", choices=["exact", "hard", "lut", "lut_direct"], default="exact")
     ap.add_argument("--fex", choices=["exact", "nr", "nr_fx"], default="exact")
     ap.add_argument("--reset_every", type=int, default=None)
     ap.add_argument("--fxp", choices=["hls"], help="HLS baseline 타입 일괄 지정 (16,2 / 16,2 / 18,3)")
