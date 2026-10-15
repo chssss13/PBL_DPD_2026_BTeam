@@ -1,0 +1,6 @@
+C:\Project\venv_dpd\Scripts\python.exe C:\Project\PBL_DPD_2026_BTeam\v1\tools\eval_pa.py --pa save/DPA_200MHz/train_pa/PA_S_4574_M_DGRU_H_8_F_50_P_486_D_0.pt C:\Project\PBL_DPD_2026_BTeam\v1\golden\vectors\torch_out.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E02_csim_reference\hls_out.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E04_internal_csim\invI3\hls_out.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E04_internal_csim\invI8\hls_out.txt
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+torch_out.txt                                  7680   -45.52   -49.42   -53.59   -50.43   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+hls_out.txt                                    7680   -45.48   -49.34   -53.33   -50.37   NMSE+0.04  ACPR_L+0.26  ACPR_R+0.06
+hls_out.txt                                    7680   -45.06   -49.03   -52.99   -50.16   NMSE+0.46  ACPR_L+0.60  ACPR_R+0.26
+hls_out.txt                                    7680   -45.48   -49.33   -53.58   -50.41   NMSE+0.04  ACPR_L+0.01  ACPR_R+0.02
