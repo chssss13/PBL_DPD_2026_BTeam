@@ -1,0 +1,6 @@
+C:\Project\venv_dpd\Scripts\python.exe C:\Project\PBL_DPD_2026_BTeam\v1\tools\compare_out.py C:\Project\PBL_DPD_2026_BTeam\v1\results\hls_out.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E02_csim_reference\ref_new.txt --nmse_max -60
+samples      : 7680
+NMSE         : -196.88 dB (limit -60.0 dB)
+max |err|    : 5.000e-11 at t=3  hls=[0.06494141 0.02233887] ref=[0.06494141 0.02233887]
+mismatch cnt : 7543
+PASS

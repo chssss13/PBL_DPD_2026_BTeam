@@ -45,6 +45,18 @@ struct activ_config
     typedef float constant_t;
 };
 
+// Accuracy reference: double math followed by fixed-point quantization.
+// This establishes C-sim behavior; II/resource feasibility is not established.
+template <typename in_T, typename out_T>
+void reference_sigmoid(in_T in, out_T &out) {
+    out = out_T(1.0 / (1.0 + std::exp(-in.to_double())));
+}
+
+template <typename in_T, typename out_T>
+void reference_tanh(in_T in, out_T &out) {
+    out = out_T(std::tanh(in.to_double()));
+}
+
 // 함수 정의 (벡터 아닌 스칼라 버전)
 template <typename in_T, typename out_T>
 void my_hard_sigmoid(in_T in, out_T &out) {

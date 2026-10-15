@@ -271,7 +271,8 @@ void ResGRU(
     data_t b_in[NUM_LAYERS][H_SIZE], data_t b_hn[NUM_LAYERS][H_SIZE],
 
     weight_t W_out[2][H_SIZE],
-    data_t b_out[2]
+    data_t b_out[2],
+    bool reset
 ) {
     #pragma HLS DATAFLOW
 
@@ -308,7 +309,7 @@ void ResGRU(
     LOOP_T: for (int t = 0; t < TIME_STEP; t++) {
         #pragma HLS PIPELINE
 
-        bool rst = (t == 0);
+        bool rst = reset && (t == 0);
 
         FEx : FExLayer<data_t>(IQ_seq[t][0],IQ_seq[t][1],x_w_fex);
 
@@ -323,7 +324,7 @@ void ResGRU(
             #pragma HLS PIPELINE
 
             GRU_single(
-                layer_in[l], (t==0), h_state_all[l], layer_out[l],
+                layer_in[l], rst, h_state_all[l], layer_out[l],
                 W_ir[l], W_hr[l],
                 W_iz[l], W_hz[l],
                 W_in[l], W_hn[l],

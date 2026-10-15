@@ -53,5 +53,6 @@ void ResGRU(
     data_t b_in[NUM_LAYERS][H_SIZE], data_t b_hn[NUM_LAYERS][H_SIZE],
 
     weight_t W_out[2][H_SIZE],
-    data_t b_out[2]
+    data_t b_out[2],
+    bool reset
 );

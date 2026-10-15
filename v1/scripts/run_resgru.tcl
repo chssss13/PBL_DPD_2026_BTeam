@@ -14,8 +14,7 @@
 set ROOT  [file normalize [file join [file dirname [info script]] ..]]
 set STEPS [expr {[info exists ::env(STEPS)] ? $::env(STEPS) : "csim"}]
 set NT    [expr {[info exists ::env(NT)] ? $::env(NT) : 7680}]
-set CFLAGS "-I$ROOT/src"
-if {[info exists ::env(RESET_ARG)]} { append CFLAGS " -DRESET_ARG" }
+set CFLAGS "-I$ROOT/src -DRESET_ARG"
 
 file mkdir $ROOT/results
 open_project -reset prj_resgru

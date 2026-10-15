@@ -96,17 +96,17 @@ GATE_LOOP:
         #pragma HLS UNROLL factor=1
         #pragma HLS PIPELINE II=1
         r_pre = W_ir_x[i] + b_ir_local[i] + W_hr_h[i] + b_hr_local[i];
-        nnet::my_hard_sigmoid<data_T,data_T>(r_pre, r);
+        nnet::reference_sigmoid<data_T,data_T>(r_pre, r);
         //nnet::sigmoid_ele<data_T, data_T, config_a>(r_pre, r);
         r_h = r * (W_hn_h[i] + b_hn_local[i]);
  
         n_pre = W_in_x[i] + b_in_local[i] + r_h;
-        nnet::my_hard_tanh<data_T,data_T>(n_pre, n);
+        nnet::reference_tanh<data_T,data_T>(n_pre, n);
         //nnet::tanh_ele<data_T, data_T,config_a>(n_pre, n);
  
         z_pre = W_iz_x[i] + b_iz_local[i] + W_hz_h[i] + b_hz_local[i];
         //nnet::sigmoid_ele<data_T, data_T,config_a>(z_pre, z);
-        nnet::my_hard_sigmoid<data_T,data_T>(z_pre, z);
+        nnet::reference_sigmoid<data_T,data_T>(z_pre, z);
         one_minus_z = (data_T)(1.0) - z;
         h_next[i] = one_minus_z * n + z * h_prev[i];
     }

@@ -52,31 +52,17 @@ void FExLayer(data_T Ix, data_T Qx, data_T out[6]) {
 //#pragma HLS PIPELINE II=1
 #pragma HLS ARRAY_PARTITION variable=out complete dim=1
 
-    data_T amp, amp2, amp3, phase, sin_theta, cos_theta;
-
-    // magnitude
-    
-    amp2 = Ix * Ix + Qx * Qx;
-
-    data_T delta = amp2 - data_T(1);
-    data_T inv_sqrt = data_T(1) - data_T(0.5) * delta + data_T(0.375) * delta * delta; //taylor expansion for newton-raphson init
-
-    //#pragma HLS PIPELINE
-    for (int i = 0; i < 4; i++) {
-        inv_sqrt = inv_sqrt * (data_T(1.5) - data_T(0.5) * amp2 * inv_sqrt * inv_sqrt); // newton-raphson 4 iteration without divide
-    }
-
-    amp = amp2 * inv_sqrt;
-    amp3 = amp * amp2;
-    sin_theta = Qx * inv_sqrt;
-    cos_theta = Ix * inv_sqrt;
-
-    // assign output
+    // Match hw_ref.py --fex exact: quantize outputs, not intermediate math.
+    // Accuracy reference only; replace after checking hardware cost.
+    const double i = Ix.to_double();
+    const double q = Qx.to_double();
+    const double amp = std::sqrt(i * i + q * q);
+    const double inv = amp > 0.0 ? 1.0 / amp : 0.0;
     out[0] = Ix;
     out[1] = Qx;
     out[2] = amp;
-    out[3] = amp3;
-    out[4] = sin_theta;
-    out[5] = cos_theta;
+    out[3] = amp * amp * amp;
+    out[4] = q * inv;
+    out[5] = i * inv;
 }
 
