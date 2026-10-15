@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cstdio>
 
 #include "multi_gru.h"
 
@@ -33,6 +34,13 @@ static void load(const std::string& name, T* dst, int n) {
 static std::string L(int l, const char* s) { return "L" + std::to_string(l) + "_" + s; }
 
 int main(int argc, char** argv) {
+#ifdef _WIN32
+    // Co-sim opens one TV file per partitioned port (>512 in this design).
+    if (_setmaxstdio(2048) < 0) {
+        std::cerr << "[TB] unable to increase Windows stdio limit\n";
+        return 1;
+    }
+#endif
     G = argc > 1 ? argv[1] : "golden";
     int n_samples = argc > 2 ? std::atoi(argv[2]) : 7680;
     std::string out_path = argc > 3 ? argv[3] : "hls_out.txt";

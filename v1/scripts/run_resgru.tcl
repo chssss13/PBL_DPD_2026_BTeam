@@ -35,6 +35,12 @@ create_clock -period 15 -name default   ;# 논문 조건 66 MHz
 if {[info exists ::env(CLOCK_UNCERTAINTY_NS)]} {
     set_clock_uncertainty $::env(CLOCK_UNCERTAINTY_NS)
 }
+if {[info exists ::env(DSP_FULL_REG)]} {
+    config_schedule -enable_dsp_full_reg=$::env(DSP_FULL_REG)
+}
+if {[info exists ::env(TARGET_II)]} {
+    set_directive_pipeline -II $::env(TARGET_II) "ResGRU/LOOP_T"
+}
 
 set ARGV "$ROOT/golden $NT $ROOT/results/hls_out.txt"
 if {[lsearch $STEPS csim]   >= 0} { csim_design -argv $ARGV }
