@@ -53,6 +53,14 @@ struct activ_config
 // This establishes C-sim behavior; II/resource feasibility is not established.
 template <typename in_T, typename out_T>
 void reference_sigmoid(in_T in, out_T &out) {
+#if ACT_LUT == 2
+#pragma HLS INLINE off
+#pragma HLS LATENCY min=0 max=0
+#pragma HLS ARRAY_PARTITION variable=activation_tables::sigmoid_direct complete dim=1
+    ap_uint<12> index = in.range(15,4);
+    ap_int<16> result = activation_tables::sigmoid_direct[index];
+    out.range(15,0) = result.range(15,0);
+#else
 #pragma HLS INLINE
 #if ACT_LUT
 #pragma HLS ARRAY_PARTITION variable=activation_tables::sigmoid_lut complete dim=1
@@ -65,10 +73,19 @@ void reference_sigmoid(in_T in, out_T &out) {
 #else
     out = out_T(1.0 / (1.0 + std::exp(-in.to_double())));
 #endif
+#endif
 }
 
 template <typename in_T, typename out_T>
 void reference_tanh(in_T in, out_T &out) {
+#if ACT_LUT == 2
+#pragma HLS INLINE off
+#pragma HLS LATENCY min=0 max=0
+#pragma HLS ARRAY_PARTITION variable=activation_tables::tanh_direct complete dim=1
+    ap_uint<12> index = in.range(15,4);
+    ap_int<16> result = activation_tables::tanh_direct[index];
+    out.range(15,0) = result.range(15,0);
+#else
 #pragma HLS INLINE
 #if ACT_LUT
 #pragma HLS ARRAY_PARTITION variable=activation_tables::tanh_lut complete dim=1
@@ -80,6 +97,7 @@ void reference_tanh(in_T in, out_T &out) {
     out.range(15,0) = result.range(15,0);
 #else
     out = out_T(std::tanh(in.to_double()));
+#endif
 #endif
 }
 

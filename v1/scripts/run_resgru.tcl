@@ -23,7 +23,8 @@ foreach DEFINE {FEX_INTERNAL_FIXED FEX_INV_I ACT_LUT} {
 }
 
 file mkdir $ROOT/results
-open_project -reset prj_resgru
+set PROJECT [expr {[info exists ::env(HLS_PROJECT)] ? $::env(HLS_PROJECT) : "prj_resgru"}]
+open_project -reset $PROJECT
 set_top ResGRU
 add_files $ROOT/src/multi_gru.cpp -cflags $CFLAGS
 add_files -tb $ROOT/tb/tb_resgru.cpp -cflags $CFLAGS
@@ -31,6 +32,9 @@ add_files -tb $ROOT/tb/tb_resgru.cpp -cflags $CFLAGS
 open_solution -reset sol1
 set_part {xczu7ev-ffvc1156-2-e}
 create_clock -period 15 -name default   ;# 논문 조건 66 MHz
+if {[info exists ::env(CLOCK_UNCERTAINTY_NS)]} {
+    set_clock_uncertainty $::env(CLOCK_UNCERTAINTY_NS)
+}
 
 set ARGV "$ROOT/golden $NT $ROOT/results/hls_out.txt"
 if {[lsearch $STEPS csim]   >= 0} { csim_design -argv $ARGV }
