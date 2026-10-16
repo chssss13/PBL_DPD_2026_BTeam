@@ -1,0 +1,42 @@
+# E09: E08 Vivado 배치·배선 결과
+
+2026-10-16. E08의 기존 prj_e08/sol1을 초기화하지 않고
+`export_design -flow impl -format ip_catalog` 실행. Vivado 2024.1,
+xczu7ev-ffvc1156-2-e, 목표 15 ns. 정상 실행 약 52분 58초.
+
+## 결과
+
+배치·배선 완료, unrouted nets=0. HLS export 종료 코드는 0이지만 타이밍은 실패.
+
+| 항목 | 구현 후 결과 |
+|---|---:|
+| LUT | 66,859 |
+| FF | 49,754 |
+| DSP | 711 |
+| BRAM / URAM | 0 / 0 |
+| SRL (LUT와 별도 합산하지 않음) | 5,703 |
+| Post-Synthesis period | 19.266 ns |
+| Post-Route period | 24.054 ns |
+| WNS | -9.054 ns |
+| WHS | +0.019 ns |
+
+HLS II=2 및 전체 RTL 정확도 PASS는 E08에서 확인했으나, 15 ns에서의 물리 타이밍은 미달.
+보고 주기 24.054 ns로 단순 환산한 주파수는 약 41.57 MHz,
+II=2 기준 정상상태 처리율은 약 20.79 MSps. 보드 실측 수치가 아니며 블록 제어 오버헤드는 제외.
+33.3 MSps 목표를 만족한 최종 설계로 판단하면 안 됨.
+
+HLS LUT 추정 243,879개(105%)와 달리 구현 후 자원은 칩에 수용되었다.
+함수 표가 제거된 것이 아니라 구현 계층 보고서에 sigmoid/tanh 회로별 LUT 사용량이 남아 있음.
+
+## 보관
+
+results/E09_implementation/report/export_impl.rpt 및 ResGRU*.rpt에 최종 자원·타이밍·계층 보고서 보관.
+impl_retry.log는 정상 구현의 전체 로그. 최초 제한 환경 실행은 cscript 권한 오류로 중단했고,
+정상 권한에서 재시도해 위 결과를 얻었다.
+
+재현: Vitis HLS 2024.1 Command Prompt, v1 폴더에서
+`vitis_hls -f scripts/impl_existing.tcl` (기존 E08 합성 프로젝트 필요).
+프로젝트가 없으면 먼저 scripts/run_ii2_candidate.cmd로 생성한다.
+
+다음 작업은 최악 타이밍 경로를 분석하고, 정확도와 II=2를 유지하면서
+조합 경로 지연/배선 지연을 줄이는 것. 이번에는 새 최적화나 재구현까지 수행하지 않음.
