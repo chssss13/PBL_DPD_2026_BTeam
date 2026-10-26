@@ -1,0 +1,11 @@
+# Generated HLS projects and local Python environments
+package/prj_resgru/
+.venv/
+__pycache__/
+*.pyc
+*.log
+*.jou
+
+# Working outputs; share archived experiment results instead
+package/results/*.txt
+!package/results/README.txt
