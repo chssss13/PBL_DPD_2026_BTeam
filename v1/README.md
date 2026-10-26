@@ -1,6 +1,10 @@
-# LW-ResGRU DPD 가속기 — PBL 배포 패키지 (v0)
+# LW-ResGRU DPD 가속기 — v1 실험 및 검증
 
-2026-2학기 PBL "6G 통신을 위한 DPD AI 칩 설계" 학생 배포본입니다. 과제 전체 안내는 `docs/PBL_학생안내_6G_DPD_AI칩설계.md`, 출발점 설계의 알려진 문제는 `docs/v0_알려진문제.md`를 먼저 읽으세요.
+v0에서 정확도 복구와 II=2 후보를 탐색한 작업 폴더입니다. [실험 이력](docs/experiment_history.md)과 [PPA 이력표](docs/ppa_history_template.md)를 참고하세요.
+
+배포 안내 자료는 v0에 보관합니다: [프로젝트 안내 PPT](../v0/docs/PBL_프로젝트%20안내_6G_DPD_AI칩.pptx), [학생 안내](../v0/docs/PBL_학생안내_6G_DPD_AI칩설계.md), [v0 알려진 문제](../v0/docs/v0_알려진문제.md), [작업환경 가이드](../v0/docs/작업환경_가이드.md).
+
+현재 후보 재현은 `scripts/run_ii2_candidate.cmd`를 사용합니다. 아래 배포본의 v0 실행 예시는 원본 재현 절차이며, 현재 후보 설정은 버전별 실험 문서를 따릅니다.
 
 ## 구성
 
@@ -8,11 +12,10 @@
 .
 ├─ README.md               ← 이 파일
 ├─ docs/
-│   ├─ PBL_학생안내_6G_DPD_AI칩설계.md   과제 안내 (목표, 규칙, 로드맵)
-│   ├─ v0_알려진문제.md                  v0의 기능 문제 4가지 (증상·측정 손실)
-│   ├─ 작업환경_가이드.md                Windows(내 PC) / Linux(서버) 설정, 명령어 대응표, PPA 측정 기준
-│   └─ ppa_history_template.md           PPA 이력표 양식
-├─ src/                    ← HLS 설계 v0 (논문 LW-ResGRU HLS 원본, config만 H=5, L=3)
+│   ├─ experiment_history.md            수정·실험 순서
+│   ├─ v1.*.md                          버전별 실험 결과
+│   └─ ppa_history_template.md           작성한 PPA 이력표
+├─ src/                    ← 현재 HLS 후보 소스 (실행 설정은 버전별 문서 참고)
 │   ├─ config.h              H_SIZE, NUM_LAYERS, TIME_STEP, 고정소수점 타입
 │   ├─ multi_gru.cpp/.h      top 함수 ResGRU (FEx → 입력 투영 → PReLU → GRU×3 + 잔차 → 출력)
 │   ├─ gru_cell.h            GRU 게이트 계산 (행렬곱, 활성화, 상태 갱신)
@@ -37,7 +40,7 @@
 
 ## 환경 — Windows(내 PC) 또는 Linux(Ubuntu PC·Linux 서버)
 
-두 방식 중 하나로 진행합니다. 설치·접속 방법, 명령어 대응표, PPA 측정 기준은 **`docs/작업환경_가이드.md`를 먼저 읽으세요.**
+두 방식 중 하나로 진행합니다. 설치·접속 방법, 명령어 대응표, PPA 측정 기준은 **`../v0/docs/작업환경_가이드.md`를 먼저 읽으세요.**
 
 | | A. 내 PC (Windows) | B. Linux (Ubuntu PC / Linux 서버) |
 |---|---|---|
@@ -48,7 +51,7 @@
 - 툴 버전은 **2024.1**로 통일합니다. 디바이스 `xczu7ev-ffvc1156-2-e`, 클록 15 ns.
 - macOS에는 툴이 설치되지 않습니다 → 팀원의 Windows PC나 Linux 환경을 쓰세요. (연구실 서버 계정은 제공하지 않습니다.)
 - 패키지는 **한글·공백이 없는 경로**에 두세요.
-- Python: `hw_ref.py`, `compare_out.py`는 numpy만, `eval_pa.py`는 torch(CPU)가 필요합니다. **이 과제용 가상환경(venv)을 만들어 쓰세요** — 만드는 법과 이유는 `docs/작업환경_가이드.md` §A-3. 새 창을 열 때마다 venv를 활성화해야 합니다.
+- Python: `hw_ref.py`, `compare_out.py`는 numpy만, `eval_pa.py`는 torch(CPU)가 필요합니다. **이 과제용 가상환경(venv)을 만들어 쓰세요** — 만드는 법과 이유는 `../v0/docs/작업환경_가이드.md` §A-3. 새 창을 열 때마다 venv를 활성화해야 합니다.
 
 ## 처음 30분: v0를 직접 돌려 보기
 
