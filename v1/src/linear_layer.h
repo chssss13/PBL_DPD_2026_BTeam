@@ -60,7 +60,7 @@ void FExLayer(data_T Ix, data_T Qx, data_T out[6]) {
 #pragma HLS ARRAY_PARTITION variable=out complete dim=1
 
 #if FEX_INTERNAL_FIXED
-    // Match E03: explicit 16-bit intermediate assignments.
+    // Match v1.3: explicit 16-bit intermediate assignments.
     // sqrt/reciprocal and activations still use double math internally.
     typedef ap_fixed<16,FEX_INV_I,AP_RND,AP_SAT> inv_t;
     const data_T i2 = Ix * Ix;

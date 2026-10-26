@@ -5,7 +5,7 @@ $env:NT = '7680'
 $env:FEX_INTERNAL_FIXED = '1'
 foreach ($invBits in @(3, 8)) {
     $env:FEX_INV_I = "$invBits"
-    $experiment = "results/E04_internal_csim/invI$invBits"
+    $experiment = "results/v1.4_internal_csim/invI$invBits"
     New-Item -ItemType Directory -Path "$experiment/src" -Force | Out-Null
     Copy-Item src/* "$experiment/src"
     Copy-Item scripts/run_resgru.tcl "$experiment/run_resgru.tcl"

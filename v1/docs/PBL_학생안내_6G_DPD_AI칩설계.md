@@ -366,7 +366,7 @@ lw_resgru/
 
 ### 실험 결과 보관
 
-변경 하나마다 **실험 ID**(예: `E03_lutram_weight`)를 붙이고 `results/<실험ID>/`에 다음을 남깁니다.
+변경 하나마다 **실험 ID**(예: `v1.3_lutram_weight`)를 붙이고 `results/<실험ID>/`에 다음을 남깁니다.
 
 | 남길 것 | 위치 (원본) |
 |---|---|
@@ -380,7 +380,7 @@ lw_resgru/
 - 각 실험 폴더에 짧은 메모(무엇을 바꿨는지, 결과 요약)를 함께 두면 보고서 작성이 쉬워집니다.
 
 ```
-E03_lutram_weight: weight 저장을 BRAM → LUTRAM으로 변경
+v1.3_lutram_weight: weight 저장을 BRAM → LUTRAM으로 변경
 - BRAM 12 → 4 (-67%)
 - LUT 3,210 → 3,890 (+21%)
 - fmax 142 → 138 MHz

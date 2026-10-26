@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 root = Path(__file__).resolve().parents[1]
-out = root / 'results/E02_csim_reference'
+out = root / 'results/v1.2_csim_reference'
 out.mkdir(parents=True, exist_ok=True)
 env = dict(os.environ, PYTHONIOENCODING='utf-8')
 
