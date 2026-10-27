@@ -10,7 +10,7 @@ import time
 
 def main():
     parser = argparse.ArgumentParser(__doc__)
-    parser.add_argument('--out', default='results/v1.1_precision')
+    parser.add_argument('--out', default='results/v1.1_reference/python_sweep')
     parser.add_argument('--evaluate-only', action='store_true', help='Reuse existing output vectors')
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]

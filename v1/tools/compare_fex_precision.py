@@ -12,7 +12,7 @@ import numpy as np
 import hw_ref
 
 root = Path(__file__).resolve().parents[1]
-out = root / 'results/v1.3_internal_precision'
+out = root / 'results/fex_comparison/python'
 out.mkdir(parents=True, exist_ok=True)
 qd = hw_ref.make_q('16,3')
 w, cfg = hw_ref.load_weights(root / 'golden/weights')
@@ -41,7 +41,7 @@ for integer_bits in (3, 8):
     np.savetxt(target, y, fmt='%.10f')
     files.append(target)
 hw_ref.fex = original_fex
-baseline = root / 'results/v1.2_csim_reference/ref_new.txt'
+baseline = root / 'results/v1.1_reference/csim_reference/ref_new.txt'
 command = [sys.executable, str(root / 'tools/eval_pa.py'), '--pa',
            'save/DPA_200MHz/train_pa/PA_S_4574_M_DGRU_H_8_F_50_P_486_D_0.pt',
            str(root / 'golden/vectors/torch_out.txt'), str(baseline), *map(str, files)]

@@ -9,6 +9,6 @@ set FEX_INV_I=8
 set DSP_FULL_REG=false
 set TARGET_II=2
 set CLOCK_UNCERTAINTY_NS=1.0
-if not exist results\v1.8_schedule mkdir results\v1.8_schedule
-call vitis_hls -f scripts/run_resgru.tcl > results\v1.8_schedule\hls.log 2>&1
+if not exist results\v1.6_schedule mkdir results\v1.6_schedule
+call vitis_hls -f scripts/run_resgru.tcl > results\v1.6_schedule\hls.log 2>&1
 exit /b %errorlevel%

@@ -1,4 +1,4 @@
-"""v1.6 LUT activation / v1.4 fixed intermediate FEx reference and evaluation."""
+"""v1.4 LUT activation / v1.3 fixed intermediate FEx reference and evaluation."""
 from pathlib import Path
 import os
 import subprocess
@@ -9,7 +9,7 @@ import hw_ref
 root = Path(__file__).resolve().parents[1]
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('--experiment', default='results/v1.6_lut')
+parser.add_argument('--experiment', default='results/v1.4_lut')
 parser.add_argument('--act', default='lut', choices=['lut', 'lut_direct'])
 args = parser.parse_args()
 out = root / args.experiment

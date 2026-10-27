@@ -3,9 +3,10 @@ Set-Location (Split-Path -Parent $PSScriptRoot)
 $env:STEPS = 'csim'
 $env:NT = '7680'
 $env:FEX_INTERNAL_FIXED = '1'
+$env:ACT_LUT = '0' # Candidates A/B retain the double-math activation reference.
 foreach ($invBits in @(3, 8)) {
     $env:FEX_INV_I = "$invBits"
-    $experiment = "results/v1.4_internal_csim/invI$invBits"
+    $experiment = "results/fex_comparison/csim/invI$invBits"
     New-Item -ItemType Directory -Path "$experiment/src" -Force | Out-Null
     Copy-Item src/* "$experiment/src"
     Copy-Item scripts/run_resgru.tcl "$experiment/run_resgru.tcl"

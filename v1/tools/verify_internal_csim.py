@@ -1,4 +1,4 @@
-"""Validate both v1.4 C-sim outputs against v1.3 Python vectors and PA targets."""
+"""Validate both v1.3 C-sim outputs against v1.2 Python vectors and PA targets."""
 from pathlib import Path
 import os
 import subprocess
@@ -6,7 +6,7 @@ import sys
 import numpy as np
 
 root = Path(__file__).resolve().parents[1]
-out = root / 'results/v1.4_internal_csim'
+out = root / 'results/fex_comparison/csim'
 env = dict(os.environ, PYTHONIOENCODING='utf-8')
 
 
@@ -22,11 +22,11 @@ def run(name, args, cwd):
 
 
 vectors = [root / 'golden/vectors/torch_out.txt',
-           root / 'results/v1.2_csim_reference/hls_out.txt']
+           root / 'results/v1.1_reference/csim_reference/hls_out.txt']
 passed = True
 for bits in (3, 8):
     hls = out / f'invI{bits}/hls_out.txt'
-    ref = root / f'results/v1.3_internal_precision/fixed16_invI{bits}.txt'
+    ref = root / f'results/fex_comparison/python/fixed16_invI{bits}.txt'
     assert np.loadtxt(hls).shape == np.loadtxt(ref).shape == (7680, 2)
     result = run(f'compare_invI{bits}.txt', [root / 'tools/compare_out.py', hls, ref,
                                            '--nmse_max', '-60'], root)
