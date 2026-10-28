@@ -1,0 +1,5 @@
+samples      : 7680
+NMSE         : -3028.14 dB (limit -60.0 dB)
+max |err|    : 0.000e+00 at t=0  hls=[ 0.01782227 -0.05310059] ref=[ 0.01782227 -0.05310059]
+mismatch cnt : 0
+PASS

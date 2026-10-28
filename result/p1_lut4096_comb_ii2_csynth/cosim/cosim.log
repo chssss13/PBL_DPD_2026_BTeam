@@ -1,0 +1,389 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1 (64-bit)
+  **** SW Build 5069499 on May 21 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Thu Oct 29 02:10:15 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source C:/Xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'user' on host 'desktop-eccjf6l' (Windows NT_amd64 version 10.0) on Thu Oct 29 02:10:16 +0900 2026
+INFO: [HLS 200-10] In directory 'C:/Users/user/Documents/Codex/pbl_lut_comb_20261029'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'scripts/cosim_comb_existing.tcl'
+INFO: [HLS 200-1510] Running: open_project C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2 
+INFO: [HLS 200-10] Opening project 'C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2'.
+INFO: [HLS 200-1510] Running: open_solution sol1 
+INFO: [HLS 200-10] Opening solution 'C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 15ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu7ev-ffvc1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_schedule -enable_dsp_full_reg=0
+INFO: [HLS 200-1510] Running: cosim_design -rtl verilog -tool xsim -argv C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/golden 7680 C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/results/rtl_cosim_7680.txt 2560 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "C:/Xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang++"
+   Compiling multi_gru.cpp_pre.cpp.tb.cpp
+   Compiling apatb_ResGRU.cpp
+   Compiling tb_resgru.cpp_pre.cpp.tb.cpp
+   Compiling apatb_ResGRU_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+[TB] done: 7680 samples -> C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/results/rtl_cosim_7680.txt
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+
+C:\Users\user\Documents\Codex\pbl_lut_comb_20261029\prj_resgru_comb_ii2\sol1\sim\verilog>set PATH= 
+
+C:\Users\user\Documents\Codex\pbl_lut_comb_20261029\prj_resgru_comb_ii2\sol1\sim\verilog>call C:/Xilinx/Vivado/2024.1/bin/xelab xil_defaultlib.apatb_ResGRU_top glbl -Oenable_linking_all_libraries  -prj ResGRU.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm  -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib "ieee_proposed=./ieee_proposed" -s ResGRU  
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_ResGRU_top glbl -Oenable_linking_all_libraries -prj ResGRU.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib ieee_proposed=./ieee_proposed -s ResGRU 
+Multi-threading is on. Using 10 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hn_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hn_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hn_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hn_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hn_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hn_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hr_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hr_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hr_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hr_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hr_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hr_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hz_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hz_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hz_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hz_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_hz_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_hz_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_in_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_in_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_in_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_in_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_in_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_in_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_ir_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_ir_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_ir_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_ir_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_ir_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_ir_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_iz_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_iz_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_iz_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_iz_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_b_iz_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_b_iz_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_gating_params.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_gating_params
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_IQ_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_IQ_seq
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_OUT_seq_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_OUT_seq_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_automem_OUT_seq_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_OUT_seq_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_ResGRU_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_am_submul_16s_14s_13ns_30_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_am_submul_16s_14s_13ns_30_1_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module ResGRU_am_submul_16s_14s_13ns_30_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_Block_entry_split_proc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_Block_entry_split_proc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_fifo_w16_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w16_d2_S
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w16_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_fifo_w17_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w17_d2_S
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w17_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_fifo_w18_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w18_d2_S
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w18_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_fifo_w19_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w19_d2_S
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w19_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_fifo_w20_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w20_d2_S
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w20_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_fifo_w32_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w32_d2_S
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w32_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_fifo_w34_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w34_d2_S
+INFO: [VRFC 10-311] analyzing module ResGRU_fifo_w34_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_flow_control_loop_delay_pipe.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_flow_control_loop_delay_pipe
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_Loop_LOOP_T_proc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_Loop_LOOP_T_proc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_mul_16s_16s_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_mul_16s_16s_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_mul_16s_32s_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_mul_16s_32s_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_mul_18s_34s_34_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_mul_18s_34s_34_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_mul_19s_13ns_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_mul_19s_13ns_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_mul_28s_16s_44_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_mul_28s_16s_44_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_mul_29s_16s_44_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_mul_29s_16s_44_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_mul_44s_16s_58_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_mul_44s_16s_58_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_mul_59s_16s_74_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_mul_59s_16s_74_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_sigmoid_comb_ap_fixed_16_3_0_0_0_ap_fixed_16_3_0_0_0_config_a_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_sigmoid_comb_ap_fixed_16_3_0_0_0_ap_fixed_16_3_0_0_0_config_a_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_sparsemux_8193_12_13_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_sparsemux_8193_12_13_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_sparsemux_8193_12_14_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_sparsemux_8193_12_14_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_sparsemux_9_3_16_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_sparsemux_9_3_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU_tanh_comb_ap_fixed_16_3_0_0_0_ap_fixed_16_3_0_0_0_config_a_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResGRU_tanh_comb_ap_fixed_16_3_0_0_0_ap_fixed_16_3_0_0_0_config_a_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.ResGRU_Block_entry_split_proc
+Compiling module xil_defaultlib.ResGRU_sparsemux_8193_12_13_1_1(...
+Compiling module xil_defaultlib.ResGRU_sigmoid_comb_ap_fixed_16_...
+Compiling module xil_defaultlib.ResGRU_sparsemux_8193_12_14_1_1(...
+Compiling module xil_defaultlib.ResGRU_tanh_comb_ap_fixed_16_3_0...
+Compiling module xil_defaultlib.ResGRU_mul_16s_32s_32_1_1(NUM_ST...
+Compiling module xil_defaultlib.ResGRU_mul_18s_34s_34_1_1(NUM_ST...
+Compiling module xil_defaultlib.ResGRU_mul_28s_16s_44_1_1(NUM_ST...
+Compiling module xil_defaultlib.ResGRU_mul_29s_16s_44_1_1(NUM_ST...
+Compiling module xil_defaultlib.ResGRU_mul_44s_16s_58_1_1(NUM_ST...
+Compiling module xil_defaultlib.ResGRU_mul_59s_16s_74_1_1(NUM_ST...
+Compiling module xil_defaultlib.ResGRU_mul_16s_16s_32_1_1(NUM_ST...
+Compiling module xil_defaultlib.ResGRU_sparsemux_9_3_16_1_1(din0...
+Compiling module xil_defaultlib.ResGRU_mul_19s_13ns_32_1_1(NUM_S...
+Compiling module xil_defaultlib.ResGRU_am_submul_16s_14s_13ns_30...
+Compiling module xil_defaultlib.ResGRU_am_submul_16s_14s_13ns_30...
+Compiling module xil_defaultlib.ResGRU_flow_control_loop_delay_p...
+Compiling module xil_defaultlib.ResGRU_Loop_LOOP_T_proc
+Compiling module xil_defaultlib.ResGRU_fifo_w34_d2_S_ShiftReg
+Compiling module xil_defaultlib.ResGRU_fifo_w34_d2_S_default
+Compiling module xil_defaultlib.ResGRU_fifo_w32_d2_S_ShiftReg
+Compiling module xil_defaultlib.ResGRU_fifo_w32_d2_S_default
+Compiling module xil_defaultlib.ResGRU_fifo_w18_d2_S_ShiftReg
+Compiling module xil_defaultlib.ResGRU_fifo_w18_d2_S_default
+Compiling module xil_defaultlib.ResGRU_fifo_w19_d2_S_ShiftReg
+Compiling module xil_defaultlib.ResGRU_fifo_w19_d2_S_default
+Compiling module xil_defaultlib.ResGRU_fifo_w16_d2_S_ShiftReg
+Compiling module xil_defaultlib.ResGRU_fifo_w16_d2_S_default
+Compiling module xil_defaultlib.ResGRU_fifo_w17_d2_S_ShiftReg
+Compiling module xil_defaultlib.ResGRU_fifo_w17_d2_S_default
+Compiling module xil_defaultlib.ResGRU_fifo_w20_d2_S_ShiftReg
+Compiling module xil_defaultlib.ResGRU_fifo_w20_d2_S_default
+Compiling module xil_defaultlib.ResGRU
+Compiling module xil_defaultlib.AESL_automem_IQ_seq
+Compiling module xil_defaultlib.AESL_automem_OUT_seq_0
+Compiling module xil_defaultlib.AESL_automem_OUT_seq_1
+Compiling module xil_defaultlib.AESL_automem_gating_params
+Compiling module xil_defaultlib.AESL_automem_b_ir_0
+Compiling module xil_defaultlib.AESL_automem_b_ir_1
+Compiling module xil_defaultlib.AESL_automem_b_ir_2
+Compiling module xil_defaultlib.AESL_automem_b_hr_0
+Compiling module xil_defaultlib.AESL_automem_b_hr_1
+Compiling module xil_defaultlib.AESL_automem_b_hr_2
+Compiling module xil_defaultlib.AESL_automem_b_iz_0
+Compiling module xil_defaultlib.AESL_automem_b_iz_1
+Compiling module xil_defaultlib.AESL_automem_b_iz_2
+Compiling module xil_defaultlib.AESL_automem_b_hz_0
+Compiling module xil_defaultlib.AESL_automem_b_hz_1
+Compiling module xil_defaultlib.AESL_automem_b_hz_2
+Compiling module xil_defaultlib.AESL_automem_b_in_0
+Compiling module xil_defaultlib.AESL_automem_b_in_1
+Compiling module xil_defaultlib.AESL_automem_b_in_2
+Compiling module xil_defaultlib.AESL_automem_b_hn_0
+Compiling module xil_defaultlib.AESL_automem_b_hn_1
+Compiling module xil_defaultlib.AESL_automem_b_hn_2
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_report_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detector_2
+Compiling module xil_defaultlib.df_fifo_intf_default
+Compiling module xil_defaultlib.df_process_intf_default
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.upc_loop_intf_default
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_ResGRU_top
+Compiling module work.glbl
+Built simulation snapshot ResGRU
+
+****** xsim v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Thu Oct 29 02:12:37 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/ResGRU/xsim_script.tcl
+# xsim {ResGRU} -autoloadwcfg -tclbatch {ResGRU.tcl}
+Time resolution is 1 ps
+source ResGRU.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 120 [0.00%] @ "143000"
+// RTL Simulation : 1 / 120 [9.33%] @ "2393000"
+// RTL Simulation : 2 / 120 [9.33%] @ "4403000"
+// RTL Simulation : 3 / 120 [9.33%] @ "6413000"
+// RTL Simulation : 4 / 120 [9.33%] @ "8423000"
+// RTL Simulation : 5 / 120 [9.33%] @ "10433000"
+// RTL Simulation : 6 / 120 [9.33%] @ "12443000"
+// RTL Simulation : 7 / 120 [9.33%] @ "14453000"
+// RTL Simulation : 8 / 120 [9.33%] @ "16463000"
+// RTL Simulation : 9 / 120 [9.33%] @ "18473000"
+// RTL Simulation : 10 / 120 [9.33%] @ "20483000"
+// RTL Simulation : 11 / 120 [9.33%] @ "22493000"
+// RTL Simulation : 12 / 120 [9.33%] @ "24503000"
+// RTL Simulation : 13 / 120 [9.33%] @ "26513000"
+// RTL Simulation : 14 / 120 [9.33%] @ "28523000"
+// RTL Simulation : 15 / 120 [9.33%] @ "30533000"
+// RTL Simulation : 16 / 120 [9.33%] @ "32543000"
+// RTL Simulation : 17 / 120 [9.33%] @ "34553000"
+// RTL Simulation : 18 / 120 [9.33%] @ "36563000"
+// RTL Simulation : 19 / 120 [9.33%] @ "38573000"
+// RTL Simulation : 20 / 120 [9.33%] @ "40583000"
+// RTL Simulation : 21 / 120 [9.33%] @ "42593000"
+// RTL Simulation : 22 / 120 [9.33%] @ "44603000"
+// RTL Simulation : 23 / 120 [9.33%] @ "46613000"
+// RTL Simulation : 24 / 120 [9.33%] @ "48623000"
+// RTL Simulation : 25 / 120 [9.33%] @ "50633000"
+// RTL Simulation : 26 / 120 [9.33%] @ "52643000"
+// RTL Simulation : 27 / 120 [9.33%] @ "54653000"
+// RTL Simulation : 28 / 120 [9.33%] @ "56663000"
+// RTL Simulation : 29 / 120 [9.33%] @ "58673000"
+// RTL Simulation : 30 / 120 [9.33%] @ "60683000"
+// RTL Simulation : 31 / 120 [9.33%] @ "62693000"
+// RTL Simulation : 32 / 120 [9.33%] @ "64703000"
+// RTL Simulation : 33 / 120 [9.33%] @ "66713000"
+// RTL Simulation : 34 / 120 [9.33%] @ "68723000"
+// RTL Simulation : 35 / 120 [9.33%] @ "70733000"
+// RTL Simulation : 36 / 120 [9.33%] @ "72743000"
+// RTL Simulation : 37 / 120 [9.33%] @ "74753000"
+// RTL Simulation : 38 / 120 [9.33%] @ "76763000"
+// RTL Simulation : 39 / 120 [9.33%] @ "78773000"
+// RTL Simulation : 40 / 120 [9.33%] @ "80783000"
+// RTL Simulation : 41 / 120 [9.33%] @ "82793000"
+// RTL Simulation : 42 / 120 [9.33%] @ "84803000"
+// RTL Simulation : 43 / 120 [9.33%] @ "86813000"
+// RTL Simulation : 44 / 120 [9.33%] @ "88823000"
+// RTL Simulation : 45 / 120 [9.33%] @ "90833000"
+// RTL Simulation : 46 / 120 [9.33%] @ "92843000"
+// RTL Simulation : 47 / 120 [9.33%] @ "94853000"
+// RTL Simulation : 48 / 120 [9.33%] @ "96863000"
+// RTL Simulation : 49 / 120 [9.33%] @ "98873000"
+// RTL Simulation : 50 / 120 [9.33%] @ "100883000"
+// RTL Simulation : 51 / 120 [9.33%] @ "102893000"
+// RTL Simulation : 52 / 120 [9.33%] @ "104903000"
+// RTL Simulation : 53 / 120 [9.33%] @ "106913000"
+// RTL Simulation : 54 / 120 [9.33%] @ "108923000"
+// RTL Simulation : 55 / 120 [9.33%] @ "110933000"
+// RTL Simulation : 56 / 120 [9.33%] @ "112943000"
+// RTL Simulation : 57 / 120 [9.33%] @ "114953000"
+// RTL Simulation : 58 / 120 [9.33%] @ "116963000"
+// RTL Simulation : 59 / 120 [9.33%] @ "118973000"
+// RTL Simulation : 60 / 120 [9.33%] @ "120983000"
+// RTL Simulation : 61 / 120 [9.33%] @ "122993000"
+// RTL Simulation : 62 / 120 [9.33%] @ "125003000"
+// RTL Simulation : 63 / 120 [9.33%] @ "127013000"
+// RTL Simulation : 64 / 120 [9.33%] @ "129023000"
+// RTL Simulation : 65 / 120 [9.33%] @ "131033000"
+// RTL Simulation : 66 / 120 [9.33%] @ "133043000"
+// RTL Simulation : 67 / 120 [9.33%] @ "135053000"
+// RTL Simulation : 68 / 120 [9.33%] @ "137063000"
+// RTL Simulation : 69 / 120 [9.33%] @ "139073000"
+// RTL Simulation : 70 / 120 [9.33%] @ "141083000"
+// RTL Simulation : 71 / 120 [9.33%] @ "143093000"
+// RTL Simulation : 72 / 120 [9.33%] @ "145103000"
+// RTL Simulation : 73 / 120 [9.33%] @ "147113000"
+// RTL Simulation : 74 / 120 [9.33%] @ "149123000"
+// RTL Simulation : 75 / 120 [9.33%] @ "151133000"
+// RTL Simulation : 76 / 120 [9.33%] @ "153143000"
+// RTL Simulation : 77 / 120 [9.33%] @ "155153000"
+// RTL Simulation : 78 / 120 [9.33%] @ "157163000"
+// RTL Simulation : 79 / 120 [9.33%] @ "159173000"
+// RTL Simulation : 80 / 120 [9.33%] @ "161183000"
+// RTL Simulation : 81 / 120 [9.33%] @ "163193000"
+// RTL Simulation : 82 / 120 [9.33%] @ "165203000"
+// RTL Simulation : 83 / 120 [9.33%] @ "167213000"
+// RTL Simulation : 84 / 120 [9.33%] @ "169223000"
+// RTL Simulation : 85 / 120 [9.33%] @ "171233000"
+// RTL Simulation : 86 / 120 [9.33%] @ "173243000"
+// RTL Simulation : 87 / 120 [9.33%] @ "175253000"
+// RTL Simulation : 88 / 120 [9.33%] @ "177263000"
+// RTL Simulation : 89 / 120 [9.33%] @ "179273000"
+// RTL Simulation : 90 / 120 [9.33%] @ "181283000"
+// RTL Simulation : 91 / 120 [9.33%] @ "183293000"
+// RTL Simulation : 92 / 120 [9.33%] @ "185303000"
+// RTL Simulation : 93 / 120 [9.33%] @ "187313000"
+// RTL Simulation : 94 / 120 [9.33%] @ "189323000"
+// RTL Simulation : 95 / 120 [9.33%] @ "191333000"
+// RTL Simulation : 96 / 120 [9.33%] @ "193343000"
+// RTL Simulation : 97 / 120 [9.33%] @ "195353000"
+// RTL Simulation : 98 / 120 [9.33%] @ "197363000"
+// RTL Simulation : 99 / 120 [9.33%] @ "199373000"
+// RTL Simulation : 100 / 120 [9.33%] @ "201383000"
+// RTL Simulation : 101 / 120 [9.33%] @ "203393000"
+// RTL Simulation : 102 / 120 [9.33%] @ "205403000"
+// RTL Simulation : 103 / 120 [9.33%] @ "207413000"
+// RTL Simulation : 104 / 120 [9.33%] @ "209423000"
+// RTL Simulation : 105 / 120 [9.33%] @ "211433000"
+// RTL Simulation : 106 / 120 [9.33%] @ "213443000"
+// RTL Simulation : 107 / 120 [9.33%] @ "215453000"
+// RTL Simulation : 108 / 120 [9.33%] @ "217463000"
+// RTL Simulation : 109 / 120 [9.33%] @ "219473000"
+// RTL Simulation : 110 / 120 [9.33%] @ "221483000"
+// RTL Simulation : 111 / 120 [9.33%] @ "223493000"
+// RTL Simulation : 112 / 120 [9.33%] @ "225503000"
+// RTL Simulation : 113 / 120 [9.33%] @ "227513000"
+// RTL Simulation : 114 / 120 [9.33%] @ "229523000"
+// RTL Simulation : 115 / 120 [9.33%] @ "231533000"
+// RTL Simulation : 116 / 120 [9.33%] @ "233543000"
+// RTL Simulation : 117 / 120 [9.33%] @ "235553000"
+// RTL Simulation : 118 / 120 [9.33%] @ "237563000"
+// RTL Simulation : 119 / 120 [9.33%] @ "239573000"
+// RTL Simulation : 120 / 120 [100.00%] @ "241583000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 241672500 ps : File "C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/prj_resgru_comb_ii2/sol1/sim/verilog/ResGRU.autotb.v" Line 31596
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:34 . Memory (MB): peak = 376.840 ; gain = 0.000
+## quit
+INFO: xsimkernel Simulation Memory Usage: 87452 KB (Peak: 87452 KB), Simulation CPU Usage: 93453 ms
+INFO: [Common 17-206] Exiting xsim at Thu Oct 29 02:14:14 2026...
+INFO: [COSIM 212-316] Starting C post checking ...
+[TB] done: 7680 samples -> C:/Users/user/Documents/Codex/pbl_lut_comb_20261029/results/rtl_cosim_7680.txt
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:03:59; Allocated memory: 29.180 MB.
+INFO: [HLS 200-112] Total CPU user time: 52 seconds. Total CPU system time: 1 seconds. Total elapsed time: 240.844 seconds; peak allocated memory: 159.594 MB.
