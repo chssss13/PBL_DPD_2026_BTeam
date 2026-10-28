@@ -1,5 +1,7 @@
 # II=2 후보: Vivado 배치·배선 결과
 
+**한 줄 요약:** Vivado 배선 후 주기 17.506ns로 15ns 목표에는 미달했다.
+
 2026-10-29. C-sim과 Verilog RTL co-sim을 확인한 기존 HLS 합성 프로젝트에서 `export_design -flow impl -format ip_catalog`를 실행했다. Vivado 2024.1, FPGA `xczu7ev-ffvc1156-2-e`, 목표 주기 15 ns. HLS 합성은 clock uncertainty 1 ns, DSP full reg false, LOOP_T II=2 요청을 사용했다. Vivado 합성·구현 전략과 사용된 옵션은 `report/export_impl.rpt`에 기록되어 있다. 구현 소스는 [상위 합성 결과](../README.md)의 `source/`와 같다.
 
 ## 기준과 결과 비교
@@ -17,7 +19,7 @@ PA 지표는 RTL co-sim 출력을 제공된 PA 모델에 통과시켜 평가했�
 
 ## 자원 도전 목표와 비교
 
-자원 목표는 필수 정확도 기준과 구분되는 **v0 수준 이하 도전 목표**다. 아래 기준은 같은 브랜치에 보관한 [Windows v0 구현 결과](../../v0/README.md)다.
+자원 목표는 필수 정확도 기준과 구분되는 **v0 수준 이하 도전 목표**다. 아래 기준은 같은 브랜치에 보관한 [Windows v0 구현 결과](../../00_v0/README.md)다.
 
 | 자원 | v0 기준 | 이번 배선 후 | 비교 |
 |---|---:|---:|---|

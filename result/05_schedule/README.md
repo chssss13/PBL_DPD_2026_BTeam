@@ -1,5 +1,7 @@
 # LUT 4096 후보의 스케줄 설정 실험: HLS II=3
 
+**한 줄 요약:** HLS 스케줄 설정을 변경해 II를 7에서 3으로 줄였다.
+
 - 날짜: 2026-10-29. Vitis HLS 2024.1, xczu7ev-ffvc1156-2-e, 목표 클록 15 ns.
 - 계산: 직전 정확도 통과 후보와 동일한 C++ 소스. data 16,3 / weight 16,4 / accum 18,3 / LUT 4096 반올림 / FEx inverse 16,6·Newton-Raphson 4회 / 2560샘플 reset.
 - 변경한 스케줄 설정: DSP_FULL_REG=false, clock uncertainty 4.05 → 1 ns, Tcl로 LOOP_T II=2 요청. 세 설정을 함께 바꿨다.
@@ -24,4 +26,4 @@
 - Loop_LOOP_T_proc_csynth.rpt/xml: loop II·지연 및 target.
 - logs/csynth.log: 전체 합성 로그.
 - source/: 설정 Tcl과 이전 C-sim 후보에 사용한 파일과 일치함을 확인한 C++ 소스·테스트벤치.
-- 직전 C-sim과 기본 스케줄 결과: ../p1_lut4096_round_csynth/README.md.
+- 직전 C-sim과 기본 스케줄 결과: ../04_lut4096/README.md.

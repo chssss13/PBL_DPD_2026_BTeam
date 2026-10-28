@@ -1,5 +1,7 @@
 # LUT 4096 반올림 + weight 16,4 + FEx inv 16,6: C-sim과 합성
 
+**한 줄 요약:** 4,096칸 반올림 LUT 후보는 PA 정확도를 통과했으나 HLS II=7이었다.
+
 - 날짜: 2026-10-29, Vitis HLS 2024.1, xczu7ev-ffvc1156-2-e, 목표 15 ns.
 - P1: sigmoid/tanh 4096칸, 근접 인덱스 반올림 (동점은 큰 인덱스).
 - P2: 64개 블록, 2560개 샘플 구간마다 reset (`RESET_ARG=1`).
