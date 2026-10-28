@@ -69,7 +69,7 @@ void Gate_Calc_PE(
 //#pragma HLS DATAFLOW
 //#pragma HLS PIPELINE II=1
  
-    data_T r_pre, z_pre, r, z, n, one_minus_z, r_h, n_pre;
+    data_T r_pre, z_pre, r, z, n, r_h, n_pre;
     data_T b_ir_local[HIDDEN_SIZE], b_hr_local[HIDDEN_SIZE];
     data_T b_iz_local[HIDDEN_SIZE], b_hz_local[HIDDEN_SIZE];
     data_T b_in_local[HIDDEN_SIZE], b_hn_local[HIDDEN_SIZE];
@@ -96,16 +96,16 @@ GATE_LOOP:
         #pragma HLS UNROLL factor=1
         #pragma HLS PIPELINE II=1
         r_pre = W_ir_x[i] + b_ir_local[i] + W_hr_h[i] + b_hr_local[i];
-        nnet::sigmoid_ele<data_T, data_T, config_a>(r_pre, r);
+        nnet::sigmoid_comb<data_T, data_T, config_a>(r_pre, r);
         r_h = r * (W_hn_h[i] + b_hn_local[i]);
  
         n_pre = W_in_x[i] + b_in_local[i] + r_h;
-        nnet::tanh_ele<data_T, data_T, config_a>(n_pre, n);
+        nnet::tanh_comb<data_T, data_T, config_a>(n_pre, n);
  
         z_pre = W_iz_x[i] + b_iz_local[i] + W_hz_h[i] + b_hz_local[i];
-        nnet::sigmoid_ele<data_T, data_T, config_a>(z_pre, z);
-        one_minus_z = (data_T)(1.0) - z;
-        h_next[i] = one_minus_z * n + z * h_prev[i];
+        nnet::sigmoid_comb<data_T, data_T, config_a>(z_pre, z);
+        // Algebraically equivalent state update; quantize on assignment to data_T.
+        h_next[i] = n + z * (h_prev[i] - n);
     }
 }
  

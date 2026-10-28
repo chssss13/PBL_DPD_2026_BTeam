@@ -8,6 +8,7 @@ HLS ResGRU (LW-ResGRU_HLS/multi_gru.cpp)와 같은 순서로 계산합니다.
                                  정확값 | v0 HLS hard | LUT 버림 | LUT 반올림(2048칸)
                                  (다른 근사를 쓰려면 sigmoid() / tanh() 와 run_fxp() 안의 sig() / th()에
                                   여러분의 HW와 같은 계산을 추가하세요)
+    --state_update original | factored   GRU 은닉 상태 갱신 수식 선택
     --fex  exact | nr | nr_fx | nr_inv8 | nr_inv6
                                  정확값 | 테일러+NR(float) | 기존 16,2 근사 | 중간값 16,3 및 역수 16,8 또는 16,6 근사
     --reset_every N              N샘플마다 은닉 상태 0으로 리셋. 기본값은 golden의 segment_len(2560)으로
@@ -126,7 +127,7 @@ def tanh(x, mode):
     return np.clip(x, -1.0, 1.0)
 
 
-def run(w, cfg, x_iq, act="exact", fex_mode="exact", reset_every=0, dump=None):
+def run(w, cfg, x_iq, act="exact", fex_mode="exact", reset_every=0, dump=None, state_update="original"):
     H, L = cfg["H"], cfg["L"]
     T = len(x_iq)
     h = np.zeros((L, H))
@@ -145,7 +146,10 @@ def run(w, cfg, x_iq, act="exact", fex_mode="exact", reset_every=0, dump=None):
             r = sigmoid(w[f"L{n}_W_ir"] @ x + w[f"L{n}_b_ir"] + w[f"L{n}_W_hr"] @ h[n] + w[f"L{n}_b_hr"], act)
             z = sigmoid(w[f"L{n}_W_iz"] @ x + w[f"L{n}_b_iz"] + w[f"L{n}_W_hz"] @ h[n] + w[f"L{n}_b_hz"], act)
             nn_ = tanh(w[f"L{n}_W_in"] @ x + w[f"L{n}_b_in"] + r * (w[f"L{n}_W_hn"] @ h[n] + w[f"L{n}_b_hn"]), act)
-            h[n] = (1 - z) * nn_ + z * h[n]
+            if state_update == "factored":
+                h[n] = nn_ + z * (h[n] - nn_)
+            else:
+                h[n] = (1 - z) * nn_ + z * h[n]
             x = h[n] + w["gating"][n] * x
             if dump:
                 mids[f"layer{n}"].append(x.copy())
@@ -155,7 +159,7 @@ def run(w, cfg, x_iq, act="exact", fex_mode="exact", reset_every=0, dump=None):
     return y
 
 
-def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every=0, dump=None):
+def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every=0, dump=None, state_update="original"):
     """HLS ResGRU의 고정소수점 동작을 흉내. qd/qw/qa = data_t/weight_t/accum_t 양자화 함수.
 
     양자화 지점은 HLS 소스에서 해당 타입 변수에 대입되는 곳과 같습니다.
@@ -218,8 +222,11 @@ def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every
             r_h = qd(r * (hn + g("b_hn")))
             nn_ = th(qd(in_ + g("b_in") + r_h))
             z = sig(qd(iz + g("b_iz") + hz + g("b_hz")))
-            omz = qd(one - z)
-            h[n] = qd(omz * nn_ + z * h[n])
+            if state_update == "factored":
+                h[n] = qd(nn_ + z * (h[n] - nn_))
+            else:
+                omz = qd(one - z)
+                h[n] = qd(omz * nn_ + z * h[n])
             x = qd(h[n] + W["gating"][n] * x)
             if dump:
                 mids[f"layer{n}"].append(x.copy())
@@ -244,6 +251,8 @@ def main():
     ap.add_argument("--golden", required=True, help="export_golden.py의 --out 폴더")
     ap.add_argument("--act", choices=["exact", "hard", "lut256", "lut2048", "lut2048_round", "lut4096_round", "lut4096_sig4_round"], default="exact")
     ap.add_argument("--fex", choices=["exact", "nr", "nr_fx", "nr_inv8", "nr_inv6"], default="exact")
+    ap.add_argument("--state_update", choices=["original", "factored"], default="original",
+                    help="GRU 은닉 상태 수식: original=(1-z)*n+z*h, factored=n+z*(h-n)")
     ap.add_argument("--reset_every", type=int, default=None)
     ap.add_argument("--fxp", choices=["hls"], help="HLS baseline 타입 일괄 지정 (16,2 / 16,2 / 18,3)")
     ap.add_argument("--data_t", help="W,I  예: 16,2")
@@ -269,13 +278,13 @@ def main():
     fxp = any((a.data_t, a.weight_t, a.accum_t))
     if fxp:
         y = run_fxp(w, cfg, x, make_q(a.data_t), make_q(a.weight_t), make_q(a.accum_t),
-                    a.act, a.fex, a.reset_every, a.dump)
+                    a.act, a.fex, a.reset_every, a.dump, state_update=a.state_update)
         types = f", data_t={a.data_t or 'float'}, weight_t={a.weight_t or 'float'}, accum_t={a.accum_t or 'float'}"
     else:
-        y = run(w, cfg, x, a.act, a.fex, a.reset_every, a.dump)
+        y = run(w, cfg, x, a.act, a.fex, a.reset_every, a.dump, state_update=a.state_update)
         types = ""
     np.savetxt(a.out, y, fmt="%.10f")
-    print(f"saved {a.out}  (act={a.act}, fex={a.fex}, reset_every={a.reset_every}{types}, T={len(x)})")
+    print(f"saved {a.out}  (act={a.act}, fex={a.fex}, state_update={a.state_update}, reset_every={a.reset_every}{types}, T={len(x)})")
     if a.ref:
         ref = np.loadtxt(a.ref)[: len(y)]
         print(f"NMSE vs ref: {nmse_db(y, ref):.2f} dB   max|err|: {np.max(np.abs(y - ref)):.3e}")

@@ -1,0 +1,74 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1 (64-bit)
+  **** SW Build 5069499 on May 21 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Thu Oct 29 01:35:00 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source C:/Xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'user' on host 'desktop-eccjf6l' (Windows NT_amd64 version 10.0) on Thu Oct 29 01:35:01 +0900 2026
+INFO: [HLS 200-10] In directory 'C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'scripts/run_resgru.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset prj_resgru 
+INFO: [HLS 200-10] Creating and opening project 'C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/prj_resgru'.
+INFO: [HLS 200-1510] Running: set_top ResGRU 
+INFO: [HLS 200-1510] Running: add_files C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/src/multi_gru.cpp -cflags -IC:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/src -DRESET_ARG 
+INFO: [HLS 200-10] Adding design file 'C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/src/multi_gru.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/tb/tb_resgru.cpp -cflags -IC:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/src -DRESET_ARG 
+INFO: [HLS 200-10] Adding test bench file 'C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/tb/tb_resgru.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset sol1 
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/prj_resgru/sol1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu7ev-ffvc1156-2-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu7ev-ffvc1156-2-e'
+INFO: [HLS 200-1510] Running: create_clock -period 15 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 15ns.
+INFO: [HLS 200-1510] Running: csim_design -argv C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/golden 7680 C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/results/hls_out.txt 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../tb/tb_resgru.cpp in debug mode
+   Compiling ../../../../src/multi_gru.cpp in debug mode
+   Generating csim.exe
+In file included from ../../../../tb/tb_resgru.cpp:18:
+In file included from C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/src/multi_gru.h:3:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/ap_fixed.h:9:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_common.h:658:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_private.h:68:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_half.h:26:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/hls_half_fpo.h:19:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_fpo.h:140:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/Xilinx/Vitis_HLS/2024.1/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+In file included from ../../../../src/multi_gru.cpp:2:
+In file included from C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/src/multi_gru.h:3:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/ap_fixed.h:9:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_common.h:658:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_private.h:68:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_half.h:26:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/hls_half_fpo.h:19:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_fpo.h:140:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/Xilinx/Vitis_HLS/2024.1/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+[TB] done: 7680 samples -> C:/Users/user/Documents/Codex/pbl_factored_state_b7f5c97e/results/hls_out.txt
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:10; Allocated memory: 1.082 MB.
+INFO: [HLS 200-112] Total CPU user time: 1 seconds. Total CPU system time: 1 seconds. Total elapsed time: 11.439 seconds; peak allocated memory: 131.828 MB.

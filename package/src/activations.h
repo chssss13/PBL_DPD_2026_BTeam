@@ -23,6 +23,7 @@
 #include <cmath>
 #include "ap_fixed.h"
 #include "nnet_common.h"
+#include "activation_comb_tables.h"
 
 
 
@@ -238,6 +239,32 @@ void  sigmoid_ele(data_T data, res_T &res)
     if (index > CONFIG_T::table_size-1) index = CONFIG_T::table_size-1;
     res = (res_T) sigmoid_table[index];
 
+}
+
+// Experiment: retain table values and index rounding while requesting combinational lookup.
+template<class data_T, class res_T, typename CONFIG_T>
+void sigmoid_comb(data_T data, res_T &res) {
+    #pragma HLS INLINE off
+    #pragma HLS LATENCY min=0 max=0
+    #pragma HLS ARRAY_PARTITION variable=activation_comb::sigmoid complete dim=1
+    ap_fixed<16,16,AP_RND,AP_SAT> rounded = data * CONFIG_T::table_size / 16;
+    int index = rounded.to_int() + CONFIG_T::table_size / 2;
+    if (index < 0) index = 0;
+    if (index >= int(CONFIG_T::table_size)) index = CONFIG_T::table_size - 1;
+    ap_int<16> raw = activation_comb::sigmoid[index];
+    res.range(15, 0) = raw.range(15, 0);
+}
+template<class data_T, class res_T, typename CONFIG_T>
+void tanh_comb(data_T data, res_T &res) {
+    #pragma HLS INLINE off
+    #pragma HLS LATENCY min=0 max=0
+    #pragma HLS ARRAY_PARTITION variable=activation_comb::tanh complete dim=1
+    ap_fixed<16,16,AP_RND,AP_SAT> rounded = data * CONFIG_T::table_size / 8;
+    int index = rounded.to_int() + CONFIG_T::table_size / 2;
+    if (index < 0) index = 0;
+    if (index >= int(CONFIG_T::table_size)) index = CONFIG_T::table_size - 1;
+    ap_int<16> raw = activation_comb::tanh[index];
+    res.range(15, 0) = raw.range(15, 0);
 }
 
 // *************************************************
