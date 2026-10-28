@@ -45,6 +45,17 @@ struct activ_config
     typedef float constant_t;
 };
 
+// Reference activation functions: double math followed by output quantization.
+template <typename in_T, typename out_T>
+void reference_sigmoid(in_T in, out_T &out) {
+    out = out_T(1.0 / (1.0 + std::exp(-in.to_double())));
+}
+
+template <typename in_T, typename out_T>
+void reference_tanh(in_T in, out_T &out) {
+    out = out_T(std::tanh(in.to_double()));
+}
+
 // 함수 정의 (벡터 아닌 스칼라 버전)
 template <typename in_T, typename out_T>
 void my_hard_sigmoid(in_T in, out_T &out) {
@@ -220,11 +231,9 @@ void  sigmoid_ele(data_T data, res_T &res)
     }
 
     // Index into the lookup table based on data
-    int data_round;
-    int index;
-
-    data_round = data*CONFIG_T::table_size/16;
-    index = data_round + 8*CONFIG_T::table_size/16;
+    // Round to nearest, with midpoint ties toward positive infinity.
+    ap_fixed<16,16,AP_RND,AP_SAT> data_round = data*CONFIG_T::table_size/16;
+    int index = data_round.to_int() + 8*CONFIG_T::table_size/16;
     if (index < 0)   index = 0;
     if (index > CONFIG_T::table_size-1) index = CONFIG_T::table_size-1;
     res = (res_T) sigmoid_table[index];
@@ -400,10 +409,9 @@ void  tanh_ele(data_T data, res_T &res)
     }
 
     // Index into the lookup table based on data
-    int data_round;
-    int index;
-    data_round = data*CONFIG_T::table_size/8;
-    index = data_round + 4*CONFIG_T::table_size/8;
+    // Round to nearest, with midpoint ties toward positive infinity.
+    ap_fixed<16,16,AP_RND,AP_SAT> data_round = data*CONFIG_T::table_size/8;
+    int index = data_round.to_int() + 4*CONFIG_T::table_size/8;
     //std::cout << "Input: "  << data[ii] << " Round: " << data_round << " Index: " << index << std::endl;
     if (index < 0)   index = 0;
     if (index > CONFIG_T::table_size-1) index = CONFIG_T::table_size-1;

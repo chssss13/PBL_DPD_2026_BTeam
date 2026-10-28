@@ -4,10 +4,12 @@ HLS ResGRU (LW-ResGRU_HLS/multi_gru.cpp)와 같은 순서로 계산합니다.
     FEx → W_inj·x + b_inj → PReLU → [GRU_n → x = h + σ(S_n)·x] × L → W_out·x + b_out
 
 옵션으로 HLS의 근사를 하나씩 켜고 끌 수 있어서, 각 근사가 정확도에 주는 영향을 따로 잴 수 있습니다.
-    --act  exact | hard          sigmoid/tanh 정확값 | v0 HLS의 my_hard_sigmoid / my_hard_tanh
+    --act  exact | hard | lut256 | lut2048 | lut2048_round | lut4096_round | lut4096_sig4_round
+                                 정확값 | v0 HLS hard | LUT 버림 | LUT 반올림(2048칸)
                                  (다른 근사를 쓰려면 sigmoid() / tanh() 와 run_fxp() 안의 sig() / th()에
                                   여러분의 HW와 같은 계산을 추가하세요)
-    --fex  exact | nr | nr_fx    정확값 | HLS의 테일러+NR 4회(float) | 같은 식을 ap_fixed<16,2> 포화까지 흉내
+    --fex  exact | nr | nr_fx | nr_inv8 | nr_inv6
+                                 정확값 | 테일러+NR(float) | 기존 16,2 근사 | 중간값 16,3 및 역수 16,8 또는 16,6 근사
     --reset_every N              N샘플마다 은닉 상태 0으로 리셋. 기본값은 golden의 segment_len(2560)으로
                                  PyTorch golden과 같은 조건. HLS 원본 동작은 64, 0이면 리셋 없음
 
@@ -64,6 +66,17 @@ def fex(I, Q, mode):
         amp = np.sqrt(I * I + Q * Q)
         inv = np.where(amp > 0, 1.0 / np.where(amp > 0, amp, 1), 0.0)
         return np.array([I, Q, amp, amp ** 3, Q * inv, I * inv])
+    if mode in ("nr_inv8", "nr_inv6"):
+        # Existing Newton-Raphson flow: data intermediates 16,3.
+        qdata = make_q("16,3")
+        qinv = make_q("16,8" if mode == "nr_inv8" else "16,6")
+        amp2 = qdata(I * I + Q * Q)
+        delta = qdata(amp2 - 1)
+        inv = qinv(1 - 0.5 * delta + 0.375 * delta * delta)
+        for _ in range(4):
+            inv = qinv(inv * (1.5 - 0.5 * amp2 * inv * inv))
+        amp = qdata(amp2 * inv)
+        return np.array([I, Q, amp, qdata(amp * amp2), qdata(Q * inv), qdata(I * inv)])
     qf = q16_2 if mode == "nr_fx" else (lambda v: v)
     amp2 = qf(I * I + Q * Q)
     delta = qf(amp2 - 1)
@@ -74,15 +87,42 @@ def fex(I, Q, mode):
     return np.array([I, Q, amp, qf(amp * amp2), qf(Q * inv), qf(I * inv)])
 
 
+def make_activation_tables(q, table_size=256, sigmoid_span=16):
+    """Model the existing LUT ranges and table_t=data_t at the selected size."""
+    index = np.arange(table_size, dtype=np.float64)
+    sigmoid_x = (index - table_size / 2) * sigmoid_span / table_size
+    tanh_x = (index - table_size / 2) * 8 / table_size
+    # C++ tanh(float) produces float before conversion to table_t.
+    return q(1 / (1 + np.exp(-sigmoid_x))), q(np.tanh(tanh_x).astype(np.float32))
+
+
+def activation_lookup(x, table, scale, round_index=False):
+    """Nearest index ties go toward +infinity; default matches C++ truncation."""
+    table_size = len(table)
+    position = np.asarray(x) * scale
+    offset = np.floor(position + 0.5) if round_index else np.trunc(position)
+    index = np.clip(offset.astype(int) + table_size // 2, 0, table_size - 1)
+    return table[index]
+
+
 def sigmoid(x, mode):
     if mode == "exact":
         return 1 / (1 + np.exp(-x))
+    if mode in ("lut256", "lut2048", "lut2048_round", "lut4096_round", "lut4096_sig4_round"):
+        size = int(mode[3:].split("_")[0])
+        sigmoid_span = 8 if mode == "lut4096_sig4_round" else 16
+        return activation_lookup(x, make_activation_tables(lambda v: v, size, sigmoid_span)[0], size / sigmoid_span,
+                                 round_index=mode.endswith("_round"))
     return np.clip(0.2 * x + 0.5, 0.0, 1.0)
 
 
 def tanh(x, mode):
     if mode == "exact":
         return np.tanh(x)
+    if mode in ("lut256", "lut2048", "lut2048_round", "lut4096_round", "lut4096_sig4_round"):
+        size = int(mode[3:].split("_")[0])
+        return activation_lookup(x, make_activation_tables(lambda v: v, size)[1], size / 8,
+                                 round_index=mode.endswith("_round"))
     return np.clip(x, -1.0, 1.0)
 
 
@@ -129,6 +169,10 @@ def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every
     H, L = cfg["H"], cfg["L"]
     W = {k: (qd(v) if k.startswith("b_") or "_b_" in k else qw(v)) for k, v in w.items()}
     c02, c05, one = qd(0.2), qd(0.5), qd(1.0)
+    if act in ("lut256", "lut2048", "lut2048_round", "lut4096_round", "lut4096_sig4_round"):
+        table_size = int(act[3:].split("_")[0])
+        sigmoid_span = 8 if act == "lut4096_sig4_round" else 16
+        sigmoid_table, tanh_table = make_activation_tables(qd, table_size, sigmoid_span)
 
     def mac(Wm, x, q):                    # Wm: (out, in)
         acc = np.zeros(Wm.shape[0])
@@ -139,11 +183,17 @@ def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every
     def sig(v):
         if act == "exact":
             return qd(1 / (1 + np.exp(-v)))
+        if act in ("lut256", "lut2048", "lut2048_round", "lut4096_round", "lut4096_sig4_round"):
+            return activation_lookup(v, sigmoid_table, table_size / sigmoid_span,
+                                     round_index=act.endswith("_round"))
         return np.clip(qd(c02 * v + c05), 0.0, 1.0)
 
     def th(v):
         if act == "exact":
             return qd(np.tanh(v))
+        if act in ("lut256", "lut2048", "lut2048_round", "lut4096_round", "lut4096_sig4_round"):
+            return activation_lookup(v, tanh_table, table_size / 8,
+                                     round_index=act.endswith("_round"))
         return np.clip(v, -1.0, 1.0)
 
     T = len(x_iq)
@@ -192,8 +242,8 @@ def nmse_db(pred, ref):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--golden", required=True, help="export_golden.py의 --out 폴더")
-    ap.add_argument("--act", choices=["exact", "hard"], default="exact")
-    ap.add_argument("--fex", choices=["exact", "nr", "nr_fx"], default="exact")
+    ap.add_argument("--act", choices=["exact", "hard", "lut256", "lut2048", "lut2048_round", "lut4096_round", "lut4096_sig4_round"], default="exact")
+    ap.add_argument("--fex", choices=["exact", "nr", "nr_fx", "nr_inv8", "nr_inv6"], default="exact")
     ap.add_argument("--reset_every", type=int, default=None)
     ap.add_argument("--fxp", choices=["hls"], help="HLS baseline 타입 일괄 지정 (16,2 / 16,2 / 18,3)")
     ap.add_argument("--data_t", help="W,I  예: 16,2")
@@ -207,6 +257,8 @@ def main():
 
     if a.fxp == "hls":
         a.data_t, a.weight_t, a.accum_t = a.data_t or "16,2", a.weight_t or "16,2", a.accum_t or "18,3"
+    if a.fex in ("nr_inv8", "nr_inv6") and a.data_t != "16,3":
+        ap.error(f"--fex {a.fex} requires --data_t 16,3 (use --fxp hls for the remaining baseline types)")
     w, cfg = load_weights(os.path.join(a.golden, "weights"))
     if a.reset_every is None:
         a.reset_every = cfg.get("segment_len", 0)
