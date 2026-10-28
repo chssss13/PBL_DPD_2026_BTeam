@@ -4,7 +4,7 @@
 
 - C/RTL co-simulation PASS. RTL 출력과 기존 C-sim 출력의 수치가 7,680샘플 모두 일치했다.
 - RTL 출력 vs Python 참조: NMSE -196.85 dB, 최대 오차 5.000e-11, PASS. 파일 출력 자릿수 차이로 수치 불일치는 7,563샘플이다.
-- RTL 출력 PA 평가: NMSE -43.57 dB, EVM -47.70 dB, ACPR L/R -51.26 / -48.02 dBc. 세 가지 정확도 기준을 통과했다.
+- RTL 출력 PA 평가: NMSE -43.57 dB (기준 -43.48 dB 이하), ACPR L -51.26 dBc (기준 -50.39 dBc 이하), ACPR R -48.02 dBc (기준 -47.83 dBc 이하)로 세 정확도 기준을 통과했다. EVM은 -47.70 dB다.
 - Co-sim 보고서의 64샘플 최상위 호출 latency는 148 cycles, 호출 interval은 134 cycles다. 블록 단위 핸드셰이크를 포함한 이 간격은 샘플 루프의 HLS II=2와 다르다.
 - 이후 Vivado 배치·배선 결과 주기 17.506 ns로 목표 15 ns에 미달했다. [구현 결과](../implementation/README.md)
 
