@@ -1,0 +1,46 @@
+﻿[
+    {
+        "File":  "activations.h",
+        "Hash":  "14E6A484E8F1A39EA217187C8AD3E279F0CA0BE2A9A347F7EB3839E311851D8C"
+    },
+    {
+        "File":  "config.h",
+        "Hash":  "85B02F4CC9D217141FBEAE92B3AA9E6CAB4984068D8D459AB7C7C7E3E253B05F"
+    },
+    {
+        "File":  "fxp_sqrt.h",
+        "Hash":  "C196916C349671FE1BEF71E6994914A6AF6361E12C78404CE4B6C1AB687A251B"
+    },
+    {
+        "File":  "gru_cell.cpp",
+        "Hash":  "4640A893E4E53239B0C840B605E776FD3B53350A8EC970BF1C7BA0DFC0CE6535"
+    },
+    {
+        "File":  "gru_cell.h",
+        "Hash":  "F36056848A8A8646FCF929D4DDE447B0DAE83CC8787035403E4102EA44F52989"
+    },
+    {
+        "File":  "linear_layer.h",
+        "Hash":  "36D2A8BDF53A021B057EBD89FC110A0DBBCD50C0CD70A8313E1AC06773930A4E"
+    },
+    {
+        "File":  "multi_gru.cpp",
+        "Hash":  "9DADDEBB8714AA7D3C8809135CAF8CBCBF1FB5AB3EF5B2601645CE71A6D52D73"
+    },
+    {
+        "File":  "multi_gru.h",
+        "Hash":  "64D96B9A42405DA363FC794AE6DD97191953F22E3C702DCBEC43ED7C6A8DBE4F"
+    },
+    {
+        "File":  "nnet_common.h",
+        "Hash":  "10C4FF6D8C839C40EB28B22A87891242B3205F3C1B5AFB5F1117FE3B6F74015C"
+    },
+    {
+        "File":  "utils.h",
+        "Hash":  "20F138D4D52D8A7835EC8AF785C9D63089FEBA191D9E14C45B8EC098187818B3"
+    },
+    {
+        "File":  "wrapper.cpp",
+        "Hash":  "7ADB2BE3341E58C2BBA7007AABAD9993FD2FF6A02C59EA6ED7B2325548F8269C"
+    }
+]

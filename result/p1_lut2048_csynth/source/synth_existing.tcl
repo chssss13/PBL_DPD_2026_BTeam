@@ -1,0 +1,4 @@
+open_project prj_resgru
+open_solution sol1
+csynth_design
+exit

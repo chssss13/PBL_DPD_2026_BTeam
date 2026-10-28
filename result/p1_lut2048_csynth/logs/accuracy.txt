@@ -1,0 +1,8 @@
+﻿file                     T      NMSE      EVM    ACPR_L   ACPR_R
+ref_act_lut2048.txt     7680    -35.51   -38.06    -46.83   -42.97
+hls_out.txt            7680    -35.51   -38.06    -46.83   -42.97
+
+Required: NMSE <= -43.48 dB; ACPR_L <= -50.39 dBc; ACPR_R <= -47.83 dBc.
+All three PA accuracy targets FAIL.
+Conditions: RESET_ARG=1; reset every 2560; data/weight 16,3; accum 18,3;
+FEx Newton-Raphson 4 iterations with inverse 16,8; activation LUT 2048.

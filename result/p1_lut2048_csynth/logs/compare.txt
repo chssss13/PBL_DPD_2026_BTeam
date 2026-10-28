@@ -1,0 +1,6 @@
+﻿samples      : 7680
+NMSE         : -196.85 dB (limit -60.0 dB)
+max |err|    : 5.000e-11 at t=19
+mismatch cnt : 7567
+PASS
+Nonzero text differences are at decimal text precision; this is not a bit-exact claim.

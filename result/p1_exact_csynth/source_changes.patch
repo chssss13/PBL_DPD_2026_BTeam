@@ -1,0 +1,47 @@
+diff --git a/package/src/activations.h b/package/src/activations.h
+index d2d2334..d6a2520 100644
+--- a/package/src/activations.h
++++ b/package/src/activations.h
+@@ -45,6 +45,17 @@ struct activ_config
+     typedef float constant_t;
+ };
+ 
++// Reference activation functions: double math followed by output quantization.
++template <typename in_T, typename out_T>
++void reference_sigmoid(in_T in, out_T &out) {
++    out = out_T(1.0 / (1.0 + std::exp(-in.to_double())));
++}
++
++template <typename in_T, typename out_T>
++void reference_tanh(in_T in, out_T &out) {
++    out = out_T(std::tanh(in.to_double()));
++}
++
+ // 함수 정의 (벡터 아닌 스칼라 버전)
+ template <typename in_T, typename out_T>
+ void my_hard_sigmoid(in_T in, out_T &out) {
+diff --git a/package/src/gru_cell.h b/package/src/gru_cell.h
+index fcb6747..2fec903 100644
+--- a/package/src/gru_cell.h
++++ b/package/src/gru_cell.h
+@@ -96,17 +96,17 @@ GATE_LOOP:
+         #pragma HLS UNROLL factor=1
+         #pragma HLS PIPELINE II=1
+         r_pre = W_ir_x[i] + b_ir_local[i] + W_hr_h[i] + b_hr_local[i];
+-        nnet::my_hard_sigmoid<data_T,data_T>(r_pre, r);
++        nnet::reference_sigmoid<data_T,data_T>(r_pre, r);
+         //nnet::sigmoid_ele<data_T, data_T, config_a>(r_pre, r);
+         r_h = r * (W_hn_h[i] + b_hn_local[i]);
+  
+         n_pre = W_in_x[i] + b_in_local[i] + r_h;
+-        nnet::my_hard_tanh<data_T,data_T>(n_pre, n);
++        nnet::reference_tanh<data_T,data_T>(n_pre, n);
+         //nnet::tanh_ele<data_T, data_T,config_a>(n_pre, n);
+  
+         z_pre = W_iz_x[i] + b_iz_local[i] + W_hz_h[i] + b_hz_local[i];
+         //nnet::sigmoid_ele<data_T, data_T,config_a>(z_pre, z);
+-        nnet::my_hard_sigmoid<data_T,data_T>(z_pre, z);
++        nnet::reference_sigmoid<data_T,data_T>(z_pre, z);
+         one_minus_z = (data_T)(1.0) - z;
+         h_next[i] = one_minus_z * n + z * h_prev[i];
+     }
