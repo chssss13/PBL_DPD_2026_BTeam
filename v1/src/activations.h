@@ -57,7 +57,7 @@ void reference_sigmoid(in_T in, out_T &out) {
 #pragma HLS INLINE off
 #pragma HLS LATENCY min=0 max=0
 #pragma HLS ARRAY_PARTITION variable=activation_tables::sigmoid_direct complete dim=1
-    ap_uint<12> index = in.range(15,4);
+    ap_uint<16-DIRECT_LUT_SHIFT> index = in.range(15,DIRECT_LUT_SHIFT);
     ap_int<16> result = activation_tables::sigmoid_direct[index];
     out.range(15,0) = result.range(15,0);
 #else
@@ -82,7 +82,7 @@ void reference_tanh(in_T in, out_T &out) {
 #pragma HLS INLINE off
 #pragma HLS LATENCY min=0 max=0
 #pragma HLS ARRAY_PARTITION variable=activation_tables::tanh_direct complete dim=1
-    ap_uint<12> index = in.range(15,4);
+    ap_uint<16-DIRECT_LUT_SHIFT> index = in.range(15,DIRECT_LUT_SHIFT);
     ap_int<16> result = activation_tables::tanh_direct[index];
     out.range(15,0) = result.range(15,0);
 #else

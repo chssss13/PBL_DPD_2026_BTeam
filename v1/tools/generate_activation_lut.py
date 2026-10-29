@@ -15,16 +15,22 @@ for name, values in tables.items():
         lines.append('    ' + ', '.join(map(str, raw[start:start+24])) + ',')
     lines.append('};')
 lines.append('}')
-lines.append('namespace activation_tables {')
-index = np.arange(4096)
-signed = np.where(index < 2048, index, index - 4096)
-x = signed / 512.0 + 1/1024.0
-for name, values in {'sigmoid_direct': 1/(1+np.exp(-x)), 'tanh_direct': np.tanh(x)}.items():
-    raw = np.floor(values * 8192 + 0.5).astype(int)
-    lines.append(f'static const short {name}[4096] = {{')
-    for start in range(0, len(raw), 24):
-        lines.append('    ' + ', '.join(map(str, raw[start:start+24])) + ',')
-    lines.append('};')
+lines.extend(['#ifndef DIRECT_LUT_SHIFT', '#define DIRECT_LUT_SHIFT 4', '#endif',
+              'namespace activation_tables {'])
+for shift in (4, 3, 2):
+    size = 1 << (16-shift)
+    scale = 8192.0 / (1 << shift)
+    index = np.arange(size)
+    signed = np.where(index < size//2, index, index-size)
+    x = signed / scale + 0.5/scale
+    lines.append(f'#if DIRECT_LUT_SHIFT == {shift}')
+    for name, values in {'sigmoid_direct': 1/(1+np.exp(-x)), 'tanh_direct': np.tanh(x)}.items():
+        raw = np.floor(values * 8192 + 0.5).astype(int)
+        lines.append(f'static const short {name}[{size}] = {{')
+        for start in range(0, len(raw), 24):
+            lines.append('    ' + ', '.join(map(str, raw[start:start+24])) + ',')
+        lines.append('};')
+    lines.append('#endif')
 lines.append('}')
 (root / 'src/activation_lut.h').write_text('\n'.join(lines) + '\n', encoding='utf-8')
-print('Generated 2049-entry half-domain tables; grid spacing 1/512.')
+print('Generated half-domain and direct tables: shift 4/3/2 = grid 1/512, 1/1024, 1/2048.')

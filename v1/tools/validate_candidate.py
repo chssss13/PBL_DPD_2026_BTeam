@@ -9,11 +9,14 @@ import numpy as np
 
 p = argparse.ArgumentParser()
 p.add_argument('experiment', help='Directory relative to v1 with ref.txt')
+p.add_argument('--hls', help='C-sim output path relative to v1; default results/hls_out.txt')
 a = p.parse_args()
 root = Path(__file__).resolve().parents[1]
 out = root / a.experiment
 out.mkdir(parents=True, exist_ok=True)
-shutil.copy2(root / 'results/hls_out.txt', out / 'hls_out.txt')
+source = (root / (a.hls or 'results/hls_out.txt')).resolve()
+if source != (out / 'hls_out.txt').resolve():
+    shutil.copy2(source, out / 'hls_out.txt')
 shutil.copytree(root / 'src', out / 'src', dirs_exist_ok=True)
 shutil.copy2(root / 'scripts/run_resgru.tcl', out / 'run_resgru.tcl')
 shutil.copy2(root / 'tb/tb_resgru.cpp', out / 'tb_resgru.cpp')

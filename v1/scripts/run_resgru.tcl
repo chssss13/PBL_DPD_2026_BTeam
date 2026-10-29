@@ -15,7 +15,7 @@ set ROOT  [file normalize [file join [file dirname [info script]] ..]]
 set STEPS [expr {[info exists ::env(STEPS)] ? $::env(STEPS) : "csim"}]
 set NT    [expr {[info exists ::env(NT)] ? $::env(NT) : 7680}]
 set CFLAGS "-I$ROOT/src -DRESET_ARG"
-foreach DEFINE {FEX_INTERNAL_FIXED FEX_INV_I ACT_LUT} {
+foreach DEFINE {FEX_INTERNAL_FIXED FEX_INV_I ACT_LUT DIRECT_LUT_SHIFT} {
     if {[info exists ::env($DEFINE)]} {
         if {![string is integer -strict $::env($DEFINE)]} { error "$DEFINE must be an integer" }
         append CFLAGS " -D$DEFINE=$::env($DEFINE)"
@@ -42,7 +42,9 @@ if {[info exists ::env(TARGET_II)]} {
     set_directive_pipeline -II $::env(TARGET_II) "ResGRU/LOOP_T"
 }
 
-set ARGV "$ROOT/golden $NT $ROOT/results/hls_out.txt"
+set OUTFILE [expr {[info exists ::env(HLS_OUTPUT)] ? $::env(HLS_OUTPUT) : "$ROOT/results/hls_out.txt"}]
+set OUTFILE [file normalize $OUTFILE]
+set ARGV "$ROOT/golden $NT $OUTFILE"
 if {[lsearch $STEPS csim]   >= 0} { csim_design -argv $ARGV }
 if {[lsearch $STEPS csynth] >= 0} { csynth_design }
 if {[lsearch $STEPS cosim]  >= 0} { cosim_design -argv $ARGV }

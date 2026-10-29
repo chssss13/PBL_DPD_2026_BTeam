@@ -31,6 +31,7 @@ import json
 import os
 
 import numpy as np
+DIRECT_LUT_SCALE = 512.0
 
 
 def load_weights(wdir):
@@ -152,7 +153,7 @@ def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every
 
     def sig(v):
         if act == "lut_direct":
-            grid = np.floor(v * 512.0) / 512.0 + 1/1024.0
+            grid = np.floor(v * DIRECT_LUT_SCALE) / DIRECT_LUT_SCALE + 0.5/DIRECT_LUT_SCALE
             return qd(1 / (1 + np.exp(-grid)))
         if act == "lut":
             return qd(activation_lut(v, False))
@@ -162,7 +163,7 @@ def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every
 
     def th(v):
         if act == "lut_direct":
-            grid = np.floor(v * 512.0) / 512.0 + 1/1024.0
+            grid = np.floor(v * DIRECT_LUT_SCALE) / DIRECT_LUT_SCALE + 0.5/DIRECT_LUT_SCALE
             return qd(np.tanh(grid))
         if act == "lut":
             return qd(activation_lut(v, True))

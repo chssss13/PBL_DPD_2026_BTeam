@@ -11,7 +11,9 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--experiment', default='results/v1.4_lut')
 parser.add_argument('--act', default='lut', choices=['lut', 'lut_direct'])
+parser.add_argument('--lut-shift', type=int, choices=[2,3,4], default=4)
 args = parser.parse_args()
+hw_ref.DIRECT_LUT_SCALE = 8192.0 / (1 << args.lut_shift)
 out = root / args.experiment
 out.mkdir(parents=True, exist_ok=True)
 qd, qi = hw_ref.make_q('16,3'), hw_ref.make_q('16,8')
