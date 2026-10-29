@@ -1,0 +1,108 @@
+<profile>
+
+<ReportVersion>
+<Version>2024.1</Version>
+</ReportVersion>
+
+<UserAssignments>
+<unit>ns</unit>
+<ProductFamily>zynquplus</ProductFamily>
+<Part>xczu7ev-ffvc1156-2-e</Part>
+<TopModelName>reference_sigmoid_ap_fixed_16_3_0_0_0_ap_fixed_16_3_0_0_0_s</TopModelName>
+<TargetClockPeriod>15.00</TargetClockPeriod>
+<ClockUncertainty>4.05</ClockUncertainty>
+<TargetInitiationInterval>4294967295</TargetInitiationInterval>
+<FlowTarget>vivado</FlowTarget>
+</UserAssignments>
+
+<PerformanceEstimates>
+<PipelineType>yes</PipelineType>
+<SummaryOfTimingAnalysis>
+<unit>ns</unit>
+<EstimatedClockPeriod>1.762</EstimatedClockPeriod>
+</SummaryOfTimingAnalysis>
+<SummaryOfOverallLatency>
+<unit>clock cycles</unit>
+<Best-caseLatency>0</Best-caseLatency>
+<Average-caseLatency>0</Average-caseLatency>
+<Worst-caseLatency>0</Worst-caseLatency>
+<Best-caseRealTimeLatency>0 ns</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>0 ns</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>0 ns</Worst-caseRealTimeLatency>
+<PipelineInitiationInterval>1</PipelineInitiationInterval>
+<PipelineDepth>1</PipelineDepth>
+<Interval-min>1</Interval-min>
+<Interval-max>1</Interval-max>
+</SummaryOfOverallLatency>
+<SummaryOfViolations>
+<IssueType>-</IssueType>
+<ViolationType>-</ViolationType>
+<SourceLocation>C:/Project/PBL_DPD_2026_BTeam/v1/results/default_schedule/state_logic/src/activations.h:58</SourceLocation>
+</SummaryOfViolations>
+</PerformanceEstimates>
+
+<AreaEstimates>
+<Resources>
+<FF>0</FF>
+<LUT>2693</LUT>
+<BRAM_18K>0</BRAM_18K>
+<DSP>0</DSP>
+<URAM>0</URAM>
+</Resources>
+<AvailableResources>
+<BRAM_18K>624</BRAM_18K>
+<DSP>1728</DSP>
+<FF>460800</FF>
+<LUT>230400</LUT>
+<URAM>96</URAM>
+</AvailableResources>
+</AreaEstimates>
+
+<InterfaceSummary>
+<RtlPorts>
+<name>ap_ready</name>
+<Object>reference_sigmoid&lt;ap_fixed&lt;16, 3, 0, 0, 0&gt;, ap_fixed&lt;16, 3, 0, 0, 0&gt; &gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return</name>
+<Object>reference_sigmoid&lt;ap_fixed&lt;16, 3, 0, 0, 0&gt;, ap_fixed&lt;16, 3, 0, 0, 0&gt; &gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>13</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_rst</name>
+<Object>reference_sigmoid&lt;ap_fixed&lt;16, 3, 0, 0, 0&gt;, ap_fixed&lt;16, 3, 0, 0, 0&gt; &gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>in_r</name>
+<Object>in_r</Object>
+<Type>scalar</Type>
+<Scope></Scope>
+<IOProtocol>ap_none</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+</InterfaceSummary>
+
+</profile>

@@ -49,3 +49,16 @@ v1.6의 정확도·II=2·전체 RTL 검증은 통과했지만, v1.7에서 15 ns 
 최종 결과와 한계는 [초기 reference](v1.1_reference.md), [후보 A](v1.2_candidate_a.md),
 [후보 B](v1.3_candidate_b.md), [LUT와 스케줄 탐색](v1.4_v1.6_search.md),
 [구현·PPA](v1.7_implementation.md), [PPA 이력표](ppa_history_template.md)를 참고한다.
+
+## 버전별 상세 문서
+
+- [v1.4 대칭 활성화 LUT](v1.4_symmetric_lut.md)
+- [v1.5 직접 조회 활성화 LUT](v1.5_direct_lut.md)
+- [v1.6 II=2 스케줄 및 RTL 검증](v1.6_ii2_schedule.md)
+
+각 문서에 정확도, II, 지연 및 HLS 자원 추정값을 기록했다. 구현 후 PPA는 [v1.7](v1.7_implementation.md)에 분리한다.
+
+## 후속 탐색
+
+- [직접 LUT 간격과 구현 결과](lut_density_search.md): 1/2048에서 C-sim 정확도 개선, HLS II=2 유지. 물리 타이밍 실패.
+- [v0 기본 합성 설정의 구조 탐색](default_schedule_search.md): 첫 후보 II=3, 후속 후보는 사용자 요청으로 중단.

@@ -1,0 +1,68 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             |  23,499      | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  |  58,519      | user unroll pragmas are applied                                                        |
+|               | (2) simplification          |  21,307      | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  |  20,672      | user inline pragmas are applied                                                        |
+|               | (4) simplification          |  20,322      | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         | 791,860 *    | user array partition pragmas are applied                                               |
+|               | (2) simplification          |  19,602      | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  |  20,186      | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           |  20,280      | apply array reshape pragmas                                                            |
+|               | (5) access patterns         |  20,280      | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     |  19,112      | loop and instruction simplification                                                    |
+|               | (2) parallelization         |  19,112      | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         |  19,112      | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          |  19,112      | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                |  20,155      | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           |  20,230      | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+    * - Exceeded design size warning message threshold
+
+* Instructions per Function for each Compilation Phase
++---------------------------------------+-------------------+-----------------+------------------+------------------+------------------+------------------+
+| Function                              | Location          | Compile/Link    | Unroll/Inline    | Array/Struct     | Performance      | HW Transforms    |
++---------------------------------------+-------------------+-----------------+------------------+------------------+------------------+------------------+
+| + ResGRU                              | multi_gru.cpp:254 | 23,499          | 20,322           | 20,280           | 19,112           | 20,230           |
+|    FExLayer<ap_fixed<16, 3, AP_...    | linear_layer.h:57 | 6,067           |                  |                  |                  |                  |
+|  + Linear<6, 5, ap_fixed<16, 3,...    | linear_layer.h:33 | 1,207           |                  |                  |                  |                  |
+|     MAC_PE<6, ap_fixed<16, 3, AP...   | linear_layer.h:5  |   846           |                  |                  |                  |                  |
+|    prelu<ap_fixed<32, 12, AP_RN...    | activations.h:123 | 1,617           |                  |                  |                  |                  |
+|    copy_row<5, ap_fixed<16, 3, ...    | utils.h:9         |    48 (3 calls) |                  |                  |                  |                  |
+|  + GRU_single                         | multi_gru.cpp:10  | 12,175          |                  |                  |                  |                  |
+|   + GRU_Kernel_PE<5, 5, ap_fixed...   | gru_cell.h:66     | 5,245           |                  |                  |                  |                  |
+|    + MVM_PE<5, 5, ap_fixed<16, 3,...  | linear_layer.h:18 | 5,238 (6 calls) |                  |                  |                  |                  |
+|       MAC_PE<5, ap_fixed<16, 3, AP... | linear_layer.h:5  | 5,076 (6 calls) |                  |                  |                  |                  |
+|   + Gate_Calc_PE<5, ap_fixed<16,...   | gru_cell.h:92     | 6,541           |                  |                  |                  |                  |
+|      Copy_Bias_PE<5, ap_fixed<16,...  | gru_cell.h:44     |    46           |                  |                  |                  |                  |
+|      reference_sigmoid<ap_fixed<1...  | activations.h:55  |   340 (2 calls) |                  |                  |                  |                  |
+|      reference_tanh<ap_fixed<16, ...  | activations.h:80  |   170           |                  |                  |                  |                  |
+|      hidden_update_logic              | gru_cell.h:14     | 1,512           |                  |                  |                  |                  |
+|  + Linear<5, 2, ap_fixed<16, 3,...    | linear_layer.h:33 | 1,475           |                  |                  |                  |                  |
+|     MAC_PE<5, ap_fixed<16, 3, AP...   | linear_layer.h:5  | 1,121           |                  |                  |                  |                  |
+|    reference_sigmoid<ap_fixed<1...    | activations.h:55  |                 |   240 (30 calls) |   180 (30 calls) |   180 (30 calls) |   240 (30 calls) |
+|    reference_tanh<ap_fixed<16, ...    | activations.h:80  |                 |   120 (15 calls) |    90 (15 calls) |    90 (15 calls) |   120 (15 calls) |
++---------------------------------------+-------------------+-----------------+------------------+------------------+------------------+------------------+
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+
