@@ -1,0 +1,10 @@
+# Reproducible HLS build trees and Python caches
+**/prj_*/
+**/__pycache__/
+**/*.pyc
+**/freq.csv
+**/vitis_hls.log
+**/vitis_hls.app
+**/.Xil/
+
+# Experiments keep selected logs explicitly under results/E*/.

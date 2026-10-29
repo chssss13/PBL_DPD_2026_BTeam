@@ -1,0 +1,15 @@
+C:\Project\venv_dpd\Scripts\python.exe C:\Project\PBL_DPD_2026_BTeam\v1\tools\eval_pa.py --pa save/DPA_200MHz/train_pa/PA_S_4574_M_DGRU_H_8_F_50_P_486_D_0.pt C:\Project\PBL_DPD_2026_BTeam\v1\golden\vectors\torch_out.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i3_w16i3_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i3_w16i4_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i3_w16i5_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i4_w16i3_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i4_w16i4_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i4_w16i5_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i5_w16i3_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i5_w16i4_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i5_w16i5_a32i12.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i2_w16i2_a18i3.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i4_w16i4_a24i8.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i4_w16i4_a24i10.txt
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+torch_out.txt                                  7680   -45.52   -49.42   -53.59   -50.43   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+d16i3_w16i3_a32i12.txt                         7680   -44.82   -48.67   -52.83   -48.65   NMSE+0.70  ACPR_L+0.76  ACPR_R+1.78
+d16i3_w16i4_a32i12.txt                         7680   -45.48   -49.34   -53.33   -50.37   NMSE+0.04  ACPR_L+0.26  ACPR_R+0.06
+d16i3_w16i5_a32i12.txt                         7680   -45.11   -49.21   -53.44   -50.26   NMSE+0.41  ACPR_L+0.15  ACPR_R+0.17
+d16i4_w16i3_a32i12.txt                         7680   -44.71   -48.54   -52.66   -48.59   NMSE+0.81  ACPR_L+0.93  ACPR_R+1.84
+d16i4_w16i4_a32i12.txt                         7680   -45.27   -49.17   -52.99   -50.29   NMSE+0.25  ACPR_L+0.60  ACPR_R+0.14
+d16i4_w16i5_a32i12.txt                         7680   -45.05   -49.11   -53.31   -50.48   NMSE+0.47  ACPR_L+0.28  ACPR_R-0.06
+d16i5_w16i3_a32i12.txt                         7680   -43.39   -47.78   -51.97   -47.84   NMSE+2.13  ACPR_L+1.62  ACPR_R+2.58
+d16i5_w16i4_a32i12.txt                         7680   -43.93   -48.27   -52.45   -49.28   NMSE+1.59  ACPR_L+1.13  ACPR_R+1.15
+d16i5_w16i5_a32i12.txt                         7680   -43.56   -48.38   -52.46   -48.99   NMSE+1.97  ACPR_L+1.13  ACPR_R+1.44
+d16i2_w16i2_a18i3.txt                          7680   -41.88   -45.33   -50.86   -44.78   NMSE+3.64  ACPR_L+2.72  ACPR_R+5.65
+d16i4_w16i4_a24i8.txt                          7680   -45.26   -49.13   -53.15   -50.22   NMSE+0.26  ACPR_L+0.44  ACPR_R+0.20
+d16i4_w16i4_a24i10.txt                         7680   -45.29   -49.13   -53.14   -50.19   NMSE+0.23  ACPR_L+0.44  ACPR_R+0.24

@@ -1,0 +1,6 @@
+C:\Project\venv_dpd\Scripts\python.exe C:\Project\PBL_DPD_2026_BTeam\v1\tools\compare_out.py C:\Project\PBL_DPD_2026_BTeam\v1\results\E04_internal_csim\invI3\hls_out.txt C:\Project\PBL_DPD_2026_BTeam\v1\results\E03_internal_precision\fixed16_invI3.txt --nmse_max -60
+samples      : 7680
+NMSE         : -196.87 dB (limit -60.0 dB)
+max |err|    : 5.000e-11 at t=8  hls=[-0.12060547 -0.10546875] ref=[-0.12060547 -0.10546875]
+mismatch cnt : 7562
+PASS

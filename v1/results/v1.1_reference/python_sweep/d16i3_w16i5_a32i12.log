@@ -1,0 +1,2 @@
+C:\Project\venv_dpd\Scripts\python.exe C:\Project\PBL_DPD_2026_BTeam\v1\tools\hw_ref.py --golden C:\Project\PBL_DPD_2026_BTeam\v1\golden --act exact --fex exact --reset_every 2560 --data_t 16,3 --weight_t 16,5 --accum_t 32,12 --out C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i3_w16i5_a32i12.txt
+saved C:\Project\PBL_DPD_2026_BTeam\v1\results\E01_precision\d16i3_w16i5_a32i12.txt  (act=exact, fex=exact, reset_every=2560, data_t=16,3, weight_t=16,5, accum_t=32,12, T=7680)

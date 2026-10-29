@@ -1,0 +1,72 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">,  23499, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll,  58519, user unroll pragmas are applied</column>
+            <column name="">(2) simplification,  21307, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline,  20672, user inline pragmas are applied</column>
+            <column name="">(4) simplification,  20322, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition, 791860 *, user array partition pragmas are applied</column>
+            <column name="">(2) simplification,  19602, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate ,  20186, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape,  20280, apply array reshape pragmas</column>
+            <column name="">(5) access patterns,  20280, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification,  19112, loop and instruction simplification</column>
+            <column name="">(2) parallelization,  19112, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition,  19112, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification,  19112, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering,  20155, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations,  20230, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="ResGRU" col1="multi_gru.cpp:254" col2="23499" col3="20322" col4="20280" col5="19112" col6="20230">
+                    <row id="15" col0="FExLayer&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:57" col2="6067" col3="" col4="" col5="" col6=""/>
+                    <row id="2" col0="Linear&lt;6, 5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:33" col2="1207" col3="" col4="" col5="" col6="">
+                        <row id="3" col0="MAC_PE&lt;6, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:5" col2="846" col3="" col4="" col5="" col6=""/>
+                    </row>
+                    <row id="11" col0="prelu&lt;ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, 5&gt;" col1="activations.h:123" col2="1617" col3="" col4="" col5="" col6=""/>
+                    <row id="14" col0="copy_row&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="utils.h:9" col2="48" col2_disp="   48 (3 calls)" col3="" col4="" col5="" col6=""/>
+                    <row id="8" col0="GRU_single" col1="multi_gru.cpp:10" col2="12175" col3="" col4="" col5="" col6="">
+                        <row id="16" col0="GRU_Kernel_PE&lt;5, 5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="gru_cell.h:66" col2="5245" col3="" col4="" col5="" col6="">
+                            <row id="9" col0="MVM_PE&lt;5, 5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:18" col2="5238" col2_disp="5,238 (6 calls)" col3="" col4="" col5="" col6="">
+                                <row id="1" col0="MAC_PE&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:5" col2="5076" col2_disp="5,076 (6 calls)" col3="" col4="" col5="" col6=""/>
+                            </row>
+                        </row>
+                        <row id="6" col0="Gate_Calc_PE&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;32, 12, AP_RND, AP_SAT, 0&gt; &gt;" col1="gru_cell.h:92" col2="6541" col3="" col4="" col5="" col6="">
+                            <row id="13" col0="Copy_Bias_PE&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="gru_cell.h:44" col2="46" col3="" col4="" col5="" col6=""/>
+                            <row id="4" col0="reference_sigmoid&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="activations.h:55" col2="340" col2_disp="  340 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="12" col0="reference_tanh&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="activations.h:80" col2="170" col3="" col4="" col5="" col6=""/>
+                            <row id="5" col0="hidden_update_logic" col1="gru_cell.h:14" col2="1512" col3="" col4="" col5="" col6=""/>
+                        </row>
+                    </row>
+                    <row id="10" col0="Linear&lt;5, 2, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:33" col2="1475" col3="" col4="" col5="" col6="">
+                        <row id="7" col0="MAC_PE&lt;5, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 4, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="linear_layer.h:5" col2="1121" col3="" col4="" col5="" col6=""/>
+                    </row>
+                    <row id="4" col0="reference_sigmoid&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="activations.h:55" col2="" col3="240" col3_disp="  240 (30 calls)" col4="180" col4_disp="  180 (30 calls)" col5="180" col5_disp="  180 (30 calls)" col6="240" col6_disp="  240 (30 calls)"/>
+                    <row id="12" col0="reference_tanh&lt;ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt;, ap_fixed&lt;16, 3, AP_RND, AP_SAT, 0&gt; &gt;" col1="activations.h:80" col2="" col3="120" col3_disp="  120 (15 calls)" col4="90" col4_disp="   90 (15 calls)" col5="90" col5_disp="   90 (15 calls)" col6="120" col6_disp="  120 (15 calls)"/>
+                </row>
+            </rows>
+            <notes/>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>
+
