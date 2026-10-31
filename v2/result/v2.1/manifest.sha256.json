@@ -12,7 +12,7 @@
   "logs/ip_synthesis.log": "3b567fa173b8e569e10564b3d33a6df26eef8623c552b9458cc338a985583891",
   "logs/rtl_synthesis.log": "60b78f3bb27d95eb485beeffcbc7895988e3aaceb5de5a3e5e70aef6801fc1e3",
   "logs/vivado.log": "5d554b871270a957e4515471ad3edca7c63140e3cc53e0d47578c604e7da7f71",
-  "README.md": "92409fea424fd524f0532af3d684e9e922019d6e6a386a02f0fabd765e331a52",
+  "README.md": "1b9377e83f7cd67ed77f1d091b70a186ac94b2aa36b35620001d6544686d1f3f",
   "reports/hls/Loop_LOOP_T_proc_csynth.rpt": "b4dffd10553baf2ce025bc321ebf89170cb53495dddc95711c802500e349e923",
   "reports/hls/Loop_LOOP_T_proc_csynth.xml": "b99e35bf720e455d11f81f31cc77ed43c4f12278bd1535651b209c634127f1f3",
   "reports/hls/ResGRU_csynth.rpt": "e0af326aa736b39f503838b4cb2ce74d4ad9f1a632c5b08e9691a8309c880259",

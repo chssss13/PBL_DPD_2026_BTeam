@@ -1,4 +1,4 @@
-# v2 — 현서 님 v1 기반 타이밍 개선
+# v2 — v1.7 기반 타이밍 개선
 
 **현재 기록: v2.2의 두 번째 P&R 완료까지.** 정확도와 HLS II=2를 유지하면서 Vivado 배치·배선 후 15 ns 달성을 목표로 한다. 현재는 18.649 ns로 목표 미달이다.
 
@@ -8,7 +8,7 @@
 - 기준: [hyeonseo 고정 커밋의 v1](https://github.com/chssss13/PBL_DPD_2026_BTeam/tree/c8389599d24a4be360ac84ba243f6886f986f340/v1). v1.7 시점의 소스를 가져왔으며 기본 HLS 실행 조건은 해당 브랜치의 v1.6 II=2 후보 설정이다.
 - 가져온 원본 파일 목록·해시는 [baseline.json](baseline.json)에 있다. 이 파일은 최초 가져오기 시점의 기록이며 현재 수정된 소스의 해시는 각 결과 폴더에 있다.
 - `package/`는 v2.2 코드다. v2.1과 v2.2의 검증 당시 코드는 각각 결과 폴더 `source/`에 별도 보존했다.
-- 루트의 기존 `package/`, `result/`와 v1 기록은 세현 v1이며 변경하지 않았다. 가져온 `package/docs/` 문서 중 v1 관련 기록은 원본 작성자의 기록이다.
+- 루트의 기존 `package/`, `result/`와 v1 기록은 `sehyeon` 브랜치의 기존 v1이며 변경하지 않았다. 가져온 `package/docs/` 문서 중 v1 관련 기록은 원본 브랜치의 기록이다.
 
 ## 변경 사항 → 결과
 
@@ -39,7 +39,7 @@ Vitis HLS / Vivado 2024.1, FPGA `xczu7ev-ffvc1156-2-e`, 목표 15 ns, HLS uncert
 
 아래 수치는 HLS 추정치가 아닌 Vivado 배치·배선 후 결과다.
 
-| 자원 | [현서 님 v1.7](package/docs/v1.7_implementation.md) | v2.1 | v2.2 |
+| 자원 | [v1.7](package/docs/v1.7_implementation.md) | v2.1 | v2.2 |
 |---|---:|---:|---:|
 | LUT | 66,859 | 70,412 | 58,319 |
 | FF | 49,754 | 48,482 | 48,897 |
