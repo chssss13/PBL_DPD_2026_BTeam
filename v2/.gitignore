@@ -1,0 +1,20 @@
+# Generated experiments and local environment
+**/prj_*/
+**/__pycache__/
+**/*.py[cod]
+**/.Xil/
+**/freq.csv
+**/vitis_hls.app
+**/vitis_hls.log
+**/*.jou
+.vscode/
+*.code-workspace
+package/results/*
+!package/results/README.md
+
+# Local notes and environment
+inst.md
+v2_개인메모.md
+v2_실험메모.md
+# Intentionally archived evidence
+!result/**/logs/*.log

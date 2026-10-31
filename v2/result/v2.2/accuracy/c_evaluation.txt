@@ -1,0 +1,4 @@
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+torch_out.txt                                  7680   -45.52   -49.42   -53.59   -50.43   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+hls_out.txt                                    7680   -45.48   -49.35   -53.44   -50.30   NMSE+0.04  ACPR_L+0.15  ACPR_R+0.13
+ref.txt                                        7680   -45.48   -49.35   -53.44   -50.30   NMSE+0.04  ACPR_L+0.15  ACPR_R+0.13

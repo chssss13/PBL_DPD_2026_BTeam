@@ -1,0 +1,2 @@
+# Preserve archived report/source bytes so SHA-256 manifests survive Git checkout.
+result/** -text

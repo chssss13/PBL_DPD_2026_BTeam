@@ -1,0 +1,40 @@
+{
+  "version": "v2.1",
+  "source_project": "prj_accum18_3_state_tree_synth",
+  "act_lut": 2,
+  "hls_ii": 2,
+  "hls_period_ns": 13.789,
+  "hls_resources": {
+    "LUT": 266748,
+    "FF": 140136,
+    "DSP": 636,
+    "BRAM_18K": 0
+  },
+  "post_route_period_ns": 21.287,
+  "wns_ns": -6.287,
+  "resources": {
+    "LUT": 70412,
+    "FF": 48482,
+    "DSP": 636,
+    "BRAM": 0
+  },
+  "accuracy": {
+    "nmse_db": -43.66,
+    "evm_db": -47.72,
+    "acpr_l_dbc": -51.92,
+    "acpr_r_dbc": -48.52
+  },
+  "samples": 7680,
+  "data_t": "16,3",
+  "weight_t": "16,4",
+  "accum_t": "18,3",
+  "fex_inv": "16,8",
+  "reset_every": 2560,
+  "clock_ns": 15,
+  "clock_uncertainty_ns": 1,
+  "dsp_full_reg": false,
+  "tool_version": "2024.1",
+  "device": "xczu7ev-ffvc1156-2-e",
+  "cosim": "not run for this version",
+  "board_measurement": "not performed"
+}
