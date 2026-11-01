@@ -16,7 +16,7 @@ args = parser.parse_args()
 hw_ref.DIRECT_LUT_SCALE = 8192.0 / (1 << args.lut_shift)
 out = root / args.experiment
 out.mkdir(parents=True, exist_ok=True)
-qd, qi = hw_ref.make_q('16,3'), hw_ref.make_q('16,8')
+qd, qi = hw_ref.make_q('15,3'), hw_ref.make_q('16,8')
 
 
 def fex(i, q, mode):
@@ -29,7 +29,7 @@ def fex(i, q, mode):
 hw_ref.fex = fex
 w, cfg = hw_ref.load_weights(root / 'golden/weights')
 x = np.loadtxt(root / 'golden/vectors/dpd_in.txt')
-y = hw_ref.run_fxp(w, cfg, x, qd, hw_ref.make_q('16,4'), hw_ref.make_q('18,3'),
+y = hw_ref.run_fxp(w, cfg, x, qd, hw_ref.make_q('14,4'), hw_ref.make_q('18,3'),
                    args.act, 'exact', 2560)
 ref = out / 'ref.txt'
 np.savetxt(ref, y, fmt='%.10f')

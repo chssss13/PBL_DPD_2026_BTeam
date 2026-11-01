@@ -1,0 +1,43 @@
+{
+  "version": "v2.3",
+  "source_project": "prj_combined_narrow_synth",
+  "act_lut": 3,
+  "activation": "sigmoid/tanh 256 intervals, integer linear interpolation",
+  "hls_ii": 2,
+  "hls_period_ns": 13.924,
+  "hls_resources": {
+    "LUT": 239177,
+    "FF": 135681,
+    "DSP": 564,
+    "BRAM_18K": 0
+  },
+  "post_route_period_ns": 18.105,
+  "wns_ns": -3.104548,
+  "resources": {
+    "LUT": 56671,
+    "FF": 43367,
+    "DSP": 305,
+    "BRAM": 0
+  },
+  "accuracy": {
+    "nmse_db": -45.11,
+    "evm_db": -48.89,
+    "acpr_l_dbc": -53.02,
+    "acpr_r_dbc": -49.87
+  },
+  "samples": 7680,
+  "data_t": "15,3",
+  "weight_t": "14,4",
+  "accum_t": "18,3",
+  "recurrent_sum": "16,4 AP_RND AP_SAT",
+  "fex_inv": "16,8",
+  "reset_every": 2560,
+  "clock_ns": 15,
+  "clock_uncertainty_ns": 1,
+  "dsp_full_reg": false,
+  "tool_version": "2024.1",
+  "device": "xczu7ev-ffvc1156-2-e",
+  "vivado_max_threads": 6,
+  "cosim": "not run for this version",
+  "board_measurement": "not performed"
+}

@@ -150,6 +150,7 @@ def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every
     H, L = cfg["H"], cfg["L"]
     W = {k: (qd(v) if k.startswith("b_") or "_b_" in k else qw(v)) for k, v in w.items()}
     c02, c05 = qd(0.2), qd(0.5)
+    qr = make_q("16,4")
 
     def mac(Wm, x, q):                    # Wm: (out, in)
         acc = np.zeros(Wm.shape[0])
@@ -210,7 +211,7 @@ def run_fxp(w, cfg, x_iq, qd, qw, qa, act="exact", fex_mode="exact", reset_every
             ir, iz, in_ = gru_mac_tree(g("W_ir"), x), gru_mac_tree(g("W_iz"), x), gru_mac_tree(g("W_in"), x)
             hr, hz, hn = gru_mac_tree(g("W_hr"), h[n]), gru_mac_tree(g("W_hz"), h[n]), gru_mac_tree(g("W_hn"), h[n])
             r = sig(qd(ir + g("b_ir") + hr + g("b_hr")))
-            r_h = qd(r * (hn + g("b_hn")))
+            r_h = qd(r * qr(hn + g("b_hn")))
             nn_ = th(qd(in_ + g("b_in") + r_h))
             z = sig(qd(iz + g("b_iz") + hz + g("b_hz")))
             # Match C++: quantize only the final state assignment.

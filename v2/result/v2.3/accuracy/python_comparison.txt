@@ -1,0 +1,3 @@
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+baseline.txt                                   7680   -45.13   -48.90   -53.39   -49.94   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+recurrent16_4.txt                              7680   -45.11   -48.89   -53.02   -49.87   NMSE+0.02  ACPR_L+0.37  ACPR_R+0.07

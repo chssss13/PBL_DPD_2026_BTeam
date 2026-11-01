@@ -133,7 +133,9 @@ GATE_LOOP:
         r_pre = W_ir_x[i] + b_ir_local[i] + W_hr_h[i] + b_hr_local[i];
         nnet::reference_sigmoid<data_T,data_T>(r_pre, r);
         //nnet::sigmoid_ele<data_T, data_T, config_a>(r_pre, r);
-        r_h = r * (W_hn_h[i] + b_hn_local[i]);
+        // Quantize the recurrent sum before multiplication (Q4.12).
+        const ap_fixed<16,4,AP_RND,AP_SAT> recurrent = W_hn_h[i] + b_hn_local[i];
+        r_h = r * recurrent;
  
         n_pre = W_in_x[i] + b_in_local[i] + r_h;
         nnet::reference_tanh<data_T,data_T>(n_pre, n);

@@ -58,22 +58,22 @@ void reference_sigmoid(in_T in, out_T &out) {
 #pragma HLS INLINE off
 #pragma HLS LATENCY min=0 max=0
 #pragma HLS ARRAY_PARTITION variable=activation_interp_tables::sigmoid complete dim=1
-    static_assert(in_T::width == 16 && in_T::iwidth == 3, "Interpolation requires Q3.13 input");
-    static_assert(out_T::width == 16 && out_T::iwidth == 3, "Interpolation requires Q3.13 output");
-    ap_uint<16> position = in.range(15,0);
-    position[15] = !position[15];
-    ap_uint<9> index = position.range(15,7);
+    static_assert(in_T::width == 15 && in_T::iwidth == 3, "Interpolation requires Q3.12 input");
+    static_assert(out_T::width == 15 && out_T::iwidth == 3, "Interpolation requires Q3.12 output");
+    ap_uint<15> position = in.range(14,0);
+    position[14] = !position[14];
+    ap_uint<8> index = position.range(14,7);
     ap_uint<7> fraction = position.range(6,0);
-    ap_uint<22> packed = activation_interp_tables::sigmoid[index];
-    ap_int<16> base;
-    base.range(15,0) = packed.range(15,0);
-    ap_uint<6> delta = packed.range(21,16);
+    ap_uint<21> packed = activation_interp_tables::sigmoid[index];
+    ap_int<15> base;
+    base.range(14,0) = packed.range(14,0);
+    ap_uint<6> delta = packed.range(20,15);
     ap_uint<15> product = delta * fraction;
 #pragma HLS BIND_OP variable=product op=mul impl=fabric
     ap_uint<15> rounded = product + ap_uint<15>(64);
     ap_uint<8> increment = rounded.range(14,7);
-    ap_int<17> result = ap_int<17>(base) + ap_int<17>(increment);
-    out.range(15,0) = result.range(15,0);
+    ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+    out.range(14,0) = result.range(14,0);
 #elif ACT_LUT == 2
 #pragma HLS INLINE off
 #pragma HLS LATENCY min=0 max=0
@@ -103,22 +103,22 @@ void reference_tanh(in_T in, out_T &out) {
 #pragma HLS INLINE off
 #pragma HLS LATENCY min=0 max=0
 #pragma HLS ARRAY_PARTITION variable=activation_interp_tables::tanh complete dim=1
-    static_assert(in_T::width == 16 && in_T::iwidth == 3, "Interpolation requires Q3.13 input");
-    static_assert(out_T::width == 16 && out_T::iwidth == 3, "Interpolation requires Q3.13 output");
-    ap_uint<16> position = in.range(15,0);
-    position[15] = !position[15];
-    ap_uint<9> index = position.range(15,7);
+    static_assert(in_T::width == 15 && in_T::iwidth == 3, "Interpolation requires Q3.12 input");
+    static_assert(out_T::width == 15 && out_T::iwidth == 3, "Interpolation requires Q3.12 output");
+    ap_uint<15> position = in.range(14,0);
+    position[14] = !position[14];
+    ap_uint<8> index = position.range(14,7);
     ap_uint<7> fraction = position.range(6,0);
-    ap_uint<24> packed = activation_interp_tables::tanh[index];
-    ap_int<16> base;
-    base.range(15,0) = packed.range(15,0);
-    ap_uint<8> delta = packed.range(23,16);
+    ap_uint<23> packed = activation_interp_tables::tanh[index];
+    ap_int<15> base;
+    base.range(14,0) = packed.range(14,0);
+    ap_uint<8> delta = packed.range(22,15);
     ap_uint<15> product = delta * fraction;
 #pragma HLS BIND_OP variable=product op=mul impl=fabric
     ap_uint<15> rounded = product + ap_uint<15>(64);
     ap_uint<8> increment = rounded.range(14,7);
-    ap_int<17> result = ap_int<17>(base) + ap_int<17>(increment);
-    out.range(15,0) = result.range(15,0);
+    ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+    out.range(14,0) = result.range(14,0);
 #elif ACT_LUT == 2
 #pragma HLS INLINE off
 #pragma HLS LATENCY min=0 max=0
