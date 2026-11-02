@@ -1,0 +1,13 @@
+{
+  "samples": 7680,
+  "comparisons": {
+    "reference.txt": {
+      "mismatched_q12_components": 0,
+      "max_abs_error": 5.000000413701855e-11
+    },
+    "baseline_hls_out.txt": {
+      "mismatched_q12_components": 0,
+      "max_abs_error": 0.0
+    }
+  }
+}
