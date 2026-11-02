@@ -1,0 +1,78 @@
+{
+  "cases": [
+    [
+      "baseline",
+      "16,3",
+      "16,4",
+      "16,6",
+      false
+    ],
+    [
+      "W15",
+      "16,3",
+      "15,4",
+      "16,6",
+      false
+    ],
+    [
+      "TREE",
+      "16,3",
+      "16,4",
+      "16,6",
+      false
+    ],
+    [
+      "W15_TREE",
+      "16,3",
+      "15,4",
+      "16,6",
+      false
+    ],
+    [
+      "REC17",
+      "16,3",
+      "16,4",
+      "16,6",
+      true
+    ],
+    [
+      "W15_REC17",
+      "16,3",
+      "15,4",
+      "16,6",
+      true
+    ],
+    [
+      "TREE_REC17",
+      "16,3",
+      "16,4",
+      "16,6",
+      true
+    ],
+    [
+      "W15_TREE_REC17",
+      "16,3",
+      "15,4",
+      "16,6",
+      true
+    ]
+  ],
+  "lut": "4096 each; original Q13 values requantized AP_RND to output format; original ranges and nearest index preserved",
+  "fex": "v1 Newton Raphson 4 iterations, quantized assignment points",
+  "reset": 2560,
+  "samples": 7680,
+  "factors": {
+    "W15": "weight_t 15,4 instead of16,4",
+    "TREE": "GRU-only 5-product tree; quantize each product and each tree node to18,3",
+    "REC17": "quantize hn+b_hn to17,4 before r multiplication"
+  },
+  "fixed": {
+    "data_t": "16,3",
+    "accum_t": "18,3",
+    "fex_inverse": "16,6",
+    "FEx": "v1 NR four iterations",
+    "activation": "v1 direct LUT4096 each",
+    "state_update": "n+z*(h-n)"
+  },
+  "scope": "Python accuracy only; no production edits, no Csim/csynth/P&R"
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    [
+      "baseline",
+      "16,3",
+      "16,4",
+      "lut4096_round"
+    ],
+    [
+      "interp_original_bits",
+      "16,3",
+      "16,4",
+      "interp"
+    ],
+    [
+      "interp_narrow_bits",
+      "15,3",
+      "14,4",
+      "interp"
+    ]
+  ],
+  "accum": "18,3",
+  "fex": "v1 NR4; inverse16,6; original assignment points; data intermediates follow data type",
+  "GRU": "original sequential MAC; full recurrent sum; factored state",
+  "interpolation": "256 intervals [-4,4); directly quantized endpoints at respective output fraction bits; integer round-to-nearest positive tie",
+  "reset": 2560,
+  "samples": 7680,
+  "scope": "Python only"
+}

@@ -1,0 +1,18 @@
+{
+  "baseline": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_tree_rec17_fabric_csynth",
+  "change": "Combine PReLU and state-update fabric multiplication bindings",
+  "source_candidates": [
+    "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_prelu_fabric_csynth",
+    "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_state_fabric_csynth"
+  ],
+  "changed_files": [
+    "activations.h",
+    "gru_cell.h"
+  ],
+  "retained": "GRU tree, recurrent17,4, r*recurrent fabric, v1 LUT4096, all numeric types",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "requested_II": 2,
+  "dsp_full_reg": false,
+  "synthesis_only": true
+}

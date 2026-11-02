@@ -1,0 +1,4 @@
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+baseline.txt                                   7680   -43.57   -47.70   -51.26   -48.02   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+interp_original_bits.txt                       7680   -45.37   -49.30   -53.50   -50.28   NMSE-1.80  ACPR_L-2.24  ACPR_R-2.26
+interp_narrow_bits.txt                         7680   -44.97   -48.75   -53.35   -50.08   NMSE-1.40  ACPR_L-2.08  ACPR_R-2.06

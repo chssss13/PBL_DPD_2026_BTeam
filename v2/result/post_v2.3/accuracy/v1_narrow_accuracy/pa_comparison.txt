@@ -1,0 +1,5 @@
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+rtl_out.txt                                    7680   -43.57   -47.70   -51.26   -48.02   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+v1_baseline.txt                                7680   -43.57   -47.70   -51.26   -48.02   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+narrow_keep_inv6.txt                           7680   -43.01   -47.16   -51.61   -48.20   NMSE+0.56  ACPR_L-0.35  ACPR_R-0.19
+narrow_all_inv8.txt                            7680   -43.07   -47.27   -51.62   -48.47   NMSE+0.50  ACPR_L-0.36  ACPR_R-0.45

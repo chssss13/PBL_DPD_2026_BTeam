@@ -1,0 +1,15 @@
+{
+  "cases": [
+    [
+      "data16_nr_inv8",
+      "16,3",
+      "14,4",
+      "16,8",
+      true
+    ]
+  ],
+  "lut": "4096 each; original Q13 values requantized AP_RND to output format; original ranges and nearest index preserved",
+  "fex": "v1 Newton Raphson 4 iterations, quantized assignment points",
+  "reset": 2560,
+  "samples": 7680
+}

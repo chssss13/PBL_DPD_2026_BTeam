@@ -1,0 +1,10 @@
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+rtl_out.txt                                    7680   -43.57   -47.70   -51.26   -48.02   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+baseline.txt                                   7680   -43.57   -47.70   -51.26   -48.02   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+W15.txt                                        7680   -43.38   -47.64   -52.22   -48.61   NMSE+0.19  ACPR_L-0.96  ACPR_R-0.59
+TREE.txt                                       7680   -43.57   -47.70   -51.26   -48.02   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+W15_TREE.txt                                   7680   -43.38   -47.64   -52.22   -48.61   NMSE+0.19  ACPR_L-0.96  ACPR_R-0.59
+REC17.txt                                      7680   -43.57   -47.70   -51.53   -48.65   NMSE-0.00  ACPR_L-0.27  ACPR_R-0.64
+W15_REC17.txt                                  7680   -43.39   -47.68   -51.85   -48.67   NMSE+0.18  ACPR_L-0.58  ACPR_R-0.65
+TREE_REC17.txt                                 7680   -43.57   -47.70   -51.53   -48.65   NMSE-0.00  ACPR_L-0.27  ACPR_R-0.64
+W15_TREE_REC17.txt                             7680   -43.39   -47.68   -51.85   -48.67   NMSE+0.18  ACPR_L-0.58  ACPR_R-0.65

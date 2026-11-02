@@ -1,0 +1,16 @@
+{
+  "baseline": "C:\\PBL\\PBL_DPD_2026_BTeam\\result\\07_lut_lookup\\source",
+  "change": "Only state-update z*(h_prev-n) bound to fabric; auto expression precision retained",
+  "changed_files": [
+    "src/gru_cell.h"
+  ],
+  "reference_source": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_original_prelu_only_csynth\\reference.txt",
+  "gru_tree": false,
+  "recurrent17_cast": false,
+  "r_product_fabric": false,
+  "prelu_fabric": false,
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "requested_II": 2,
+  "dsp_full_reg": false
+}

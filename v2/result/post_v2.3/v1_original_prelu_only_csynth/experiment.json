@@ -1,0 +1,16 @@
+{
+  "baseline": "C:\\PBL\\PBL_DPD_2026_BTeam\\result\\07_lut_lookup\\source",
+  "change": "Only PReLU multiply bound to fabric; auto expression precision retained",
+  "changed_files": [
+    "src\\activations.h"
+  ],
+  "reference": "v1_factorial_accuracy/baseline.txt",
+  "gru_tree": false,
+  "recurrent17_cast": false,
+  "r_product_fabric": false,
+  "state_product_fabric": false,
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "requested_II": 2,
+  "dsp_full_reg": false
+}

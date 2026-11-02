@@ -1,0 +1,13 @@
+{
+  "baseline": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_tree_rec17_fabric_csynth",
+  "change": "PReLU multiplication only",
+  "changed_files": [
+    "activations.h"
+  ],
+  "retained": "GRU tree, recurrent17,4, r*recurrent fabric, v1 direct LUT4096, all fixed-point types",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "requested_II": 2,
+  "dsp_full_reg": false,
+  "synthesis_only": true
+}

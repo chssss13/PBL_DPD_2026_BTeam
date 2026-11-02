@@ -1,0 +1,18 @@
+Outer INIT=4'hE (OR), inner INIT=16'hA28A; both S inputs driven by bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/ap_CS_fsm_reg[1]_replica_8/Q
+0 S=0 old_CE=0 new_CE=0
+1 S=1 old_CE=1 new_CE=1
+2 S=0 old_CE=0 new_CE=0
+3 S=1 old_CE=1 new_CE=1
+4 S=0 old_CE=0 new_CE=0
+5 S=1 old_CE=1 new_CE=1
+6 S=0 old_CE=0 new_CE=0
+7 S=1 old_CE=1 new_CE=1
+8 S=0 old_CE=0 new_CE=0
+9 S=1 old_CE=1 new_CE=1
+10 S=0 old_CE=0 new_CE=0
+11 S=1 old_CE=1 new_CE=1
+12 S=0 old_CE=0 new_CE=0
+13 S=1 old_CE=1 new_CE=1
+14 S=0 old_CE=0 new_CE=0
+15 S=1 old_CE=1 new_CE=1
+PASS: all 16 stable Boolean combinations equivalent. Not a full timing simulation.

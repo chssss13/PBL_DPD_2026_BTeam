@@ -1,0 +1,19 @@
+Original: C:/PBL/PBL_DPD_2026_BTeam/v2/package/prj_combined_narrow_synth/sol1/impl/verilog/project.runs/impl_1/bd_0_wrapper_routed.dcp
+Original CE net: bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/am_submul_15s_15s_15s_31_1_1_U835_n_285
+New S net: bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/ap_CS_fsm_pp0_stage1_repN_8
+Changed pins: 15
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[0]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[10]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[11]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[12]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[13]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[14]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[1]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[2]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[3]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[4]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[5]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[6]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[7]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[8]/CE
+bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/select_ln144_59_reg_160988_reg[9]/CE
