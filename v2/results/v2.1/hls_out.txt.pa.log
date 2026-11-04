@@ -1,0 +1,2 @@
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   ¥Ä vs first
+hls_out.txt                                    7680   -43.67   -47.64   -51.82   -48.38   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00

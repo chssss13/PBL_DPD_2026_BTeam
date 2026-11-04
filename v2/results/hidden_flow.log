@@ -1,0 +1,19 @@
+RUN csim.log
+RUN hls_out.txt.compare.log
+RUN hls_out.txt.pa.log
+DONE csim
+RUN csynth.log
+DONE csynth
+RUN cosim.log
+RUN rtl_out.txt.compare.log
+RUN rtl_out.txt.pa.log
+DONE cosim
+RUN impl.log
+DONE impl
+{
+  "wns_ns": -0.41,
+  "whs_ns": 0.019,
+  "route_errors": 0,
+  "unrouted": 0,
+  "pass_15ns": false
+}

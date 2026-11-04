@@ -1,6 +1,8 @@
 # LW-ResGRU DPD 가속기 — v1 실험 및 검증
 
-v0에서 정확도 복구와 II=2 후보를 탐색한 작업 폴더입니다. [실험 이력](docs/experiment_history.md)과 [PPA 이력표](docs/ppa_history_template.md)를 참고하세요.
+버전별 문서: [작업환경 가이드](docs/작업환경_가이드.md), [v0→v1 누적 PPA](docs/ppa_history_template.md).
+
+v0에서 정확도 수정와 II=2 후보를 탐색한 작업 폴더입니다. [실험 이력](docs/experiment_history.md)과 [PPA 이력표](docs/ppa_history_template.md)를 참고하세요.
 
 배포 안내 자료는 v0에 보관합니다: [프로젝트 안내 PPT](../v0/docs/PBL_프로젝트%20안내_6G_DPD_AI칩.pptx), [학생 안내](../v0/docs/PBL_학생안내_6G_DPD_AI칩설계.md), [v0 알려진 문제](../v0/docs/v0_알려진문제.md), [작업환경 가이드](../v0/docs/작업환경_가이드.md).
 

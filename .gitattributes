@@ -1,0 +1,6 @@
+# Preserve the exact bytes covered by archived SHA256 manifests.
+repro_v2_5/** -text
+v2/src/** -text
+v2/results/** -text
+v3/src/** -text
+v3/results/** -text

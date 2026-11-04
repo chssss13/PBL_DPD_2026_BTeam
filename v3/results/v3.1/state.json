@@ -1,0 +1,72 @@
+{
+  "version": "v3.1",
+  "completed": [
+    "snapshot",
+    "reference",
+    "csim",
+    "csynth",
+    "cosim",
+    "impl"
+  ],
+  "settings": {
+    "clock_ns": 15,
+    "uncertainty_ns": 1,
+    "rom": 1,
+    "tree": 1,
+    "target_ii": 2,
+    "dsp_full_reg": false,
+    "hidden_rewrite": true
+  },
+  "sha256": {
+    "src\\activation_lut.h": "f52785c532d8d1d83a84708f92b17ef9fec8f6a24f966198d326dd78a42c74ef",
+    "src\\activations.h": "2d9baaa0de4bf9ca9970a522ce34c1c7ebf6da3a25dd030cb51bc74a6d5ebfad",
+    "src\\config.h": "c88950fddcbb4ae196d7dde6718a18c6cd7121114c65f3103eb7a13e1346bd6b",
+    "src\\fxp_sqrt.h": "c196916c349671fe1bef71e6994914a6af6361e12c78404ce4b6c1ab687a251b",
+    "src\\gru_cell.cpp": "4640a893e4e53239b0c840b605e776fd3b53350a8ec970bf1c7ba0dfc0ce6535",
+    "src\\gru_cell.h": "b92963ac7b8ebc96e9a3a0e77b57185f88b70ad655e00637078464a1818bb63c",
+    "src\\linear_layer.h": "98a93d853010f450516046cdda23a457d1a285ef50b3721a97c9b00d3a9cd160",
+    "src\\multi_gru.cpp": "411f7a3abf286030a83ceb028f531261f757a2bc35255297336894effd08cff6",
+    "src\\multi_gru.h": "ce1fc8048e311b15a68c4e77af59c5c518dfc229660143f17e3272369fc2b4ae",
+    "src\\nnet_common.h": "10c4ff6d8c839c40eb28b22a87891242b3205f3c1b5afb5f1117fe3b6f74015c",
+    "src\\utils.h": "20f138d4d52d8a7835ec8af785c9d63089feba191d9e14c45b8ec098187818b3",
+    "src\\wrapper.cpp": "7adb2be3341e58c2bba7007aabad9993fd2ff6a02c59ea6ed7b2325548f8269c"
+  },
+  "active_stage": null,
+  "hls_out.txt": {
+    "words_mismatch": 0,
+    "nmse_db": -43.67,
+    "evm_db": -47.64,
+    "acpr_left": -51.82,
+    "acpr_right": -48.38
+  },
+  "loop_t_ii": 2,
+  "rtl_out.txt": {
+    "words_mismatch": 0,
+    "nmse_db": -43.67,
+    "evm_db": -47.64,
+    "acpr_left": -51.82,
+    "acpr_right": -48.38
+  },
+  "throughput": {
+    "call_samples": 64,
+    "interval_min": 134,
+    "interval_max": 134,
+    "clock_ns": 15,
+    "call_msps": 31.840796019900502,
+    "full_test_cycles": 16113,
+    "full_test_msps": 31.775584931421836,
+    "pass_call_overhead": false,
+    "pass_full_test": false
+  },
+  "timing": {
+    "wns_ns": -0.41,
+    "whs_ns": 0.019,
+    "route_errors": 0,
+    "unrouted": 0,
+    "pass_15ns": false
+  },
+  "original_execution_version": "v2.5",
+  "migration_note": "Completed under v2.5, reclassified as v3.1. Original tool logs retain execution paths.",
+  "disposition": "discarded",
+  "rejected_reason": "Discarded by user: routed period 15.410 ns exceeds 15 ns; DSP reduced but LUT/FF/BRAM increased. No further runs."
+}

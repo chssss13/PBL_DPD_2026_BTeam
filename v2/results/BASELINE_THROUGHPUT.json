@@ -1,0 +1,24 @@
+[
+  {
+    "version": "historical_v2.5",
+    "source": "repro_v2_5\\results\\verified\\rtl_report\\ResGRU_cosim.rpt",
+    "clock_ns": 15,
+    "call_samples": 64,
+    "interval_max": 134,
+    "call_msps": 31.840796019900502,
+    "full_test_cycles": 16113,
+    "full_test_msps": 31.775584931421836,
+    "pass_call_overhead": false
+  },
+  {
+    "version": "new_v2.2",
+    "source": "v2\\results\\v2.2\\cosim_reports\\ResGRU_cosim.rpt",
+    "clock_ns": 15,
+    "call_samples": 64,
+    "interval_max": 134,
+    "call_msps": 31.840796019900502,
+    "full_test_cycles": 16113,
+    "full_test_msps": 31.775584931421836,
+    "pass_call_overhead": false
+  }
+]
