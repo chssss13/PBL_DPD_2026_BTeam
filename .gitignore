@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.py[cod]
+package/prj_resgru/
+package/results/*
+!package/results/README.txt
+*.jou
+*.log
+.Xil/
+
+# Local settings, temporary work, and generated HLS projects
+AGENTS.md
+.vscode/
+tmp/
+package/prj_*/
+package/opendpd_min/freq.csv
+v2/package/prj_*/
+v2/package/results/
+v2/share/
+v2/cleanup_records/
+**/*개인계획*.md
+
+# Final archive keeps original execution logs as evidence.
+!v2/result/final/logs/
+!v2/result/final/logs/*.log

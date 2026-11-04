@@ -1,0 +1,6 @@
+# Preserve source/report hashes in the reproducible final archive on all hosts.
+v2/result/final/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+v2/result/final/reports/** linguist-generated=true
+v2/result/final/logs/** linguist-generated=true
+v2/result/final/golden/** linguist-generated=true
+v2/result/final/reference/** linguist-generated=true

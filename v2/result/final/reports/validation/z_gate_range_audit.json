@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-03",
+  "candidate": "z in state update: unsigned12,0 with same 12 fractional bits",
+  "scope": "range audit only; no C++ change or synthesis",
+  "baseline": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_gru_accum_wide_n_row_split_csynth",
+  "inputs_checked": 32768,
+  "sigmoid_min_q12": 74,
+  "sigmoid_max_q12": 4022,
+  "unsigned12_raw_range": [
+    0,
+    4095
+  ],
+  "values_changed_by_low12_selection": 0,
+  "table_sha256": "a8170ce945dec8b0c72672c538b6954a05b4e0e7cfe08dea121523c91c64578e",
+  "cpp_proposal": [
+    "ap_ufixed<12,0> z_gate;",
+    "z_gate.range(11,0) = z.range(11,0);",
+    "h_next[i] = n + z_gate * (h_prev[i] - n);"
+  ],
+  "unchanged": "sigmoid function output15,3; sigmoid/tanh256 tables; r/n MVM; product18,3 and accumulation21,6; state output15,3",
+  "limits": "Only current sigmoid table/input format proven. C-sim must verify full C++ expressions; HLS may already eliminate some upper bits; no timing improvement guaranteed."
+}

@@ -1,0 +1,16 @@
+--- z_unsigned12/src/gru_cell.h
++++ state_nosat/src/gru_cell.h
+@@ -226,8 +226,11 @@
+         // Preserve all fractional bits; only omit unused upper/sign bits of z.
+         ap_ufixed<12,0> z_gate;
+         z_gate.range(11,0) = z.range(11,0);
+-        // Keep final state rounding/saturation on assignment to data_T.
+-        h_next[i] = n + z_gate * (h_prev[i] - n);
++        // 0 <= z_gate < 1: the exact update stays between n and h_prev.
++        // Preserve AP_RND and Q3.12; omit only the range-proven final clamp.
++        typedef ap_fixed<data_T::width, data_T::iwidth, AP_RND, AP_WRAP> state_round_t;
++        state_round_t h_rounded = n + z_gate * (h_prev[i] - n);
++        h_next[i].range(data_T::width - 1, 0) = h_rounded.range(data_T::width - 1, 0);
+     }
+ }
+  

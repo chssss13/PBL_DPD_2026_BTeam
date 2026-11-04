@@ -1,0 +1,68 @@
+--- baseline/src/gru_cell.h
++++ candidate/src/gru_cell.h
+@@ -51,12 +51,14 @@
+ #pragma HLS INLINE
+ #pragma HLS ARRAY_PARTITION variable=x complete dim=1
+ #pragma HLS ARRAY_PARTITION variable=w complete dim=1
+-    accum_T acc = 0;
++    static_assert(LEN == 5, "Wide accumulation is sized for five terms");
++    typedef ap_fixed<accum_T::width + 3, accum_T::iwidth + 3, AP_RND, AP_SAT> wide_acc_t;
++    wide_acc_t acc = 0;
+     for (int i = 0; i < LEN; i++) {
+ #pragma HLS PIPELINE II=1
+         acc += accum_T(Recurrent_Gate_Product<GATE, data_T, weight_T>(x[i], w[i]));
+     }
+-    return acc;
++    return accum_T(acc);
+ }
+ 
+ template<int GATE, int N, typename data_T, typename weight_T, typename accum_T>
+@@ -69,6 +71,35 @@
+     for (int o = 0; o < N; o++) {
+ #pragma HLS UNROLL
+         y[o] = Recurrent_Gate_MAC<GATE, N, data_T, weight_T, accum_T>(x, W[o]);
++    }
++}
++
++// Separate GRU input MAC; other MVM users retain their original arithmetic.
++template<int LEN, typename data_T, typename weight_T, typename accum_T>
++accum_T Experiment_Input_MAC(data_T x[LEN], weight_T w[LEN]) {
++#pragma HLS INLINE
++#pragma HLS ARRAY_PARTITION variable=x complete dim=1
++#pragma HLS ARRAY_PARTITION variable=w complete dim=1
++    static_assert(LEN == 5, "Wide accumulation is sized for five terms");
++    typedef ap_fixed<accum_T::width + 3, accum_T::iwidth + 3, AP_RND, AP_SAT> wide_acc_t;
++    wide_acc_t acc = 0;
++    for (int i = 0; i < LEN; i++) {
++#pragma HLS PIPELINE II=1
++        acc += accum_T((x[i] * w[i]));
++    }
++    return accum_T(acc);
++}
++
++template<int IN_SIZE, int OUT_SIZE, typename data_T, typename weight_T, typename accum_T>
++void Experiment_Input_MVM(data_T x[IN_SIZE], weight_T W[OUT_SIZE][IN_SIZE], accum_T y[OUT_SIZE]) {
++#pragma HLS INLINE
++#pragma HLS ARRAY_PARTITION variable=x complete dim=1
++#pragma HLS ARRAY_PARTITION variable=W complete dim=1
++#pragma HLS ARRAY_PARTITION variable=W complete dim=2
++#pragma HLS ARRAY_PARTITION variable=y complete dim=1
++    for (int o = 0; o < OUT_SIZE; o++) {
++#pragma HLS UNROLL
++        y[o] = Experiment_Input_MAC<IN_SIZE, data_T, weight_T, accum_T>(x, W[o]);
+     }
+ }
+ 
+@@ -81,9 +112,9 @@
+     accum_T W_hr_h[HIDDEN_SIZE], accum_T W_hz_h[HIDDEN_SIZE], accum_T W_hn_h[HIDDEN_SIZE]
+ ) {
+ #pragma HLS INLINE
+-    MVM_PE<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_ir, W_ir_x);
+-    MVM_PE<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_iz, W_iz_x);
+-    MVM_PE<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_in, W_in_x);
++    Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_ir, W_ir_x);
++    Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_iz, W_iz_x);
++    Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_in, W_in_x);
+  
+     Recurrent_Gate_MVM<0, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hr, W_hr_h);
+     Recurrent_Gate_MVM<1, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hz, W_hz_h);

@@ -1,0 +1,17 @@
+--- n_row_split/src/gru_cell.h
++++ z_unsigned12/src/gru_cell.h
+@@ -222,8 +222,12 @@
+  
+         z_pre = W_iz_x[i] + b_iz_local[i] + W_hz_h[i] + b_hz_local[i];
+         nnet::sigmoid_comb<data_T, data_T, config_a>(z_pre, z);
+-        // Algebraically equivalent state update; quantize on assignment to data_T.
+-        h_next[i] = n + z * (h_prev[i] - n);
++        // Current sigmoid256 output fits unsigned Q0.12 for all Q3.12 inputs.
++        // Preserve all fractional bits; only omit unused upper/sign bits of z.
++        ap_ufixed<12,0> z_gate;
++        z_gate.range(11,0) = z.range(11,0);
++        // Keep final state rounding/saturation on assignment to data_T.
++        h_next[i] = n + z_gate * (h_prev[i] - n);
+     }
+ }
+  
