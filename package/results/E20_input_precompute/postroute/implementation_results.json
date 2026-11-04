@@ -1,0 +1,141 @@
+{
+  "complete": true,
+  "scope": "Routed out-of-context IP core, bd_0_wrapper",
+  "reports": {
+    "utilization": "C:\\PBL_DPD_2026_BTeam\\package\\results\\E20_input_precompute\\postroute\\impl\\verilog\\report\\ResGRU_utilization_routed.rpt",
+    "timing": "C:\\PBL_DPD_2026_BTeam\\package\\results\\E20_input_precompute\\postroute\\impl\\verilog\\report\\ResGRU_timing_routed.rpt",
+    "route_status": "C:\\PBL_DPD_2026_BTeam\\package\\results\\E20_input_precompute\\postroute\\impl\\verilog\\report\\ResGRU_status_routed.rpt",
+    "drc": "C:\\PBL_DPD_2026_BTeam\\package\\results\\E20_input_precompute\\postroute\\impl\\verilog\\report\\ResGRU_drc_routed.rpt",
+    "methodology": "C:\\PBL_DPD_2026_BTeam\\package\\results\\E20_input_precompute\\postroute\\impl\\verilog\\report\\ResGRU_methodology_routed.rpt"
+  },
+  "resources": {
+    "LUT": {
+      "used": 59878,
+      "available": 230400,
+      "percent": 25.99
+    },
+    "LUT_logic": {
+      "used": 54429,
+      "available": 230400,
+      "percent": 23.62
+    },
+    "LUT_memory": {
+      "used": 5449,
+      "available": 101760,
+      "percent": 5.35
+    },
+    "LUTRAM": {
+      "used": 0,
+      "available": null,
+      "percent": null
+    },
+    "SRL": {
+      "used": 5449,
+      "available": null,
+      "percent": null
+    },
+    "FF": {
+      "used": 52017,
+      "available": 460800,
+      "percent": 11.29
+    },
+    "BRAM_tiles": {
+      "used": 0,
+      "available": 312,
+      "percent": 0
+    },
+    "RAMB36": {
+      "used": 0,
+      "available": 312,
+      "percent": 0
+    },
+    "RAMB18": {
+      "used": 0,
+      "available": 624,
+      "percent": 0
+    },
+    "URAM": {
+      "used": 0,
+      "available": 96,
+      "percent": 0
+    },
+    "DSP": {
+      "used": 722,
+      "available": 1728,
+      "percent": 41.78
+    }
+  },
+  "timing": {
+    "WNS_ns": -0.844,
+    "TNS_ns": -278.463,
+    "WHS_ns": 0.036,
+    "THS_ns": 0.0,
+    "WPWS_ns": 6.968,
+    "TPWS_ns": 0.0,
+    "setup_failing_endpoints": 540,
+    "hold_failing_endpoints": 0,
+    "pulse_failing_endpoints": 0,
+    "target_period_ns": 15.0,
+    "target_frequency_MHz": 66.667,
+    "post_route_period_ns": 15.844,
+    "period_source": "Routed timing summary: single ap_clk target period minus WNS",
+    "setup_met": false,
+    "hold_met": true,
+    "pulse_width_met": true,
+    "timing_met": false,
+    "frequency_from_routed_timing_MHz": 63.11537490532694
+  },
+  "routing_errors": 0,
+  "fully_routed_nets": 148674,
+  "routable_nets": 148674,
+  "timing_loops": 0,
+  "unconstrained_internal_endpoints": 0,
+  "inputs_without_delay": 8611,
+  "outputs_without_delay": 176,
+  "drc_rules": {
+    "drc": {
+      "DPIP-2": {
+        "severity": "Warning",
+        "description": "Input pipelining",
+        "count": 1444
+      },
+      "DPOP-3": {
+        "severity": "Warning",
+        "description": "PREG Output pipelining",
+        "count": 719
+      },
+      "DPOP-4": {
+        "severity": "Warning",
+        "description": "MREG Output pipelining",
+        "count": 719
+      },
+      "RTSTAT-10": {
+        "severity": "Warning",
+        "description": "No routable loads",
+        "count": 1
+      }
+    },
+    "methodology": {
+      "TIMING-18": {
+        "severity": "Warning",
+        "description": "Missing input or output delay",
+        "count": 1000
+      }
+    }
+  },
+  "combinational_loop_violations": 0,
+  "methodology_loop_violations": 0,
+  "loop_checks_pass": true,
+  "stage": "postroute",
+  "II": 2,
+  "quality": {
+    "samples": 7680,
+    "NMSE_dB": -45.62,
+    "EVM_dB": -49.45,
+    "ACPR_L_dBc": -53.54,
+    "ACPR_R_dBc": -50.38,
+    "accuracy_pass": true
+  },
+  "all_nets_routed": true,
+  "resource_limits_pass": true
+}

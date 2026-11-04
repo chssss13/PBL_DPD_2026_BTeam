@@ -1,0 +1,25 @@
+{
+  "reference": "E18 best routed result",
+  "reference_WNS_ns": -1.157,
+  "part": "xczu7ev-ffvc1156-2-e",
+  "period_ns": 15,
+  "scope": "core OOC",
+  "opt_design": "Explore",
+  "place_design": "Explore",
+  "phys_opt_design": "AggressiveExplore",
+  "route_design": "Explore",
+  "postroute_phys_opt_design": "Explore",
+  "targeted_replication": {
+    "max_paths": 200,
+    "min_fanout": 16,
+    "max_nets": 8,
+    "drivers": "LUT or FF"
+  },
+  "flatten_hierarchy": "none",
+  "resource_sharing": "off",
+  "synthesis_directive": "Default",
+  "cosim_samples": 2624,
+  "reset_every": 2560,
+  "HLS_resynthesis": false,
+  "RTL_cosim_reused": true
+}

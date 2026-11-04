@@ -1,0 +1,15 @@
+{
+  "samples": 2624,
+  "reset_every": 2560,
+  "PASS": true,
+  "Q14_equal_precomputed_C_sim": true,
+  "II": 2,
+  "C_sim_quality": {
+    "samples": 7680,
+    "NMSE_dB": -45.62,
+    "EVM_dB": -49.45,
+    "ACPR_L_dBc": -53.54,
+    "ACPR_R_dBc": -50.38,
+    "accuracy_pass": true
+  }
+}

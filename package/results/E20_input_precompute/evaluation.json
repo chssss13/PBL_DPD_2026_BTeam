@@ -1,0 +1,56 @@
+{
+  "reference": "E18",
+  "scope": "C-sim and provided PA surrogate only",
+  "code_comparison": {
+    "samples": 7680,
+    "Q14_equal_E18": true,
+    "different_sample_count": 0,
+    "max_error_Q14_LSB": 0
+  },
+  "quality": {
+    "E18": {
+      "samples": 7680,
+      "NMSE_dB": -45.62,
+      "EVM_dB": -49.45,
+      "ACPR_L_dBc": -53.54,
+      "ACPR_R_dBc": -50.38,
+      "accuracy_pass": true
+    },
+    "E20": {
+      "samples": 7680,
+      "NMSE_dB": -45.62,
+      "EVM_dB": -49.45,
+      "ACPR_L_dBc": -53.54,
+      "ACPR_R_dBc": -50.38,
+      "accuracy_pass": true
+    }
+  },
+  "working_source_unchanged": true,
+  "working_source_changed_files": [],
+  "changes": [
+    "input MAC and r/z input+both biases prepared independently of own hidden state",
+    "hidden n MAC+bias prepared independently of r",
+    "z and retained product expressed before r/n branch"
+  ],
+  "E19_changes_applied": false,
+  "network_unchanged": true,
+  "accum_t": [
+    18,
+    3
+  ],
+  "gate_t": [
+    20,
+    5
+  ],
+  "hidden_n_bias_t": [
+    19,
+    4
+  ],
+  "extra_pipeline_registers_requested": false,
+  "C_synthesis_run": false,
+  "RTL_cosim_run": false,
+  "implementation_run": false,
+  "II": "not measured",
+  "timing": "not measured",
+  "earlier_hardware_scheduling_confirmed": false
+}

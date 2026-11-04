@@ -1,0 +1,9 @@
+fanout	net
+270	bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/mul_16s_32s_32_1_1_U783/tmp_product/B[16]
+252	bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/mul_16s_32s_32_1_1_U577/tmp_product/B[16]
+252	bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/mul_16s_32s_32_1_1_U547/tmp_product/B[16]
+252	bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/mul_16s_32s_32_1_1_U572/tmp_product/B[15]
+132	bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/nnet_sigmoid_pairs_U/address4[3]
+132	bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/nnet_sigmoid_pairs_U/address13[3]
+132	bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/nnet_sigmoid_pairs_U/address12[5]
+132	bd_0_i/hls_inst/inst/Loop_LOOP_T_proc_U0/nnet_sigmoid_pairs_U/address0[3]

@@ -1,0 +1,3 @@
+# Preserve frozen source bytes so source_hashes.json remains portable.
+src_snapshot/** -text
+tb_snapshot.cpp -text
