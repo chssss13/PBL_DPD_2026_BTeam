@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-05",
+  "samples": 7680,
+  "scope": "Stored test vector only; identical output file hashes do not prove equivalence for arbitrary inputs.",
+  "pa_provenance": "v2.4-S C-sim was evaluated using PA model; PA values for subsequent exact-identical outputs are carried forward, not reevaluated.",
+  "outputs_and_references": [
+    {
+      "experiment": "v1_interp_narrow_bits_csynth",
+      "hls_out_sha256": "60744de3323a9306be9c3dcbb13059f46b0886029e267834246bb13373681fd4",
+      "reference_sha256": "b2282228defe5d29e69236ffdfbe8a20f8a3d7ea06a3f88b24fa71e69476a2f8"
+    },
+    {
+      "experiment": "v1_interp_narrow_recurrent_gate_split0_csynth",
+      "hls_out_sha256": "60744de3323a9306be9c3dcbb13059f46b0886029e267834246bb13373681fd4",
+      "reference_sha256": "b2282228defe5d29e69236ffdfbe8a20f8a3d7ea06a3f88b24fa71e69476a2f8"
+    },
+    {
+      "experiment": "v1_gru_accum_wide_csynth",
+      "hls_out_sha256": "60744de3323a9306be9c3dcbb13059f46b0886029e267834246bb13373681fd4",
+      "reference_sha256": "b2282228defe5d29e69236ffdfbe8a20f8a3d7ea06a3f88b24fa71e69476a2f8"
+    },
+    {
+      "experiment": "v1_gru_accum_wide_term_split_csynth",
+      "hls_out_sha256": "60744de3323a9306be9c3dcbb13059f46b0886029e267834246bb13373681fd4",
+      "reference_sha256": "b2282228defe5d29e69236ffdfbe8a20f8a3d7ea06a3f88b24fa71e69476a2f8"
+    },
+    {
+      "experiment": "v1_gru_accum_wide_n_row_split_csynth",
+      "hls_out_sha256": "60744de3323a9306be9c3dcbb13059f46b0886029e267834246bb13373681fd4",
+      "reference_sha256": "b2282228defe5d29e69236ffdfbe8a20f8a3d7ea06a3f88b24fa71e69476a2f8"
+    },
+    {
+      "experiment": "v1_gru_accum_wide_z_unsigned12_csynth",
+      "hls_out_sha256": "60744de3323a9306be9c3dcbb13059f46b0886029e267834246bb13373681fd4",
+      "reference_sha256": "b2282228defe5d29e69236ffdfbe8a20f8a3d7ea06a3f88b24fa71e69476a2f8"
+    },
+    {
+      "experiment": "v1_gru_accum_wide_z_unsigned12_state_nosat_csynth",
+      "hls_out_sha256": "60744de3323a9306be9c3dcbb13059f46b0886029e267834246bb13373681fd4",
+      "reference_sha256": "b2282228defe5d29e69236ffdfbe8a20f8a3d7ea06a3f88b24fa71e69476a2f8"
+    }
+  ]
+}
