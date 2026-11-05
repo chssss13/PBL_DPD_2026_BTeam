@@ -1,0 +1,15 @@
+{
+  "parent_experiment": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_gru_accum_wide_csynth",
+  "variant": "term_split",
+  "change": "Recurrent multiplier specialization by gate and input term (0..4); explicit sequential calls replace loop; input GRU MAC unchanged. Same product conversion, wide accumulator and final saturation.",
+  "data": "15,3",
+  "weight": "14,4",
+  "accum": "18,3",
+  "wide_accum": "21,6",
+  "activation": "sigmoid/tanh 256 intervals",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "validation": "7680 C-sim samples must match Python and accum-wide C-sim at Q3.12 before csynth",
+  "pnr_requested": false
+}

@@ -4,3 +4,6 @@ v2/result/final/reports/** linguist-generated=true
 v2/result/final/logs/** linguist-generated=true
 v2/result/final/golden/** linguist-generated=true
 v2/result/final/reference/** linguist-generated=true
+
+# Keep original PPA experiment reports byte-for-byte as measurement evidence.
+v2/result/ppa_evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol linguist-generated=true

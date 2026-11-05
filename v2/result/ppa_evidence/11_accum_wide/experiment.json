@@ -1,0 +1,11 @@
+{
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_interp_narrow_recurrent_gate_split0_csynth",
+  "python_reference": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_gru_saturation_python_accuracy\\no_intermediate_acc_saturation.txt",
+  "change": "no_intermediate_acc_saturation",
+  "scope": "GRU input and recurrent MAC only",
+  "precision": "product retains 18,3 round and saturation; 21,6 accumulator, final saturation to 18,3",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "csim_required_before_csynth": true
+}

@@ -1,0 +1,11 @@
+{
+  "parent_experiment": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_gru_accum_wide_term_split_csynth",
+  "change": "n-gate recurrent products separated by output row and input term; r/z keep gate+term split",
+  "precision": "same full product, 18,3 product rounding/saturation, sequential 21,6 accumulation and final 18,3 cast",
+  "activation": "sigmoid/tanh256",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "validation": "C-sim must match parent and Python Q3.12 at 7680 samples before csynth",
+  "pnr_requested": false
+}

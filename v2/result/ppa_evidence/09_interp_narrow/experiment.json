@@ -1,0 +1,31 @@
+{
+  "baseline": "C:\\PBL\\PBL_DPD_2026_BTeam\\result\\07_lut_lookup\\source",
+  "data": [
+    15,
+    3
+  ],
+  "weight": [
+    14,
+    4
+  ],
+  "accum": [
+    18,
+    3
+  ],
+  "interpolation_intervals": 256,
+  "range": [
+    -4,
+    4
+  ],
+  "FEx": "original v1 NR4 inverse16,6",
+  "GRU": "original v1; no tree/recurrent narrowing/PReLU/state fabric changes",
+  "changed_files": [
+    "src/activations.h",
+    "src/activation_interp.h",
+    "src/config.h"
+  ],
+  "python_reference": "C:\\Users\\user\\Documents\\Codex\\v1_interp_bit_comparison\\interp_narrow_bits.txt",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2
+}

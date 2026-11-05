@@ -1,0 +1,17 @@
+﻿{
+    "parent_experiment":  "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_gru_accum_wide_n_row_split_csynth",
+    "change":  "state-update z multiplicand signed15,3 -\u003e unsigned12,0 via low12-bit selection; keep all12 fractional bits",
+    "scope":  "only src/gru_cell.h state-update z operand; no multiplier replication or layer dispatch changes",
+    "range_validation":  "actual packed sigmoid256 table: all32768 inputs, Q12 output74..4022, zero values changed by low12 selection",
+    "unchanged":  "data15,3; weight14,4; product18,3; sequential GRU accumulator21,6 with final18,3; state result15,3; r/n MVM; sigmoid/tanh256 fabric interpolation",
+    "prior_partition_trials_not_included":  [
+                                                "z layer split",
+                                                "z layer+row split"
+                                            ],
+    "clock_ns":  15,
+    "uncertainty_ns":  1,
+    "II_request":  2,
+    "validation":  "C-sim7680 samples must match retained baseline and Python Q3.12 before csynth",
+    "verification_python":  "C:/Users/user/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+    "pnr_requested":  true
+}
