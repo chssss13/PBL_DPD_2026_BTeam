@@ -1,0 +1,21 @@
+{
+  "status": "deferred",
+  "decision_date": "2026-11-07",
+  "decision_by": "user",
+  "adopted_baseline": "v3.2",
+  "reason": "현재 채택하지 않고 이후 다른 변경과 함께 재검토할 수 있는 후보로 보존",
+  "pnr": {
+    "lut": 38240,
+    "ff": 40732,
+    "dsp": 362,
+    "bram": 0,
+    "wns_ns": 0.147886,
+    "comparison_period_ns": 14.852114
+  },
+  "baseline_delta": {
+    "lut": 193,
+    "ff": -228,
+    "dsp": 0,
+    "wns_ns": -0.007601
+  }
+}
