@@ -1,7 +1,7 @@
 # PBL_DPD_2026_BTeam
 ## `sehyeon` 브랜치 현재 결과
 
-현재 채택본은 **원본 sehyeon v1을 개선한 v2 최종 구현**이다. Vitis HLS/Vivado 2024.1, `xczu7ev-ffvc1156-2-e`, IP 내부 15 ns 클록 조건에서 검증했다.
+현재 채택본은 **원본 sehyeon v1을 개선한 v3.2**다. [v3.2 코드·검증·재현](v3/result/v3.2/README.md). 아래 표는 이전 v2 최종 결과다. Vitis HLS/Vivado 2024.1, `xczu7ev-ffvc1156-2-e`, IP 내부 15 ns 클록 조건에서 검증했다.
 
 | 항목 | 최종 결과 |
 |---|---:|

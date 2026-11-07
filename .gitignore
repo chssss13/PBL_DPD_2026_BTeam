@@ -23,3 +23,6 @@ v2/cleanup_records/
 # Final archive keeps original execution logs as evidence.
 !v2/result/final/logs/
 !v2/result/final/logs/*.log
+
+# Generated HLS/Vivado projects; retain experiment sources and reports
+v3/package/results/*/prj/
