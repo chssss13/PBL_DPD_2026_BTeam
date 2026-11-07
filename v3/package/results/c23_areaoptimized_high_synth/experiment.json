@@ -1,0 +1,15 @@
+{
+  "id": "V01",
+  "plan": "N1b",
+  "parent": "C23",
+  "parent_rtl": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\final_sigmoid_symmetry_pnr_retry01",
+  "same_packaged_ip": true,
+  "package_manifest": "package_sha256.json",
+  "change": "HLS IP OOC Vivado synth_design directive sdx_optimization_effort_high -> AreaOptimized_high",
+  "clock_ns": 15,
+  "hls_csynth_rerun": false,
+  "vivado_synthesis": true,
+  "pnr_requested": true,
+  "pnr_status": "completed",
+  "decision": "adopted as v3.1 implementation setting for current RTL; compare default setting again if future changes fail timing"
+}

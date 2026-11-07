@@ -1,0 +1,15 @@
+{
+  "id": "C21",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "NR iterations4->2 only",
+  "inverse": "16,6",
+  "data": "15,3",
+  "weight": "14,4",
+  "dataflow": "retained",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_ii": 2,
+  "dsp_full_reg": false,
+  "python_reference": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\nr_iterations_python\\nr2.txt",
+  "pnr": false
+}

@@ -1,0 +1,10 @@
+{
+  "candidate": "C09",
+  "plan": "N1",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_gru_accum_wide_z_unsigned12_state_nosat_csynth",
+  "change": "Only impl_1 OPT_DESIGN directive ExploreWithRemap",
+  "same_packaged_ip": true,
+  "clock_ns": 15,
+  "csynth_rerun": false,
+  "pnr_requested": true
+}

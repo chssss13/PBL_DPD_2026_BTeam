@@ -1,0 +1,15 @@
+--- final/src/gru_cell.h
++++ r_unsigned12/src/gru_cell.h
+@@ -215,7 +215,11 @@
+         #pragma HLS PIPELINE II=1
+         r_pre = W_ir_x[i] + b_ir_local[i] + W_hr_h[i] + b_hr_local[i];
+         nnet::sigmoid_comb<data_T, data_T, config_a>(r_pre, r);
+-        r_h = r * (W_hn_h[i] + b_hn_local[i]);
++        // Same sigmoid256 Q12 value, with unused upper/sign bits omitted.
++        ap_ufixed<12,0> r_gate;
++        r_gate.range(11,0) = r.range(11,0);
++        // Keep the sum and final data_T rounding/saturation unchanged.
++        r_h = r_gate * (W_hn_h[i] + b_hn_local[i]);
+  
+         n_pre = W_in_x[i] + b_in_local[i] + r_h;
+         nnet::tanh_comb<data_T, data_T, config_a>(n_pre, n);

@@ -1,0 +1,90 @@
+--- C06/src/gru_cell.h
++++ C08/src/gru_cell.h
+@@ -149,7 +149,7 @@
+     y[4] = Recurrent_N_Row_MAC<4, N, data_T, weight_T, accum_T>(x, W[4]);
+ }
+ 
+-template<int IN_SIZE, int HIDDEN_SIZE, typename data_T, typename weight_T, typename accum_T>
++template<int IN_SIZE, int HIDDEN_SIZE, typename data_T, typename weight_T, typename accum_T, int LAYER = -1>
+ void GRU_Kernel_PE(
+     data_T x[IN_SIZE], data_T h_prev[HIDDEN_SIZE],
+     weight_T W_ir[HIDDEN_SIZE][IN_SIZE], weight_T W_iz[HIDDEN_SIZE][IN_SIZE], weight_T W_in[HIDDEN_SIZE][IN_SIZE],
+@@ -162,7 +162,8 @@
+     Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_iz, W_iz_x);
+     Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_in, W_in_x);
+  
+-    Recurrent_Gate_MVM<0, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hr, W_hr_h);
++    // r uses layer tags 2/3/4; z retains tag 1; legacy calls retain r tag 0.
++    Recurrent_Gate_MVM<(LAYER < 0 ? 0 : LAYER + 2), HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hr, W_hr_h);
+     Recurrent_Gate_MVM<1, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hz, W_hz_h);
+     Recurrent_N_Row_MVM<HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hn, W_hn_h);
+ }
+--- C06/src/multi_gru.cpp
++++ C08/src/multi_gru.cpp
+@@ -7,6 +7,7 @@
+ 
+ 
+ 
++template<int LAYER = -1>
+ void GRU_single(
+     data_t x[I_SIZE],
+     bool reset,
+@@ -49,7 +50,7 @@
+     #pragma HLS ARRAY_PARTITION variable=W_hn_h complete dim=1
+  
+     // GRU MVMs
+-    GRU_Kernel_PE<I_SIZE, H_SIZE, data_t, weight_t, accum_t>(
++    GRU_Kernel_PE<I_SIZE, H_SIZE, data_t, weight_t, accum_t, LAYER>(
+         x, h_state,
+         W_ir, W_iz, W_in,
+         W_hr, W_hz, W_hn,
+@@ -322,15 +323,40 @@
+         LAYER_LOOP: for (int l = 0; l < NUM_LAYERS; l++) {
+             #pragma HLS PIPELINE
+ 
+-            GRU_single(
+-                layer_in[l], (segment_start && (t==0)), h_state_all[l], layer_out[l],
+-                W_ir[l], W_hr[l],
+-                W_iz[l], W_hz[l],
+-                W_in[l], W_hn[l],
+-                b_ir[l], b_hr[l],
+-                b_iz[l], b_hz[l],
+-                b_in[l], b_hn[l]
+-            );
++            static_assert(NUM_LAYERS == 3, "Layer specialization requires three layers");
++            if (l == 0) {
++                GRU_single<0>(
++                    layer_in[0], (segment_start && (t==0)), h_state_all[0], layer_out[0],
++                    W_ir[0], W_hr[0],
++                    W_iz[0], W_hz[0],
++                    W_in[0], W_hn[0],
++                    b_ir[0], b_hr[0],
++                    b_iz[0], b_hz[0],
++                    b_in[0], b_hn[0]
++                );
++            }
++            else if (l == 1) {
++                GRU_single<1>(
++                    layer_in[1], (segment_start && (t==0)), h_state_all[1], layer_out[1],
++                    W_ir[1], W_hr[1],
++                    W_iz[1], W_hz[1],
++                    W_in[1], W_hn[1],
++                    b_ir[1], b_hr[1],
++                    b_iz[1], b_hz[1],
++                    b_in[1], b_hn[1]
++                );
++            }
++            else {
++                GRU_single<2>(
++                    layer_in[2], (segment_start && (t==0)), h_state_all[2], layer_out[2],
++                    W_ir[2], W_hr[2],
++                    W_iz[2], W_hz[2],
++                    W_in[2], W_hn[2],
++                    b_ir[2], b_hr[2],
++                    b_iz[2], b_hz[2],
++                    b_in[2], b_hn[2]
++                );
++            }
+             
+             // Update hidden state
+             copy_row<H_SIZE>(layer_out[l], h_state_all[l]);

@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-05",
+  "candidate": "C04",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "Only Recurrent_Gate_MAC and Recurrent_N_Row_MAC accumulator21,6 ->19,4; preserve F15 AP_RND AP_SAT",
+  "unchanged": "Input MAC21,6; every product18,3; final accumulation cast18,3; r signed15,3; z unsigned12; state nosat; recurrent term/row separation; sigmoid/tanh256",
+  "validation": "7680-sample C-sim must match final C-sim and Python reference Q12 before csynth",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "dsp_full_reg": false,
+  "pnr_requested": false,
+  "cosim_requested": false,
+  "PA_reevaluation_requested": false
+}

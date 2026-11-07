@@ -1,0 +1,100 @@
+--- C06/src/activations.h
++++ C07/src/activations.h
+@@ -264,7 +264,7 @@
+     ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+     res.range(14,0) = result.range(14,0);
+ }
+-template<class data_T, class res_T, typename CONFIG_T>
++template<class data_T, class res_T, typename CONFIG_T, int LAYER = -1>
+ void tanh_comb(data_T data, res_T &res) {
+     #pragma HLS INLINE off
+     #pragma HLS LATENCY min=0 max=0
+--- C06/src/gru_cell.h
++++ C07/src/gru_cell.h
+@@ -175,7 +175,7 @@
+         typedef data_t constant_t;
+     };
+ 
+-template<int HIDDEN_SIZE, typename data_T, typename accum_T>
++template<int HIDDEN_SIZE, typename data_T, typename accum_T, int LAYER = -1>
+ void Gate_Calc_PE(
+     accum_T W_ir_x[HIDDEN_SIZE], accum_T W_hr_h[HIDDEN_SIZE], data_T b_ir[HIDDEN_SIZE], data_T b_hr[HIDDEN_SIZE],
+     accum_T W_iz_x[HIDDEN_SIZE], accum_T W_hz_h[HIDDEN_SIZE], data_T b_iz[HIDDEN_SIZE], data_T b_hz[HIDDEN_SIZE],
+@@ -218,7 +218,7 @@
+         r_h = r * (W_hn_h[i] + b_hn_local[i]);
+  
+         n_pre = W_in_x[i] + b_in_local[i] + r_h;
+-        nnet::tanh_comb<data_T, data_T, config_a>(n_pre, n);
++        nnet::tanh_comb<data_T, data_T, config_a, LAYER>(n_pre, n);
+  
+         z_pre = W_iz_x[i] + b_iz_local[i] + W_hz_h[i] + b_hz_local[i];
+         nnet::sigmoid_comb<data_T, data_T, config_a>(z_pre, z);
+--- C06/src/multi_gru.cpp
++++ C07/src/multi_gru.cpp
+@@ -7,6 +7,7 @@
+ 
+ 
+ 
++template<int LAYER = -1>
+ void GRU_single(
+     data_t x[I_SIZE],
+     bool reset,
+@@ -58,7 +59,7 @@
+     );
+  
+     // Bias copy and gate calculation
+-    Gate_Calc_PE<H_SIZE, data_t, accum_t>(
++    Gate_Calc_PE<H_SIZE, data_t, accum_t, LAYER>(
+         W_ir_x, W_hr_h, b_ir, b_hr,
+         W_iz_x, W_hz_h, b_iz, b_hz,
+         W_in_x, W_hn_h, b_in, b_hn,
+@@ -322,15 +323,40 @@
+         LAYER_LOOP: for (int l = 0; l < NUM_LAYERS; l++) {
+             #pragma HLS PIPELINE
+ 
+-            GRU_single(
+-                layer_in[l], (segment_start && (t==0)), h_state_all[l], layer_out[l],
+-                W_ir[l], W_hr[l],
+-                W_iz[l], W_hz[l],
+-                W_in[l], W_hn[l],
+-                b_ir[l], b_hr[l],
+-                b_iz[l], b_hz[l],
+-                b_in[l], b_hn[l]
+-            );
++            static_assert(NUM_LAYERS == 3, "Layer specialization requires three layers");
++            if (l == 0) {
++                GRU_single<0>(
++                    layer_in[0], (segment_start && (t==0)), h_state_all[0], layer_out[0],
++                    W_ir[0], W_hr[0],
++                    W_iz[0], W_hz[0],
++                    W_in[0], W_hn[0],
++                    b_ir[0], b_hr[0],
++                    b_iz[0], b_hz[0],
++                    b_in[0], b_hn[0]
++                );
++            }
++            else if (l == 1) {
++                GRU_single<1>(
++                    layer_in[1], (segment_start && (t==0)), h_state_all[1], layer_out[1],
++                    W_ir[1], W_hr[1],
++                    W_iz[1], W_hz[1],
++                    W_in[1], W_hn[1],
++                    b_ir[1], b_hr[1],
++                    b_iz[1], b_hz[1],
++                    b_in[1], b_hn[1]
++                );
++            }
++            else {
++                GRU_single<2>(
++                    layer_in[2], (segment_start && (t==0)), h_state_all[2], layer_out[2],
++                    W_ir[2], W_hr[2],
++                    W_iz[2], W_hz[2],
++                    W_in[2], W_hn[2],
++                    b_ir[2], b_hr[2],
++                    b_iz[2], b_hz[2],
++                    b_in[2], b_hn[2]
++                );
++            }
+             
+             // Update hidden state
+             copy_row<H_SIZE>(layer_out[l], h_state_all[l]);

@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-05",
+  "parent_experiment": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_gru_accum_wide_z_unsigned12_state_nosat_csynth",
+  "change": "sigmoid only: packed 256x21 ROM, complete partition/combinational latency constraint replaced by ROM_1P BRAM latency=1",
+  "table_placement": "Identical constants moved into the selected activation function as a local static ROM; original table header is unchanged",
+  "table_values_identical": true,
+  "arithmetic_identical": true,
+  "unchanged": "256/256 segments, rounding, product fabric mapping, data15,3 weight14,4, accumulation21,6, recurrent term/n-row split, unsigned12 z, final state no-sat",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_II": 2,
+  "dsp_full_reg": false,
+  "validation": "7680 samples match final C-sim and Python reference in Q12 before csynth",
+  "pnr_requested": false,
+  "cosim_requested": false,
+  "comparison_note": "Independent sibling of the other BRAM candidate, not cumulative; compare HLS estimates with final HLS, not final P&R",
+  "documentation": "https://docs.amd.com/r/2024.1-English/ug1399-vitis-hls/pragma-HLS-bind_storage"
+}

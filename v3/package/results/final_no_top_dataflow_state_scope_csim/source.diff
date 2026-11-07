@@ -1,0 +1,71 @@
+--- C06/src/multi_gru.cpp
++++ state_scope/src/multi_gru.cpp
+@@ -251,7 +251,7 @@
+     
+ }
+ 
+-void ResGRU(
++static void ResGRU_TimeLoop(
+     data_t IQ_seq[TIME_STEP][2],
+     data_t OUT_seq[TIME_STEP][2],
+ 
+@@ -274,6 +274,7 @@
+     data_t b_out[2],
+     bool segment_start
+ ) {
++    #pragma HLS INLINE off
+ 
+     static data_t h_state_all[NUM_LAYERS][H_SIZE];
+     #pragma HLS ARRAY_PARTITION variable=h_state_all complete dim=1
+@@ -352,3 +353,51 @@
+ }
+ 
+ 
++
++void ResGRU(
++    data_t IQ_seq[TIME_STEP][2],
++    data_t OUT_seq[TIME_STEP][2],
++
++    weight_t W_inj[H_SIZE][6],
++    data_t b_inj[H_SIZE],
++    weight_t prelu_param,
++    weight_t gating_params[NUM_LAYERS],
++
++    weight_t W_ir[NUM_LAYERS][H_SIZE][H_SIZE],
++    weight_t W_hr[NUM_LAYERS][H_SIZE][H_SIZE],
++    weight_t W_iz[NUM_LAYERS][H_SIZE][H_SIZE],
++    weight_t W_hz[NUM_LAYERS][H_SIZE][H_SIZE],
++    weight_t W_in[NUM_LAYERS][H_SIZE][H_SIZE],
++    weight_t W_hn[NUM_LAYERS][H_SIZE][H_SIZE],
++    data_t b_ir[NUM_LAYERS][H_SIZE], data_t b_hr[NUM_LAYERS][H_SIZE],
++    data_t b_iz[NUM_LAYERS][H_SIZE], data_t b_hz[NUM_LAYERS][H_SIZE],
++    data_t b_in[NUM_LAYERS][H_SIZE], data_t b_hn[NUM_LAYERS][H_SIZE],
++
++    weight_t W_out[2][H_SIZE],
++    data_t b_out[2],
++    bool segment_start
++) {
++    #pragma HLS ARRAY_PARTITION variable=W_inj complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=b_inj complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=W_out complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=b_out complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=W_inj complete dim=2
++    #pragma HLS ARRAY_PARTITION variable=b_inj complete dim=2
++    #pragma HLS ARRAY_PARTITION variable=W_out complete dim=2
++    #pragma HLS ARRAY_PARTITION variable=b_out complete dim=2
++    #pragma HLS ARRAY_PARTITION variable=W_hr complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=W_iz complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=W_hz complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=W_in complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=W_hn complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=b_ir complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=b_hr complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=b_iz complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=b_hz complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=b_in complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=b_hn complete dim=1
++    #pragma HLS ARRAY_PARTITION variable=W_ir complete dim=1
++    ResGRU_TimeLoop(
++        IQ_seq, OUT_seq, W_inj, b_inj, prelu_param, gating_params, W_ir, W_hr, W_iz, W_hz, W_in, W_hn, b_ir, b_hr, b_iz, b_hz, b_in, b_hn, W_out, b_out, segment_start
++    );
++}

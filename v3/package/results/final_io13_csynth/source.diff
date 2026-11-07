@@ -1,0 +1,85 @@
+--- final/src/config.h
++++ io13/src/config.h
+@@ -4,5 +4,7 @@
+ #define TIME_STEP 64
+ 
+ typedef ap_fixed<15,3, AP_RND, AP_SAT> data_t;
++// External I/Q only; internal arithmetic remains data_t.
++typedef ap_fixed<13,1, AP_RND, AP_SAT> io_t;
+ typedef ap_fixed<14,4, AP_RND, AP_SAT> weight_t;
+ typedef ap_fixed<18,3, AP_RND, AP_SAT> accum_t;
+--- final/src/multi_gru.cpp
++++ io13/src/multi_gru.cpp
+@@ -252,8 +252,8 @@
+ }
+ 
+ void ResGRU(
+-    data_t IQ_seq[TIME_STEP][2],
+-    data_t OUT_seq[TIME_STEP][2],
++    io_t IQ_seq[TIME_STEP][2],
++    io_t OUT_seq[TIME_STEP][2],
+ 
+     weight_t W_inj[H_SIZE][6],
+     data_t b_inj[H_SIZE],
+@@ -311,7 +311,7 @@
+ 
+         bool rst = (t == 0);
+ 
+-        FEx : FExLayer<data_t>(IQ_seq[t][0],IQ_seq[t][1],x_w_fex);
++        FEx : FExLayer<data_t>(data_t(IQ_seq[t][0]),data_t(IQ_seq[t][1]),x_w_fex);
+ 
+         IN_INJECT : Linear<6,H_SIZE,data_t,weight_t,accum_t>(x_w_fex, W_inj, b_inj, x_inj);
+ 
+@@ -348,8 +348,15 @@
+         }
+ 
+ 
+-        OUT : Linear<H_SIZE,2,data_t,weight_t,data_t>(gru_out,W_out,b_out, OUT_seq[t]);
+-    }
+-}
+-
+-
++        // Preserve the original output MAC and bias arithmetic before I/O narrowing.
++        data_t output_full[2];
++        #pragma HLS ARRAY_PARTITION variable=output_full complete dim=1
++        OUT : Linear<H_SIZE,2,data_t,weight_t,data_t>(gru_out,W_out,b_out, output_full);
++        OUT_CAST: for (int o = 0; o < 2; ++o) {
++            #pragma HLS UNROLL
++            OUT_seq[t][o] = io_t(output_full[o]);
++        }
++    }
++}
++
++
+--- final/src/multi_gru.h
++++ io13/src/multi_gru.h
+@@ -34,8 +34,8 @@
+     data_t b_in[NUM_LAYERS][H_SIZE], data_t b_hn[NUM_LAYERS][H_SIZE]
+ );
+ void ResGRU(
+-    data_t IQ_seq[TIME_STEP][2],
+-    data_t OUT_seq[TIME_STEP][2],
++    io_t IQ_seq[TIME_STEP][2],
++    io_t OUT_seq[TIME_STEP][2],
+ 
+     weight_t W_inj[H_SIZE][6],
+     data_t b_inj[H_SIZE],
+--- final/tb/tb_resgru.cpp
++++ io13/tb/tb_resgru.cpp
+@@ -79,13 +79,13 @@
+     fout << std::setprecision(12);
+     if (!fin || !fout) { std::cerr << "[TB] cannot open input/output file\n"; return 1; }
+ 
+-    static data_t IQ[TIME_STEP][2], OUT[TIME_STEP][2];
++    static io_t IQ[TIME_STEP][2], OUT[TIME_STEP][2];
+     for (int blk = 0; blk < n_samples / TIME_STEP; blk++) {
+         for (int t = 0; t < TIME_STEP; t++) {
+             double i, q;
+             if (!(fin >> i >> q)) { std::cerr << "[TB] input shorter than n_samples\n"; return 1; }
+-            IQ[t][0] = data_t(i);
+-            IQ[t][1] = data_t(q);
++            IQ[t][0] = io_t(i);
++            IQ[t][1] = io_t(q);
+         }
+         ResGRU(IQ, OUT, W_inj, b_inj, prelu, gating,
+                W_ir, W_hr, W_iz, W_hz, W_in, W_hn,

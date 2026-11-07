@@ -1,0 +1,223 @@
+--- v2_final/src/activations.h
++++ combined/src/activations.h
+@@ -257,10 +257,10 @@
+     ap_int<15> base;
+     base.range(14,0) = packed.range(14,0);
+     ap_uint<6> delta = packed.range(20,15);
+-    ap_uint<15> product = delta * fraction;
++    ap_uint<12> product = delta * fraction;
+     #pragma HLS BIND_OP variable=product op=mul impl=fabric
+-    ap_uint<15> rounded = product + ap_uint<15>(64);
+-    ap_uint<8> increment = rounded.range(14,7);
++    ap_uint<13> rounded = product + ap_uint<13>(64);
++    ap_uint<8> increment = rounded >> 7;
+     ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+     res.range(14,0) = result.range(14,0);
+ }
+@@ -279,10 +279,10 @@
+     ap_int<15> base;
+     base.range(14,0) = packed.range(14,0);
+     ap_uint<8> delta = packed.range(22,15);
+-    ap_uint<15> product = delta * fraction;
++    ap_uint<14> product = delta * fraction;
+     #pragma HLS BIND_OP variable=product op=mul impl=fabric
+-    ap_uint<15> rounded = product + ap_uint<15>(64);
+-    ap_uint<8> increment = rounded.range(14,7);
++    ap_uint<14> rounded = product + ap_uint<14>(64);
++    ap_uint<8> increment = rounded >> 7;
+     ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+     res.range(14,0) = result.range(14,0);
+ }
+--- v2_final/src/config.h
++++ combined/src/config.h
+@@ -6,3 +6,13 @@
+ typedef ap_fixed<15,3, AP_RND, AP_SAT> data_t;
+ typedef ap_fixed<14,4, AP_RND, AP_SAT> weight_t;
+ typedef ap_fixed<18,3, AP_RND, AP_SAT> accum_t;
++
++// Combined bit-width experiment; external I/Q and biases remain data_t.
++typedef ap_fixed<13,1,AP_RND,AP_SAT> state_t;
++typedef ap_ufixed<10,0,AP_RND,AP_SAT> residual_t;
++typedef ap_fixed<12,2,AP_RND,AP_SAT> inj_weight_t;
++typedef ap_fixed<11,1,AP_RND,AP_SAT> out_weight_t;
++typedef ap_ufixed<11,1,AP_RND,AP_SAT> prelu_weight_t;
++typedef ap_fixed<11,1,AP_RND,AP_SAT> win_weight_t;
++typedef ap_fixed<12,2,AP_RND,AP_SAT> whn_weight_t;
++typedef ap_fixed<13,3,AP_RND,AP_SAT> whrz_weight_t;
+--- v2_final/src/gru_cell.h
++++ combined/src/gru_cell.h
+@@ -52,7 +52,7 @@
+ #pragma HLS ARRAY_PARTITION variable=x complete dim=1
+ #pragma HLS ARRAY_PARTITION variable=w complete dim=1
+     static_assert(LEN == 5, "Wide accumulation is sized for five terms");
+-    typedef ap_fixed<accum_T::width + 3, accum_T::iwidth + 3, AP_RND, AP_SAT> wide_acc_t;
++    typedef ap_fixed<19,4,AP_RND,AP_SAT> wide_acc_t;
+     wide_acc_t acc = 0;
+     acc += accum_T(Recurrent_Term_Product<GATE, 0, data_T, weight_T>(x[0], w[0]));
+     acc += accum_T(Recurrent_Term_Product<GATE, 1, data_T, weight_T>(x[1], w[1]));
+@@ -82,7 +82,7 @@
+ #pragma HLS ARRAY_PARTITION variable=x complete dim=1
+ #pragma HLS ARRAY_PARTITION variable=w complete dim=1
+     static_assert(LEN == 5, "Wide accumulation is sized for five terms");
+-    typedef ap_fixed<accum_T::width + 3, accum_T::iwidth + 3, AP_RND, AP_SAT> wide_acc_t;
++    typedef ap_fixed<20,5,AP_RND,AP_SAT> wide_acc_t;
+     wide_acc_t acc = 0;
+     for (int i = 0; i < LEN; i++) {
+ #pragma HLS PIPELINE II=1
+@@ -124,7 +124,7 @@
+ #pragma HLS ARRAY_PARTITION variable=x complete dim=1
+ #pragma HLS ARRAY_PARTITION variable=w complete dim=1
+     static_assert(LEN == 5, "Wide accumulation is sized for five terms");
+-    typedef ap_fixed<accum_T::width + 3, accum_T::iwidth + 3, AP_RND, AP_SAT> wide_acc_t;
++    typedef ap_fixed<18,3,AP_RND,AP_SAT> wide_acc_t;
+     wide_acc_t acc = 0;
+     acc += accum_T(Recurrent_Row_Product<ROW, 0, data_T, weight_T>(x[0], w[0]));
+     acc += accum_T(Recurrent_Row_Product<ROW, 1, data_T, weight_T>(x[1], w[1]));
+@@ -158,13 +158,26 @@
+     accum_T W_hr_h[HIDDEN_SIZE], accum_T W_hz_h[HIDDEN_SIZE], accum_T W_hn_h[HIDDEN_SIZE]
+ ) {
+ #pragma HLS INLINE
++    win_weight_t W_in_narrow[HIDDEN_SIZE][IN_SIZE];
++    whrz_weight_t W_hr_narrow[HIDDEN_SIZE][HIDDEN_SIZE], W_hz_narrow[HIDDEN_SIZE][HIDDEN_SIZE];
++    whn_weight_t W_hn_narrow[HIDDEN_SIZE][HIDDEN_SIZE];
++    state_t h_narrow[HIDDEN_SIZE];
++    for (int i = 0; i < HIDDEN_SIZE; ++i) {
++        h_narrow[i] = h_prev[i];
++        for (int j = 0; j < IN_SIZE; ++j) W_in_narrow[i][j] = W_in[i][j];
++        for (int j = 0; j < HIDDEN_SIZE; ++j) {
++            W_hr_narrow[i][j] = W_hr[i][j];
++            W_hz_narrow[i][j] = W_hz[i][j];
++            W_hn_narrow[i][j] = W_hn[i][j];
++        }
++    }
+     Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_ir, W_ir_x);
+     Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_iz, W_iz_x);
+-    Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_in, W_in_x);
+- 
+-    Recurrent_Gate_MVM<0, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hr, W_hr_h);
+-    Recurrent_Gate_MVM<1, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hz, W_hz_h);
+-    Recurrent_N_Row_MVM<HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hn, W_hn_h);
++    Experiment_Input_MVM<IN_SIZE, HIDDEN_SIZE, data_T, win_weight_t, accum_T>(x, W_in_narrow, W_in_x);
++ 
++    Recurrent_Gate_MVM<0, HIDDEN_SIZE, state_t, whrz_weight_t, accum_T>(h_narrow, W_hr_narrow, W_hr_h);
++    Recurrent_Gate_MVM<1, HIDDEN_SIZE, state_t, whrz_weight_t, accum_T>(h_narrow, W_hz_narrow, W_hz_h);
++    Recurrent_N_Row_MVM<HIDDEN_SIZE, state_t, whn_weight_t, accum_T>(h_narrow, W_hn_narrow, W_hn_h);
+ }
+  
+ 
+@@ -215,10 +228,13 @@
+         #pragma HLS PIPELINE II=1
+         r_pre = W_ir_x[i] + b_ir_local[i] + W_hr_h[i] + b_hr_local[i];
+         nnet::sigmoid_comb<data_T, data_T, config_a>(r_pre, r);
+-        r_h = r * (W_hn_h[i] + b_hn_local[i]);
++        ap_ufixed<12,0> r_gate;
++        r_gate.range(11,0) = r.range(11,0);
++        r_h = r_gate * (W_hn_h[i] + b_hn_local[i]);
+  
+         n_pre = W_in_x[i] + b_in_local[i] + r_h;
+         nnet::tanh_comb<data_T, data_T, config_a>(n_pre, n);
++        state_t n_narrow = n;
+  
+         z_pre = W_iz_x[i] + b_iz_local[i] + W_hz_h[i] + b_hz_local[i];
+         nnet::sigmoid_comb<data_T, data_T, config_a>(z_pre, z);
+@@ -229,7 +245,7 @@
+         // 0 <= z_gate < 1: the exact update stays between n and h_prev.
+         // Preserve AP_RND and Q3.12; omit only the range-proven final clamp.
+         typedef ap_fixed<data_T::width, data_T::iwidth, AP_RND, AP_WRAP> state_round_t;
+-        state_round_t h_rounded = n + z_gate * (h_prev[i] - n);
++        state_round_t h_rounded = n_narrow + z_gate * (h_prev[i] - n_narrow);
+         h_next[i].range(data_T::width - 1, 0) = h_rounded.range(data_T::width - 1, 0);
+     }
+ }
+--- v2_final/src/linear_layer.h
++++ combined/src/linear_layer.h
+@@ -52,7 +52,8 @@
+ //#pragma HLS PIPELINE II=1
+ #pragma HLS ARRAY_PARTITION variable=out complete dim=1
+ 
+-    data_T amp, amp2, amp3, phase, sin_theta, cos_theta;
++    data_T amp, amp3, phase, sin_theta, cos_theta;
++    ap_ufixed<14,2,AP_RND,AP_SAT> amp2;
+ 
+     // magnitude
+     
+--- v2_final/src/multi_gru.cpp
++++ combined/src/multi_gru.cpp
+@@ -276,7 +276,7 @@
+ ) {
+     #pragma HLS DATAFLOW
+ 
+-    static data_t h_state_all[NUM_LAYERS][H_SIZE];
++    static state_t h_state_all[NUM_LAYERS][H_SIZE];
+     #pragma HLS ARRAY_PARTITION variable=h_state_all complete dim=1
+     #pragma HLS ARRAY_PARTITION variable=h_state_all complete dim=2
+     data_t gru_in[H_SIZE], gru_out[H_SIZE];
+@@ -303,6 +303,13 @@
+     #pragma HLS ARRAY_PARTITION variable=b_hn complete dim=1
+     #pragma HLS ARRAY_PARTITION variable=W_ir complete dim=1
+ 
++    inj_weight_t W_inj_narrow[H_SIZE][6];
++    out_weight_t W_out_narrow[2][H_SIZE];
++    prelu_weight_t prelu_narrow = prelu_param;
++    residual_t gating_narrow[NUM_LAYERS];
++    for (int i=0; i<H_SIZE; ++i) for (int j=0; j<6; ++j) W_inj_narrow[i][j] = W_inj[i][j];
++    for (int i=0; i<2; ++i) for (int j=0; j<H_SIZE; ++j) W_out_narrow[i][j] = W_out[i][j];
++    for (int l=0; l<NUM_LAYERS; ++l) gating_narrow[l] = gating_params[l];
+     data_t layer_in[NUM_LAYERS+1][H_SIZE];
+     data_t layer_out[NUM_LAYERS][H_SIZE];
+ 
+@@ -313,9 +320,9 @@
+ 
+         FEx : FExLayer<data_t>(IQ_seq[t][0],IQ_seq[t][1],x_w_fex);
+ 
+-        IN_INJECT : Linear<6,H_SIZE,data_t,weight_t,accum_t>(x_w_fex, W_inj, b_inj, x_inj);
+-
+-        PReLU : nnet::prelu<accum_t,data_t,weight_t,H_SIZE>(x_inj, gru_in,prelu_param);
++        IN_INJECT : Linear<6,H_SIZE,data_t,inj_weight_t,accum_t>(x_w_fex, W_inj_narrow, b_inj, x_inj);
++
++        PReLU : nnet::prelu<accum_t,data_t,prelu_weight_t,H_SIZE>(x_inj, gru_in,prelu_narrow);
+         // Buffers
+ 
+         // Input projection: copy x to x0
+@@ -323,8 +330,10 @@
+         LAYER_LOOP: for (int l = 0; l < NUM_LAYERS; l++) {
+             #pragma HLS PIPELINE
+ 
++            data_t h_expanded[H_SIZE];
++            for (int i=0; i<H_SIZE; ++i) h_expanded[i] = h_state_all[l][i];
+             GRU_single(
+-                layer_in[l], (segment_start && (t==0)), h_state_all[l], layer_out[l],
++                layer_in[l], (segment_start && (t==0)), h_expanded, layer_out[l],
+                 W_ir[l], W_hr[l],
+                 W_iz[l], W_hz[l],
+                 W_in[l], W_hn[l],
+@@ -334,22 +343,22 @@
+             );
+             
+             // Update hidden state
+-            copy_row<H_SIZE>(layer_out[l], h_state_all[l]);
++            for (int i=0; i<H_SIZE; ++i) h_state_all[l][i] = layer_out[l][i];
+ 
+             // Inject persistent x0 at every layer
+             if (l <= NUM_LAYERS - 1) {
+                 RES_J : 
+                 for (int i = 0; i < H_SIZE; i++) {
+                     #pragma HLS UNROLL
+-                    layer_in[l+1][i] = layer_out[l][i] + gating_params[l] * layer_in[l][i];  // x_{n+1} = f(x_n) + x_0
++                    layer_in[l+1][i] = layer_out[l][i] + gating_narrow[l] * layer_in[l][i];  // x_{n+1} = f(x_n) + x_0
+                 }
+             }
+             copy_row<H_SIZE>(layer_in[NUM_LAYERS],gru_out);
+         }
+ 
+ 
+-        OUT : Linear<H_SIZE,2,data_t,weight_t,data_t>(gru_out,W_out,b_out, OUT_seq[t]);
+-    }
+-}
+-
+-
++        OUT : Linear<H_SIZE,2,data_t,out_weight_t,data_t>(gru_out,W_out_narrow,b_out, OUT_seq[t]);
++    }
++}
++
++

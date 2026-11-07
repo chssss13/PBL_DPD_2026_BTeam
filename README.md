@@ -16,3 +16,5 @@
 15 ns와 WNS로 계산한 비교 주기는 14.907 ns다. 최악 데이터 경로 지연 14.888 ns와 구분한다. 외부 I/O 통합 타이밍·보드 실측은 별도다.
 
 [PPA 주차별 이력](PPA_주차별_이력.md) · [v1 기록](v1_의사결정_합성요약.md) · [v2 버전별 비교](v2/README.md) · [채택 변경 이력](v2/result/final/docs/v1기반_채택변경_이력.md)
+
+[v3 실험 계열·기록](v3/README.md) · [v3.1 코드·결과](v3/result/v3.1/README.md) · [v3.2 현재 최종본](v3/result/v3.2/README.md)

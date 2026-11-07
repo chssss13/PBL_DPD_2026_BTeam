@@ -1,0 +1,16 @@
+{
+  "candidate": "C03",
+  "date": "2026-11-05",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "Only r operand in r*(W_hn_h+b_hn): signed15,3 -> unsigned12,0 with all fractional bits retained",
+  "dut_change": "src/gru_cell.h",
+  "tb_change": "Exhaustive sigmoid input/r representation check, product type static assertions and boundary probes before original test",
+  "unchanged": "z unsigned12, state nosat, 256/256 combinational tables, other arithmetic, recurrent separation, weights and test vectors",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_II": 2,
+  "dsp_full_reg": false,
+  "validation": "C++ audit and 7680-vector C-sim vs final C-sim and Python Q12 must pass before csynth",
+  "pnr_requested": false,
+  "cosim_requested": false
+}

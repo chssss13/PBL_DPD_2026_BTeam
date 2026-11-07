@@ -1,0 +1,13 @@
+{
+  "candidate": "C11",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "External I/Q ports and TB io_t13,1 AP_RND AP_SAT; original internal15,3 and output MAC retained, boundary conversion only",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "dsp_full_reg": false,
+  "dataflow": "original retained",
+  "validation": "Csim7680 vs final and Python IO13",
+  "pnr_requested": false,
+  "cosim_requested": false
+}

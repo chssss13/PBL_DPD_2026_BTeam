@@ -1,0 +1,10 @@
+{
+  "candidate": "C17",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\combined_bit_candidates_csim",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "dsp_full_reg": false,
+  "csim": "C-sim parent exact source/TB",
+  "pnr_requested": false
+}

@@ -1,0 +1,11 @@
+--- C13/run.tcl
++++ C14/run.tcl
+@@ -16,7 +16,7 @@
+ open_solution sol1
+ set_part {xczu7ev-ffvc1156-2-e}
+ create_clock -period 15 -name default
+-set_clock_uncertainty 1.0
++set_clock_uncertainty 0.0
+ config_schedule -enable_dsp_full_reg=false
+ set_directive_pipeline -II 2 "ResGRU/LOOP_T"
+ stage CSIM_RUNNING

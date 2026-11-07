@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "candidate": "C13",
+  "plan": "P09+N2",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\final_recurrent_acc_nosat_csynth",
+  "change": "Remove only top ResGRU pragma HLS DATAFLOW",
+  "unchanged": "C12 recurrent wide AP_WRAP retained; all other source and run settings unchanged",
+  "validation": "7680 C-sim outputs must match final C-sim and Python Q12 reference before csynth",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "dsp_full_reg": false,
+  "pnr_requested": false,
+  "cosim_requested": false,
+  "followup_checks": "Achieved LOOP_T II, HLS resources; future co-sim block interval vs baseline134 cycles/64 samples requires separate run"
+}

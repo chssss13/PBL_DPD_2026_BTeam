@@ -1,0 +1,10 @@
+--- C12/src/multi_gru.cpp
++++ no_top_dataflow/src/multi_gru.cpp
+@@ -274,7 +274,6 @@
+     data_t b_out[2],
+     bool segment_start
+ ) {
+-    #pragma HLS DATAFLOW
+ 
+     static data_t h_state_all[NUM_LAYERS][H_SIZE];
+     #pragma HLS ARRAY_PARTITION variable=h_state_all complete dim=1

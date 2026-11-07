@@ -1,0 +1,48 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1 (64-bit)
+  **** SW Build 5069499 on May 21 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Fri Nov  6 21:34:47 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source C:/Xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'user' on host 'desktop-eccjf6l' (Windows NT_amd64 version 10.0) on Fri Nov 06 21:34:48 +0900 2026
+INFO: [HLS 200-10] In directory 'C:/PBL/PBL_DPD_2026_BTeam/v3/package/results/final_sigmoid_symmetry_csynth'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'impl.tcl'
+INFO: [HLS 200-1510] Running: open_project C:/PBL/PBL_DPD_2026_BTeam/v3/package/results/final_sigmoid_symmetry_csynth/prj 
+INFO: [HLS 200-10] Opening project 'C:/PBL/PBL_DPD_2026_BTeam/v3/package/results/final_sigmoid_symmetry_csynth/prj'.
+INFO: [HLS 200-1510] Running: open_solution sol1 
+INFO: [HLS 200-10] Opening solution 'C:/PBL/PBL_DPD_2026_BTeam/v3/package/results/final_sigmoid_symmetry_csynth/prj/sol1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 15ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu7ev-ffvc1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_schedule -enable_dsp_full_reg=0
+INFO: [HLS 200-1510] Running: export_design -flow impl -format ip_catalog 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Fri Nov  6 21:35:48 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at 'C'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
+Abnormal program termination (EXCEPTION_ACCESS_VIOLATION)
+Please check 'C:/PBL/PBL_DPD_2026_BTeam/v3/package/results/final_sigmoid_symmetry_csynth/prj/sol1/impl/ip/hs_err_pid9292.log' for details
+ERROR: [IMPL 213-28] Failed to generate IP.
+INFO: [HLS 200-2161] Finished Command export_design Elapsed time: 00:01:02; Allocated memory: 101.812 MB.
+command 'ap_source' returned error code
+    while executing
+"source impl.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $tclfile] "
+
+INFO: [HLS 200-112] Total CPU user time: 58 seconds. Total CPU system time: 1 seconds. Total elapsed time: 63.677 seconds; peak allocated memory: 232.789 MB.

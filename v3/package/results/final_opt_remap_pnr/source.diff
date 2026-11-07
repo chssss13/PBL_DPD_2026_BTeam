@@ -1,0 +1,11 @@
+--- final/run_vivado.tcl
++++ N1/run_vivado.tcl
+@@ -25,7 +25,7 @@
+ set synth_props {}
+ 
+ set has_impl 1
+-set impl_props {}
++set impl_props {STEPS.OPT_DESIGN.ARGS.DIRECTIVE ExploreWithRemap}
+ 
+ set report_options [dict create]
+ dict set report_options report_level 2

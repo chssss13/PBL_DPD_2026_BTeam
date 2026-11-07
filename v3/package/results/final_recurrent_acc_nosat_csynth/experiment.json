@@ -1,0 +1,10 @@
+{
+  "candidate": "C12",
+  "plan": "P09",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "Only recurrent wide accumulator AP_SAT to AP_WRAP in r/z/n; width21,6 unchanged",
+  "dataflow": "retained",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "pnr_requested": false
+}

@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-05",
+  "candidate": "C05",
+  "plan": "P04",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "Only Experiment_Input_MAC accumulator21,6 ->20,5; preserve F15 AP_RND AP_SAT",
+  "unchanged": "Recurrent accumulator21,6; product18,3; final18,3; all remaining DUT and TB files identical to final v2",
+  "validation": "7680-sample C-sim must match final C-sim and Python reference Q12 before csynth",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "dsp_full_reg": false,
+  "pnr_requested": false,
+  "cosim_requested": false,
+  "PA_reevaluation_requested": false
+}

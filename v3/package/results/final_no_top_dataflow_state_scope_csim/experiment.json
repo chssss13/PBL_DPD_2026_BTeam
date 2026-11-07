@@ -1,0 +1,9 @@
+{
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\final_no_top_dataflow_csynth",
+  "change": "Move original ResGRU body including static state and LOOP_T into non-inline ResGRU_TimeLoop; top wrapper forwards all arguments",
+  "csim_requested": true,
+  "csynth_requested": true,
+  "pnr_requested": false,
+  "validation": "7680 samples vs final Csim and Python Q12; same C06 outputs",
+  "candidate": "C10"
+}

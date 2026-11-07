@@ -1,0 +1,24 @@
+{
+  "id": "P08",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\v31_recurrent_product_nosat_csim",
+  "scope": "P&R retry using unchanged completed csynth and RTL",
+  "clock_ns": 15,
+  "first_failure": "Vivado IP export EXCEPTION_ACCESS_VIOLATION; stack unavailable",
+  "csynth_rerun": false,
+  "pnr_requested": true,
+  "vivado_synth_design_args": "-directive AreaOptimized_high",
+  "execution": "outside agent sandbox; hidden process",
+  "status": "pnr_complete_extra_reports_running",
+  "pnr_results": {
+    "lut": 38047,
+    "ff": 40960,
+    "dsp": 362,
+    "bram": 0,
+    "wns_ns": 0.155487,
+    "whs_ns": 0.036848,
+    "unrouted_nets": 0,
+    "comparison_period_ns": 14.845
+  },
+  "adopted": true,
+  "adopted_version": "v3.2"
+}

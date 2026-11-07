@@ -1,0 +1,9 @@
+{
+  "id": "C23",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\final_sigmoid_symmetry_csynth",
+  "scope": "P&R retry using unchanged completed csynth and RTL",
+  "clock_ns": 15,
+  "first_failure": "Vivado IP export EXCEPTION_ACCESS_VIOLATION; stack unavailable",
+  "csynth_rerun": false,
+  "pnr_requested": true
+}

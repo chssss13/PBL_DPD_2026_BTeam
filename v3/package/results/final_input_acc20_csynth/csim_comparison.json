@@ -1,0 +1,14 @@
+{
+  "samples": 7680,
+  "comparisons": {
+    "python": {
+      "mismatched_q12_components": 0,
+      "max_abs_error": 5e-11
+    },
+    "original_csim": {
+      "mismatched_q12_components": 0,
+      "max_abs_error": 0.0
+    }
+  },
+  "passed": true
+}

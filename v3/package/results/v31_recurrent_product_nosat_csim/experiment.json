@@ -1,0 +1,30 @@
+{
+  "candidate": "P08",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\final_sigmoid_symmetry_csynth",
+  "change": "Recurrent r/z/n products only: AP_SAT to AP_WRAP, 18/3 AP_RND unchanged; input products and accumulation unchanged",
+  "scope": "csim only",
+  "reference": "parent C23 hls_out.txt copied as python_expected.txt (not a new Python evaluation)",
+  "csynth_requested": true,
+  "csim_status": "PASS",
+  "samples": 7680,
+  "q12_mismatches": 0,
+  "csynth_status": "completed",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_ii": 2,
+  "pnr_requested": true,
+  "hls_results": {
+    "lut": 192560,
+    "ff": 127980,
+    "dsp": 489,
+    "bram": 0,
+    "ii": 2,
+    "depth": 18,
+    "estimated_period_ns": 13.881
+  },
+  "pnr_status": "launch_requested",
+  "vivado_synth_design_args": "-directive AreaOptimized_high",
+  "vivado_clock_ns": 15,
+  "adopted": true,
+  "adopted_version": "v3.2"
+}

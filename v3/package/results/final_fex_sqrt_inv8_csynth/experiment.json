@@ -1,0 +1,13 @@
+{
+  "id": "C19",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "FEx double sqrt/div with fixed intermediate assignments; inverse16,8",
+  "data": "15,3",
+  "weight": "14,4",
+  "dataflow": "retained",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_ii": 2,
+  "python_reference": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\fex_sqrt_python\\sqrt_inv16_8.txt",
+  "pnr": false
+}

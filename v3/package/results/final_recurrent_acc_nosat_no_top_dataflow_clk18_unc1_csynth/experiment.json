@@ -1,0 +1,10 @@
+{
+  "candidate": "C16",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\final_recurrent_acc_nosat_no_top_dataflow_unc0_csynth",
+  "clock_ns": 18,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "dsp_full_reg": false,
+  "change": "Target clock and uncertainty1ns; no source changes. C-sim reused, csynth only.",
+  "pnr_requested": false
+}

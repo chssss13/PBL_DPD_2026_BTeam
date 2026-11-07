@@ -1,0 +1,42 @@
+--- v2_final/src/linear_layer.h
++++ C18/src/linear_layer.h
+@@ -1,3 +1,4 @@
++#include <cmath>
+ #include "activations.h"
+ #include "fxp_sqrt.h"
+ 
+@@ -52,25 +53,16 @@
+ //#pragma HLS PIPELINE II=1
+ #pragma HLS ARRAY_PARTITION variable=out complete dim=1
+ 
+-    data_T amp, amp2, amp3, phase, sin_theta, cos_theta;
+-
+-    // magnitude
+-    
+-    amp2 = Ix * Ix + Qx * Qx;
+-
+-    data_T delta = amp2 - data_T(1);
+     typedef ap_fixed<16,6,AP_RND,AP_SAT> inverse_t;
+-    inverse_t inv_sqrt = data_T(1) - data_T(0.5) * delta + data_T(0.375) * delta * delta; //taylor expansion for newton-raphson init
+-
+-    //#pragma HLS PIPELINE
+-    for (int i = 0; i < 4; i++) {
+-        inv_sqrt = inv_sqrt * (data_T(1.5) - data_T(0.5) * amp2 * inv_sqrt * inv_sqrt); // newton-raphson 4 iteration without divide
+-    }
+-
+-    amp = amp2 * inv_sqrt;
+-    amp3 = amp * amp2;
+-    sin_theta = Qx * inv_sqrt;
+-    cos_theta = Ix * inv_sqrt;
++    const data_T i2 = Ix * Ix;
++    const data_T q2 = Qx * Qx;
++    const data_T amp2 = i2 + q2;
++    const data_T amp = std::sqrt(amp2.to_double());
++    const inverse_t inv = amp > data_T(0) ? inverse_t(1.0 / amp.to_double()) : inverse_t(0);
++    const data_T amp_sq = amp * amp;
++    const data_T amp3 = amp_sq * amp;
++    const data_T sin_theta = Qx * inv;
++    const data_T cos_theta = Ix * inv;
+ 
+     // assign output
+     out[0] = Ix;

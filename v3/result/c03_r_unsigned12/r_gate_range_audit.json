@@ -1,0 +1,9 @@
+{
+  "inputs_checked": 32768,
+  "min_q12": 74,
+  "max_q12": 4022,
+  "values_changed_by_low12_selection": 0,
+  "table_sha256": "a8170ce945dec8b0c72672c538b6954a05b4e0e7cfe08dea121523c91c64578e",
+  "arithmetic_reason": "sum accum18,3 + data15,3 is exact signed19,4 (F15), in [-8,8). r in [0,1). Both products keep F27 and enough signed integer range; final data15,3 AP_RND/AP_SAT unchanged.",
+  "scope": "Full sigmoid input range checked in Python; HLS expression type checks and C++ audit run during C-sim. Full-network test vectors do not prove general equivalence of the entire model."
+}

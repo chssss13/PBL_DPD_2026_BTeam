@@ -1,0 +1,7 @@
+{
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "scope": "C-sim only; unchanged external input/output, bias and weight ports; internal weight narrowing",
+  "python_reference": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\combined_bit_candidates_python\\combined.txt",
+  "csynth": false,
+  "pnr": false
+}

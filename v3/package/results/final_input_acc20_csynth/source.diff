@@ -1,0 +1,11 @@
+--- final/src/gru_cell.h
++++ input_acc20/src/gru_cell.h
+@@ -82,7 +82,7 @@
+ #pragma HLS ARRAY_PARTITION variable=x complete dim=1
+ #pragma HLS ARRAY_PARTITION variable=w complete dim=1
+     static_assert(LEN == 5, "Wide accumulation is sized for five terms");
+-    typedef ap_fixed<accum_T::width + 3, accum_T::iwidth + 3, AP_RND, AP_SAT> wide_acc_t;
++    typedef ap_fixed<accum_T::width + 2, accum_T::iwidth + 2, AP_RND, AP_SAT> wide_acc_t;
+     wide_acc_t acc = 0;
+     for (int i = 0; i < LEN; i++) {
+ #pragma HLS PIPELINE II=1

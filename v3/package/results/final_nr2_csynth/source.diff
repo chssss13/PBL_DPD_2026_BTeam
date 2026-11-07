@@ -1,0 +1,13 @@
+--- v2_final/src/linear_layer.h
++++ C21/src/linear_layer.h
+@@ -63,8 +63,8 @@
+     inverse_t inv_sqrt = data_T(1) - data_T(0.5) * delta + data_T(0.375) * delta * delta; //taylor expansion for newton-raphson init
+ 
+     //#pragma HLS PIPELINE
+-    for (int i = 0; i < 4; i++) {
+-        inv_sqrt = inv_sqrt * (data_T(1.5) - data_T(0.5) * amp2 * inv_sqrt * inv_sqrt); // newton-raphson 4 iteration without divide
++    for (int i = 0; i < 2; i++) {
++        inv_sqrt = inv_sqrt * (data_T(1.5) - data_T(0.5) * amp2 * inv_sqrt * inv_sqrt); // newton-raphson 2 iteration without divide
+     }
+ 
+     amp = amp2 * inv_sqrt;

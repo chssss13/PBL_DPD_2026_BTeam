@@ -1,0 +1,20 @@
+{
+  "id": "C22",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "sigmoid PWL256 to midpoint direct4096 only",
+  "tanh": "PWL256 unchanged",
+  "table": "hyeonseo Q3.13 midpoint, AP_RND to Q3.12",
+  "storage": "fabric combinational requested, no BRAM directive",
+  "data": "15,3",
+  "weight": "14,4",
+  "fex": "NR4 inverse16,6",
+  "dataflow": "retained",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_ii": 2,
+  "dsp_full_reg": false,
+  "python_reference": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\direct4096_components_python\\sigmoid_direct4096.txt",
+  "csim_requested": true,
+  "csynth_requested": true,
+  "pnr_requested": false
+}

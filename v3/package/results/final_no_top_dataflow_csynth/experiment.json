@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-05",
+  "candidate": "C06",
+  "plan": "N2",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "Remove only top ResGRU pragma HLS DATAFLOW",
+  "unchanged": "All numerical types, arithmetic, other pragmas, LOOP_T pipeline, TB; no C04/C05 changes",
+  "validation": "7680 C-sim outputs must match final C-sim and Python Q12 reference before csynth",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "dsp_full_reg": false,
+  "pnr_requested": false,
+  "cosim_requested": false,
+  "followup_checks": "Achieved LOOP_T II, HLS resources; future co-sim block interval vs baseline134 cycles/64 samples requires separate run"
+}

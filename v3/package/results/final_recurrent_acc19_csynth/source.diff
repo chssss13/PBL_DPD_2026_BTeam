@@ -1,0 +1,20 @@
+--- final/src/gru_cell.h
++++ recurrent_acc19/src/gru_cell.h
+@@ -52,7 +52,7 @@
+ #pragma HLS ARRAY_PARTITION variable=x complete dim=1
+ #pragma HLS ARRAY_PARTITION variable=w complete dim=1
+     static_assert(LEN == 5, "Wide accumulation is sized for five terms");
+-    typedef ap_fixed<accum_T::width + 3, accum_T::iwidth + 3, AP_RND, AP_SAT> wide_acc_t;
++    typedef ap_fixed<accum_T::width + 1, accum_T::iwidth + 1, AP_RND, AP_SAT> wide_acc_t;
+     wide_acc_t acc = 0;
+     acc += accum_T(Recurrent_Term_Product<GATE, 0, data_T, weight_T>(x[0], w[0]));
+     acc += accum_T(Recurrent_Term_Product<GATE, 1, data_T, weight_T>(x[1], w[1]));
+@@ -124,7 +124,7 @@
+ #pragma HLS ARRAY_PARTITION variable=x complete dim=1
+ #pragma HLS ARRAY_PARTITION variable=w complete dim=1
+     static_assert(LEN == 5, "Wide accumulation is sized for five terms");
+-    typedef ap_fixed<accum_T::width + 3, accum_T::iwidth + 3, AP_RND, AP_SAT> wide_acc_t;
++    typedef ap_fixed<accum_T::width + 1, accum_T::iwidth + 1, AP_RND, AP_SAT> wide_acc_t;
+     wide_acc_t acc = 0;
+     acc += accum_T(Recurrent_Row_Product<ROW, 0, data_T, weight_T>(x[0], w[0]));
+     acc += accum_T(Recurrent_Row_Product<ROW, 1, data_T, weight_T>(x[1], w[1]));

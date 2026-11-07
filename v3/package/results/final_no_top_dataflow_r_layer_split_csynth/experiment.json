@@ -1,0 +1,13 @@
+{
+  "candidate": "C08",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\final_no_top_dataflow_csynth",
+  "change": "Only r recurrent product specializations receive layer-distinct tags; z and n sharing identifiers unchanged.",
+  "unchanged": "C06 top DATAFLOW removal; numeric types, arithmetic, loop order, other directives and testbench",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "II_request": 2,
+  "dsp_full_reg": false,
+  "validation": "C-sim 7680 exact vs adopted final and Python Q12 before csynth; C06 already matches those outputs",
+  "pnr_requested": false,
+  "cosim_requested": false
+}

@@ -1,0 +1,12 @@
+{
+  "id": "C23",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\result\\final",
+  "change": "sigmoid PWL256 table 256->128 entries with symmetry reconstruction",
+  "tanh": "PWL256 unchanged",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_ii": 2,
+  "dsp_full_reg": false,
+  "validation": "C++ exhaustive 32768 input codes against original packed table; network C-sim 7680 samples Q12 vs v2 final before csynth",
+  "pnr_requested": false
+}
