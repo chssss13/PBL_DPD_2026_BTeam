@@ -1,0 +1,22 @@
+[
+  {
+    "file": "C:\\Project\\PBL_DPD_2026_BTeam\\v3\\reference\\csim_expected.txt",
+    "samples": 7680,
+    "metrics": {
+      "NMSE": -44.96824694213092,
+      "EVM": -48.751220746767686,
+      "ACPR_L": -53.345505894649115,
+      "ACPR_R": -50.08045357920001
+    }
+  },
+  {
+    "file": "C:\\Project\\PBL_DPD_2026_BTeam\\v3\\results\\v3.1\\csim\\hls_out.txt",
+    "samples": 7680,
+    "metrics": {
+      "NMSE": -44.96004857339849,
+      "EVM": -48.75336666428022,
+      "ACPR_L": -53.607990555577594,
+      "ACPR_R": -50.30615154887165
+    }
+  }
+]

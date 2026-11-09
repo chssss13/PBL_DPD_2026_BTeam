@@ -1,0 +1,11 @@
+{
+  "samples": 7680,
+  "inverse_format": [
+    16,
+    5
+  ],
+  "reference_source_sha256": "2c8342ee0339b2f9e0d8281962479394ea2d24663e61dc3376c8afef14348dac",
+  "scope": "Independent Python integer model; no HLS output used in calculation",
+  "q12_mismatches": 0,
+  "max_abs_error": 0.0
+}

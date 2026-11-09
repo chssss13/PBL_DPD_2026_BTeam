@@ -1,0 +1,20 @@
+{
+  "samples": 7680,
+  "baseline_q12_mismatches": 7017,
+  "python_q12_mismatches": 7017,
+  "baseline_max_abs_error": 0.00146484375,
+  "independent_reference_q12_mismatches": 0,
+  "reference_model_sha256": "2c8342ee0339b2f9e0d8281962479394ea2d24663e61dc3376c8afef14348dac",
+  "functional_pass": true,
+  "nmse_db": -44.96004857339849,
+  "acpr_l_dbc": -53.607990555577594,
+  "acpr_r_dbc": -50.30615154887165,
+  "pa_delta_db": {
+    "NMSE": 0.008198368732429628,
+    "ACPR_L": -0.2624846609284788,
+    "ACPR_R": -0.2256979696716357
+  },
+  "pa_constraints_pass": true,
+  "eligible_for_synthesis": true,
+  "pa_source": "Fresh candidate and baseline PA, 3 x 2560 samples"
+}

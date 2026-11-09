@@ -1,0 +1,24 @@
+
+
+Implementation tool: Xilinx Vivado v.2024.1
+Project:             prj_candidate
+Solution:            sol1
+Device target:       xczu7ev-ffvc1156-2-e
+Report date:         Mon Nov 09 21:06:37 +0900 2026
+
+#=== Post-Implementation Resource usage ===
+SLICE:            0
+LUT:          41179
+FF:           41132
+DSP:            362
+BRAM:             0
+URAM:             0
+LATCH:            0
+SRL:           5057
+CLB:           9508
+
+#=== Final timing ===
+CP required:                     15.000
+CP achieved post-synthesis:      13.630
+CP achieved post-implementation: 14.750
+Timing met

@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-03",
+  "review": "state-update final saturation only; preserve AP_RND",
+  "scope": "integer range proof/audit only; no C++ change or synthesis",
+  "formats": {
+    "h_prev": "signed15,3 Q12",
+    "n": "signed15,3 Q12",
+    "z_gate": "unsigned12,0 Q12"
+  },
+  "identity": "n+z*(h-n) = (1-z)*n+z*h",
+  "proof": "For every z in [0,4095]/4096, weights1-z andz are nonnegative and sum to1. For each fixed z the expression is monotone in h and n, so extrema occur at range corners. AP_RND is monotone and fixes the representable endpoint values.",
+  "z_codes_checked": 4096,
+  "corners_per_z": 4,
+  "corner_results_checked": 16384,
+  "rounded_min_q12": -16384,
+  "rounded_max_q12": 16383,
+  "outside_signed15": 0,
+  "assumptions": "C++ intermediates retain full exact expression until final Q12 rounding; must verify candidate expression types and C-sim before synthesis.",
+  "unchanged_if_implemented": "AP_RND, state bit width/fraction, product18,3 and accumulator21,6; only final state clamp is proposed for removal",
+  "implementation_status": "not started"
+}

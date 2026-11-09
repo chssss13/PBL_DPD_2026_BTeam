@@ -1,0 +1,10 @@
+{
+  "samples": 7680,
+  "nr_steps": 1,
+  "seed_address_bits": 6,
+  "reference_source_sha256": "a0d6be1817443ae6c83ae92173f3c91471ce74021caa570a7a12cb24b74f2747",
+  "network_reference_sha256": "ef942b4676be4054276bf0e6ff4e3b40584ff0511cfdb62ab0fe5ae109bfe1c5",
+  "scope": "Independent Python integer calculation; no HLS output used",
+  "q12_mismatches": 0,
+  "max_abs_error": 0.0
+}

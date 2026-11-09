@@ -23,13 +23,7 @@
 #include <cmath>
 #include "ap_fixed.h"
 #include "nnet_common.h"
-#include "activation_lut.h"
-#ifndef V2_ROM
-#define V2_ROM 0
-#endif
-#ifndef ACT_LUT
-#define ACT_LUT 1
-#endif
+#include "activation_interp.h"
 
 
 
@@ -52,66 +46,15 @@ struct activ_config
     typedef float constant_t;
 };
 
-// Accuracy reference: double math followed by fixed-point quantization.
-// This establishes C-sim behavior; II/resource feasibility is not established.
+// Reference activation functions: double math followed by output quantization.
 template <typename in_T, typename out_T>
 void reference_sigmoid(in_T in, out_T &out) {
-#if ACT_LUT == 2
-#pragma HLS INLINE off
-#if V2_ROM
-#pragma HLS PIPELINE II=1
-#pragma HLS BIND_STORAGE variable=activation_tables::sigmoid_direct type=rom_1p impl=bram latency=1
-#else
-#pragma HLS LATENCY min=0 max=0
-#pragma HLS ARRAY_PARTITION variable=activation_tables::sigmoid_direct complete dim=1
-#endif
-    ap_uint<16-DIRECT_LUT_SHIFT> index = in.range(15,DIRECT_LUT_SHIFT);
-    ap_int<16> result = activation_tables::sigmoid_direct[index];
-    out.range(15,0) = result.range(15,0);
-#else
-#pragma HLS INLINE
-#if ACT_LUT
-#pragma HLS ARRAY_PARTITION variable=activation_tables::sigmoid_lut complete dim=1
-    ap_int<16> raw = in.range(15,0);
-    ap_uint<17> magnitude = raw < 0 ? ap_uint<17>(-ap_int<17>(raw)) : ap_uint<17>(raw);
-    ap_uint<12> index = (magnitude + 8) >> 4;
-    ap_int<16> result = activation_tables::sigmoid_lut[index];
-    if (raw < 0) result = 8192 - result;
-    out.range(15,0) = result.range(15,0);
-#else
     out = out_T(1.0 / (1.0 + std::exp(-in.to_double())));
-#endif
-#endif
 }
 
 template <typename in_T, typename out_T>
 void reference_tanh(in_T in, out_T &out) {
-#if ACT_LUT == 2
-#pragma HLS INLINE off
-#if V2_ROM
-#pragma HLS PIPELINE II=1
-#pragma HLS BIND_STORAGE variable=activation_tables::tanh_direct type=rom_1p impl=bram latency=1
-#else
-#pragma HLS LATENCY min=0 max=0
-#pragma HLS ARRAY_PARTITION variable=activation_tables::tanh_direct complete dim=1
-#endif
-    ap_uint<16-DIRECT_LUT_SHIFT> index = in.range(15,DIRECT_LUT_SHIFT);
-    ap_int<16> result = activation_tables::tanh_direct[index];
-    out.range(15,0) = result.range(15,0);
-#else
-#pragma HLS INLINE
-#if ACT_LUT
-#pragma HLS ARRAY_PARTITION variable=activation_tables::tanh_lut complete dim=1
-    ap_int<16> raw = in.range(15,0);
-    ap_uint<17> magnitude = raw < 0 ? ap_uint<17>(-ap_int<17>(raw)) : ap_uint<17>(raw);
-    ap_uint<12> index = (magnitude + 8) >> 4;
-    ap_int<16> result = activation_tables::tanh_lut[index];
-    if (raw < 0) result = -result;
-    out.range(15,0) = result.range(15,0);
-#else
     out = out_T(std::tanh(in.to_double()));
-#endif
-#endif
 }
 
 // 함수 정의 (벡터 아닌 스칼라 버전)
@@ -289,15 +232,59 @@ void  sigmoid_ele(data_T data, res_T &res)
     }
 
     // Index into the lookup table based on data
-    int data_round;
-    int index;
-
-    data_round = data*CONFIG_T::table_size/16;
-    index = data_round + 8*CONFIG_T::table_size/16;
+    // Round to nearest, with midpoint ties toward positive infinity.
+    ap_fixed<16,16,AP_RND,AP_SAT> data_round = data*CONFIG_T::table_size/16;
+    int index = data_round.to_int() + 8*CONFIG_T::table_size/16;
     if (index < 0)   index = 0;
     if (index > CONFIG_T::table_size-1) index = CONFIG_T::table_size-1;
     res = (res_T) sigmoid_table[index];
 
+}
+
+// Experiment: retain table values and index rounding while requesting combinational lookup.
+template<class data_T, class res_T, typename CONFIG_T>
+void sigmoid_comb(data_T data, res_T &res) {
+    #pragma HLS INLINE off
+    #pragma HLS LATENCY min=0 max=0
+    #pragma HLS ARRAY_PARTITION variable=activation_interp_tables::sigmoid complete dim=1
+    static_assert(data_T::width == 15 && data_T::iwidth == 3, "Unexpected input format");
+    static_assert(res_T::width == 15 && res_T::iwidth == 3, "Unexpected output format");
+    ap_uint<15> position = data.range(14,0);
+    position[14] = !position[14];
+    ap_uint<8> index = position.range(14,7);
+    ap_uint<7> fraction = position.range(6,0);
+    ap_uint<21> packed = activation_interp_tables::sigmoid[index];
+    ap_int<15> base;
+    base.range(14,0) = packed.range(14,0);
+    ap_uint<6> delta = packed.range(20,15);
+    ap_uint<15> product = delta * fraction;
+    #pragma HLS BIND_OP variable=product op=mul impl=fabric
+    ap_uint<15> rounded = product + ap_uint<15>(64);
+    ap_uint<8> increment = rounded.range(14,7);
+    ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+    res.range(14,0) = result.range(14,0);
+}
+template<class data_T, class res_T, typename CONFIG_T>
+void tanh_comb(data_T data, res_T &res) {
+    #pragma HLS INLINE off
+    #pragma HLS LATENCY min=0 max=0
+    #pragma HLS ARRAY_PARTITION variable=activation_interp_tables::tanh complete dim=1
+    static_assert(data_T::width == 15 && data_T::iwidth == 3, "Unexpected input format");
+    static_assert(res_T::width == 15 && res_T::iwidth == 3, "Unexpected output format");
+    ap_uint<15> position = data.range(14,0);
+    position[14] = !position[14];
+    ap_uint<8> index = position.range(14,7);
+    ap_uint<7> fraction = position.range(6,0);
+    ap_uint<23> packed = activation_interp_tables::tanh[index];
+    ap_int<15> base;
+    base.range(14,0) = packed.range(14,0);
+    ap_uint<8> delta = packed.range(22,15);
+    ap_uint<15> product = delta * fraction;
+    #pragma HLS BIND_OP variable=product op=mul impl=fabric
+    ap_uint<15> rounded = product + ap_uint<15>(64);
+    ap_uint<8> increment = rounded.range(14,7);
+    ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+    res.range(14,0) = result.range(14,0);
 }
 
 // *************************************************
@@ -469,10 +456,9 @@ void  tanh_ele(data_T data, res_T &res)
     }
 
     // Index into the lookup table based on data
-    int data_round;
-    int index;
-    data_round = data*CONFIG_T::table_size/8;
-    index = data_round + 4*CONFIG_T::table_size/8;
+    // Round to nearest, with midpoint ties toward positive infinity.
+    ap_fixed<16,16,AP_RND,AP_SAT> data_round = data*CONFIG_T::table_size/8;
+    int index = data_round.to_int() + 4*CONFIG_T::table_size/8;
     //std::cout << "Input: "  << data[ii] << " Round: " << data_round << " Index: " << index << std::endl;
     if (index < 0)   index = 0;
     if (index > CONFIG_T::table_size-1) index = CONFIG_T::table_size-1;
