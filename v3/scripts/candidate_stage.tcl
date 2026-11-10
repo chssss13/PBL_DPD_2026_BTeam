@@ -16,6 +16,9 @@ if {$ACTION eq "csim"} {
     create_clock -period 15 -name default
     set_clock_uncertainty 1.0
     config_schedule -enable_dsp_full_reg=false
+    if {[file exists $CASE/candidate_directives.tcl]} {
+        source $CASE/candidate_directives.tcl
+    }
     set_directive_pipeline -II 2 "ResGRU/LOOP_T"
     csim_design -argv [list $BASE/golden 7680 $OUT/csim/hls_out.txt 2560]
 } else {

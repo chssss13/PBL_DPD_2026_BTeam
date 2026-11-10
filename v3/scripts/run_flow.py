@@ -12,7 +12,9 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('version',choices=['v3.1','v3.2']);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('version');args=ap.parse_args()
+    import re
+    assert re.fullmatch(r'v3\.[1-9][0-9]*',args.version), 'Invalid version'
     env=os.environ.copy();env.update(PYTHONIOENCODING='utf-8',EXPERIMENT_MIN_FREE_COMMIT_MB='8192')
     out=ROOT/'results'/args.version;out.mkdir(parents=True,exist_ok=True)
     for stage in ['csim','csynth','cosim','impl']:
@@ -32,6 +34,21 @@ def main():
             render();print('DISCARD: C/reference/PA screening failed. Candidate artifacts require deletion.',flush=True);return
         print('FINISHED',args.version,stage,flush=True)
     print('Final disposition:',s.get('disposition'),flush=True)
+    print('FINAL_METRICS '+json.dumps({
+        'version':args.version,
+        'candidate':s.get('settings',{}).get('title'),
+        'parent':s.get('settings',{}).get('parent'),
+        'disposition':s.get('disposition'),
+        'loop_t_ii':s.get('loop_t_ii'),
+        'timing':s.get('timing'),
+        'resources':s.get('resources'),
+        'resource_delta':s.get('resource_delta'),
+        'mandatory_conditions_pass':s.get('mandatory_conditions_pass'),
+        'quality':s.get('hls_out.txt')
+    },ensure_ascii=True),flush=True)
+    if s.get('disposition')=='accepted':
+        from organize_results import organize
+        organize(args.version)
     if s.get('disposition')=='discard_pending_delete':
         print('Candidate is rejected. Remove its sources/results/document via reviewed filesystem action; do not archive.',flush=True)
 

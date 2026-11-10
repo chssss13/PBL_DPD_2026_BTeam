@@ -1,0 +1,2386 @@
+[
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      5,
+      5
+    ],
+    "storage_bits": 4960,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0220052000387523
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      4,
+      5
+    ],
+    "storage_bits": 4992,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9796513649635772
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      5,
+      5
+    ],
+    "storage_bits": 5120,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9362947982439879
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      5,
+      5
+    ],
+    "storage_bits": 5376,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.8959203870008484
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      3,
+      6
+    ],
+    "storage_bits": 5408,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.095924178347891
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      4,
+      6
+    ],
+    "storage_bits": 5504,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0616379775198794
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      4,
+      6
+    ],
+    "storage_bits": 5504,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0616379775198794
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      3,
+      6
+    ],
+    "storage_bits": 5568,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0031079632509654
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      4,
+      6
+    ],
+    "storage_bits": 5600,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8831926725664112
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      0,
+      5,
+      6
+    ],
+    "storage_bits": 5632,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0942242275494771
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      1,
+      5,
+      6
+    ],
+    "storage_bits": 5632,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0942242275494771
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      2,
+      5,
+      6
+    ],
+    "storage_bits": 5728,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9148967880654626
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      4,
+      6
+    ],
+    "storage_bits": 5760,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8018761569555176
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      3,
+      5,
+      6
+    ],
+    "storage_bits": 5888,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.8288248811381992
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      5,
+      5
+    ],
+    "storage_bits": 5888,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.8755230021785549
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      5,
+      6
+    ],
+    "storage_bits": 5888,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9897546452593693
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      5,
+      6
+    ],
+    "storage_bits": 5888,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9897546452593693
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      5,
+      6
+    ],
+    "storage_bits": 5984,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8048771014493455
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      4,
+      6
+    ],
+    "storage_bits": 6016,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7632296713637383
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      5,
+      6
+    ],
+    "storage_bits": 6144,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7218005914031935
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      4,
+      5,
+      6
+    ],
+    "storage_bits": 6144,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7888304114122059
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      5,
+      6
+    ],
+    "storage_bits": 6400,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6877662836585551
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      5,
+      5,
+      6
+    ],
+    "storage_bits": 6656,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7686483672655527
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      6,
+      6
+    ],
+    "storage_bits": 6656,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.9393211478243211
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      6,
+      6
+    ],
+    "storage_bits": 6656,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.9393211478243211
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      6,
+      6
+    ],
+    "storage_bits": 6752,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7614683081882003
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      2,
+      4,
+      6
+    ],
+    "storage_bits": 6880,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9480203983993435
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      5,
+      6
+    ],
+    "storage_bits": 6912,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6691897648696146
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      6,
+      6
+    ],
+    "storage_bits": 6912,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6846531968814576
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      3,
+      4,
+      6
+    ],
+    "storage_bits": 7040,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.8656024365290338
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      0,
+      4,
+      7
+    ],
+    "storage_bits": 7040,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0933313931083521
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      1,
+      4,
+      7
+    ],
+    "storage_bits": 7040,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0933313931083521
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      2,
+      4,
+      7
+    ],
+    "storage_bits": 7136,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9073269463098734
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      6,
+      6
+    ],
+    "storage_bits": 7168,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6502234441665035
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      3,
+      4,
+      7
+    ],
+    "storage_bits": 7296,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.8155366930164761
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      4,
+      4,
+      6
+    ],
+    "storage_bits": 7296,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.8357914592057339
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      3,
+      7
+    ],
+    "storage_bits": 7360,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.1573579995241317
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      3,
+      7
+    ],
+    "storage_bits": 7360,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.1573579995241317
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      0,
+      6,
+      6
+    ],
+    "storage_bits": 7424,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9869757310846098
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      1,
+      6,
+      6
+    ],
+    "storage_bits": 7424,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9869757310846098
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      3,
+      7
+    ],
+    "storage_bits": 7456,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9934477724382395
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      2,
+      6,
+      6
+    ],
+    "storage_bits": 7520,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8161351972291417
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      4,
+      4,
+      7
+    ],
+    "storage_bits": 7552,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.7792944274710939
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      4,
+      7
+    ],
+    "storage_bits": 7552,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9680882316290959
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      4,
+      7
+    ],
+    "storage_bits": 7552,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9680882316290959
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      3,
+      7
+    ],
+    "storage_bits": 7616,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.9014555287492001
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      4,
+      7
+    ],
+    "storage_bits": 7648,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.785379710116387
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      6,
+      6
+    ],
+    "storage_bits": 7680,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6334391187695152
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      3,
+      6,
+      6
+    ],
+    "storage_bits": 7680,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.739138473896299
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      0,
+      5,
+      6
+    ],
+    "storage_bits": 7680,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.917361833942856
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      1,
+      5,
+      6
+    ],
+    "storage_bits": 7680,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.917361833942856
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      2,
+      5,
+      6
+    ],
+    "storage_bits": 7776,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7570066591723286
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      4,
+      7
+    ],
+    "storage_bits": 7808,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7035588939012142
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      3,
+      5,
+      6
+    ],
+    "storage_bits": 7936,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6889189901577688
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      4,
+      6,
+      6
+    ],
+    "storage_bits": 7936,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.702430212280907
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      0,
+      5,
+      7
+    ],
+    "storage_bits": 7936,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8761153605547617
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      1,
+      5,
+      7
+    ],
+    "storage_bits": 7936,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8761153605547617
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      5,
+      7
+    ],
+    "storage_bits": 7936,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8894935246918608
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      5,
+      7
+    ],
+    "storage_bits": 7936,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8894935246918608
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      2,
+      5,
+      7
+    ],
+    "storage_bits": 8032,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6964527167861074
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      5,
+      7
+    ],
+    "storage_bits": 8032,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.7099495195522707
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      4,
+      7
+    ],
+    "storage_bits": 8064,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6683227314984131
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      3,
+      5,
+      7
+    ],
+    "storage_bits": 8192,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6097755094089955
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      5,
+      7
+    ],
+    "storage_bits": 8192,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.628845591018773
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      4,
+      5,
+      6
+    ],
+    "storage_bits": 8192,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6617145993081156
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      4,
+      5,
+      7
+    ],
+    "storage_bits": 8448,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5722356274134371
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      5,
+      7
+    ],
+    "storage_bits": 8448,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5976945453417238
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      5,
+      6,
+      6
+    ],
+    "storage_bits": 8448,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6851878734150219
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      6,
+      6,
+      6
+    ],
+    "storage_bits": 8704,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6306386272065801
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      5,
+      5,
+      6
+    ],
+    "storage_bits": 8704,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6535005648668178
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      6,
+      7
+    ],
+    "storage_bits": 8704,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8485828029352822
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      6,
+      7
+    ],
+    "storage_bits": 8704,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8485828029352822
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      6,
+      7
+    ],
+    "storage_bits": 8800,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6702833618375516
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      5,
+      5,
+      7
+    ],
+    "storage_bits": 8960,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5545774538725406
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      5,
+      7
+    ],
+    "storage_bits": 8960,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.582332661049507
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      6,
+      7
+    ],
+    "storage_bits": 8960,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5944691368670875
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      6,
+      7
+    ],
+    "storage_bits": 9216,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5654760680999241
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      6,
+      6,
+      6
+    ],
+    "storage_bits": 9472,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6814363277298914
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      0,
+      6,
+      6
+    ],
+    "storage_bits": 9472,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.850737846115065
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      1,
+      6,
+      6
+    ],
+    "storage_bits": 9472,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.850737846115065
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      2,
+      6,
+      6
+    ],
+    "storage_bits": 9568,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6988149148066676
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      6,
+      7
+    ],
+    "storage_bits": 9728,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5511551257642897
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      3,
+      6,
+      6
+    ],
+    "storage_bits": 9728,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6412915739447229
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      0,
+      6,
+      7
+    ],
+    "storage_bits": 9728,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7748566525695253
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      1,
+      6,
+      7
+    ],
+    "storage_bits": 9728,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7748566525695253
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      2,
+      6,
+      7
+    ],
+    "storage_bits": 9824,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6023736414437886
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      3,
+      6,
+      7
+    ],
+    "storage_bits": 9984,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5225038314751864
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      4,
+      6,
+      6
+    ],
+    "storage_bits": 9984,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6214744312922295
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      4,
+      6,
+      7
+    ],
+    "storage_bits": 10240,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.49044831611623463
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      7,
+      7
+    ],
+    "storage_bits": 10240,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8379065594347319
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      7,
+      7
+    ],
+    "storage_bits": 10240,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8379065594347319
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      7,
+      7
+    ],
+    "storage_bits": 10336,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6553192804847116
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      7,
+      7
+    ],
+    "storage_bits": 10496,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5825946308594424
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      5,
+      6,
+      6
+    ],
+    "storage_bits": 10496,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.617780569483413
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      5,
+      6,
+      7
+    ],
+    "storage_bits": 10752,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4773303240746915
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      6,
+      6,
+      7
+    ],
+    "storage_bits": 10752,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5486021832518988
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      7,
+      7
+    ],
+    "storage_bits": 10752,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5546875
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      7,
+      7
+    ],
+    "storage_bits": 11264,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5421109456040802
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      3,
+      8
+    ],
+    "storage_bits": 11456,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0593070129364055
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      3,
+      8
+    ],
+    "storage_bits": 11456,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 1.0593070129364055
+  },
+  {
+    "alpha": 6,
+    "chunks": [
+      3,
+      3,
+      3
+    ],
+    "gammas": [
+      6,
+      6,
+      6
+    ],
+    "storage_bits": 11520,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6162968256804102
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      3,
+      8
+    ],
+    "storage_bits": 11552,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.90480083486989
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      4,
+      8
+    ],
+    "storage_bits": 11648,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8683128958827284
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      4,
+      8
+    ],
+    "storage_bits": 11648,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.8683128958827284
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      3,
+      8
+    ],
+    "storage_bits": 11712,
+    "max_abs_error_lsb": 4,
+    "rmse_lsb": 0.8123497457222474
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      4,
+      8
+    ],
+    "storage_bits": 11744,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7001673907002525
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      6,
+      6,
+      7
+    ],
+    "storage_bits": 11776,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4740584830086895
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      4,
+      8
+    ],
+    "storage_bits": 11904,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.6162968256804102
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      5,
+      8
+    ],
+    "storage_bits": 12032,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7911868063232602
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      5,
+      8
+    ],
+    "storage_bits": 12032,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7911868063232602
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      5,
+      8
+    ],
+    "storage_bits": 12128,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.6237291767566273
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      4,
+      8
+    ],
+    "storage_bits": 12160,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5843729110925232
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      6,
+      7,
+      7
+    ],
+    "storage_bits": 12288,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5392889017319474
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      5,
+      8
+    ],
+    "storage_bits": 12288,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5421109456040802
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      5,
+      8
+    ],
+    "storage_bits": 12544,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5135493259232748
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      6,
+      8
+    ],
+    "storage_bits": 12800,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7544626347192418
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      6,
+      8
+    ],
+    "storage_bits": 12800,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7544626347192418
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      6,
+      8
+    ],
+    "storage_bits": 12896,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5852600250102513
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      5,
+      8
+    ],
+    "storage_bits": 13056,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.4993281619148373
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      6,
+      8
+    ],
+    "storage_bits": 13056,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5088930810776955
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      6,
+      8
+    ],
+    "storage_bits": 13312,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4829237331414247
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      0,
+      7,
+      7
+    ],
+    "storage_bits": 13312,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.7411588266019639
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      1,
+      7,
+      7
+    ],
+    "storage_bits": 13312,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.7411588266019639
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      2,
+      7,
+      7
+    ],
+    "storage_bits": 13408,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5641252562042405
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      3,
+      7,
+      7
+    ],
+    "storage_bits": 13568,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.48995027250859857
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      4,
+      7,
+      7
+    ],
+    "storage_bits": 13824,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4609375
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      6,
+      8
+    ],
+    "storage_bits": 13824,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.470374788234074
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      5,
+      7,
+      7
+    ],
+    "storage_bits": 14336,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4512352836935516
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      7,
+      7,
+      7
+    ],
+    "storage_bits": 14336,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5378155868592411
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      7,
+      8
+    ],
+    "storage_bits": 14336,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7447324787087978
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      7,
+      8
+    ],
+    "storage_bits": 14336,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.7447324787087978
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      7,
+      8
+    ],
+    "storage_bits": 14432,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.5687585851000405
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      7,
+      8
+    ],
+    "storage_bits": 14592,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.4957706871314096
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      6,
+      6,
+      8
+    ],
+    "storage_bits": 14848,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.46875
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      7,
+      8
+    ],
+    "storage_bits": 14848,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.470958339784423
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      6,
+      7,
+      7
+    ],
+    "storage_bits": 15360,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.44852187795022885
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      7,
+      8
+    ],
+    "storage_bits": 15360,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4604738133841055
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      6,
+      7,
+      8
+    ],
+    "storage_bits": 16384,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4585478309634122
+  },
+  {
+    "alpha": 7,
+    "chunks": [
+      3,
+      3,
+      2
+    ],
+    "gammas": [
+      7,
+      7,
+      7
+    ],
+    "storage_bits": 17408,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4479772245884828
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      0,
+      8,
+      8
+    ],
+    "storage_bits": 17408,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.728156852844049
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      1,
+      8,
+      8
+    ],
+    "storage_bits": 17408,
+    "max_abs_error_lsb": 3,
+    "rmse_lsb": 0.728156852844049
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      2,
+      8,
+      8
+    ],
+    "storage_bits": 17504,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.55320003022189
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      3,
+      8,
+      8
+    ],
+    "storage_bits": 17664,
+    "max_abs_error_lsb": 2,
+    "rmse_lsb": 0.48487877028696563
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      4,
+      8,
+      8
+    ],
+    "storage_bits": 17920,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4621277006615704
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      5,
+      8,
+      8
+    ],
+    "storage_bits": 18432,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.45386523588368166
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      7,
+      7,
+      8
+    ],
+    "storage_bits": 18432,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.4570813273846898
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      6,
+      8,
+      8
+    ],
+    "storage_bits": 19456,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.45278812908881566
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      7,
+      8,
+      8
+    ],
+    "storage_bits": 21504,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.45170845392105513
+  },
+  {
+    "alpha": 8,
+    "chunks": [
+      3,
+      2,
+      2
+    ],
+    "gammas": [
+      8,
+      8,
+      8
+    ],
+    "storage_bits": 25600,
+    "max_abs_error_lsb": 1,
+    "rmse_lsb": 0.45177600921253
+  }
+]

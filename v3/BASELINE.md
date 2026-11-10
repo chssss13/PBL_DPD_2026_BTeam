@@ -1,17 +1,11 @@
 # v3 baseline
 
-Original sehyeon v2 final, imported unchanged. Active candidate: [v3.1 FEx mixed precision](docs/v3.1_fex_mixed_precision.md). The rejected activation-symmetry candidate was actually deleted. The baseline itself is not being re-synthesized.
+The baseline is sehyeon's v2 final, commit `a1998bd42440256687f262e53eea879257515f4a`, originally `v2/result/final`.
 
-- Commit: a1998bd42440256687f262e53eea879257515f4a
-- Original path: v2/result/final
-- Local original files: src/, tb/, golden/, reference/, scripts/, reports/, logs/, changes/
-- 98 original file hashes verified unchanged. See IMPORT_ORIGIN.json.
-- II=2, target 15ns, imported routed comparison period 14.907ns.
-- WNS +0.093ns, WHS +0.037ns.
-- LUT 41,387; FF 41,088; DSP 362; BRAM 0.
-- PA NMSE -44.97dB, ACPR L/R -53.35/-50.08dBc (imported measurements).
-- Original full 7680-sample RTL validation retained in reports/.
+Source, testbench, inputs and original measurement evidence remain in src, tb, golden, reference, reports and logs. The changes directory and v1/v2 architecture documents describe how this specific baseline circuit was built; they are relevant baseline design evidence.
 
-Local experiment series 01-14, D01-D04, and the unintended sehyeon v3.3/R00-R02 restart were removed from the workspace. The latter process tree was terminated. Only the explicitly requested new v3.1 candidate is running; its mandatory requirements are II=2 and 15ns.
+Baseline: II=2, routed period 14.907 ns, WNS +0.093 ns, WHS +0.037 ns; LUT 41,387 / FF 41,088 / DSP 362 / BRAM 0. Original full 7,680-sample RTL verification is preserved in reports.
 
-[Original instructions](README.md) | [Original reports](reports/)
+Accepted experiments: v3.1 and v3.2. Active candidate: v3.3. Sources and configuration are in experiments; consolidated results are in [results](results/README.md).
+
+[Baseline reproduction](README.md) | [Experiment plan](docs/PLAN.md)

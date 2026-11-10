@@ -1,0 +1,18 @@
+{
+  "alpha": 8,
+  "beta": 7,
+  "guard": 3,
+  "gammas": [
+    2,
+    5,
+    5
+  ],
+  "chunks": [
+    3,
+    2,
+    2
+  ],
+  "storage_bits": 4960,
+  "max_abs_error_lsb": 4,
+  "monotonic": true
+}

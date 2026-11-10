@@ -1,64 +1,26 @@
-# 논문 검토에서 선정한 후속 후보
+# v3.3까지 채택한 논문 기반 개선
 
-2026-11-09. 후보를 먼저 정하고 근거를 붙이는 방식 대신 원문의 제안·적용 조건을 읽고 아래 순서로 선정했습니다. 후보 선정 문서이며 새로운 합성·구현을 시작했다는 뜻은 아닙니다.
+기준은 sehyeon v2 final(a1998bd)에서 가져온 기존 v3다. 입력 I/Q·가중치 인터페이스와 II=2·실제 15 ns를 유지하고, 제공 7,680샘플의 독립 참조/C/RTL 및 PA를 검증했다.
 
-## 출발점
+| 버전 | 논문에서 참고한 원리 | 실제 적용 | 결과 |
+|---|---|---|---|
+| v3.1 | MP-DPD의 혼합 정밀도 | FEx inverse 16/6→16/5 | ACPR 개선으로 채택 |
+| v3.2 | polynomial-plus-correction seed | 64항 보정 seed·정규화 NR 1회 | DSP 감소로 채택 |
+| v3.3 | multipartite table-lookup-and-addition | sigmoid 부분 오프셋 표 합산 | LUT −931개(부모 대비 −2.28%)로 채택 |
 
-현재 v3.1(FEx inverse 16/5)은 II=2, 구현 비교 주기 14.750ns(WNS +0.250ns, WHS +0.037ns), 전체 7,680샘플 독립 참조/C/RTL 일치를 통과했습니다. PA는 NMSE −44.9600dB, ACPR 좌/우 −53.6080/−50.3062dBc입니다. LUT 41,179 / FF 41,132 / DSP 362 / BRAM 0입니다.
+## 논문과 적용 범위
 
-후속 후보는 이 통과본의 조건·소스를 별도 고정한 뒤 한 가지 변경씩 비교합니다. 기존 v3 원본도 유지합니다. 새 후보 번호는 실행 시 지정하며 현재 문서는 A/B/C로 구분합니다. 기존 단순 정밀도 16/4·17/6 예약은 해제했습니다.
+- [MP-DPD, IEEE MWTL 2024](https://arxiv.org/abs/2404.15364): 혼합 정밀도 원리를 현재 FEx에 적용했다. 논문 모델의 QAT·학습을 재현한 것은 아니다.
+- [Ercegovac·Muller·Tisserand, Simple Seed Architectures for Reciprocal and Square Root Reciprocal, Asilomar 2005](https://perso.ens-lyon.fr/jean-michel.muller/EMTAsilomar05.pdf): 선형식+보정 표 seed가 근거다. 현재 고정소수점 정규화·역정규화와 0 처리는 자체 설계다.
+- [de Dinechin·Tisserand, Multipartite Table Methods, IEEE TC 54(3), 2005](https://perso.citi-lab.fr/fdedinec/recherche/publis/2005-TC-Multipartite.pdf): 부분 오프셋 표 분해가 근거다. 그룹별 최소 양자화 기울기와 현재 Q12 연산은 자체 적용이다.
 
-## A — 보정 표를 사용하는 역제곱근 초깃값
+논문의 절감률을 현재 FPGA의 예상 성능으로 옮기지 않는다. 최종 수치는 실제 배치배선과 PA 평가로 판정한다. 자원 감소와 정확도 변화, HLS 추정과 물리 구현 결과는 각각 구분한다.
 
-**우선순위 1.** Ercegovac, Muller, Tisserand, *Simple Seed Architectures for Reciprocal and Square Root Reciprocal*, Asilomar 2005.
-[저자 공개 원문](https://perso.ens-lyon.fr/jean-michel.muller/EMTAsilomar05.pdf), 특히 III절과 V절.
+## 최종 근거
 
-논문은 정규화된 입력에서 간단한 선형식에 작은 보정 표를 더해 역제곱근 초기 추정값을 만듭니다. III절의 기본식은 입력 m∈[1,2)에서 `5/4 − m/4`이며, 이 식만 쓰는 것이 아니라 논문의 보정항을 함께 구성해야 합니다. 좋은 seed로 NR의 초기 저정밀 반복을 줄이는 것이 제안의 목적입니다.
+- [v3.1 전체 결과](../results/v3.1/RESULTS.md)
+- [v3.2 전체 결과](../results/v3.2/RESULTS.md)
+- [v3.3 전체 결과](../results/v3.3/RESULTS.md)
+- [누적 PPA](ppa_history_template.md)
 
-**우리 적용:** FEx의 기존 2차 Taylor 초깃값을 이 seed 구조로 대체합니다. 입력 정규화, 홀수 지수의 보정, 역정규화와 0 입력 처리는 추가 설계가 필요합니다. 논문의 부동소수점 seed를 현재 Q12 입력·고정소수점 inverse에 적용하는 부분이 우리 변형입니다.
-
-**분리 검증:** 먼저 NR 4회는 유지해 seed 교체만 평가합니다. 그 뒤 정수 전수 분석으로 충분한 정확도를 확인한 최소 반복 수를 선정합니다. 반복을 줄였다는 사실만으로 자원 감소나 15ns를 가정하지 않습니다. 정규화 회로 비용까지 포함해 비교합니다.
-
-**기대와 위험:** 초깃값의 곱셈과 NR 단계의 곱셈을 줄일 가능성이 있습니다. 입력 정규화·표 선택·역정규화가 새 경로를 만들 수 있으므로 II=2와 15ns는 실제 검증이 필요합니다. 논문의 과거 FPGA 성능 수치를 우리 소자에 옮겨 주장하지 않습니다.
-
-**첫 판정:** amp2의 표현 가능한 범위에서 seed/NR 오차·0/포화 처리 점검 → 독립 참조·전체 C·PA. 수치 이득도 없고 연산 절감 가능성도 없으면 하드웨어 실행 전에 제외합니다.
-
-## B — 곱셈 대신 표들의 합으로 활성화 계산
-
-**우선순위 2.** de Dinechin, Tisserand, *Multipartite Table Methods*, IEEE Transactions on Computers 54(3), 2005.
-[저자 공개 원문](https://perso.citi-lab.fr/fdedinec/recherche/publis/2005-TC-Multipartite.pdf).
-
-논문은 함수 입력을 여러 비트 묶음으로 분해하고, 부분 표들의 값을 더해 함수를 근사하는 table-lookup-and-addition 방법과 오차·표 크기 탐색을 다룹니다.
-
-**우리 적용:** 현재 sigmoid/tanh의 `base + delta×fraction`에서 fabric 곱셈을 없애고 상위 입력의 기준 표와 하위 입력의 보정 표들을 더하는 형태로 만듭니다. 분할 비트 수·표 폭은 원문의 오차 모델을 현재 15비트 입력·Q12 출력에 맞춰 정합니다. 과거에 버린 단순 대칭 표 압축과는 다릅니다.
-
-**첫 범위:** sigmoid와 tanh를 한 번에 바꾸지 않고 개별 후보로 확인합니다. 현재 1LSB 수준의 함수 근사 오차를 기준으로 전체 32,768개 입력의 오차와 단조성을 확인합니다. 표를 합산할 때의 중간 비트폭과 최종 반올림도 참조 모델에 반영합니다.
-
-**기대와 위험:** fabric 곱셈 제거로 LUT·지연 감소를 노립니다. 반대로 여러 표와 덧셈이 더 비쌀 수 있습니다. 큰 표가 필요해지는 분할은 오프라인 탐색에서 먼저 제외합니다. activation에 지연 단계를 추가해 재귀 II를 깨는 형태는 채택하지 않습니다.
-
-## C — 기준값 표와 잔차 표로 원본 계수 무손실 복원
-
-**우선순위 3, 저장 이득 사전 확인 후 진행.** Xie et al., *A Twofold Lookup Table Architecture for Efficient Approximation of Activation Functions*, IEEE TVLSI 28(12), 2020, DOI 10.1109/TVLSI.2020.3015391.
-[저자 공개 원문](https://imagelab.stu.edu.cn/upload/files/2020082318273790.pdf).
-
-논문은 인접 값을 band로 묶어 최솟값을 d-LUT에, 그 값과의 양의 차이를 e-LUT에 저장하고 합으로 원래 값을 복원합니다.
-
-**우리 적용:** activation 전체의 32,768항 표를 새로 만드는 대신, 현재 보간 계수의 base 필드에만 우선 적용합니다. delta와 보간 계산은 유지합니다. 이것은 논문의 원리를 현재 packed 계수에 적용한 변형이며 논문의 전체 회로 복제는 아닙니다.
-
-**첫 판정:** band 크기별 기준값·잔차의 최소 폭과 실제 비트 수를 계산합니다. 이미 합성기가 제거하는 상위 비트를 절감량으로 중복 계산하지 않습니다. 압축 표와 복원 덧셈을 합쳐 자원 감소 가능성이 작으면 이 단계에서 제외합니다. 진행할 경우 원본 계수 및 전체 입력/C/RTL 완전 일치를 요구합니다.
-
-**위험:** 복원 덧셈이 재귀 경로에 추가됩니다. 원문에 제시된 초기 지연은 우리 클럭 주기나 WNS가 아니므로 직접 비교하지 않습니다. 실제 15ns 보고서가 최종 판정입니다.
-
-## 검토했지만 현재 선정하지 않은 방향
-
-[da4ml: Distributed Arithmetic for Real-time Neural Networks on FPGAs](https://arxiv.org/html/2507.04535v2)는 고정 계수 행렬의 공통 부분식을 공유하고 곱셈을 덧셈 구조로 바꾸는 기법입니다. 현재 가중치는 top-level 입력 포트로 받으므로 그대로 적용하면 논문의 상수 행렬 전제가 성립하지 않습니다. 가중치 상수화·인터페이스 변경이 별도 과제가 되므로 현재 실행 후보에서는 보류합니다.
-
-‘r/z bias 사전 합산’과 ‘포화 제거’도 구현상 가능하지만, 이번 검토에서 찾은 논문의 직접 제안을 확인한 후보로 포장하지 않습니다. 팀원 실험의 유효한 결과와 논문에서 도출한 후보는 구분합니다.
-
-## 공통 채택·폐기 조건
-
-II=2, 실제 구현 15ns(setup/hold·배선 오류 0), 공식 PA 조건과 기능 검증은 모두 필수입니다. 자원 또는 정확도 이득이 있어도 필수 조건 미달이면 채택하지 않습니다.
-
-자원 개선은 기존 1% 기준을 유지하고 실제 구현 LUT/FF/DSP/BRAM으로 판단합니다. 정확도 개선은 실제 PA 재평가로 확인합니다. 각 후보는 부모 통과본과 기존 v3 원본 대비를 구분해 기록합니다.
-
-폐기 시 해당 후보의 소스·결과·상세 문서를 실제 삭제합니다. 채택 전에는 같은 버전 번호를 재사용하며 폐기한 변경을 다음 후보에 누적하지 않습니다.
+현재 최종 채택은 v3.3, LUT 39,854 / FF 41,222 / DSP 355 / BRAM 0, II=2, 실제 주기 14.897 ns다. 이후 미완료 실험은 이 커밋의 결과 범위에 포함하지 않는다.

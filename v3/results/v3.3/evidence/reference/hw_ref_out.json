@@ -1,0 +1,8 @@
+{
+  "samples": 7680,
+  "reference_source_sha256": "a493c3d64cfef3bb3266f6fcd84914f805e8705d309a64587c359a6f7459d0b4",
+  "table_config_sha256": "9bb2c87b090f7d8547ac27273963dc9e00af002cb8084d6bca33755424d5b559",
+  "scope": "Independent Python integer calculation; no C output used",
+  "q12_mismatches": 0,
+  "max_abs_error": 0.0
+}
