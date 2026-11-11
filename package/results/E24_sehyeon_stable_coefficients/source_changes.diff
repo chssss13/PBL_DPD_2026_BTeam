@@ -1,0 +1,29 @@
+--- sehyeon_final/multi_gru.cpp
++++ E24/multi_gru.cpp
+@@ -275,6 +275,26 @@
+     bool segment_start
+ ) {
+     #pragma HLS DATAFLOW
++    // Coefficients remain unchanged until all in-flight calls complete.
++    #pragma HLS STABLE variable=W_inj
++    #pragma HLS STABLE variable=b_inj
++    #pragma HLS STABLE variable=prelu_param
++    #pragma HLS STABLE variable=gating_params
++    #pragma HLS STABLE variable=W_ir
++    #pragma HLS STABLE variable=W_hr
++    #pragma HLS STABLE variable=W_iz
++    #pragma HLS STABLE variable=W_hz
++    #pragma HLS STABLE variable=W_in
++    #pragma HLS STABLE variable=W_hn
++    #pragma HLS STABLE variable=b_ir
++    #pragma HLS STABLE variable=b_hr
++    #pragma HLS STABLE variable=b_iz
++    #pragma HLS STABLE variable=b_hz
++    #pragma HLS STABLE variable=b_in
++    #pragma HLS STABLE variable=b_hn
++    #pragma HLS STABLE variable=W_out
++    #pragma HLS STABLE variable=b_out
++
+ 
+     static data_t h_state_all[NUM_LAYERS][H_SIZE];
+     #pragma HLS ARRAY_PARTITION variable=h_state_all complete dim=1

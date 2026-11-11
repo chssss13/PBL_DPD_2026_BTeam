@@ -1,0 +1,12 @@
+/build/
+/logs/
+/checkpoints/
+/reports/
+/.Xil/
+__pycache__/
+*.log
+*.jou
+/RESULTS.md
+/evaluation.json
+/csim_out.txt
+/rtl_out.txt
