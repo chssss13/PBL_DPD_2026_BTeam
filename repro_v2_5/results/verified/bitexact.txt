@@ -1,1 +1,0 @@
-PASS: 7680 samples identical to v1.6 C output
