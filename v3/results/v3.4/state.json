@@ -1,0 +1,136 @@
+{
+  "version": "v3.4",
+  "completed": [
+    "csim",
+    "csynth",
+    "cosim",
+    "impl"
+  ],
+  "settings": {
+    "version": "v3.4",
+    "candidate_id": "v3.4",
+    "title": "Sehyeon incremental: area_high",
+    "parent": "Accepted v3.3",
+    "parent_state_sha256": "a0334830d5730fb989ad73f2e1776517892b27d41b76ea0112f8d14e2f6afd21",
+    "clock_ns": 15,
+    "uncertainty_ns": 1,
+    "target_ii": 2,
+    "samples": 7680,
+    "reset_every": 2560,
+    "inverse_integer": 5,
+    "inverse_width": 16,
+    "reference_script": "sehyeon_sequence_reference.py",
+    "reference_args": [
+      "--config",
+      "C:/Project/PBL_DPD_2026_BTeam/v3/experiments/v3.4/config.json"
+    ],
+    "comparison_output": "results/v3.3/evidence/csim/hls_out.txt",
+    "baseline_resources": {
+      "LUT": 39854.0,
+      "FF": 41222.0,
+      "DSP": 355.0,
+      "BRAM_18K": 0.0
+    },
+    "baseline_period_ns": 14.897,
+    "baseline_wns_ns": 0.103,
+    "force_baseline_q12_exact": false,
+    "reference_nmse_max_db": -60,
+    "min_resource_improvement_fraction": 0.01,
+    "resource_priority": true,
+    "resource_reduction_planned": true,
+    "paper": "Local git branch sehyeon at 176b59b",
+    "paper_scope": "Branch technique transfer; no new literature claims",
+    "candidate_sha256": {
+      "src/activations.h": "3a74800d971f66e0eef24ccf6adb9ba1cfcb182a84ffe9190584d90918d4e290",
+      "src/activation_comb_tables.h": "bfafd01e47d20136bf3b728b96b46929b822281e26929327b50650ae04d0a083",
+      "src/activation_interp.h": "a8170ce945dec8b0c72672c538b6954a05b4e0e7cfe08dea121523c91c64578e",
+      "src/config.h": "73a27cf360d87a432e98684447db34a20f5137a287af0882a7afbb585b66d3d4",
+      "src/fxp_sqrt.h": "c196916c349671fe1bef71e6994914a6af6361e12c78404ce4b6c1ab687a251b",
+      "src/gru_cell.cpp": "4640a893e4e53239b0c840b605e776fd3b53350a8ec970bf1c7ba0dfc0ce6535",
+      "src/gru_cell.h": "83c4721c5cf7b7df07bd81405e1cb0e26ec34cd4793341f4cd00781d49b7a591",
+      "src/linear_layer.h": "eb2104a0f0b76719e782562e063a2b8dfec47117191f01146f2f5d6363af4d4c",
+      "src/multipartite.h": "ed0b247d1d420a560a601c19683a2124bcfc1bda4120401903073a33f61601ae",
+      "src/multi_gru.cpp": "9daddebb8714aa7d3c8809135caf8cbcbf1fb5ab3ef5b2601645ce71a6d52d73",
+      "src/multi_gru.h": "64d96b9a42405da363fc794ae6dd97191953f22e3c702dcbec43ed7c6a8dbe4f",
+      "src/nnet_common.h": "10c4ff6d8c839c40eb28b22a87891242b3205f3c1b5afb5f1117fe3b6f74015c",
+      "src/seed_rsqrt.h": "75276ae24b4da6051709bc14186874fffe75d6cf058e0d01571b26a52f5a1242",
+      "src/utils.h": "20f138d4d52d8a7835ec8af785c9d63089feba191d9e14c45b8ec098187818b3",
+      "src/wrapper.cpp": "7adb2be3341e58c2bba7007aabad9993fd2ff6a02c59ea6ed7b2325548f8269c",
+      "tb/tb_resgru.cpp": "937bba206d3d4b678fc0e7ad3396deb1fec478ed717124b84af91a240b8fcd13",
+      "multipartite.json": "9bb2c87b090f7d8547ac27273963dc9e00af002cb8084d6bca33755424d5b559",
+      "sigmoid_expected.txt": "11101391cca825ef872989dbcb313306c3120d524d08314c10974fd324178a12",
+      "inverse_expected.txt": "dcd55652e7f1f2acaa1ac960ad91960efe3252160873677da56872c4590bbfbf",
+      "implementation_directives.tcl": "6ac723885d21c7b614937f6e07290682f590a62fe8cc46e3e9c0e389f3c7f7ae"
+    },
+    "vivado_synth_directive": "AreaOptimized_high",
+    "parent_version": "v3.3",
+    "experiment_date": "2026-11-10",
+    "sehyeon_commit": "176b59b",
+    "sehyeon_methods": [
+      "area_high"
+    ],
+    "require_parent_q12_exact": true,
+    "method_description": "Import only area_high from sehyeon 176b59b onto last accepted local candidate."
+  },
+  "active_stage": null,
+  "hls_out.txt": {
+    "samples": 7680,
+    "baseline_q12_mismatches": 0,
+    "python_q12_mismatches": 11161,
+    "baseline_max_abs_error": 0.0,
+    "independent_reference_q12_mismatches": 0,
+    "reference_model_sha256": "0b940fb6c5430176e4a2a65d413fdb8591c1f2ab42153b64290a181ba1d131aa",
+    "functional_pass": true,
+    "nmse_db": -45.11934344886985,
+    "acpr_l_dbc": -53.300679377755245,
+    "acpr_r_dbc": -50.38869440269054,
+    "pa_delta_db": {
+      "NMSE": 0.0,
+      "ACPR_L": 0.0,
+      "ACPR_R": 0.0
+    },
+    "pa_constraints_pass": true,
+    "eligible_for_synthesis": true,
+    "pa_source": "Fresh candidate and baseline PA, 3 x 2560 samples"
+  },
+  "review_required_before_next_version": true,
+  "loop_t_ii": 2,
+  "hls_resources": {
+    "DSP": 482,
+    "FF": 127353,
+    "LUT": 242713,
+    "BRAM_18K": 0,
+    "URAM": 0
+  },
+  "hls_period_ns": 13.881,
+  "rtl_out.txt": {
+    "samples": 7680,
+    "baseline_q12_mismatches": 0,
+    "python_q12_mismatches": 11161,
+    "baseline_max_abs_error": 0.0,
+    "exact_candidate_c_output": true,
+    "q12_mismatches": 0
+  },
+  "resources": {
+    "LUT": 38949.0,
+    "FF": 41051.0,
+    "DSP": 355.0,
+    "BRAM_18K": 0.0
+  },
+  "timing": {
+    "wns_ns": 0.032,
+    "whs_ns": 0.037,
+    "period_ns": 14.968,
+    "route_errors": 0,
+    "unrouted": 0,
+    "pass_15ns": true
+  },
+  "resource_delta": {
+    "LUT": -905.0,
+    "FF": -171.0,
+    "DSP": 0.0,
+    "BRAM_18K": 0.0
+  },
+  "mandatory_conditions_pass": true,
+  "disposition": "accepted"
+}

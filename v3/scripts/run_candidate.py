@@ -181,6 +181,9 @@ try:
                 state['rtl_call_schedule']=schedule
             shutil.copytree(report,out/'cosim/reports',dirs_exist_ok=True)
         if stage=='impl':
+            if config.get('vivado_synth_directive'):
+                generated=(project/'impl/verilog/run_vivado.tcl').read_text()
+                assert '-directive '+config['vivado_synth_directive'] in generated, 'Requested synthesis setting was not applied'
             for label,source in [('summary',project/'impl/report'),('detail',project/'impl/verilog/report')]:
                 if source.exists():shutil.copytree(source,out/'impl/reports'/label,dirs_exist_ok=True)
             files=list((out/'impl/reports').rglob('*.rpt'))

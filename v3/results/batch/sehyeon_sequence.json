@@ -1,0 +1,200 @@
+{
+  "source_commit": "176b59b",
+  "parent": "v3.5",
+  "next_method": 4,
+  "trials": [
+    {
+      "version": "v3.4",
+      "method": "sigmoid_symmetry",
+      "parent": "v3.3",
+      "disposition": "discard_pending_delete",
+      "resources": {
+        "LUT": 40769.0,
+        "FF": 41263.0,
+        "DSP": 355.0,
+        "BRAM_18K": 0.0
+      },
+      "resource_delta": {
+        "LUT": 915.0,
+        "FF": 41.0,
+        "DSP": 0.0,
+        "BRAM_18K": 0.0
+      },
+      "timing": {
+        "wns_ns": 0.045,
+        "whs_ns": 0.037,
+        "period_ns": 14.955,
+        "route_errors": 0,
+        "unrouted": 0,
+        "pass_15ns": true
+      },
+      "quality": {
+        "samples": 7680,
+        "baseline_q12_mismatches": 10261,
+        "python_q12_mismatches": 10665,
+        "baseline_max_abs_error": 0.001220703125,
+        "independent_reference_q12_mismatches": 0,
+        "reference_model_sha256": "0b940fb6c5430176e4a2a65d413fdb8591c1f2ab42153b64290a181ba1d131aa",
+        "functional_pass": true,
+        "nmse_db": -45.12350015321747,
+        "acpr_l_dbc": -53.390234663084215,
+        "acpr_r_dbc": -50.07657376748591,
+        "pa_delta_db": {
+          "NMSE": -0.004156704347622053,
+          "ACPR_L": -0.08955528532897006,
+          "ACPR_R": 0.3121206352046286
+        },
+        "pa_constraints_pass": true,
+        "eligible_for_synthesis": true,
+        "pa_source": "Fresh candidate and baseline PA, 3 x 2560 samples"
+      },
+      "error": null,
+      "deleted": true
+    },
+    {
+      "version": "v3.4",
+      "method": "area_high",
+      "parent": "v3.3",
+      "disposition": "accepted",
+      "resources": {
+        "LUT": 38949.0,
+        "FF": 41051.0,
+        "DSP": 355.0,
+        "BRAM_18K": 0.0
+      },
+      "resource_delta": {
+        "LUT": -905.0,
+        "FF": -171.0,
+        "DSP": 0.0,
+        "BRAM_18K": 0.0
+      },
+      "timing": {
+        "wns_ns": 0.032,
+        "whs_ns": 0.037,
+        "period_ns": 14.968,
+        "route_errors": 0,
+        "unrouted": 0,
+        "pass_15ns": true
+      },
+      "quality": {
+        "samples": 7680,
+        "baseline_q12_mismatches": 0,
+        "python_q12_mismatches": 11161,
+        "baseline_max_abs_error": 0.0,
+        "independent_reference_q12_mismatches": 0,
+        "reference_model_sha256": "0b940fb6c5430176e4a2a65d413fdb8591c1f2ab42153b64290a181ba1d131aa",
+        "functional_pass": true,
+        "nmse_db": -45.11934344886985,
+        "acpr_l_dbc": -53.300679377755245,
+        "acpr_r_dbc": -50.38869440269054,
+        "pa_delta_db": {
+          "NMSE": 0.0,
+          "ACPR_L": 0.0,
+          "ACPR_R": 0.0
+        },
+        "pa_constraints_pass": true,
+        "eligible_for_synthesis": true,
+        "pa_source": "Fresh candidate and baseline PA, 3 x 2560 samples"
+      },
+      "error": null
+    },
+    {
+      "version": "v3.5",
+      "method": "recurrent_nosat",
+      "parent": "v3.4",
+      "disposition": "accepted",
+      "resources": {
+        "LUT": 37311.0,
+        "FF": 41308.0,
+        "DSP": 355.0,
+        "BRAM_18K": 0.0
+      },
+      "resource_delta": {
+        "LUT": -1638.0,
+        "FF": 257.0,
+        "DSP": 0.0,
+        "BRAM_18K": 0.0
+      },
+      "timing": {
+        "wns_ns": 0.107,
+        "whs_ns": 0.037,
+        "period_ns": 14.893,
+        "route_errors": 0,
+        "unrouted": 0,
+        "pass_15ns": true
+      },
+      "quality": {
+        "samples": 7680,
+        "baseline_q12_mismatches": 0,
+        "python_q12_mismatches": 11161,
+        "baseline_max_abs_error": 0.0,
+        "independent_reference_q12_mismatches": 0,
+        "reference_model_sha256": "0b940fb6c5430176e4a2a65d413fdb8591c1f2ab42153b64290a181ba1d131aa",
+        "functional_pass": true,
+        "nmse_db": -45.11934344886985,
+        "acpr_l_dbc": -53.300679377755245,
+        "acpr_r_dbc": -50.38869440269054,
+        "pa_delta_db": {
+          "NMSE": 0.0,
+          "ACPR_L": 0.0,
+          "ACPR_R": 0.0
+        },
+        "pa_constraints_pass": true,
+        "eligible_for_synthesis": true,
+        "pa_source": "Fresh candidate and baseline PA, 3 x 2560 samples"
+      },
+      "error": null
+    },
+    {
+      "version": "v3.6",
+      "method": "bias_presum",
+      "parent": "v3.5",
+      "disposition": "discard_pending_delete",
+      "resources": {
+        "LUT": 36627.0,
+        "FF": 39134.0,
+        "DSP": 355.0,
+        "BRAM_18K": 0.0
+      },
+      "resource_delta": {
+        "LUT": -684.0,
+        "FF": -2174.0,
+        "DSP": 0.0,
+        "BRAM_18K": 0.0
+      },
+      "timing": {
+        "wns_ns": -0.678,
+        "whs_ns": 0.023,
+        "period_ns": 15.678,
+        "route_errors": 0,
+        "unrouted": 0,
+        "pass_15ns": false
+      },
+      "quality": {
+        "samples": 7680,
+        "baseline_q12_mismatches": 0,
+        "python_q12_mismatches": 11161,
+        "baseline_max_abs_error": 0.0,
+        "independent_reference_q12_mismatches": 0,
+        "reference_model_sha256": "0b940fb6c5430176e4a2a65d413fdb8591c1f2ab42153b64290a181ba1d131aa",
+        "functional_pass": true,
+        "nmse_db": -45.11934344886985,
+        "acpr_l_dbc": -53.300679377755245,
+        "acpr_r_dbc": -50.38869440269054,
+        "pa_delta_db": {
+          "NMSE": 0.0,
+          "ACPR_L": 0.0,
+          "ACPR_R": 0.0
+        },
+        "pa_constraints_pass": true,
+        "eligible_for_synthesis": true,
+        "pa_source": "Fresh candidate and baseline PA, 3 x 2560 samples"
+      },
+      "error": null,
+      "deleted": true
+    }
+  ],
+  "status": "complete",
+  "active_version": null,
+  "active_method": null
+}

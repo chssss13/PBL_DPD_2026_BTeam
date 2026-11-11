@@ -1,0 +1,8 @@
+{
+  "samples": 7680,
+  "baseline_q12_mismatches": 0,
+  "python_q12_mismatches": 11161,
+  "baseline_max_abs_error": 0.0,
+  "exact_candidate_c_output": true,
+  "q12_mismatches": 0
+}

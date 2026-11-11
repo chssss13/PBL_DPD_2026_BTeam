@@ -1,0 +1,8 @@
+{
+  "samples": 7680,
+  "mode": "baseline",
+  "reference_source_sha256": "0b7cd85fea4146d1b0b35b8fd6bf76df4a3dcb5126e958ee9eb9d991c65372cd",
+  "scope": "Independent integer calculation; recurrent product WRAP and exact bias sums; symmetric sigmoid table reconstructed",
+  "q12_mismatches": 0,
+  "max_abs_error": 0.0
+}

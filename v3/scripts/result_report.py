@@ -35,14 +35,16 @@ def write_report(root, version):
         'IEEE TCAD 2020 COMBA의 dataflow 채널·directive 상호작용 분석을 참고한 실험이다. 깊이 1이라는 설정과 현재 회로의 효과는 자체 검증 대상이며 논문의 직접 결론이 아니다.',
         '부모와 전체 C/RTL 출력 일치, II=2·15 ns, 호출 정체 및 자원 감소 조건을 함께 확인한다. 작은 FIFO가 항상 안전하거나 유리하다는 뜻은 아니다.')
     if version not in methods or cfg.get('method_description'):
-        methods[version] = (cfg['parent'],cfg['title'],cfg['method_description'],cfg['method_code'],cfg['paper_scope'],cfg['interpretation'])
+        methods[version] = (cfg['parent'],cfg['title'],cfg['method_description'],cfg.get('method_code','// See experiments/'+version+'/changes.diff'),cfg['paper_scope'],cfg.get('interpretation','마지막 채택본 대비 실제 자원·타이밍·PA 및 필수 조건을 평가한다.'))
     parent_name, title, method, code, scope, interpretation = methods[version]
+    provenance = (f'[기법 출처: sehyeon 176b59b](https://github.com/chssss13/PBL_DPD_2026_BTeam/tree/176b59b/v3/result/v3.3). {scope}'
+                  if not cfg['paper'].startswith('http') else f'[논문·기술 근거]({cfg["paper"]}). {scope}')
     if s.get('validation_inherited_from'):
         method += ' C 시뮬레이션·HLS 합성·RTL co-simulation·PA 수치는 '+s['validation_inherited_from']+'에서 검증한 동일 소스·동일 HLS RTL의 결과를 계승했다. 이 후보에서 해당 검증을 새로 실행한 값이 아니다. Vivado 합성·배치배선만 다시 실행했다.'
     lines = [f'# {version}: {title}', '',
              f'{cfg.get("experiment_date","2026-11-09")}. 기준은 **{parent_name}**이며, 아래 수치는 완료된 해당 후보의 전체 flow 결과다. 판정: **{s["disposition"]}**.', '',
              '## 변경 목적과 코드', '', method, '', '```cpp', code, '```', '',
-             f'[논문 원문]({cfg["paper"]}). {scope}', '',
+             provenance, '',
              f'[전체 코드 변경](../../experiments/{version}/changes.diff) · [검증 소스와 설정](../../experiments/{version}/)', '',
              '## 공통 실행 조건', '', '| 항목 | 설정 |', '|---|---|',
              '| 도구 / FPGA | Vitis HLS·Vivado 2024.1 / xczu7ev-ffvc1156-2-e |',

@@ -1,0 +1,24 @@
+--- v3.3/tb/tb_resgru.cpp
++++ v3.4/tb/tb_resgru.cpp
+@@ -34,7 +34,7 @@
+ static std::string L(int l, const char* s) { return "L" + std::to_string(l) + "_" + s; }
+ 
+ int main(int argc, char** argv) {
+-    std::ifstream sigmoid_reference("C:/Project/PBL_DPD_2026_BTeam/v3/experiments/v3.3/sigmoid_expected.txt");
++    std::ifstream sigmoid_reference("C:/Project/PBL_DPD_2026_BTeam/v3/experiments/v3.4/sigmoid_expected.txt");
+     for(int raw=-16384;raw<16384;++raw) {
+         int expected; if(!(sigmoid_reference >> expected)) return 30;
+         ap_fixed<15,3,AP_RND,AP_SAT> input,output;
+@@ -44,7 +44,7 @@
+     }
+     std::cout << "Multipartite full input-domain PASS" << std::endl;
+ 
+-    std::ifstream inverse_reference("C:/Project/PBL_DPD_2026_BTeam/v3/experiments/v3.3/inverse_expected.txt");
++    std::ifstream inverse_reference("C:/Project/PBL_DPD_2026_BTeam/v3/experiments/v3.4/inverse_expected.txt");
+     for (unsigned a=0;a<16384;++a) {
+         int expected;
+         if (!(inverse_reference >> expected)) return 20;
+--- v3.3/implementation_directives.tcl
++++ v3.4/implementation_directives.tcl
+@@ -0,0 +1 @@
++config_export -vivado_synth_design_args {-directive AreaOptimized_high}

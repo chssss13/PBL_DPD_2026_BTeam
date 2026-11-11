@@ -1,0 +1,22 @@
+[
+  {
+    "file": "C:\\Project\\PBL_DPD_2026_BTeam\\v3\\results\\v3.4\\evidence\\csim\\hls_out.txt",
+    "samples": 7680,
+    "metrics": {
+      "NMSE": -45.11934344886985,
+      "EVM": -48.861306417261254,
+      "ACPR_L": -53.300679377755245,
+      "ACPR_R": -50.38869440269054
+    }
+  },
+  {
+    "file": "C:\\Project\\PBL_DPD_2026_BTeam\\v3\\results\\v3.5\\csim\\hls_out.txt",
+    "samples": 7680,
+    "metrics": {
+      "NMSE": -45.11934344886985,
+      "EVM": -48.861306417261254,
+      "ACPR_L": -53.300679377755245,
+      "ACPR_R": -50.38869440269054
+    }
+  }
+]

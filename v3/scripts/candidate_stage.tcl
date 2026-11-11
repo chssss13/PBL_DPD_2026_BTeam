@@ -29,6 +29,9 @@ if {$ACTION eq "csim"} {
         cosim_design -rtl verilog -tool xsim -argv [list $BASE/golden 7680 $OUT/cosim/rtl_out.txt 2560]
     }
     if {$ACTION eq "impl"} {
+        if {[file exists $CASE/implementation_directives.tcl]} {
+            source $CASE/implementation_directives.tcl
+        }
         export_design -flow impl -format ip_catalog
     }
 }

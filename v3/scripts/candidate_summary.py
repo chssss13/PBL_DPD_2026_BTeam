@@ -11,6 +11,10 @@ def render():
            '호출 오버헤드 제외. 원본 기준: LUT 41,387 / FF 41,088 / DSP 362 / BRAM 0, 비교 주기 14.907ns. v3.2는 통과한 v3.1을 부모로 비교합니다.','',
            '| 버전 | 현재/최종 상태 | 완료 단계 | II | 구현 주기(ns) | LUT | FF | DSP |',
            '|---|---|---|---:|---:|---:|---:|---:|']
+    sequence=ROOT/'results/batch/sehyeon_sequence.json'
+    if sequence.exists():
+        progress=json.loads(sequence.read_text(encoding='utf-8'))
+        lines[6:6]=['sehyeon 순차 도입: '+str(progress.get('active_method') or progress.get('status'))+'; 마지막 채택본 '+progress['parent']+'. [단계별 판정 기록](sehyeon_sequence.json) · [실행 계획](../../docs/PLAN.md)','']
     records=[]
     for case in sorted((ROOT/'experiments').glob('v3.*')):
         p=ROOT/'results'/case.name/'state.json'
