@@ -37,7 +37,11 @@ def calculate(config_path):
         network.table = table
     else:
         activation = json.loads((case/'multipartite.json').read_text(encoding='utf-8'))
+        tanh_path=case/'tanh_multipartite.json'
+        tanh_activation=json.loads(tanh_path.read_text(encoding='utf-8')) if tanh_path.exists() else None
         def activate(raw, entries):
+            if entries[0] & 16384 and tanh_activation is not None:
+                return tanh_activation['output'][raw+16384]
             return original_activate(raw, entries) if entries[0] & 16384 else activation['output'][raw+16384]
         network.activate = activate
     correction = seed_reference.correction_table(6)

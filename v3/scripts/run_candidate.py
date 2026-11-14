@@ -167,6 +167,10 @@ try:
             state['hls_resources']={x.tag:int(x.text) for x in xml.find('.//AreaEstimates/Resources')}
             state['hls_period_ns']=float(xml.findtext('.//EstimatedClockPeriod'))
         if stage=='cosim':
+            if config.get('rtl_transform_marker'):
+                rtl_top=project/'sim/verilog/ResGRU.v'
+                assert rtl_top.exists() and config['rtl_transform_marker'] in rtl_top.read_text(), 'RTL cosimulation did not use transformed top'
+                state['rtl_transformation_verified_cosim']=True
             quality('rtl_out.txt')
             report=project/'sim/report'
             text=(report/'ResGRU_cosim.rpt').read_text()
@@ -181,6 +185,10 @@ try:
                 state['rtl_call_schedule']=schedule
             shutil.copytree(report,out/'cosim/reports',dirs_exist_ok=True)
         if stage=='impl':
+            if config.get('rtl_transform_marker'):
+                exported=list((project/'impl').rglob('*ResGRU.v'))
+                assert exported and all(config['rtl_transform_marker'] in p.read_text() for p in exported), 'Implementation exported an untransformed RTL top'
+                state['rtl_transformation_verified_impl']=True
             if config.get('vivado_synth_directive'):
                 generated=(project/'impl/verilog/run_vivado.tcl').read_text()
                 assert '-directive '+config['vivado_synth_directive'] in generated, 'Requested synthesis setting was not applied'
@@ -206,6 +214,8 @@ try:
             baseline=config['baseline_resources'];actual=state['resources']
             state['resource_delta']={k:actual[k]-v for k,v in baseline.items()}
             improvement=any((baseline[k]-actual[k])/baseline[k]>=config['min_resource_improvement_fraction'] for k in ['LUT','FF','DSP'])
+            if config.get('min_ff_improvement_fraction'):
+                improvement=(baseline['FF']-actual['FF'])/baseline['FF']>=config['min_ff_improvement_fraction']
             no_large_tradeoff=all(actual[k]<=v*1.01 if v else actual[k]==0 for k,v in baseline.items())
             state['mandatory_conditions_pass']=bool(state['loop_t_ii']==2 and state['timing']['pass_15ns'])
             delta=state['hls_out.txt']['pa_delta_db']

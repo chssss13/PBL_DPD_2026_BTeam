@@ -56,7 +56,8 @@ def update():
         assert match, str(log)
         number = len(v3rows) + 9
         reason = 'ACPR 개선 채택' if version == 'v3.1' else '자원 개선 채택'
-        v3rows.append(f'| {number} | 11-09 | {version}: {title} | {match[1]} | C/후보 독립 참조·C/RTL PASS | {q["nmse_db"]:.6f} / {q["acpr_l_dbc"]:.6f} / {q["acpr_r_dbc"]:.6f} | {s["loop_t_ii"]} | {t["period_ns"]:.3f} | {1000/t["period_ns"]/s["loop_t_ii"]:.3f} | {r["LUT"]:,.0f} | {r["FF"]:,.0f} | {r["DSP"]:,.0f} | {r["BRAM_18K"]:,.0f} | {reason}; WNS {t["wns_ns"]:+.3f} ns |')
+        row_date = s['settings'].get('experiment_date', '2026-11-09')[5:] if version in ['v3.6', 'v3.7'] else '11-09'
+        v3rows.append(f'| {number} | {row_date} | {version}: {title} | {match[1]} | C/후보 독립 참조·C/RTL PASS | {q["nmse_db"]:.6f} / {q["acpr_l_dbc"]:.6f} / {q["acpr_r_dbc"]:.6f} | {s["loop_t_ii"]} | {t["period_ns"]:.3f} | {1000/t["period_ns"]/s["loop_t_ii"]:.3f} | {r["LUT"]:,.0f} | {r["FF"]:,.0f} | {r["DSP"]:,.0f} | {r["BRAM_18K"]:,.0f} | {reason}; WNS {t["wns_ns"]:+.3f} ns |')
 
     note = '''측정 주석: v0 행은 조교 참고값이 아닌 팀 Windows PC의 실제 구현 값으로 채웠다. 도구는 Vitis HLS/Vivado 2024.1, FPGA는 xczu7ev-ffvc1156-2-e, 목표 클록은 15 ns다. CPU·메모리는 미확인이다. v0 HLS uncertainty는 4.05 ns, 후속 버전은 1 ns로 합성 제약이 다르다. 처리율은 호출 오버헤드를 제외한 정상상태 환산값이며 보드 실측·전력은 미측정이다. 미측정은 —로 표시한다. 기능검증 PASS와 PA 정확도·II·timing 통과는 각각 구분한다.'''
     for level in range(4):

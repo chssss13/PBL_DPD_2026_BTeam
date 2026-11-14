@@ -10,3 +10,4 @@
 **/.Xil/
 
 # Experiments keep selected logs explicitly under results/E*/.
+**/protocol_test/

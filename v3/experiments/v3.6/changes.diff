@@ -1,0 +1,2 @@
+C++ source: byte-identical to v3.5
+Generated RTL: Preserve all v3.5 C++ and HLS scheduling. Structurally verify 598 FIFO controllers and producer synchronization; share controllers in groups of 32 in generated RTL. Preserve individual payload shift registers, width, depth two, read latency, interface, reset and runtime parameter semantics.

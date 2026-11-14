@@ -1,0 +1,3 @@
+C++ byte-identical to v3.6.
+FIFO payload DEPTH: 2 -> 1; fifo_cap: 2 -> 1; capacity-specific controller.
+Backpressure may change; reject if measured call throughput degrades.

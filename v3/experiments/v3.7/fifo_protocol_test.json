@@ -1,0 +1,5 @@
+{
+  "pass_protocol": true,
+  "cycles": 20000,
+  "scope": "Random payload, read/write stalls, simultaneous requests, reset. Local FIFO protocol only; not full network equivalence."
+}

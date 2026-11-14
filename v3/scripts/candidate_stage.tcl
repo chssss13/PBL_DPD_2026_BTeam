@@ -26,13 +26,30 @@ if {$ACTION eq "csim"} {
     open_solution sol1
     if {$ACTION eq "csynth"} {csynth_design}
     if {$ACTION eq "cosim"} {
+        if {[file exists $CASE/rtl_transform.py]} {
+            exec C:/Project/venv_dpd/Scripts/python.exe $CASE/rtl_transform.py $PROJECT/sol1/syn/verilog --report $CASE/rtl_transform_audit.json
+        }
         cosim_design -rtl verilog -tool xsim -argv [list $BASE/golden 7680 $OUT/cosim/rtl_out.txt 2560]
     }
     if {$ACTION eq "impl"} {
+        if {[file exists $CASE/rtl_transform.py]} {
+            exec C:/Project/venv_dpd/Scripts/python.exe $CASE/rtl_transform.py $PROJECT/sol1/syn/verilog --report $CASE/rtl_transform_audit.json
+        }
         if {[file exists $CASE/implementation_directives.tcl]} {
             source $CASE/implementation_directives.tcl
         }
-        export_design -flow impl -format ip_catalog
+        if {[file exists $CASE/rtl_transform.py]} {
+            # export_design regenerates RTL from HLS IR. Install the verified
+            # transformation after export, before running the same Vivado flow.
+            export_design -format ip_catalog
+            exec C:/Project/venv_dpd/Scripts/python.exe $ROOT/scripts/prepare_shared_impl.py $CASE
+            set saved_dir [pwd]
+            cd $PROJECT/sol1/impl/verilog
+            exec C:/Xilinx/Vivado/2024.1/bin/vivado.bat -mode batch -source run_vivado.tcl >@ stdout 2>@ stderr
+            cd $saved_dir
+        } else {
+            export_design -flow impl -format ip_catalog
+        }
     }
 }
 close_project
