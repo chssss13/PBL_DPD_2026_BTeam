@@ -1,4 +1,3 @@
-#include "nr_poly_tables.h"
 #include "activations.h"
 #include "fxp_sqrt.h"
 
@@ -59,33 +58,13 @@ void FExLayer(data_T Ix, data_T Qx, data_T out[6]) {
     
     amp2 = Ix * Ix + Qx * Qx;
 
+    data_T delta = amp2 - data_T(1);
     typedef ap_fixed<16,5,AP_RND,AP_SAT> inverse_t;
-    typedef ap_fixed<20,3,AP_RND,AP_SAT> poly_t;
-    inverse_t inv_sqrt;
-    ap_uint<15> raw = amp2.range(14,0);
-    if (raw == 0) {
-        inv_sqrt = inverse_t(9.4921875); // baseline NR4 at quantized a=0
-    } else {
-        ap_uint<4> leading = 0;
-        for (int b=0; b<15; ++b) {
-#pragma HLS UNROLL
-            if (raw[b]) leading=b;
-        }
-        int exponent = int(leading)-13;
-        int parity = (exponent+14)%2;
-        int k = (exponent-parity)/2;
-        ap_uint<21> normalized = ap_uint<21>(raw) << (20-int(leading));
-        ap_uint<5> address = (parity<<4) | int(normalized.range(19,16));
-        ap_ufixed<16,0> t;
-        t.range(15,0)=normalized.range(15,0);
-        poly_t c0,c1;
-        c0.range(19,0)=nr_poly_c0[address].range(19,0);
-        c1.range(19,0)=nr_poly_c1[address].range(19,0);
-        poly_t value=c0+c1*t;
-        ap_fixed<27,10> restored=value;
-        if (k<0) restored=restored << (-k);
-        else restored=restored >> k;
-        inv_sqrt=restored;
+    inverse_t inv_sqrt = data_T(1) - data_T(0.5) * delta + data_T(0.375) * delta * delta; //taylor expansion for newton-raphson init
+
+    //#pragma HLS PIPELINE
+    for (int i = 0; i < 4; i++) {
+        inv_sqrt = inv_sqrt * (data_T(1.5) - data_T(0.5) * amp2 * inv_sqrt * inv_sqrt); // newton-raphson 4 iteration without divide
     }
 
     amp = amp2 * inv_sqrt;

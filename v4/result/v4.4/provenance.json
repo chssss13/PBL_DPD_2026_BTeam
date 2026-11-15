@@ -1,20 +1,15 @@
 {
-  "source": "v3/package/results/q13_nosat_bias_poly_csynth",
-  "implementation": "q13_nosat_bias_poly_csynth",
-  "accuracy_source": "v3\\package\\results\\q13_normalized_parity_python",
-  "pa_values": [
-    -45.47,
-    -49.32,
-    -53.51,
-    -50.19
-  ],
+  "parent": "v4.3",
+  "source": "v3/package/results/q13_nosat_bias_csynth",
+  "accuracy_source": "v3/package/results/q13_weight_exception_prepared/pa_comparison.txt",
+  "accuracy_row": "z_inverse5.txt",
+  "accuracy_basis": "7680 sample C-sim Q13 identical to inverse16/5 Python output",
   "pnr": [
-    40100,
-    45565,
-    487,
+    42535,
+    45372,
+    504,
     0,
-    16.240313,
-    -1.240313
-  ],
-  "accuracy_row": "parity_linear16.txt"
+    16.433618,
+    -1.433618
+  ]
 }

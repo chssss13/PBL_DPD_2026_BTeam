@@ -1,30 +1,16 @@
-# v4.4 — recurrent 곱 포화 제거·r/z bias 사전 합산·다항식 FEx
+# v4.4 — recurrent 곱 포화 제거와 r/z bias 사전 합산
 
-부모: v4.3. P&R 완료 후 다음 실험의 부모로 유지한 계열 채택본. 15ns setup은 미달이며 팀 최종 채택을 의미하지 않는다.
+부모는 v4.3. 기존 A 후보의 P&R 완료 결과를 계열에 추가했다. NR4와 inverse16,5를 유지한다. recurrent r/z/n 개별 곱을 18,3으로 변환할 때 AP_SAT 대신 AP_WRAP을 사용하고, r/z bias 쌍은 Q13을 보존하는 17,4로 샘플 처리 전에 합산한다. 두 변경의 개별 기여도는 분리하지 않았다.
 
-## 변경과 범위
-
-중간 A(포화 제거+bias 합산)는 C-sim·csynth까지만 수행. 여기에 정규화·지수 홀짝별 16구간 1차 다항식 FEx를 추가한 B를 P&R했다. A의 단독 P&R 효과와 FEx의 단독 P&R 효과를 분리하지 않았다. bias 합은 Q13을 보존하는17,4.
-
-## 정확도
-
-Python PA, 7,680샘플·reset2560. 골든과 동일 평가 조건. EVM도 함께 기록한다.
-
-| 지표 | 골든 | 이 버전 |
+| PA 지표 | 골든 | v4.4 |
 |---|---:|---:|
-| NMSE(dB) | -45.52 | -45.47 |
+| NMSE(dB) | -45.52 | -45.40 |
 | EVM(dB) | -49.42 | -49.32 |
-| ACPR L(dBc) | -53.59 | -53.51 |
-| ACPR R(dBc) | -50.43 | -50.19 |
+| ACPR L(dBc) | -53.59 | -53.53 |
+| ACPR R(dBc) | -50.43 | -50.29 |
 
-[PA 원본](accuracy/pa_comparison.txt). 여러 행이 포함된 표의 사용 행은 아래 계보 메타데이터와 상위 README를 따른다.
+7,680샘플·reset2560 C-sim이 inverse16,5 Python 출력과 Q13 전체 일치하여 해당 [PA 평가](accuracy/pa_comparison.txt)의 `z_inverse5.txt` 행을 연결했다. 모든 입력에 대한 동등성 증명은 아니다.
 
-## P&R
+P&R: LUT 42,535 / FF 45,372 / DSP 504 / BRAM 0, WNS -1.433618ns, 비교 주기 16.433618ns, HLS II2. 15ns setup 미달, hold 통과 및 미배선 0. [자원](reports/utilization.rpt) · [타이밍](reports/timing_summary.rpt) · [100경로](reports/setup_paths100.rpt).
 
-LUT 40,100, FF 45,565, DSP 487, BRAM 0. 비교 주기 16.240313ns = 15−WNS, WNS -1.240313ns. HLS II=2. [자원](reports/utilization.rpt) · [타이밍](reports/timing_summary.rpt).
-
-## 근거와 보존
-
-실행 소스: `v3/package/results/q13_nosat_bias_poly_csynth`. 구현 결과: `q13_nosat_bias_poly_csynth`. 소스·TB를 복사 보존했으며 원본 실행 폴더는 이동하지 않았다.
-
-새 재현 합성이나 RTL co-sim은 수행하지 않았다. C-sim/Python 일치는 해당 입력 벡터의 검증이며 모든 입력의 동등성 증명이 아니다. v4.2는 당시 별도 C-sim 없이 Python 수치 비교 및 합성·P&R을 진행했다.
+실행 원본 `v3/package/results/q13_nosat_bias_csynth`. 15ns·uncertainty1ns, Vivado 기본 구현. P&R을 완료한 후 계열에 추가했으며 팀 최종 채택을 의미하지 않는다.

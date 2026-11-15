@@ -1,0 +1,20 @@
+{
+  "source": "v3/package/results/b_data16_weight14_csynth",
+  "implementation": "b_data16_weight14_csynth",
+  "accuracy_source": "v3\\package\\results\\b_weight14_4_python",
+  "pa_values": [
+    -45.24,
+    -49.0,
+    -53.58,
+    -50.21
+  ],
+  "pnr": [
+    40341,
+    41473,
+    319,
+    0,
+    16.027709,
+    -1.027709
+  ],
+  "accuracy_row": "weight14_4.txt"
+}

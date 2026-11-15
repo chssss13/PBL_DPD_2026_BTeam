@@ -1,20 +1,20 @@
 {
-  "source": "v3/package/results/b_data16_weight14_csynth",
-  "implementation": "b_data16_weight14_csynth",
-  "accuracy_source": "v3\\package\\results\\b_weight14_4_python",
+  "source": "v3/package/results/q13_nosat_bias_poly_csynth",
+  "implementation": "q13_nosat_bias_poly_csynth",
+  "accuracy_source": "v3\\package\\results\\q13_normalized_parity_python",
   "pa_values": [
-    -45.24,
-    -49.0,
-    -53.58,
-    -50.21
+    -45.47,
+    -49.32,
+    -53.51,
+    -50.19
   ],
   "pnr": [
-    40341,
-    41473,
-    319,
+    40100,
+    45565,
+    487,
     0,
-    16.027709,
-    -1.027709
+    16.240313,
+    -1.240313
   ],
-  "accuracy_row": "weight14_4.txt"
+  "accuracy_row": "parity_linear16.txt"
 }

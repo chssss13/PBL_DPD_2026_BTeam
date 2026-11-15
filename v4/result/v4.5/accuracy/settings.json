@@ -1,11 +1,11 @@
 {
-  "parent": "q13_nosat_bias_poly_csynth",
+  "parent": "q13_inverse5_only_csynth",
   "samples": 7680,
   "reset": 2560,
   "data": "16/3",
-  "weight": "baseline16/4 vs14/4 AP_RND AP_SAT",
+  "weight": "16/4",
   "inverse": "16/5",
   "coefficients": "20/3",
-  "normalization": "Q13 input -> Q20 normalized; activation LUT remains256 segments over[-4,4), output Q13; recurrent terms18/3 AP_WRAP; bias sum exact",
+  "normalization": "Q13 input -> Q20 normalized, parity tables 16 segments, local Q16",
   "baseline_verified": true
 }
