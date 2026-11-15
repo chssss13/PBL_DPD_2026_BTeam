@@ -1,0 +1,11 @@
+{
+  "parent": "q13_inverse5_only_csynth",
+  "samples": 7680,
+  "reset": 2560,
+  "data": "16/3",
+  "weight": "16/4",
+  "inverse": "16/5",
+  "coefficients": "20/3",
+  "normalization": "Q13 input -> Q20 normalized, parity tables 16 segments, local Q16",
+  "baseline_verified": true
+}

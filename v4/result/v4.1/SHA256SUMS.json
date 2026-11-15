@@ -1,0 +1,23 @@
+{
+  "src/activations.h": "4031a34516f67cbfc805cdff4449b0cfdaa44c6040cee0753167f21edd36f364",
+  "src/activation_interp.h": "8fca139671737e750928dd782cb93ec7f0f6ef6258871a03a9252bf050f66cb6",
+  "src/config.h": "bdad2d652b0bd8ab8e4f265696c1baae74a1b5c71653a2171ed4dea5fc6708db",
+  "src/fxp_sqrt.h": "c196916c349671fe1bef71e6994914a6af6361e12c78404ce4b6c1ab687a251b",
+  "src/gru_cell.cpp": "4640a893e4e53239b0c840b605e776fd3b53350a8ec970bf1c7ba0dfc0ce6535",
+  "src/gru_cell.h": "0eabb207b5625c4a256b9124d372c90711d9e08bacba8cc0da9404f8ff8b850c",
+  "src/linear_layer.h": "8f0113c800f61edaedff170fb86265116a40d54aa1140a5f5d223685e48a8d6b",
+  "src/multi_gru.cpp": "9daddebb8714aa7d3c8809135caf8cbcbf1fb5ab3ef5b2601645ce71a6d52d73",
+  "src/multi_gru.h": "64d96b9a42405da363fc794ae6dd97191953f22e3c702dcbec43ed7c6a8dbe4f",
+  "src/nnet_common.h": "10c4ff6d8c839c40eb28b22a87891242b3205f3c1b5afb5f1117fe3b6f74015c",
+  "src/utils.h": "20f138d4d52d8a7835ec8af785c9d63089feba191d9e14c45b8ec098187818b3",
+  "src/wrapper.cpp": "7adb2be3341e58c2bba7007aabad9993fd2ff6a02c59ea6ed7b2325548f8269c",
+  "tb/tb_resgru.cpp": "e2af17f656d04b40f9abd136bfaeac4fe0723c8b22169a024e6cc0c3dc96a81e",
+  "reports/Loop_LOOP_T_proc_csynth.rpt": "87b5314d090e1c83a5a442c8ea75f1b2c4499eeb3ff4d1265d79e2791a8d44da",
+  "reports/ResGRU_csynth.rpt": "f3237cf5dd5a1282a636589ce247f75d23ff9263e65d2734e16720d0bbb87544",
+  "reports/route_status.rpt": "6b785258ba638361c25a07268ddd628191a77abdbbc9b1fc1ff2bab79f4ccc02",
+  "reports/setup_paths100.rpt": "9e1d018c975ed2b167661cff39ddb57675442b28d7ee158b33fd24d735bdbb45",
+  "reports/timing_summary.rpt": "57a1e3c7d9ac87e43e28acedfc815fa65a07e933ad1e33a91d3b99789e40170f",
+  "reports/utilization.rpt": "0b3456b68d33c6a7daa88dd039447f9d7d2539c73eb200f79d730bf8bab2de3c",
+  "accuracy/pa_comparison.txt": "e65a248ddf2cbb4e01cb6ae795c7c8ce67789b8e230dba22a627312c437de067",
+  "accuracy/settings.json": "0e26eb0124b6a1cc2717109a28533cd42a9976351b0a844c07f142825ef63936"
+}

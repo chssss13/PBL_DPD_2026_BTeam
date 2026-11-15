@@ -1,0 +1,104 @@
+#include "nr_poly_tables.h"
+#include "activations.h"
+#include "fxp_sqrt.h"
+
+template<int LEN, typename data_T, typename weight_T, typename accum_T>
+accum_T MAC_PE(data_T x[LEN], weight_T w[LEN]) {
+#pragma HLS ARRAY_PARTITION variable=x complete dim=1
+#pragma HLS ARRAY_PARTITION variable=w complete dim=1
+#pragma HLS INLINE
+    accum_T acc = 0;
+    for (int i = 0; i < LEN; i++) {
+        #pragma HLS PIPELINE II=1
+        acc += accum_T(x[i] * w[i]);
+    }
+    return acc;
+}
+ 
+template<int IN_SIZE, int OUT_SIZE, typename data_T, typename weight_T, typename accum_T>
+void MVM_PE(data_T x[IN_SIZE], weight_T W[OUT_SIZE][IN_SIZE], accum_T y[OUT_SIZE]) {
+#pragma HLS INLINE
+#pragma HLS ARRAY_PARTITION variable=x complete dim=1
+#pragma HLS ARRAY_PARTITION variable=W complete dim=1
+#pragma HLS ARRAY_PARTITION variable=W complete dim=2
+#pragma HLS ARRAY_PARTITION variable=y complete dim=1
+ 
+MVM_LOOP_OUT:
+    for (int o = 0; o < OUT_SIZE; o++) {
+        #pragma HLS UNROLL
+        y[o] = MAC_PE<IN_SIZE, data_T, weight_T, accum_T>(x, W[o]);
+    }
+}
+
+template<int IN_SIZE, int OUT_SIZE, typename data_T, typename weight_T, typename accum_T>
+void Linear(data_T x[IN_SIZE], weight_T W[OUT_SIZE][IN_SIZE], data_T b[OUT_SIZE] , accum_T y[OUT_SIZE]) {
+#pragma HLS INLINE
+#pragma HLS ARRAY_PARTITION variable=x complete dim=1
+#pragma HLS ARRAY_PARTITION variable=W complete dim=1
+#pragma HLS ARRAY_PARTITION variable=W complete dim=2
+#pragma HLS ARRAY_PARTITION variable=b complete dim=1
+#pragma HLS ARRAY_PARTITION variable=y complete dim=1
+ 
+    MVM_LOOP_OUT:
+    for (int o = 0; o < OUT_SIZE; o++) {
+        #pragma HLS UNROLL
+        y[o] = MAC_PE<IN_SIZE, data_T, weight_T, accum_T>(x, W[o]) + b[o];
+    }
+}
+
+
+template<typename data_T>
+void FExLayer(data_T Ix, data_T Qx, data_T out[6]) {
+#pragma HLS INLINE
+//#pragma HLS PIPELINE II=1
+#pragma HLS ARRAY_PARTITION variable=out complete dim=1
+
+    data_T amp, amp2, amp3, phase, sin_theta, cos_theta;
+
+    // magnitude
+    
+    amp2 = Ix * Ix + Qx * Qx;
+
+    typedef ap_fixed<16,5,AP_RND,AP_SAT> inverse_t;
+    typedef ap_fixed<20,3,AP_RND,AP_SAT> poly_t;
+    inverse_t inv_sqrt;
+    ap_uint<15> raw = amp2.range(14,0);
+    if (raw == 0) {
+        inv_sqrt = inverse_t(9.4921875); // baseline NR4 at quantized a=0
+    } else {
+        ap_uint<4> leading = 0;
+        for (int b=0; b<15; ++b) {
+#pragma HLS UNROLL
+            if (raw[b]) leading=b;
+        }
+        int exponent = int(leading)-13;
+        int parity = (exponent+14)%2;
+        int k = (exponent-parity)/2;
+        ap_uint<21> normalized = ap_uint<21>(raw) << (20-int(leading));
+        ap_uint<5> address = (parity<<4) | int(normalized.range(19,16));
+        ap_ufixed<16,0> t;
+        t.range(15,0)=normalized.range(15,0);
+        poly_t c0,c1;
+        c0.range(19,0)=nr_poly_c0[address].range(19,0);
+        c1.range(19,0)=nr_poly_c1[address].range(19,0);
+        poly_t value=c0+c1*t;
+        ap_fixed<27,10> restored=value;
+        if (k<0) restored=restored << (-k);
+        else restored=restored >> k;
+        inv_sqrt=restored;
+    }
+
+    amp = amp2 * inv_sqrt;
+    amp3 = amp * amp2;
+    sin_theta = Qx * inv_sqrt;
+    cos_theta = Ix * inv_sqrt;
+
+    // assign output
+    out[0] = Ix;
+    out[1] = Qx;
+    out[2] = amp;
+    out[3] = amp3;
+    out[4] = sin_theta;
+    out[5] = cos_theta;
+}
+
