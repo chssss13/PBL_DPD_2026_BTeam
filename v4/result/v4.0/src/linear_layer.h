@@ -59,7 +59,7 @@ void FExLayer(data_T Ix, data_T Qx, data_T out[6]) {
     amp2 = Ix * Ix + Qx * Qx;
 
     data_T delta = amp2 - data_T(1);
-    typedef ap_fixed<16,6,AP_RND,AP_SAT> inverse_t;
+    typedef ap_fixed<16,5,AP_RND,AP_SAT> inverse_t;
     inverse_t inv_sqrt = data_T(1) - data_T(0.5) * delta + data_T(0.375) * delta * delta; //taylor expansion for newton-raphson init
 
     //#pragma HLS PIPELINE

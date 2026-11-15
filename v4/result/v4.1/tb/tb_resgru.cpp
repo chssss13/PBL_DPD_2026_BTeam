@@ -16,6 +16,8 @@
 #include <iomanip>
 
 #include "multi_gru.h"
+#include "activations.h"
+#include "sigmoid_reference.h"
 
 static std::string G;
 
@@ -33,6 +35,21 @@ static void load(const std::string& name, T* dst, int n) {
 static std::string L(int l, const char* s) { return "L" + std::to_string(l) + "_" + s; }
 
 int main(int argc, char** argv) {
+    unsigned sigmoid_mismatches = 0;
+    for (unsigned raw = 0; raw < 32768; ++raw) {
+        data_t input, actual;
+        input.range(14,0) = ap_uint<15>(raw);
+        nnet::sigmoid_comb<data_t, data_t, nnet::activ_config>(input, actual);
+        unsigned position = raw ^ 16384u;
+        unsigned packed = sigmoid_reference[position >> 7];
+        unsigned base = packed & 32767u;
+        unsigned delta = packed >> 15;
+        unsigned expected = base + ((delta * (position & 127u) + 64u) >> 7);
+        if (actual.range(14,0).to_uint() != expected) ++sigmoid_mismatches;
+    }
+    std::cout << "[TB] sigmoid exhaustive: 32768 inputs, mismatches=" << sigmoid_mismatches << std::endl;
+    if (sigmoid_mismatches) return 1;
+
     G = argc > 1 ? argv[1] : "golden";
     int n_samples = argc > 2 ? std::atoi(argv[2]) : 7680;
     std::string out_path = argc > 3 ? argv[3] : "hls_out.txt";

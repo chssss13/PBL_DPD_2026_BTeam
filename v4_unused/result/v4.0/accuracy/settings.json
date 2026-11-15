@@ -1,0 +1,30 @@
+{
+  "parent": "c3e35cd / result/04_lut4096",
+  "samples": 7680,
+  "reset": 2560,
+  "data": "16,3 AP_RND AP_SAT",
+  "weight": "16,4 AP_RND AP_SAT",
+  "accum": "18,3 AP_RND AP_SAT",
+  "fex": "inverse16,6 NR4",
+  "state_update": "original",
+  "direct_lut": "4096 sigmoid [-8,8), tanh [-4,4), nearest index",
+  "interpolation": "both sigmoid and tanh [-4,4), Q13 endpoint rounding, integer interpolation rounding",
+  "scope": "Python only, no HLS, C-sim or implementation",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "numpy": "2.5.4",
+  "reference_sha256": "e4755ff9001167e35a3a35cf8407e109f47979b90853fa71a7105ecfe23fe6ca",
+  "comparisons": {
+    "direct4096": {
+      "q13_components_different_from_archived_csim": 0,
+      "max_abs_difference": 5.000444502911705e-13
+    },
+    "interp256_q13": {
+      "q13_components_different_from_archived_csim": 14369,
+      "max_abs_difference": 0.0030517578125
+    },
+    "interp512_q13": {
+      "q13_components_different_from_archived_csim": 14371,
+      "max_abs_difference": 0.003173828125
+    }
+  }
+}

@@ -67,6 +67,68 @@ RESET_LOOP:
 
 }
 
+void GRU_single_presummed(
+    data_t x[I_SIZE],
+    bool reset,
+    data_t h_prev[H_SIZE],
+    data_t h_next[H_SIZE],
+
+    // New weight matrices (split into input and hidden)
+    weight_t W_ir[H_SIZE][I_SIZE], weight_t W_hr[H_SIZE][H_SIZE],
+    weight_t W_iz[H_SIZE][I_SIZE], weight_t W_hz[H_SIZE][H_SIZE],
+    weight_t W_in[H_SIZE][I_SIZE], weight_t W_hn[H_SIZE][H_SIZE],
+
+    // New biases (split)
+    data_t b_ir[H_SIZE], data_t b_hr[H_SIZE],
+    data_t b_iz[H_SIZE], data_t b_hz[H_SIZE],
+    data_t b_in[H_SIZE], data_t b_hn[H_SIZE],
+    const ap_fixed<16,4> b_r_sum[H_SIZE],
+    const ap_fixed<16,4> b_z_sum[H_SIZE]
+) {
+    #pragma HLS INLINE
+
+    data_t h_state[H_SIZE];
+    #pragma HLS ARRAY_PARTITION variable=h_state complete dim=1
+
+    // Reset state if needed
+RESET_LOOP:
+    for (int i = 0; i < H_SIZE; i++) {
+        #pragma HLS UNROLL
+        h_state[i] = reset ? data_t(0) : h_prev[i];
+    }
+
+    #pragma HLS ARRAY_PARTITION variable=h_next complete dim=1
+
+    // Call new GRU cell
+    accum_t W_ir_x[H_SIZE], W_iz_x[H_SIZE], W_in_x[H_SIZE];
+    accum_t W_hr_h[H_SIZE], W_hz_h[H_SIZE], W_hn_h[H_SIZE];
+
+    #pragma HLS ARRAY_PARTITION variable=W_ir_x complete dim=1
+    #pragma HLS ARRAY_PARTITION variable=W_iz_x complete dim=1
+    #pragma HLS ARRAY_PARTITION variable=W_in_x complete dim=1
+    #pragma HLS ARRAY_PARTITION variable=W_hr_h complete dim=1
+    #pragma HLS ARRAY_PARTITION variable=W_hz_h complete dim=1
+    #pragma HLS ARRAY_PARTITION variable=W_hn_h complete dim=1
+ 
+    // GRU MVMs
+    GRU_Kernel_PE<I_SIZE, H_SIZE, data_t, weight_t, accum_t>(
+        x, h_state,
+        W_ir, W_iz, W_in,
+        W_hr, W_hz, W_hn,
+        W_ir_x, W_iz_x, W_in_x,
+        W_hr_h, W_hz_h, W_hn_h
+    );
+ 
+    // Bias copy and gate calculation
+    Gate_Calc_Presummed_PE<H_SIZE, data_t, accum_t>(
+        W_ir_x, W_hr_h, b_ir, b_hr,
+        W_iz_x, W_hz_h, b_iz, b_hz,
+        W_in_x, W_hn_h, b_in, b_hn,
+        h_state, h_next, b_r_sum, b_z_sum
+    );
+
+}
+
 void GRU_multi(
     const data_t x[I_SIZE],
     data_t y[H_SIZE],
@@ -306,6 +368,20 @@ void ResGRU(
     data_t layer_in[NUM_LAYERS+1][H_SIZE];
     data_t layer_out[NUM_LAYERS][H_SIZE];
 
+    // Two signed Q3.12 biases sum exactly in signed Q4.12.
+    ap_fixed<16,4> b_r_sum[NUM_LAYERS][H_SIZE];
+    ap_fixed<16,4> b_z_sum[NUM_LAYERS][H_SIZE];
+#pragma HLS ARRAY_PARTITION variable=b_r_sum complete dim=0
+#pragma HLS ARRAY_PARTITION variable=b_z_sum complete dim=0
+    BIAS_PRECOMPUTE: for (int l=0; l<NUM_LAYERS; ++l) {
+#pragma HLS UNROLL
+        for (int i=0; i<H_SIZE; ++i) {
+#pragma HLS UNROLL
+            b_r_sum[l][i] = b_ir[l][i] + b_hr[l][i];
+            b_z_sum[l][i] = b_iz[l][i] + b_hz[l][i];
+        }
+    }
+
     LOOP_T: for (int t = 0; t < TIME_STEP; t++) {
         #pragma HLS PIPELINE
 
@@ -323,14 +399,14 @@ void ResGRU(
         LAYER_LOOP: for (int l = 0; l < NUM_LAYERS; l++) {
             #pragma HLS PIPELINE
 
-            GRU_single(
+            GRU_single_presummed(
                 layer_in[l], (segment_start && (t==0)), h_state_all[l], layer_out[l],
                 W_ir[l], W_hr[l],
                 W_iz[l], W_hz[l],
                 W_in[l], W_hn[l],
                 b_ir[l], b_hr[l],
                 b_iz[l], b_hz[l],
-                b_in[l], b_hn[l]
+                b_in[l], b_hn[l], b_r_sum[l], b_z_sum[l]
             );
             
             // Update hidden state
@@ -348,7 +424,13 @@ void ResGRU(
         }
 
 
-        OUT : Linear<H_SIZE,2,data_t,weight_t,data_t>(gru_out,W_out,b_out, OUT_seq[t]);
+        // Output only: Q6.15 rounded products and accumulation, then Q3.12 output.
+        OUT: for (int o = 0; o < 2; ++o) {
+#pragma HLS UNROLL
+            typedef ap_fixed<21,6,AP_RND,AP_SAT> output_acc_t;
+            output_acc_t acc = MAC_PE<H_SIZE,data_t,weight_t,output_acc_t>(gru_out, W_out[o]);
+            OUT_seq[t][o] = acc + b_out[o];
+        }
     }
 }
 

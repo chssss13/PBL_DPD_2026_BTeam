@@ -23,6 +23,7 @@
 #include <cmath>
 #include "ap_fixed.h"
 #include "nnet_common.h"
+#include "activation_interp.h"
 
 
 
@@ -238,6 +239,58 @@ void  sigmoid_ele(data_T data, res_T &res)
     if (index > CONFIG_T::table_size-1) index = CONFIG_T::table_size-1;
     res = (res_T) sigmoid_table[index];
 
+}
+
+// Experiment: retain table values and index rounding while requesting combinational lookup.
+template<class data_T, class res_T, typename CONFIG_T>
+void sigmoid_comb(data_T data, res_T &res) {
+    #pragma HLS INLINE off
+    #pragma HLS LATENCY min=0 max=0
+    #pragma HLS ARRAY_PARTITION variable=activation_interp_tables::sigmoid complete dim=1
+    static_assert(data_T::width == 15 && data_T::iwidth == 3, "Unexpected input format");
+    static_assert(res_T::width == 15 && res_T::iwidth == 3, "Unexpected output format");
+    ap_uint<15> position = data.range(14,0);
+    position[14] = !position[14];
+    ap_uint<8> index = position.range(14,7);
+    ap_uint<7> fraction = position.range(6,0);
+    // Keep the original fraction; mirror the negative segment address.
+    ap_uint<7> address = index.range(6,0);
+    if (!index[7]) address = ~address;
+    ap_uint<21> packed = activation_interp_tables::sigmoid[address];
+    ap_int<15> stored_base;
+    stored_base.range(14,0) = packed.range(14,0);
+    ap_uint<6> delta = packed.range(20,15);
+    // B[i] = 4096 - B[255-i] - D[255-i] for negative segments.
+    ap_int<16> mirrored_base = ap_int<16>(4096) - ap_int<16>(stored_base) - ap_int<16>(delta);
+    ap_int<15> base = index[7] ? stored_base : ap_int<15>(mirrored_base);
+    ap_uint<15> product = delta * fraction;
+    #pragma HLS BIND_OP variable=product op=mul impl=fabric
+    ap_uint<15> rounded = product + ap_uint<15>(64);
+    ap_uint<8> increment = rounded.range(14,7);
+    ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+    res.range(14,0) = result.range(14,0);
+}
+template<class data_T, class res_T, typename CONFIG_T>
+void tanh_comb(data_T data, res_T &res) {
+    #pragma HLS INLINE off
+    #pragma HLS LATENCY min=0 max=0
+    #pragma HLS ARRAY_PARTITION variable=activation_interp_tables::tanh complete dim=1
+    static_assert(data_T::width == 15 && data_T::iwidth == 3, "Unexpected input format");
+    static_assert(res_T::width == 15 && res_T::iwidth == 3, "Unexpected output format");
+    ap_uint<15> position = data.range(14,0);
+    position[14] = !position[14];
+    ap_uint<8> index = position.range(14,7);
+    ap_uint<7> fraction = position.range(6,0);
+    ap_uint<23> packed = activation_interp_tables::tanh[index];
+    ap_int<15> base;
+    base.range(14,0) = packed.range(14,0);
+    ap_uint<8> delta = packed.range(22,15);
+    ap_uint<15> product = delta * fraction;
+    #pragma HLS BIND_OP variable=product op=mul impl=fabric
+    ap_uint<15> rounded = product + ap_uint<15>(64);
+    ap_uint<8> increment = rounded.range(14,7);
+    ap_int<16> result = ap_int<16>(base) + ap_int<16>(increment);
+    res.range(14,0) = result.range(14,0);
 }
 
 // *************************************************

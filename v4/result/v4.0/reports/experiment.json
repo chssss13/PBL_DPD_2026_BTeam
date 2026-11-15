@@ -1,0 +1,8 @@
+{
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\result\\v3.3",
+  "change": "inverse_t 16/6 to 16/5 only; NR4 retained",
+  "samples": 7680,
+  "reset_every": 2560,
+  "csynth_requested": false,
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+}

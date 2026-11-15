@@ -1,0 +1,25 @@
+{
+  "parent": "v1_interp256_q13_state_wide_nsplit_prepared",
+  "samples": 7680,
+  "reset": 2560,
+  "gru_accum": "term18/3 -> sum21/6 -> final18/3",
+  "state": "factored",
+  "inverse": "baseline16/6 vs candidate16/5 NR4",
+  "z": "unsigned13/0, same F13 sigmoid values",
+  "weights": "all quantized values unchanged per coefficient_audit.json",
+  "cases": [
+    {
+      "name": "baseline",
+      "data": "16/3",
+      "weight": "16/4",
+      "activation_fraction_bits": 13,
+      "q13_mismatches_vs_pre_threechanges_csim": 0
+    },
+    {
+      "name": "z_inverse5",
+      "data": "16/3",
+      "weight": "16/4",
+      "activation_fraction_bits": 13
+    }
+  ]
+}

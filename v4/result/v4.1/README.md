@@ -1,30 +1,40 @@
-# v4.1 — 256구간 Q13 선형보간·sigmoid 대칭
+# v4.1 — 출력층 21/6 누산
 
-부모: v4.0. P&R 완료 후 다음 실험의 부모로 유지한 계열 채택본. 15ns setup은 미달이며 팀 최종 채택을 의미하지 않는다.
+2026-11-15 버전 재정리: 기존 v3.5를 v4.1로 등록했다. 소스·설정·측정 결과는 그대로이며 새 합성을 수행한 것이 아니다. 보고서 내부의 원래 버전명과 실행 경로는 당시 근거로 유지한다.
 
-## 변경과 범위
+2026-11-12 사용자 채택. 부모는 v4.0. 출력층 W_out의 각 곱을 Q6.15로 반올림하고 21/6으로 누산한 뒤 bias를 더하여 최종 15/3으로 변환한다. inverse16/5, NR4, GRU·활성화·가중치는 유지한다. [변경 코드](changes/output_acc21.diff)
 
-sigmoid/tanh [-4,4) 256구간, Q13. sigmoid 양수 반쪽 표를 저장한다. data16,3·weight16,4 유지.
-
-## 정확도
-
-Python PA, 7,680샘플·reset2560. 골든과 동일 평가 조건. EVM도 함께 기록한다.
-
-| 지표 | 골든 | 이 버전 |
+| 항목 | v4.0 | v4.1 |
 |---|---:|---:|
-| NMSE(dB) | -45.52 | -45.37 |
-| EVM(dB) | -49.42 | -49.30 |
-| ACPR L(dBc) | -53.59 | -53.50 |
-| ACPR R(dBc) | -50.43 | -50.28 |
+| P&R LUT | 37331 | 37415 |
+| P&R FF | 38965 | 38503 |
+| DSP / BRAM | 362 / 0 | 362 / 0 |
+| WNS(ns) | +0.145132 | +0.103748 |
+| 비교주기(ns), 15-WNS | 14.854868 | 14.896252 |
+| HLS II / 추정주기(ns) | 2 / 13.840 | 2 / 13.840 |
+| HLS LUT / FF / DSP | 189092 / 121655 / 489 | 189404 / 121386 / 489 |
+| HLS 호출 지연(cycles) | 149 | 150 |
 
-[PA 원본](accuracy/pa_comparison.txt). 여러 행이 포함된 표의 사용 행은 아래 계보 메타데이터와 상위 README를 따른다.
+| PA 지표 | float golden | v4.0 | v4.1 | v4.1−golden |
+|---|---:|---:|---:|---:|
+| NMSE(dB) | -45.52 | -44.96 | -45.03 | +0.49 |
+| ACPR L(dBc) | -53.59 | -53.61 | -53.51 | +0.08 |
+| ACPR R(dBc) | -50.43 | -50.31 | -50.38 | +0.05 |
 
-## P&R
+차이는 반올림된 문서 수치 기준이며 양수는 golden보다 악화. PA는 Python 후보 출력 평가이며 C-sim 7680샘플 Q12 불일치 0으로 대응을 확인했다. reset2560. 부모 출력과 동일하다는 뜻이 아니다. setup/hold 위반0, WHS+0.036848ns, 미배선0, routing error0. RTL co-sim 및 보드 실측 미실시.
 
-LUT 50,570, FF 48,385, DSP 631, BRAM 0. 비교 주기 17.769804ns = 15−WNS, WNS -2.769804ns. HLS II=2. [자원](reports/utilization.rpt) · [타이밍](reports/timing_summary.rpt).
+## 재현
 
-## 근거와 보존
+Vitis HLS/Vivado2024.1, xczu7ev-ffvc1156-2-e, clock15ns, uncertainty1ns, DSP full reg false, 목표II2, Vivado AreaOptimized_high.
 
-실행 소스: `v3/package/results/v1_interp256_q13_csynth`. 구현 결과: `v1_interp256_q13_csynth`. 소스·TB를 복사 보존했으며 원본 실행 폴더는 이동하지 않았다.
+```powershell
+python scripts/verify.py --package
+$env:TEAM_PYTHON = (Get-Command python).Source
+$env:TEAM_RUN = 'replay01'
+$env:TEAM_MODE = 'csynth'
+vitis_hls -f scripts/reproduce.tcl
+vitis_hls -f scripts/implement.tcl
+vivado -mode batch -source scripts/report_paths.tcl
+```
 
-새 재현 합성이나 RTL co-sim은 수행하지 않았다. C-sim/Python 일치는 해당 입력 벡터의 검증이며 모든 입력의 동등성 증명이 아니다. v4.2는 당시 별도 C-sim 없이 Python 수치 비교 및 합성·P&R을 진행했다.
+새 실행 경로를 사용한다. 이 보관 패키지 자체의 별도 재합성은 하지 않았으며, 실행 후보의 소스·C-sim 출력·완료 보고서를 보존했다. Python PA 비교표에서 wide21_6.txt가 본 후보다. 원본 실행 위치: v3/package/results/v34_output_acc21_csynth.

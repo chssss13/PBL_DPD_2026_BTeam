@@ -1,0 +1,22 @@
+--- v3.4/src/multi_gru.cpp
++++ candidate/src/multi_gru.cpp
+@@ -424,8 +424,14 @@
+         }
+ 
+ 
+-        OUT : Linear<H_SIZE,2,data_t,weight_t,data_t>(gru_out,W_out,b_out, OUT_seq[t]);
+-    }
+-}
+-
+-
++        // Output only: Q6.15 rounded products and accumulation, then Q3.12 output.
++        OUT: for (int o = 0; o < 2; ++o) {
++#pragma HLS UNROLL
++            typedef ap_fixed<21,6,AP_RND,AP_SAT> output_acc_t;
++            output_acc_t acc = MAC_PE<H_SIZE,data_t,weight_t,output_acc_t>(gru_out, W_out[o]);
++            OUT_seq[t][o] = acc + b_out[o];
++        }
++    }
++}
++
++

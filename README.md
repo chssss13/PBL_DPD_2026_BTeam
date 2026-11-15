@@ -1,9 +1,11 @@
-> **별도 v4 계열:** [v3.5 대비 정확도·P&R 비교와 버전별 변경](v4/README.md). 초기 v1 기준에서 분기, 현재 v4.6은 15ns 미달.
-
 # PBL_DPD_2026_BTeam
-## `sehyeon` 브랜치 현재 결과
 
-현재 채택본은 **원본 sehyeon v1을 개선한 v3.3**다. [v3.3 코드·검증·재현](v3/result/v3.3/README.md). 아래 표는 이전 v2 최종 결과다. Vitis HLS/Vivado 2024.1, `xczu7ev-ffvc1156-2-e`, IP 내부 15 ns 클록 조건에서 검증했다.
+현재 채택본은 **[v4.1](v4/result/v4.1/README.md)**(기존 v3.5), 기준선은 **[v4.0](v4/result/v4.0/README.md)**(기존 v3.4)이다. [정확도·자원·타이밍 비교](v4/README.md).
+
+기존 v4.0~v4.6 계열은 [미사용 보관본](v4_unused/README.md)으로 전환했다. 새 v4와는 별도 계열이다.
+## 이전 v1~v3 결과
+
+아래는 이전 v2 최종 결과다. 현재 채택본과 비교는 [새 v4 계열](v4/README.md)을 확인한다.
 
 | 항목 | 최종 결과 |
 |---|---:|
@@ -19,4 +21,4 @@
 
 [PPA 주차별 이력](PPA_주차별_이력.md) · [v1 기록](v1_의사결정_합성요약.md) · [v2 버전별 비교](v2/README.md) · [채택 변경 이력](v2/result/final/docs/v1기반_채택변경_이력.md)
 
-[v3 실험 계열·기록](v3/README.md) · [v3.1 코드·결과](v3/result/v3.1/README.md) · [v3.2 코드·결과](v3/result/v3.2/README.md) · [v3.3 현재 최종본](v3/result/v3.3/README.md)
+[v3 실험 계열·기록](v3/README.md) · [v3.1 코드·결과](v3/result/v3.1/README.md) · [v3.2 코드·결과](v3/result/v3.2/README.md) · [v3.3 과거 채택본](v3/result/v3.3/README.md)
