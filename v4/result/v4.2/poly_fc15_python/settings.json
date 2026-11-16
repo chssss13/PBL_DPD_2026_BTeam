@@ -1,0 +1,8 @@
+{
+  "change": "Polynomial parity FEx retained; Output FC restored to v4.0 Linear<5,2,data_t,weight_t,data_t>: each product and each sequential sum AP_RND/AP_SAT15,3; final bias then15,3",
+  "data": "15,3",
+  "weight": "14,4",
+  "samples": 7680,
+  "reset_every": 2560,
+  "scope": "Python output-only evaluation using validated identical upstream features; no HLS or P&R"
+}
