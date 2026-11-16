@@ -1,0 +1,381 @@
+{
+  "scope": "75 first-layer input weight operands at iter3",
+  "changes": [
+    {
+      "channel": "sext_ln90_loc",
+      "input": "p_read556",
+      "old_register": "p_read_42_reg_111829_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_1_loc",
+      "input": "p_read555",
+      "old_register": "p_read_43_reg_111839_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_2_loc",
+      "input": "p_read554",
+      "old_register": "p_read_44_reg_111844_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_3_loc",
+      "input": "p_read553",
+      "old_register": "p_read_45_reg_111849_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_4_loc",
+      "input": "p_read552",
+      "old_register": "p_read_46_reg_111854_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_5_loc",
+      "input": "p_read551",
+      "old_register": "p_read_47_reg_111859_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_6_loc",
+      "input": "p_read550",
+      "old_register": "p_read_48_reg_111864_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_7_loc",
+      "input": "p_read549",
+      "old_register": "p_read_49_reg_111869_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_8_loc",
+      "input": "p_read548",
+      "old_register": "p_read_50_reg_111874_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_9_loc",
+      "input": "p_read547",
+      "old_register": "p_read_51_reg_111879_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_10_loc",
+      "input": "p_read546",
+      "old_register": "p_read_52_reg_111884_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_11_loc",
+      "input": "p_read545",
+      "old_register": "p_read_53_reg_111889_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_12_loc",
+      "input": "p_read544",
+      "old_register": "p_read_54_reg_111894_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_13_loc",
+      "input": "p_read543",
+      "old_register": "p_read_55_reg_111899_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_14_loc",
+      "input": "p_read542",
+      "old_register": "p_read_56_reg_111904_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_15_loc",
+      "input": "p_read541",
+      "old_register": "p_read_57_reg_111909_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_16_loc",
+      "input": "p_read540",
+      "old_register": "p_read_58_reg_111914_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_17_loc",
+      "input": "p_read539",
+      "old_register": "p_read_59_reg_111919_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_18_loc",
+      "input": "p_read538",
+      "old_register": "p_read_60_reg_111924_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_19_loc",
+      "input": "p_read537",
+      "old_register": "p_read_61_reg_111929_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_20_loc",
+      "input": "p_read536",
+      "old_register": "p_read_62_reg_111934_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_21_loc",
+      "input": "p_read535",
+      "old_register": "p_read_63_reg_111939_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_22_loc",
+      "input": "p_read534",
+      "old_register": "p_read_64_reg_111944_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_23_loc",
+      "input": "p_read533",
+      "old_register": "p_read_65_reg_111949_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_24_loc",
+      "input": "p_read532",
+      "old_register": "p_read_66_reg_111954_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_25_loc",
+      "input": "p_read531",
+      "old_register": "p_read_67_reg_111959_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_26_loc",
+      "input": "p_read530",
+      "old_register": "p_read_68_reg_111964_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_27_loc",
+      "input": "p_read529",
+      "old_register": "p_read_69_reg_111969_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_28_loc",
+      "input": "p_read528",
+      "old_register": "p_read_70_reg_111974_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_29_loc",
+      "input": "p_read527",
+      "old_register": "p_read_71_reg_111979_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_30_loc",
+      "input": "p_read526",
+      "old_register": "p_read_72_reg_111984_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_31_loc",
+      "input": "p_read525",
+      "old_register": "p_read_73_reg_111989_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_32_loc",
+      "input": "p_read524",
+      "old_register": "p_read_74_reg_111994_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_33_loc",
+      "input": "p_read523",
+      "old_register": "p_read_75_reg_111999_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_34_loc",
+      "input": "p_read522",
+      "old_register": "p_read_76_reg_112004_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_35_loc",
+      "input": "p_read521",
+      "old_register": "p_read_77_reg_112009_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_36_loc",
+      "input": "p_read520",
+      "old_register": "p_read_78_reg_112014_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_37_loc",
+      "input": "p_read519",
+      "old_register": "p_read_79_reg_112019_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_38_loc",
+      "input": "p_read518",
+      "old_register": "p_read_80_reg_112024_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_39_loc",
+      "input": "p_read517",
+      "old_register": "p_read_81_reg_112029_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_40_loc",
+      "input": "p_read516",
+      "old_register": "p_read_82_reg_112034_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_41_loc",
+      "input": "p_read515",
+      "old_register": "p_read_83_reg_112039_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_42_loc",
+      "input": "p_read514",
+      "old_register": "p_read_84_reg_112044_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_43_loc",
+      "input": "p_read513",
+      "old_register": "p_read_85_reg_112049_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_44_loc",
+      "input": "p_read512",
+      "old_register": "p_read_86_reg_112054_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_45_loc",
+      "input": "p_read511",
+      "old_register": "p_read_87_reg_112059_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_46_loc",
+      "input": "p_read510",
+      "old_register": "p_read_88_reg_112064_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_47_loc",
+      "input": "p_read509",
+      "old_register": "p_read_89_reg_112069_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_48_loc",
+      "input": "p_read508",
+      "old_register": "p_read_90_reg_112074_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_49_loc",
+      "input": "p_read507",
+      "old_register": "p_read_91_reg_112079_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_50_loc",
+      "input": "p_read506",
+      "old_register": "p_read_92_reg_112084_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_51_loc",
+      "input": "p_read505",
+      "old_register": "p_read_93_reg_112089_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_52_loc",
+      "input": "p_read504",
+      "old_register": "p_read_94_reg_112094_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_53_loc",
+      "input": "p_read503",
+      "old_register": "p_read_95_reg_112099_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_54_loc",
+      "input": "p_read502",
+      "old_register": "p_read_96_reg_112104_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_55_loc",
+      "input": "p_read501",
+      "old_register": "p_read_97_reg_112109_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_56_loc",
+      "input": "p_read500",
+      "old_register": "p_read_98_reg_112114_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_57_loc",
+      "input": "p_read499",
+      "old_register": "p_read_99_reg_112119_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_58_loc",
+      "input": "p_read498",
+      "old_register": "p_read_100_reg_112124_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_59_loc",
+      "input": "p_read497",
+      "old_register": "p_read_101_reg_112129_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_60_loc",
+      "input": "p_read496",
+      "old_register": "p_read_102_reg_112134_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_61_loc",
+      "input": "p_read495",
+      "old_register": "p_read_103_reg_112139_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_62_loc",
+      "input": "p_read494",
+      "old_register": "p_read_104_reg_112144_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_63_loc",
+      "input": "p_read493",
+      "old_register": "p_read_105_reg_112149_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_64_loc",
+      "input": "p_read492",
+      "old_register": "p_read_106_reg_112154_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_65_loc",
+      "input": "p_read491",
+      "old_register": "p_read_107_reg_112159_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_66_loc",
+      "input": "p_read490",
+      "old_register": "p_read_108_reg_112164_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_67_loc",
+      "input": "p_read489",
+      "old_register": "p_read_109_reg_112169_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_68_loc",
+      "input": "p_read488",
+      "old_register": "p_read_110_reg_112174_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_69_loc",
+      "input": "p_read487",
+      "old_register": "p_read_111_reg_112179_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_70_loc",
+      "input": "p_read486",
+      "old_register": "p_read_112_reg_112184_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_71_loc",
+      "input": "p_read485",
+      "old_register": "p_read_113_reg_112189_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_72_loc",
+      "input": "p_read484",
+      "old_register": "p_read_114_reg_112194_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_73_loc",
+      "input": "p_read483",
+      "old_register": "p_read_115_reg_112199_pp0_iter2_reg"
+    },
+    {
+      "channel": "sext_ln90_74_loc",
+      "input": "p_read482",
+      "old_register": "p_read_116_reg_112204_pp0_iter2_reg"
+    }
+  ],
+  "candidate_loop_sha256": "34c3dadfe3681fcc56d2bca917a8f8fe0c87a80bee9e666c5c11376bc27912ab"
+}
