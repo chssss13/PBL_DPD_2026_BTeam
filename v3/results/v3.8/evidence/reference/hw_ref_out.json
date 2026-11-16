@@ -1,0 +1,7 @@
+{
+  "samples": 7680,
+  "reference_source_sha256": "f02a32f4db13bedc1983dd945b46776d00cbb197da92f5ff7c6a938690b1c1d7",
+  "scope": "Independent integer model; candidate outputs used only for comparison",
+  "q12_mismatches": 0,
+  "max_abs_error": 0.0
+}

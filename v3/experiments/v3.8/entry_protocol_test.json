@@ -1,0 +1,8 @@
+{
+  "removed_output_registers": 598,
+  "original_entry_sha256": "1a72a293dbb8d1d3e27d8f9cf12f44ad4075353ba77d40a97c520570d4111184",
+  "fused_entry_sha256": "ac0b7a0d00d7d83fec4029779516a4049346b6cc1aa9b2e9d6368a938c66a683",
+  "pass_protocol": true,
+  "transactions": 250,
+  "scope": "Real parent/fused entry modules, all 598 outputs, changing transaction inputs and deterministic synchronous address/CE-driven RAM models, random terminal stalls, reset during stalls. Inputs held through completion; not full-network equivalence."
+}

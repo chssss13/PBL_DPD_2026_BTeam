@@ -39,6 +39,8 @@ def write_report(root, version):
     parent_name, title, method, code, scope, interpretation = methods[version]
     provenance = (f'[기법 출처: sehyeon 176b59b](https://github.com/chssss13/PBL_DPD_2026_BTeam/tree/176b59b/v3/result/v3.3). {scope}'
                   if not cfg['paper'].startswith('http') else f'[논문·기술 근거]({cfg["paper"]}). {scope}')
+    if not cfg['paper']:
+        provenance = scope
     if s.get('validation_inherited_from'):
         method += ' C 시뮬레이션·HLS 합성·RTL co-simulation·PA 수치는 '+s['validation_inherited_from']+'에서 검증한 동일 소스·동일 HLS RTL의 결과를 계승했다. 이 후보에서 해당 검증을 새로 실행한 값이 아니다. Vivado 합성·배치배선만 다시 실행했다.'
     lines = [f'# {version}: {title}', '',
@@ -72,7 +74,10 @@ def write_report(root, version):
         cells = [x.strip() for x in row[1].split('|') if x.strip()]
         lines += [f'| RTL 호출 지연 min/avg/max | {" / ".join(cells[:3])} cycles |',
                   f'| RTL 호출 간격 min/avg/max（참고） | {" / ".join(cells[3:6])} cycles; 목표 판정에서 제외 |']
-    lines += ['', '여기서 기능 일치는 **후보의 수치 연산을 반영한 독립 참조와 C**, 그리고 **동일 후보의 C와 RTL** 사이의 일치다. 수치 형식·근사식을 바꿨으므로 기존 v3 출력과 bit-exact라는 의미는 아니다.', '',
+    equivalence = ('기능 검증은 독립 정수 참조와 C, C와 RTL, 그리고 직접 부모 출력과의 Q12 일치를 확인한다.'
+                   if cfg.get('require_parent_q12_exact') else
+                   '여기서 기능 일치는 **후보의 수치 연산을 반영한 독립 참조와 C**, 그리고 **동일 후보의 C와 RTL** 사이의 일치다. 수치 형식·근사식을 바꿨으므로 기존 v3 출력과 bit-exact라는 의미는 아니다.')
+    lines += ['', equivalence, '',
               '| PA 지표 | 부모 | 후보 | 부모 대비(dB) | 공식 기준 |', '|---|---:|---:|---:|---:|']
     for key, threshold in [('NMSE',-43.48),('ACPR_L',-50.39),('ACPR_R',-47.83)]:
         lines.append(f'| {key} | {before[key]:.6f} | {after[key]:.6f} | {after[key]-before[key]:+.6f} | ≤ {threshold} |')

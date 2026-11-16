@@ -1,0 +1,17 @@
+{
+  "pass_regression": true,
+  "samples": 1536,
+  "calls": 24,
+  "q12_mismatches": 0,
+  "changed_parameters": "All weight/bias families on each call",
+  "reset_calls": [
+    0,
+    7,
+    11,
+    14,
+    21,
+    22
+  ],
+  "rtl_sha256": "da257e202b2954613682414b82c582cb067b81a0bfc9f2242f1c5661af1e7b37",
+  "scope": "Fresh C versus existing transformed RTL, changed runtime weights and software hidden-state reset pattern; no PA quality claim, no forced system reset or arbitrary external backpressure."
+}

@@ -1,0 +1,9 @@
+{
+  "source_sha256": "da257e202b2954613682414b82c582cb067b81a0bfc9f2242f1c5661af1e7b37",
+  "cosim_sha256": "da257e202b2954613682414b82c582cb067b81a0bfc9f2242f1c5661af1e7b37",
+  "installed_files": [
+    "prj_candidate\\sol1\\impl\\verilog\\ResGRU.v",
+    "prj_candidate\\sol1\\impl\\ip\\hdl\\verilog\\ResGRU.v"
+  ],
+  "implementation_script": "v3.5 run_vivado.tcl/settings/extraction: identical device, clock, synthesis directive and P&R flow"
+}

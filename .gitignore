@@ -11,3 +11,4 @@
 
 # Experiments keep selected logs explicitly under results/E*/.
 **/protocol_test/
+**/entry_protocol_test/

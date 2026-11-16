@@ -1,0 +1,10 @@
+{
+  "reason": "Accept whitespace before entry instance opening parenthesis; no C++ or arithmetic change",
+  "old_transform_sha256": "8b5e1a671c41fca30c096543da6e9cc662c67b0161f194ece8fe1c39c0099d96",
+  "new_transform_sha256": "ca4eda68b0018593d213f145a72d490832a31b89b354870ecd0042436cc8664f",
+  "retained_stages": [
+    "csim",
+    "csynth"
+  ],
+  "previous_error": "Traceback (most recent call last):\n  File \"C:\\Project\\PBL_DPD_2026_BTeam\\v3\\scripts\\run_candidate.py\", line 149, in <module>\n    run(['C:/Xilinx/Vitis_HLS/2024.1/bin/vitis_hls.bat','-f',ROOT/'scripts/candidate_stage.tcl'],stageout/(stage+'.log'),env)\n  File \"C:\\Project\\PBL_DPD_2026_BTeam\\v3\\scripts\\run_candidate.py\", line 58, in run\n    raise RuntimeError(f'{log.name}: exit {result.returncode}')\nRuntimeError: cosim.log: exit 1\n"
+}
