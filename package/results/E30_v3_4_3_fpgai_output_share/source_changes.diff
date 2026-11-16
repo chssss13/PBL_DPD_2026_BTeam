@@ -1,0 +1,35 @@
+--- v3.4/multi_gru.cpp
++++ v3.4-3/multi_gru.cpp
+@@ -6,6 +6,18 @@
+ 
+ 
+ 
++
++// FPG-AI-inspired Dense-first sharing; preserve Linear/MAC_PE arithmetic.
++static void Output_Project_Shared(data_t x[H_SIZE],weight_t W[2][H_SIZE],data_t b[2],data_t y[2]) {
++#pragma HLS INLINE off
++#pragma HLS PIPELINE II=2
++#pragma HLS ALLOCATION instances=mul limit=5 operation
++#pragma HLS ARRAY_PARTITION variable=x complete
++#pragma HLS ARRAY_PARTITION variable=W complete dim=0
++#pragma HLS ARRAY_PARTITION variable=b complete
++#pragma HLS ARRAY_PARTITION variable=y complete
++    Linear<H_SIZE,2,data_t,weight_t,data_t>(x,W,b,y);
++}
+ 
+ void GRU_single(
+     data_t x[I_SIZE],
+@@ -424,8 +436,8 @@
+         }
+ 
+ 
+-        OUT : Linear<H_SIZE,2,data_t,weight_t,data_t>(gru_out,W_out,b_out, OUT_seq[t]);
+-    }
+-}
+-
+-
++        OUT : Output_Project_Shared(gru_out,W_out,b_out,OUT_seq[t]);
++    }
++}
++
++
