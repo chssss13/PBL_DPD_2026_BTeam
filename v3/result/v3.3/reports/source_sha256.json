@@ -1,0 +1,17 @@
+{
+  "src/activations.h": "389908580e149c18dbeb8fd8ab275deaa1a0623517609496c1fdb1e531ca5ec2",
+  "src/activation_comb_tables.h": "4ba44dd92dbcbc91f758b0a41178160e2b82068410946852d5b961183a2d9a22",
+  "src/activation_interp.h": "15e6d8a55643fdcbef3f70b659ea4c0016dd3c892120e5e33d36091af9173203",
+  "src/config.h": "19f149a55fe8ecc63604ecb7048d05eead22f8db24df052f72ef05ac2dd56c0c",
+  "src/fxp_sqrt.h": "57e1fdcb14a22f4e5da4f1b1be03596d08424089408915950656d3515ab34fbf",
+  "src/gru_cell.cpp": "e0d6cc3e3949cc2e5b670b87b88198891af5adbbb3cff0646aeccc0b00563ae3",
+  "src/gru_cell.h": "730a924252bd88c0a3c43845aa0a446e44d7f80843a3a024734ee05478c742a8",
+  "src/linear_layer.h": "8f0113c800f61edaedff170fb86265116a40d54aa1140a5f5d223685e48a8d6b",
+  "src/multi_gru.cpp": "63d98b1c1197b26ee7527b024ef97bafcf6593cb6d2c501cbdf8640c8ffa7295",
+  "src/multi_gru.h": "571804a0e18284e962846833e69a260413b4daade24e6eecd79cc02869ab6494",
+  "src/nnet_common.h": "15a462cbf7db40a6391b14e454e5c2c84b48967a09e44e4a77bba85648fdd456",
+  "src/utils.h": "7b85858d69f876f0a67d1444877565ba36b25d88acbd6b5327cbc3237f9034a0",
+  "src/wrapper.cpp": "274b9803f254b0636604c6c3c168b53db1eed5824dfcd7770741ee0b42f95ec6",
+  "tb/sigmoid_reference.h": "9fb504840443866b3ad5e4d9744ea1c7d6112979dd70e4aa156fd338d569d225",
+  "tb/tb_resgru.cpp": "538c220f7de2685c8e8714abc59f1560f8843fc3b90a357bbfb1ab4942f9b73d"
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "v3/result/v3.2",
+  "change": "r/z bias exact Q4.12 presummation outside LOOP_T; external interface unchanged",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_ii": 2,
+  "pnr_requested": true,
+  "pnr_clock_ns": 15,
+  "vivado_synthesis_directive": "AreaOptimized_high"
+}

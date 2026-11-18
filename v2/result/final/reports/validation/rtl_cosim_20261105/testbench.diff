@@ -1,0 +1,25 @@
+--- parent/tb_resgru.cpp
++++ cosim/tb_resgru.cpp
+@@ -10,6 +10,9 @@
+ // 받도록 바꾼 경우에 사용합니다. 구간 경계를 다른 방식으로 처리한다면 이 testbench도 그에 맞게 고치세요.
+ 
+ #include <cstdlib>
++#ifdef _WIN32
++#include <cstdio>
++#endif
+ #include <fstream>
+ #include <iostream>
+ #include <string>
+@@ -33,6 +36,12 @@
+ static std::string L(int l, const char* s) { return "L" + std::to_string(l) + "_" + s; }
+ 
+ int main(int argc, char** argv) {
++#ifdef _WIN32
++    if (_setmaxstdio(2048) < 0) {
++        std::cerr << "[TB] unable to increase Windows stdio limit\n";
++        return 1;
++    }
++#endif
+     G = argc > 1 ? argv[1] : "golden";
+     int n_samples = argc > 2 ? std::atoi(argv[2]) : 7680;
+     std::string out_path = argc > 3 ? argv[3] : "hls_out.txt";

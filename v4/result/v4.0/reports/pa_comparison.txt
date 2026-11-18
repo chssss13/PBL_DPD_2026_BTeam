@@ -1,0 +1,3 @@
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+baseline_python.txt                            7680   -44.97   -48.75   -53.35   -50.08   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+python_expected.txt                            7680   -44.96   -48.75   -53.61   -50.31   NMSE+0.01  ACPR_L-0.26  ACPR_R-0.23

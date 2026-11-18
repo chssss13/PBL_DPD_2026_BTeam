@@ -1,0 +1,16 @@
+--- C23/run_vivado.tcl
++++ N1b/run_vivado.tcl
+@@ -20,11 +20,11 @@
+ set bd_props {}
+ 
+ set has_synth true
+-set synth_design_args {-directive sdx_optimization_effort_high}
++set synth_design_args {-directive AreaOptimized_high}
+ set synth_dcp ""
+ set synth_props {}
+ 
+-set has_impl 1
++set has_impl 0
+ set impl_props {}
+ 
+ set report_options [dict create]
