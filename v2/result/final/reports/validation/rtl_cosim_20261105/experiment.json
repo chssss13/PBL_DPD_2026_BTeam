@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-05",
+  "parent": "C:\\PBL\\PBL_DPD_2026_BTeam\\v2\\package\\results\\v1_gru_accum_wide_z_unsigned12_state_nosat_csynth",
+  "purpose": "Final adopted DUT C/RTL verification, 7680 samples",
+  "dut_changes": false,
+  "tb_change": "Windows _setmaxstdio(2048) only, same as original v1 co-sim",
+  "reason_for_csynth_replay": "Original synthesis intermediate .bc/.adb files were cleaned; original P&R is preserved",
+  "part": "xczu7ev-ffvc1156-2-e",
+  "period_ns": 15,
+  "uncertainty_ns": 1,
+  "dsp_full_reg": false,
+  "target_II": 2,
+  "samples": 7680,
+  "segment_length": 2560,
+  "rtl": "verilog",
+  "simulator": "xsim",
+  "source_sha256": {
+    "src/activation_comb_tables.h": "bfafd01e47d20136bf3b728b96b46929b822281e26929327b50650ae04d0a083",
+    "src/activation_interp.h": "a8170ce945dec8b0c72672c538b6954a05b4e0e7cfe08dea121523c91c64578e",
+    "src/activations.h": "6c1986fcb72b722f47971f5c927ece78d25a12c0ea7c0f70980ad1b788ed7bf5",
+    "src/config.h": "73a27cf360d87a432e98684447db34a20f5137a287af0882a7afbb585b66d3d4",
+    "src/fxp_sqrt.h": "c196916c349671fe1bef71e6994914a6af6361e12c78404ce4b6c1ab687a251b",
+    "src/gru_cell.cpp": "4640a893e4e53239b0c840b605e776fd3b53350a8ec970bf1c7ba0dfc0ce6535",
+    "src/gru_cell.h": "83c4721c5cf7b7df07bd81405e1cb0e26ec34cd4793341f4cd00781d49b7a591",
+    "src/linear_layer.h": "8f0113c800f61edaedff170fb86265116a40d54aa1140a5f5d223685e48a8d6b",
+    "src/multi_gru.cpp": "9daddebb8714aa7d3c8809135caf8cbcbf1fb5ab3ef5b2601645ce71a6d52d73",
+    "src/multi_gru.h": "64d96b9a42405da363fc794ae6dd97191953f22e3c702dcbec43ed7c6a8dbe4f",
+    "src/nnet_common.h": "10c4ff6d8c839c40eb28b22a87891242b3205f3c1b5afb5f1117fe3b6f74015c",
+    "src/utils.h": "20f138d4d52d8a7835ec8af785c9d63089feba191d9e14c45b8ec098187818b3",
+    "src/wrapper.cpp": "7adb2be3341e58c2bba7007aabad9993fd2ff6a02c59ea6ed7b2325548f8269c",
+    "tb/tb_resgru.cpp": "aaed254146fa20b88213a424c24f7dbcba25db393c45ab04ce6e9091c151a8da"
+  }
+}

@@ -1,0 +1,63 @@
+--- baseline/src/gru_cell.h
++++ candidate/src/gru_cell.h
+@@ -31,6 +31,47 @@
+     }
+ }
+  
++// Distinct non-inlined multiplier specializations for r/z/n recurrent paths.
++// Preserve full product precision and request combinational (zero-cycle) calls.
++template<int GATE, typename data_T, typename weight_T>
++ap_fixed<data_T::width + weight_T::width, data_T::iwidth + weight_T::iwidth>
++Recurrent_Gate_Product(data_T x, weight_T w) {
++#pragma HLS INLINE off
++#pragma HLS PIPELINE II=1
++#pragma HLS LATENCY min=0 max=0
++    ap_fixed<data_T::width + weight_T::width,
++             data_T::iwidth + weight_T::iwidth> product;
++#pragma HLS BIND_OP variable=product op=mul impl=dsp latency=0
++    product = x * w;
++    return product;
++}
++
++template<int GATE, int LEN, typename data_T, typename weight_T, typename accum_T>
++accum_T Recurrent_Gate_MAC(data_T x[LEN], weight_T w[LEN]) {
++#pragma HLS INLINE
++#pragma HLS ARRAY_PARTITION variable=x complete dim=1
++#pragma HLS ARRAY_PARTITION variable=w complete dim=1
++    accum_T acc = 0;
++    for (int i = 0; i < LEN; i++) {
++#pragma HLS PIPELINE II=1
++        acc += accum_T(Recurrent_Gate_Product<GATE, data_T, weight_T>(x[i], w[i]));
++    }
++    return acc;
++}
++
++template<int GATE, int N, typename data_T, typename weight_T, typename accum_T>
++void Recurrent_Gate_MVM(data_T x[N], weight_T W[N][N], accum_T y[N]) {
++#pragma HLS INLINE
++#pragma HLS ARRAY_PARTITION variable=x complete dim=1
++#pragma HLS ARRAY_PARTITION variable=W complete dim=1
++#pragma HLS ARRAY_PARTITION variable=W complete dim=2
++#pragma HLS ARRAY_PARTITION variable=y complete dim=1
++    for (int o = 0; o < N; o++) {
++#pragma HLS UNROLL
++        y[o] = Recurrent_Gate_MAC<GATE, N, data_T, weight_T, accum_T>(x, W[o]);
++    }
++}
++
+ template<int IN_SIZE, int HIDDEN_SIZE, typename data_T, typename weight_T, typename accum_T>
+ void GRU_Kernel_PE(
+     data_T x[IN_SIZE], data_T h_prev[HIDDEN_SIZE],
+@@ -44,9 +85,9 @@
+     MVM_PE<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_iz, W_iz_x);
+     MVM_PE<IN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(x, W_in, W_in_x);
+  
+-    MVM_PE<HIDDEN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hr, W_hr_h);
+-    MVM_PE<HIDDEN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hz, W_hz_h);
+-    MVM_PE<HIDDEN_SIZE, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hn, W_hn_h);
++    Recurrent_Gate_MVM<0, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hr, W_hr_h);
++    Recurrent_Gate_MVM<1, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hz, W_hz_h);
++    Recurrent_Gate_MVM<2, HIDDEN_SIZE, data_T, weight_T, accum_T>(h_prev, W_hn, W_hn_h);
+ }
+  
+ 

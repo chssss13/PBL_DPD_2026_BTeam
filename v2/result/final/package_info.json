@@ -1,0 +1,36 @@
+{
+  "packaged_on": "2026-11-04",
+  "source_experiment": "v1_gru_accum_wide_z_unsigned12_state_nosat_csynth",
+  "source_files": 14,
+  "device": "xczu7ev-ffvc1156-2-e",
+  "tools": "Vitis HLS / Vivado 2024.1",
+  "clock_ns": 15,
+  "hls_uncertainty_ns": 1,
+  "II_request": 2,
+  "samples": 7680,
+  "reset_every": 2560,
+  "golden_origin": "repository package/golden; text weights and dpd_in.txt copied byte-for-byte",
+  "reference_origin": "selected experiment reference.txt and hls_out.txt copied byte-for-byte",
+  "reported_results": {
+    "II": 2,
+    "HLS_period_ns": 13.881,
+    "WNS_ns": 0.093,
+    "comparison_period_ns": 14.907,
+    "data_path_ns": 14.888,
+    "LUT": 41387,
+    "FF": 41088,
+    "DSP": 362,
+    "BRAM": 0
+  },
+  "report_note": "Imported original execution reports, not new synthesis results. Absolute paths in reports are historical labels.",
+  "portable_validation": {
+    "date": "2026-11-04",
+    "mode": "csim",
+    "relocated_copy": true,
+    "samples": 7680,
+    "python_q12_mismatches": 0,
+    "original_csim_q12_mismatches": 0,
+    "csynth_and_pnr_rerun": false
+  },
+  "archive_role": "Current adopted sehyeon v1-derived final implementation after v2.4-S; no new numbered version assigned."
+}

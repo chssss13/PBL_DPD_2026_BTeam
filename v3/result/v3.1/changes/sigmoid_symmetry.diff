@@ -1,0 +1,49 @@
+--- v2_final/src/activation_interp.h
++++ C23/src/activation_interp.h
+@@ -1,23 +1,7 @@
+ #pragma once
+ #include "ap_int.h"
+ namespace activation_interp_tables {
+-static const ap_uint<21> sigmoid[256] = {
+-65610,65612,98382,65617,98387,98390,65625,98395,
+-98398,98401,98404,98407,131178,98414,98417,131188,
+-131192,131196,98432,163971,131208,131212,131216,163988,
+-163993,131230,164002,164007,196780,164018,196791,164029,
+-196802,196808,196814,229588,196827,229601,229608,229615,
+-229622,262397,262405,262413,262421,262429,295205,295214,
+-295223,295232,328009,328019,328029,328039,360817,360828,
+-360839,360850,393629,393641,393653,426433,426446,426459,
+-459240,459254,459268,492050,492065,492080,492095,524878,
+-557662,524911,557695,590480,590498,590516,590534,623320,
+-623339,656126,656146,688934,656187,721743,688997,721786,
+-754576,721831,754621,787412,787436,787460,820252,820277,
+-820302,853095,853121,853147,885941,885968,885995,918790,
+-918818,918846,951642,951671,951700,984497,951759,984556,
+-1017354,984617,1017415,984678,1017476,1050275,1017539,1017570,
+-1050369,1050401,1017665,1050464,1050496,1050528,1050560,1050592,
++static const ap_uint<21> sigmoid[128] = {
+ 1050624,1050656,1050688,1050720,1050752,1018016,1050815,1050847,
+ 1018111,1018142,1050941,1018205,985468,1018266,985529,1018327,
+ 985590,952852,985649,952911,952940,952969,920230,920258,
+--- v2_final/src/activations.h
++++ C23/src/activations.h
+@@ -253,10 +253,16 @@
+     position[14] = !position[14];
+     ap_uint<8> index = position.range(14,7);
+     ap_uint<7> fraction = position.range(6,0);
+-    ap_uint<21> packed = activation_interp_tables::sigmoid[index];
+-    ap_int<15> base;
+-    base.range(14,0) = packed.range(14,0);
++    // Keep the original fraction; mirror the negative segment address.
++    ap_uint<7> address = index.range(6,0);
++    if (!index[7]) address = ~address;
++    ap_uint<21> packed = activation_interp_tables::sigmoid[address];
++    ap_int<15> stored_base;
++    stored_base.range(14,0) = packed.range(14,0);
+     ap_uint<6> delta = packed.range(20,15);
++    // B[i] = 4096 - B[255-i] - D[255-i] for negative segments.
++    ap_int<16> mirrored_base = ap_int<16>(4096) - ap_int<16>(stored_base) - ap_int<16>(delta);
++    ap_int<15> base = index[7] ? stored_base : ap_int<15>(mirrored_base);
+     ap_uint<15> product = delta * fraction;
+     #pragma HLS BIND_OP variable=product op=mul impl=fabric
+     ap_uint<15> rounded = product + ap_uint<15>(64);

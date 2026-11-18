@@ -1,0 +1,12 @@
+{
+  "cosim_top_sha256": "edfad04f072138e2659b79fc5204f7aa62831a089d0e7c9219068f61312524d9",
+  "installed_files": [
+    "prj\\sol1\\impl\\verilog\\ResGRU.v",
+    "prj\\sol1\\impl\\ip\\hdl\\verilog\\ResGRU.v"
+  ],
+  "parent_flow": "C:\\PBL\\PBL_DPD_2026_BTeam\\v3\\package\\results\\v35_parity_fullrom_csynth\\prj\\sol1\\impl\\verilog",
+  "synth_directive": "sdx_optimization_effort_high",
+  "clock_ns": 15,
+  "payloads_match_cosim": true,
+  "change": "Shared control32 and depth1 RTL installed after HLS IP export"
+}
