@@ -1,6 +1,6 @@
 # PBL_DPD_2026_BTeam
 
-현재 채택본은 **[v4.1](v4/result/v4.1/README.md)**(기존 v3.5), 기준선은 **[v4.0](v4/result/v4.0/README.md)**(기존 v3.4)이다. [정확도·자원·타이밍 비교](v4/README.md).
+v4 계열은 **[v4.0 기준선](v4/result/v4.0/README.md)**(기존 v3.4)에서 출력 FC, FEx, FIFO 및 가중치 전달을 순서대로 개선해 **[v4.6](v4/result/v4.6/README.md)**까지 검증했다. [v4.0~v4.6 변경과 결과 비교](v4/README.md).
 
 기존 v4.0~v4.6 계열은 [미사용 보관본](v4_unused/README.md)으로 전환했다. 새 v4와는 별도 계열이다.
 ## 이전 v1~v3 결과

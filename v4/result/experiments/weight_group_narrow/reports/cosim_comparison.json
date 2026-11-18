@@ -1,0 +1,8 @@
+{
+  "samples": 7680,
+  "q12_mismatches": 0,
+  "reference": "hls_out.txt",
+  "pass_check": true,
+  "cosim_latency_max": 143,
+  "cosim_interval_max": 134
+}
