@@ -1,0 +1,6 @@
+{
+  "samples": 7680,
+  "raw_q12_mismatch_count": 0,
+  "max_text_error": 5.000000413701855e-11,
+  "nmse_db": -196.57298136867405
+}

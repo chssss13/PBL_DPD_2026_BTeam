@@ -1,0 +1,40 @@
+{
+  "version": "v2.2",
+  "source_project": "prj_timing_candidate01_synth",
+  "act_lut": 3,
+  "hls_ii": 2,
+  "hls_period_ns": 13.942,
+  "hls_resources": {
+    "LUT": 269332,
+    "FF": 139826,
+    "DSP": 564,
+    "BRAM_18K": 0
+  },
+  "post_route_period_ns": 18.649,
+  "wns_ns": -3.649,
+  "resources": {
+    "LUT": 58319,
+    "FF": 48897,
+    "DSP": 564,
+    "BRAM": 0
+  },
+  "accuracy": {
+    "nmse_db": -45.48,
+    "evm_db": -49.35,
+    "acpr_l_dbc": -53.44,
+    "acpr_r_dbc": -50.3
+  },
+  "samples": 7680,
+  "data_t": "16,3",
+  "weight_t": "16,4",
+  "accum_t": "18,3",
+  "fex_inv": "16,8",
+  "reset_every": 2560,
+  "clock_ns": 15,
+  "clock_uncertainty_ns": 1,
+  "dsp_full_reg": false,
+  "tool_version": "2024.1",
+  "device": "xczu7ev-ffvc1156-2-e",
+  "cosim": "not run for this version",
+  "board_measurement": "not performed"
+}

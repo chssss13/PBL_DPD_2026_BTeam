@@ -1,0 +1,24 @@
+
+
+Implementation tool: Xilinx Vivado v.2024.1
+Project:             prj_accum18_3_state_tree_synth
+Solution:            sol1
+Device target:       xczu7ev-ffvc1156-2-e
+Report date:         Sun Nov 01 06:36:06 +0900 2026
+
+#=== Post-Implementation Resource usage ===
+SLICE:            0
+LUT:          70412
+FF:           48482
+DSP:            636
+BRAM:             0
+URAM:             0
+LATCH:            0
+SRL:           5822
+CLB:          15201
+
+#=== Final timing ===
+CP required:                     15.000
+CP achieved post-synthesis:      16.823
+CP achieved post-implementation: 21.287
+Timing not met

@@ -1,0 +1,12 @@
+{
+  "python": {
+    "changed_samples": 0,
+    "max_abs_error": 0.0,
+    "file_sha256_equal": true
+  },
+  "csim": {
+    "changed_samples": 0,
+    "max_abs_error": 0.0,
+    "file_sha256_equal": true
+  }
+}

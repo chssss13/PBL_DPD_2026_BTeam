@@ -1,0 +1,4 @@
+# Preserve archived report and source bytes covered by SHA256 manifests.
+v2/result/v2.1/** -text
+v2/result/v2.2/** -text
+v2/result/v2.3/** -text
