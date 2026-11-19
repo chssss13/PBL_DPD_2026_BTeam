@@ -1,0 +1,16 @@
+{
+  "original_chain_lengths": {
+    "5": 109,
+    "6": 41
+  },
+  "stress_all": {
+    "value_mismatches": 0,
+    "write_schedule_mismatches": 0,
+    "completion_match": true
+  },
+  "standard_all": {
+    "value_mismatches": 0,
+    "write_schedule_mismatches": 0,
+    "completion_match": true
+  }
+}
