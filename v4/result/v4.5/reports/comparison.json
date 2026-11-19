@@ -1,0 +1,9 @@
+{
+  "samples": 7680,
+  "q12_mismatches": 0,
+  "latency_cycles": 144,
+  "interval_cycles": 134,
+  "parent_latency_cycles": 144,
+  "parent_interval_cycles": 134,
+  "scope": "supplied vectors only; not arbitrary handshake equivalence"
+}

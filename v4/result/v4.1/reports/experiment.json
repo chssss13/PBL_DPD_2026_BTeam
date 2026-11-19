@@ -1,0 +1,11 @@
+{
+  "parent": "v3.4",
+  "change": "output MAC only: rounded Q6.15 products and sum, final Q3.12; inverse16/5 unchanged",
+  "clock_ns": 15,
+  "uncertainty_ns": 1,
+  "target_ii": 2,
+  "csim_samples": 7680,
+  "reset_every": 2560,
+  "pnr_requested": true,
+  "vivado_synth_directive": "AreaOptimized_high"
+}
