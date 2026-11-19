@@ -13,4 +13,6 @@
 
 두 C-sim 출력 파일의 SHA-256은 `eb2a7e6746970b4f26639c2eb3bacb7c402a423fb0810578d7666707df21694c`다. 자원과 주기는 HLS 추정치다. v4.6의 배치·배선 수치를 이 값과 직접 비교해 개선율을 계산할 수 없다.
 
+HLS 합성은 종료 코드 0으로 완료했다. `LOOP_T`의 II=2를 확인했으며, 전체 설계 요약에는 일부 루프 제약 미충족 경고가 남아 있다. 최종 채택 전에 RTL 호출 동작을 확인해야 한다.
+
 검증 근거는 로컬 실행 폴더 `v5/prj_projection_screen/candidate/sol1/syn/report/`의 `SharedProjection_csynth.rpt`, `Loop_LOOP_T_proc_csynth.rpt`, `ResGRU_csynth.rpt`다. [변경과 실행 절차](../../docs/v5.1_projection_share.md)
