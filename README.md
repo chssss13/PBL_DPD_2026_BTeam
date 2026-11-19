@@ -2,6 +2,8 @@
 
 ## LW-ResGRU FPGA 구현
 
+v0 및 v1~v4 최종본의 PPA 비교는 [PPA_COMPARISON.md](PPA_COMPARISON.md)에서 확인한다.
+
 현재 채택 최종본은 **[v4.6](v4/result/v4.6/README.md)**이다. 배치·배선 기준 LUT **21,660**, FF **19,171**, DSP **347**, BRAM **7.5타일**, 비교 주기 **14.862 ns**(목표 15 ns)다. 동일 평가 벡터의 PA NMSE는 **−45.19 dB**이며, 정확도와 검증 범위는 [v4 비교](v4/README.md)에 정리했다.
 
 실제 작업 순서는 **현서 v1.7 → v2.1 → v2.2 → v2.3 → sehyeon v1으로 기준 전환 → v2.4-S → v2 최종 → v3.3 → v4.6**이다. v2.1~v2.3은 현서 v1.7을 기반으로 sehyeon이 진행했다. 이후에는 v2.3 코드를 이어 고치지 않고, 별도로 존재하던 sehyeon v1을 가져와 v2.4-S부터 진행했다. 전체 개선 방법·지표와 현서 v1.7 대비 v2.1의 차이는 [통합 결과 문서](VERSION_FINAL_RESULTS.md)에 정리했다.
