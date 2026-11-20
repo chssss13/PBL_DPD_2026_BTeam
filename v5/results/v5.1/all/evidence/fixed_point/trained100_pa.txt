@@ -1,0 +1,2 @@
+﻿file                                              T     NMSE      EVM   ACPR_L   ACPR_R   ? vs first
+trained100_out.txt                             7680   -31.14   -33.18   -39.12   -40.58   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
