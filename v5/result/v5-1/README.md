@@ -2,6 +2,8 @@
 
 GRU 3층의 reset·update 게이트에서 이전 은닉 상태에 대한 행렬곱 `W_hr × h_prev`, `W_hz × h_prev`를 제거했다. 두 게이트는 현재 층 입력과 bias로 계산한다. 후보 상태 계산과 최종 은닉 상태 갱신에는 이전 은닉 상태를 계속 사용한다.
 
+Gang Li 외의 IGRNN 연구에서 이전 은닉 상태를 거치지 않고 현재 입력으로 게이트를 계산하는 아이디어를 가져왔다. 이 실험에서는 v4.6의 GRU 3층에 해당 변경을 적용했다. [Instant Gated Recurrent Neural Network Behavioral Model for Digital Predistortion of RF Power Amplifiers, IEEE Access, 2020](https://doi.org/10.1109/ACCESS.2020.2986816)
+
 [v4.6 자체 재학습 체크포인트](../../README.md)에서 출발해 변경된 3층을 재학습했다. 데이터는 15/3, 가중치는 14/4 형식이다.
 
 | C-sim·PA 정확도 | v4.6 자체 재학습 | v5-1 |

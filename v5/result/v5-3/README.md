@@ -2,6 +2,8 @@
 
 GRU 3층의 reset·update 게이트에서 현재 입력과 이전 은닉 상태에 곱하는 네 행렬 `W_ir`, `W_iz`, `W_hr`, `W_hz`를 0으로 고정했다. 두 게이트는 학습된 bias로 정해지며, 샘플이 바뀌어도 각 게이트의 값은 일정하다.
 
+Rahul Dey와 Fathi M. Salem의 GRU3에서 두 게이트를 bias만으로 계산하는 아이디어를 가져와, v4.6의 GRU 3층에 적용했다. [Gate-Variants of Gated Recurrent Unit (GRU) Neural Networks, IEEE MWSCAS, 2017](https://doi.org/10.1109/MWSCAS.2017.8053243)
+
 [v4.6 자체 재학습 체크포인트](../../README.md)에서 초기화해 3층의 bias와 후보 상태 가중치를 20 epoch 재학습했다.
 
 | C-sim·PA 정확도 | v4.6 자체 재학습 | 변경 직후 | v5-3 재학습 후 |

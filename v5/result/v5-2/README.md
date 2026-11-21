@@ -2,6 +2,8 @@
 
 GRU 3층의 reset 순환 가중치 `W_hr`에서 대각선 밖 20개를 0으로 고정했다. 각 은닉 성분은 같은 성분의 이전 상태에 가중치를 곱한다. 해당 행렬의 곱셈 항은 25개에서 5개로 줄었다. update와 후보 상태에는 전체 순환 행렬을 사용한다.
 
+Shuai Li 외의 IndRNN에서 같은 층의 각 뉴런이 자신의 이전 상태를 원소별 곱으로 참조하는 아이디어를 가져와, GRU 3층의 reset 게이트 순환 항에 적용했다. [Independently Recurrent Neural Network (IndRNN), CVPR, 2018](https://openaccess.thecvf.com/content_cvpr_2018/html/Li_Independently_Recurrent_Neural_CVPR_2018_paper.html)
+
 [v4.6 자체 재학습 체크포인트](../../README.md)에서 변경된 층의 파라미터를 재학습했다. 검증 NMSE가 가장 좋았던 15 epoch 가중치를 고정소수점 C-sim으로 평가했다.
 
 | C-sim·PA 정확도 | v4.6 자체 재학습 | 대각화 직후 | v5-2 재학습 후 |
