@@ -1,0 +1,2 @@
+PASS: 100 bypasses, 7680 fixed-weight I/Q pairs match the v5-1.4 reference.
+PASS: changing all 100 weights over 16 calls preserves I/Q bits and WRITE/DONE cycles.

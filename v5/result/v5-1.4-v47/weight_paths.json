@@ -1,0 +1,1002 @@
+{
+  "W_ir_1_0_0": {
+    "fifo": "sext_ln90_75_loc_channel_dout",
+    "port": "p_read253",
+    "registers": [
+      "p_read_163_reg_97537",
+      "p_read_163_reg_97537_pp0_iter1_reg",
+      "p_read_163_reg_97537_pp0_iter2_reg",
+      "p_read_163_reg_97537_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_0_1": {
+    "fifo": "sext_ln90_76_loc_channel_dout",
+    "port": "p_read252",
+    "registers": [
+      "p_read_164_reg_97542",
+      "p_read_164_reg_97542_pp0_iter1_reg",
+      "p_read_164_reg_97542_pp0_iter2_reg",
+      "p_read_164_reg_97542_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_0_2": {
+    "fifo": "sext_ln90_77_loc_channel_dout",
+    "port": "p_read251",
+    "registers": [
+      "p_read_165_reg_97547",
+      "p_read_165_reg_97547_pp0_iter1_reg",
+      "p_read_165_reg_97547_pp0_iter2_reg",
+      "p_read_165_reg_97547_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_0_3": {
+    "fifo": "sext_ln90_78_loc_channel_dout",
+    "port": "p_read250",
+    "registers": [
+      "p_read_166_reg_97552",
+      "p_read_166_reg_97552_pp0_iter1_reg",
+      "p_read_166_reg_97552_pp0_iter2_reg",
+      "p_read_166_reg_97552_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_0_4": {
+    "fifo": "sext_ln90_79_loc_channel_dout",
+    "port": "p_read249",
+    "registers": [
+      "p_read_167_reg_97557",
+      "p_read_167_reg_97557_pp0_iter1_reg",
+      "p_read_167_reg_97557_pp0_iter2_reg",
+      "p_read_167_reg_97557_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_1_0": {
+    "fifo": "sext_ln90_80_loc_channel_dout",
+    "port": "p_read248",
+    "registers": [
+      "p_read_168_reg_97562",
+      "p_read_168_reg_97562_pp0_iter1_reg",
+      "p_read_168_reg_97562_pp0_iter2_reg",
+      "p_read_168_reg_97562_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_1_1": {
+    "fifo": "sext_ln90_81_loc_channel_dout",
+    "port": "p_read247",
+    "registers": [
+      "p_read_169_reg_97567",
+      "p_read_169_reg_97567_pp0_iter1_reg",
+      "p_read_169_reg_97567_pp0_iter2_reg",
+      "p_read_169_reg_97567_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_1_2": {
+    "fifo": "sext_ln90_82_loc_channel_dout",
+    "port": "p_read246",
+    "registers": [
+      "p_read_170_reg_97572",
+      "p_read_170_reg_97572_pp0_iter1_reg",
+      "p_read_170_reg_97572_pp0_iter2_reg",
+      "p_read_170_reg_97572_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_1_3": {
+    "fifo": "sext_ln90_83_loc_channel_dout",
+    "port": "p_read245",
+    "registers": [
+      "p_read_171_reg_97577",
+      "p_read_171_reg_97577_pp0_iter1_reg",
+      "p_read_171_reg_97577_pp0_iter2_reg",
+      "p_read_171_reg_97577_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_1_4": {
+    "fifo": "sext_ln90_84_loc_channel_dout",
+    "port": "p_read244",
+    "registers": [
+      "p_read_172_reg_97582",
+      "p_read_172_reg_97582_pp0_iter1_reg",
+      "p_read_172_reg_97582_pp0_iter2_reg",
+      "p_read_172_reg_97582_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_2_0": {
+    "fifo": "sext_ln90_85_loc_channel_dout",
+    "port": "p_read243",
+    "registers": [
+      "p_read_173_reg_97587",
+      "p_read_173_reg_97587_pp0_iter1_reg",
+      "p_read_173_reg_97587_pp0_iter2_reg",
+      "p_read_173_reg_97587_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_2_1": {
+    "fifo": "sext_ln90_86_loc_channel_dout",
+    "port": "p_read242",
+    "registers": [
+      "p_read_174_reg_97592",
+      "p_read_174_reg_97592_pp0_iter1_reg",
+      "p_read_174_reg_97592_pp0_iter2_reg",
+      "p_read_174_reg_97592_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_2_2": {
+    "fifo": "sext_ln90_87_loc_channel_dout",
+    "port": "p_read241",
+    "registers": [
+      "p_read_175_reg_97597",
+      "p_read_175_reg_97597_pp0_iter1_reg",
+      "p_read_175_reg_97597_pp0_iter2_reg",
+      "p_read_175_reg_97597_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_2_3": {
+    "fifo": "sext_ln90_88_loc_channel_dout",
+    "port": "p_read240",
+    "registers": [
+      "p_read_176_reg_97602",
+      "p_read_176_reg_97602_pp0_iter1_reg",
+      "p_read_176_reg_97602_pp0_iter2_reg",
+      "p_read_176_reg_97602_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_2_4": {
+    "fifo": "sext_ln90_89_loc_channel_dout",
+    "port": "p_read239",
+    "registers": [
+      "p_read_177_reg_97607",
+      "p_read_177_reg_97607_pp0_iter1_reg",
+      "p_read_177_reg_97607_pp0_iter2_reg",
+      "p_read_177_reg_97607_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_3_0": {
+    "fifo": "sext_ln90_90_loc_channel_dout",
+    "port": "p_read238",
+    "registers": [
+      "p_read_178_reg_97612",
+      "p_read_178_reg_97612_pp0_iter1_reg",
+      "p_read_178_reg_97612_pp0_iter2_reg",
+      "p_read_178_reg_97612_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_3_1": {
+    "fifo": "sext_ln90_91_loc_channel_dout",
+    "port": "p_read237",
+    "registers": [
+      "p_read_179_reg_97617",
+      "p_read_179_reg_97617_pp0_iter1_reg",
+      "p_read_179_reg_97617_pp0_iter2_reg",
+      "p_read_179_reg_97617_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_3_2": {
+    "fifo": "sext_ln90_92_loc_channel_dout",
+    "port": "p_read236",
+    "registers": [
+      "p_read_180_reg_97622",
+      "p_read_180_reg_97622_pp0_iter1_reg",
+      "p_read_180_reg_97622_pp0_iter2_reg",
+      "p_read_180_reg_97622_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_3_3": {
+    "fifo": "sext_ln90_93_loc_channel_dout",
+    "port": "p_read235",
+    "registers": [
+      "p_read_181_reg_97627",
+      "p_read_181_reg_97627_pp0_iter1_reg",
+      "p_read_181_reg_97627_pp0_iter2_reg",
+      "p_read_181_reg_97627_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_3_4": {
+    "fifo": "sext_ln90_94_loc_channel_dout",
+    "port": "p_read234",
+    "registers": [
+      "p_read_182_reg_97632",
+      "p_read_182_reg_97632_pp0_iter1_reg",
+      "p_read_182_reg_97632_pp0_iter2_reg",
+      "p_read_182_reg_97632_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_4_0": {
+    "fifo": "sext_ln90_95_loc_channel_dout",
+    "port": "p_read233",
+    "registers": [
+      "p_read_183_reg_97637",
+      "p_read_183_reg_97637_pp0_iter1_reg",
+      "p_read_183_reg_97637_pp0_iter2_reg",
+      "p_read_183_reg_97637_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_4_1": {
+    "fifo": "sext_ln90_96_loc_channel_dout",
+    "port": "p_read232",
+    "registers": [
+      "p_read_184_reg_97642",
+      "p_read_184_reg_97642_pp0_iter1_reg",
+      "p_read_184_reg_97642_pp0_iter2_reg",
+      "p_read_184_reg_97642_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_4_2": {
+    "fifo": "sext_ln90_97_loc_channel_dout",
+    "port": "p_read231",
+    "registers": [
+      "p_read_185_reg_97647",
+      "p_read_185_reg_97647_pp0_iter1_reg",
+      "p_read_185_reg_97647_pp0_iter2_reg",
+      "p_read_185_reg_97647_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_4_3": {
+    "fifo": "sext_ln90_98_loc_channel_dout",
+    "port": "p_read230",
+    "registers": [
+      "p_read_186_reg_97652",
+      "p_read_186_reg_97652_pp0_iter1_reg",
+      "p_read_186_reg_97652_pp0_iter2_reg",
+      "p_read_186_reg_97652_pp0_iter3_reg"
+    ]
+  },
+  "W_ir_1_4_4": {
+    "fifo": "sext_ln90_99_loc_channel_dout",
+    "port": "p_read229",
+    "registers": [
+      "p_read_187_reg_97657",
+      "p_read_187_reg_97657_pp0_iter1_reg",
+      "p_read_187_reg_97657_pp0_iter2_reg",
+      "p_read_187_reg_97657_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_0_0": {
+    "fifo": "sext_ln90_100_loc_channel_dout",
+    "port": "p_read228",
+    "registers": [
+      "p_read_188_reg_97662",
+      "p_read_188_reg_97662_pp0_iter1_reg",
+      "p_read_188_reg_97662_pp0_iter2_reg",
+      "p_read_188_reg_97662_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_0_1": {
+    "fifo": "sext_ln90_101_loc_channel_dout",
+    "port": "p_read227",
+    "registers": [
+      "p_read_189_reg_97667",
+      "p_read_189_reg_97667_pp0_iter1_reg",
+      "p_read_189_reg_97667_pp0_iter2_reg",
+      "p_read_189_reg_97667_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_0_2": {
+    "fifo": "sext_ln90_102_loc_channel_dout",
+    "port": "p_read226",
+    "registers": [
+      "p_read_190_reg_97672",
+      "p_read_190_reg_97672_pp0_iter1_reg",
+      "p_read_190_reg_97672_pp0_iter2_reg",
+      "p_read_190_reg_97672_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_0_3": {
+    "fifo": "sext_ln90_103_loc_channel_dout",
+    "port": "p_read225",
+    "registers": [
+      "p_read_191_reg_97677",
+      "p_read_191_reg_97677_pp0_iter1_reg",
+      "p_read_191_reg_97677_pp0_iter2_reg",
+      "p_read_191_reg_97677_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_0_4": {
+    "fifo": "sext_ln90_104_loc_channel_dout",
+    "port": "p_read224",
+    "registers": [
+      "p_read_192_reg_97682",
+      "p_read_192_reg_97682_pp0_iter1_reg",
+      "p_read_192_reg_97682_pp0_iter2_reg",
+      "p_read_192_reg_97682_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_1_0": {
+    "fifo": "sext_ln90_105_loc_channel_dout",
+    "port": "p_read223",
+    "registers": [
+      "p_read_193_reg_97687",
+      "p_read_193_reg_97687_pp0_iter1_reg",
+      "p_read_193_reg_97687_pp0_iter2_reg",
+      "p_read_193_reg_97687_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_1_1": {
+    "fifo": "sext_ln90_106_loc_channel_dout",
+    "port": "p_read222",
+    "registers": [
+      "p_read_194_reg_97692",
+      "p_read_194_reg_97692_pp0_iter1_reg",
+      "p_read_194_reg_97692_pp0_iter2_reg",
+      "p_read_194_reg_97692_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_1_2": {
+    "fifo": "sext_ln90_107_loc_channel_dout",
+    "port": "p_read221",
+    "registers": [
+      "p_read_195_reg_97697",
+      "p_read_195_reg_97697_pp0_iter1_reg",
+      "p_read_195_reg_97697_pp0_iter2_reg",
+      "p_read_195_reg_97697_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_1_3": {
+    "fifo": "sext_ln90_108_loc_channel_dout",
+    "port": "p_read220",
+    "registers": [
+      "p_read_196_reg_97702",
+      "p_read_196_reg_97702_pp0_iter1_reg",
+      "p_read_196_reg_97702_pp0_iter2_reg",
+      "p_read_196_reg_97702_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_1_4": {
+    "fifo": "sext_ln90_109_loc_channel_dout",
+    "port": "p_read219",
+    "registers": [
+      "p_read_197_reg_97707",
+      "p_read_197_reg_97707_pp0_iter1_reg",
+      "p_read_197_reg_97707_pp0_iter2_reg",
+      "p_read_197_reg_97707_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_2_0": {
+    "fifo": "sext_ln90_110_loc_channel_dout",
+    "port": "p_read218",
+    "registers": [
+      "p_read_198_reg_97712",
+      "p_read_198_reg_97712_pp0_iter1_reg",
+      "p_read_198_reg_97712_pp0_iter2_reg",
+      "p_read_198_reg_97712_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_2_1": {
+    "fifo": "sext_ln90_111_loc_channel_dout",
+    "port": "p_read217",
+    "registers": [
+      "p_read_199_reg_97717",
+      "p_read_199_reg_97717_pp0_iter1_reg",
+      "p_read_199_reg_97717_pp0_iter2_reg",
+      "p_read_199_reg_97717_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_2_2": {
+    "fifo": "sext_ln90_112_loc_channel_dout",
+    "port": "p_read216",
+    "registers": [
+      "p_read_200_reg_97722",
+      "p_read_200_reg_97722_pp0_iter1_reg",
+      "p_read_200_reg_97722_pp0_iter2_reg",
+      "p_read_200_reg_97722_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_2_3": {
+    "fifo": "sext_ln90_113_loc_channel_dout",
+    "port": "p_read215",
+    "registers": [
+      "p_read_201_reg_97727",
+      "p_read_201_reg_97727_pp0_iter1_reg",
+      "p_read_201_reg_97727_pp0_iter2_reg",
+      "p_read_201_reg_97727_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_2_4": {
+    "fifo": "sext_ln90_114_loc_channel_dout",
+    "port": "p_read214",
+    "registers": [
+      "p_read_202_reg_97732",
+      "p_read_202_reg_97732_pp0_iter1_reg",
+      "p_read_202_reg_97732_pp0_iter2_reg",
+      "p_read_202_reg_97732_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_3_0": {
+    "fifo": "sext_ln90_115_loc_channel_dout",
+    "port": "p_read213",
+    "registers": [
+      "p_read_203_reg_97737",
+      "p_read_203_reg_97737_pp0_iter1_reg",
+      "p_read_203_reg_97737_pp0_iter2_reg",
+      "p_read_203_reg_97737_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_3_1": {
+    "fifo": "sext_ln90_116_loc_channel_dout",
+    "port": "p_read212",
+    "registers": [
+      "p_read_204_reg_97742",
+      "p_read_204_reg_97742_pp0_iter1_reg",
+      "p_read_204_reg_97742_pp0_iter2_reg",
+      "p_read_204_reg_97742_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_3_2": {
+    "fifo": "sext_ln90_117_loc_channel_dout",
+    "port": "p_read211",
+    "registers": [
+      "p_read_205_reg_97747",
+      "p_read_205_reg_97747_pp0_iter1_reg",
+      "p_read_205_reg_97747_pp0_iter2_reg",
+      "p_read_205_reg_97747_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_3_3": {
+    "fifo": "sext_ln90_118_loc_channel_dout",
+    "port": "p_read210",
+    "registers": [
+      "p_read_206_reg_97752",
+      "p_read_206_reg_97752_pp0_iter1_reg",
+      "p_read_206_reg_97752_pp0_iter2_reg",
+      "p_read_206_reg_97752_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_3_4": {
+    "fifo": "sext_ln90_119_loc_channel_dout",
+    "port": "p_read209",
+    "registers": [
+      "p_read_207_reg_97757",
+      "p_read_207_reg_97757_pp0_iter1_reg",
+      "p_read_207_reg_97757_pp0_iter2_reg",
+      "p_read_207_reg_97757_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_4_0": {
+    "fifo": "sext_ln90_120_loc_channel_dout",
+    "port": "p_read208",
+    "registers": [
+      "p_read_208_reg_97762",
+      "p_read_208_reg_97762_pp0_iter1_reg",
+      "p_read_208_reg_97762_pp0_iter2_reg",
+      "p_read_208_reg_97762_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_4_1": {
+    "fifo": "sext_ln90_121_loc_channel_dout",
+    "port": "p_read207",
+    "registers": [
+      "p_read_209_reg_97767",
+      "p_read_209_reg_97767_pp0_iter1_reg",
+      "p_read_209_reg_97767_pp0_iter2_reg",
+      "p_read_209_reg_97767_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_4_2": {
+    "fifo": "sext_ln90_122_loc_channel_dout",
+    "port": "p_read206",
+    "registers": [
+      "p_read_210_reg_97772",
+      "p_read_210_reg_97772_pp0_iter1_reg",
+      "p_read_210_reg_97772_pp0_iter2_reg",
+      "p_read_210_reg_97772_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_4_3": {
+    "fifo": "sext_ln90_123_loc_channel_dout",
+    "port": "p_read205",
+    "registers": [
+      "p_read_211_reg_97777",
+      "p_read_211_reg_97777_pp0_iter1_reg",
+      "p_read_211_reg_97777_pp0_iter2_reg",
+      "p_read_211_reg_97777_pp0_iter3_reg"
+    ]
+  },
+  "W_iz_1_4_4": {
+    "fifo": "sext_ln90_124_loc_channel_dout",
+    "port": "p_read204",
+    "registers": [
+      "p_read_212_reg_97782",
+      "p_read_212_reg_97782_pp0_iter1_reg",
+      "p_read_212_reg_97782_pp0_iter2_reg",
+      "p_read_212_reg_97782_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_0_0": {
+    "fifo": "sext_ln90_125_loc_channel_dout",
+    "port": "p_read203",
+    "registers": [
+      "p_read_213_reg_97787",
+      "p_read_213_reg_97787_pp0_iter1_reg",
+      "p_read_213_reg_97787_pp0_iter2_reg",
+      "p_read_213_reg_97787_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_0_1": {
+    "fifo": "sext_ln90_126_loc_channel_dout",
+    "port": "p_read202",
+    "registers": [
+      "p_read_214_reg_97792",
+      "p_read_214_reg_97792_pp0_iter1_reg",
+      "p_read_214_reg_97792_pp0_iter2_reg",
+      "p_read_214_reg_97792_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_0_2": {
+    "fifo": "sext_ln90_127_loc_channel_dout",
+    "port": "p_read201",
+    "registers": [
+      "p_read_215_reg_97797",
+      "p_read_215_reg_97797_pp0_iter1_reg",
+      "p_read_215_reg_97797_pp0_iter2_reg",
+      "p_read_215_reg_97797_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_0_3": {
+    "fifo": "sext_ln90_128_loc_channel_dout",
+    "port": "p_read200",
+    "registers": [
+      "p_read_216_reg_97802",
+      "p_read_216_reg_97802_pp0_iter1_reg",
+      "p_read_216_reg_97802_pp0_iter2_reg",
+      "p_read_216_reg_97802_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_0_4": {
+    "fifo": "sext_ln90_129_loc_channel_dout",
+    "port": "p_read199",
+    "registers": [
+      "p_read_217_reg_97807",
+      "p_read_217_reg_97807_pp0_iter1_reg",
+      "p_read_217_reg_97807_pp0_iter2_reg",
+      "p_read_217_reg_97807_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_1_0": {
+    "fifo": "sext_ln90_130_loc_channel_dout",
+    "port": "p_read198",
+    "registers": [
+      "p_read_218_reg_97812",
+      "p_read_218_reg_97812_pp0_iter1_reg",
+      "p_read_218_reg_97812_pp0_iter2_reg",
+      "p_read_218_reg_97812_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_1_1": {
+    "fifo": "sext_ln90_131_loc_channel_dout",
+    "port": "p_read197",
+    "registers": [
+      "p_read_219_reg_97817",
+      "p_read_219_reg_97817_pp0_iter1_reg",
+      "p_read_219_reg_97817_pp0_iter2_reg",
+      "p_read_219_reg_97817_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_1_2": {
+    "fifo": "sext_ln90_132_loc_channel_dout",
+    "port": "p_read196",
+    "registers": [
+      "p_read_220_reg_97822",
+      "p_read_220_reg_97822_pp0_iter1_reg",
+      "p_read_220_reg_97822_pp0_iter2_reg",
+      "p_read_220_reg_97822_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_1_3": {
+    "fifo": "sext_ln90_133_loc_channel_dout",
+    "port": "p_read195",
+    "registers": [
+      "p_read_221_reg_97827",
+      "p_read_221_reg_97827_pp0_iter1_reg",
+      "p_read_221_reg_97827_pp0_iter2_reg",
+      "p_read_221_reg_97827_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_1_4": {
+    "fifo": "sext_ln90_134_loc_channel_dout",
+    "port": "p_read194",
+    "registers": [
+      "p_read_222_reg_97832",
+      "p_read_222_reg_97832_pp0_iter1_reg",
+      "p_read_222_reg_97832_pp0_iter2_reg",
+      "p_read_222_reg_97832_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_2_0": {
+    "fifo": "sext_ln90_135_loc_channel_dout",
+    "port": "p_read193",
+    "registers": [
+      "p_read_223_reg_97837",
+      "p_read_223_reg_97837_pp0_iter1_reg",
+      "p_read_223_reg_97837_pp0_iter2_reg",
+      "p_read_223_reg_97837_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_2_1": {
+    "fifo": "sext_ln90_136_loc_channel_dout",
+    "port": "p_read192",
+    "registers": [
+      "p_read_224_reg_97842",
+      "p_read_224_reg_97842_pp0_iter1_reg",
+      "p_read_224_reg_97842_pp0_iter2_reg",
+      "p_read_224_reg_97842_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_2_2": {
+    "fifo": "sext_ln90_137_loc_channel_dout",
+    "port": "p_read191",
+    "registers": [
+      "p_read_225_reg_97847",
+      "p_read_225_reg_97847_pp0_iter1_reg",
+      "p_read_225_reg_97847_pp0_iter2_reg",
+      "p_read_225_reg_97847_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_2_3": {
+    "fifo": "sext_ln90_138_loc_channel_dout",
+    "port": "p_read190",
+    "registers": [
+      "p_read_226_reg_97852",
+      "p_read_226_reg_97852_pp0_iter1_reg",
+      "p_read_226_reg_97852_pp0_iter2_reg",
+      "p_read_226_reg_97852_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_2_4": {
+    "fifo": "sext_ln90_139_loc_channel_dout",
+    "port": "p_read189",
+    "registers": [
+      "p_read_227_reg_97857",
+      "p_read_227_reg_97857_pp0_iter1_reg",
+      "p_read_227_reg_97857_pp0_iter2_reg",
+      "p_read_227_reg_97857_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_3_0": {
+    "fifo": "sext_ln90_140_loc_channel_dout",
+    "port": "p_read188",
+    "registers": [
+      "p_read_228_reg_97862",
+      "p_read_228_reg_97862_pp0_iter1_reg",
+      "p_read_228_reg_97862_pp0_iter2_reg",
+      "p_read_228_reg_97862_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_3_1": {
+    "fifo": "sext_ln90_141_loc_channel_dout",
+    "port": "p_read187",
+    "registers": [
+      "p_read_229_reg_97867",
+      "p_read_229_reg_97867_pp0_iter1_reg",
+      "p_read_229_reg_97867_pp0_iter2_reg",
+      "p_read_229_reg_97867_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_3_2": {
+    "fifo": "sext_ln90_142_loc_channel_dout",
+    "port": "p_read186",
+    "registers": [
+      "p_read_230_reg_97872",
+      "p_read_230_reg_97872_pp0_iter1_reg",
+      "p_read_230_reg_97872_pp0_iter2_reg",
+      "p_read_230_reg_97872_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_3_3": {
+    "fifo": "sext_ln90_143_loc_channel_dout",
+    "port": "p_read185",
+    "registers": [
+      "p_read_231_reg_97877",
+      "p_read_231_reg_97877_pp0_iter1_reg",
+      "p_read_231_reg_97877_pp0_iter2_reg",
+      "p_read_231_reg_97877_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_3_4": {
+    "fifo": "sext_ln90_144_loc_channel_dout",
+    "port": "p_read184",
+    "registers": [
+      "p_read_232_reg_97882",
+      "p_read_232_reg_97882_pp0_iter1_reg",
+      "p_read_232_reg_97882_pp0_iter2_reg",
+      "p_read_232_reg_97882_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_4_0": {
+    "fifo": "sext_ln90_145_loc_channel_dout",
+    "port": "p_read183",
+    "registers": [
+      "p_read_233_reg_97887",
+      "p_read_233_reg_97887_pp0_iter1_reg",
+      "p_read_233_reg_97887_pp0_iter2_reg",
+      "p_read_233_reg_97887_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_4_1": {
+    "fifo": "sext_ln90_146_loc_channel_dout",
+    "port": "p_read182",
+    "registers": [
+      "p_read_234_reg_97892",
+      "p_read_234_reg_97892_pp0_iter1_reg",
+      "p_read_234_reg_97892_pp0_iter2_reg",
+      "p_read_234_reg_97892_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_4_2": {
+    "fifo": "sext_ln90_147_loc_channel_dout",
+    "port": "p_read181",
+    "registers": [
+      "p_read_235_reg_97897",
+      "p_read_235_reg_97897_pp0_iter1_reg",
+      "p_read_235_reg_97897_pp0_iter2_reg",
+      "p_read_235_reg_97897_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_4_3": {
+    "fifo": "sext_ln90_148_loc_channel_dout",
+    "port": "p_read180",
+    "registers": [
+      "p_read_236_reg_97902",
+      "p_read_236_reg_97902_pp0_iter1_reg",
+      "p_read_236_reg_97902_pp0_iter2_reg",
+      "p_read_236_reg_97902_pp0_iter3_reg"
+    ]
+  },
+  "W_in_1_4_4": {
+    "fifo": "sext_ln90_149_loc_channel_dout",
+    "port": "p_read179",
+    "registers": [
+      "p_read_237_reg_97907",
+      "p_read_237_reg_97907_pp0_iter1_reg",
+      "p_read_237_reg_97907_pp0_iter2_reg",
+      "p_read_237_reg_97907_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_0_0": {
+    "fifo": "W_hn_1_0_0_load_loc_channel_dout",
+    "port": "p_read153",
+    "registers": [
+      "p_read_263_reg_98037",
+      "p_read_263_reg_98037_pp0_iter1_reg",
+      "p_read_263_reg_98037_pp0_iter2_reg",
+      "p_read_263_reg_98037_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_0_1": {
+    "fifo": "W_hn_1_0_1_load_loc_channel_dout",
+    "port": "p_read154",
+    "registers": [
+      "p_read_262_reg_98032",
+      "p_read_262_reg_98032_pp0_iter1_reg",
+      "p_read_262_reg_98032_pp0_iter2_reg",
+      "p_read_262_reg_98032_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_0_2": {
+    "fifo": "W_hn_1_0_2_load_loc_channel_dout",
+    "port": "p_read155",
+    "registers": [
+      "p_read_261_reg_98027",
+      "p_read_261_reg_98027_pp0_iter1_reg",
+      "p_read_261_reg_98027_pp0_iter2_reg",
+      "p_read_261_reg_98027_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_0_3": {
+    "fifo": "W_hn_1_0_3_load_loc_channel_dout",
+    "port": "p_read156",
+    "registers": [
+      "p_read_260_reg_98022",
+      "p_read_260_reg_98022_pp0_iter1_reg",
+      "p_read_260_reg_98022_pp0_iter2_reg",
+      "p_read_260_reg_98022_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_0_4": {
+    "fifo": "W_hn_1_0_4_load_loc_channel_dout",
+    "port": "p_read157",
+    "registers": [
+      "p_read_259_reg_98017",
+      "p_read_259_reg_98017_pp0_iter1_reg",
+      "p_read_259_reg_98017_pp0_iter2_reg",
+      "p_read_259_reg_98017_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_1_0": {
+    "fifo": "W_hn_1_1_0_load_loc_channel_dout",
+    "port": "p_read158",
+    "registers": [
+      "p_read_258_reg_98012",
+      "p_read_258_reg_98012_pp0_iter1_reg",
+      "p_read_258_reg_98012_pp0_iter2_reg",
+      "p_read_258_reg_98012_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_1_1": {
+    "fifo": "W_hn_1_1_1_load_loc_channel_dout",
+    "port": "p_read159",
+    "registers": [
+      "p_read_257_reg_98007",
+      "p_read_257_reg_98007_pp0_iter1_reg",
+      "p_read_257_reg_98007_pp0_iter2_reg",
+      "p_read_257_reg_98007_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_1_2": {
+    "fifo": "W_hn_1_1_2_load_loc_channel_dout",
+    "port": "p_read160",
+    "registers": [
+      "p_read_256_reg_98002",
+      "p_read_256_reg_98002_pp0_iter1_reg",
+      "p_read_256_reg_98002_pp0_iter2_reg",
+      "p_read_256_reg_98002_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_1_3": {
+    "fifo": "W_hn_1_1_3_load_loc_channel_dout",
+    "port": "p_read161",
+    "registers": [
+      "p_read_255_reg_97997",
+      "p_read_255_reg_97997_pp0_iter1_reg",
+      "p_read_255_reg_97997_pp0_iter2_reg",
+      "p_read_255_reg_97997_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_1_4": {
+    "fifo": "W_hn_1_1_4_load_loc_channel_dout",
+    "port": "p_read162",
+    "registers": [
+      "p_read_254_reg_97992",
+      "p_read_254_reg_97992_pp0_iter1_reg",
+      "p_read_254_reg_97992_pp0_iter2_reg",
+      "p_read_254_reg_97992_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_2_0": {
+    "fifo": "W_hn_1_2_0_load_loc_channel_dout",
+    "port": "p_read163",
+    "registers": [
+      "p_read_253_reg_97987",
+      "p_read_253_reg_97987_pp0_iter1_reg",
+      "p_read_253_reg_97987_pp0_iter2_reg",
+      "p_read_253_reg_97987_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_2_1": {
+    "fifo": "W_hn_1_2_1_load_loc_channel_dout",
+    "port": "p_read164",
+    "registers": [
+      "p_read_252_reg_97982",
+      "p_read_252_reg_97982_pp0_iter1_reg",
+      "p_read_252_reg_97982_pp0_iter2_reg",
+      "p_read_252_reg_97982_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_2_2": {
+    "fifo": "W_hn_1_2_2_load_loc_channel_dout",
+    "port": "p_read165",
+    "registers": [
+      "p_read_251_reg_97977",
+      "p_read_251_reg_97977_pp0_iter1_reg",
+      "p_read_251_reg_97977_pp0_iter2_reg",
+      "p_read_251_reg_97977_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_2_3": {
+    "fifo": "W_hn_1_2_3_load_loc_channel_dout",
+    "port": "p_read166",
+    "registers": [
+      "p_read_250_reg_97972",
+      "p_read_250_reg_97972_pp0_iter1_reg",
+      "p_read_250_reg_97972_pp0_iter2_reg",
+      "p_read_250_reg_97972_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_2_4": {
+    "fifo": "W_hn_1_2_4_load_loc_channel_dout",
+    "port": "p_read167",
+    "registers": [
+      "p_read_249_reg_97967",
+      "p_read_249_reg_97967_pp0_iter1_reg",
+      "p_read_249_reg_97967_pp0_iter2_reg",
+      "p_read_249_reg_97967_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_3_0": {
+    "fifo": "W_hn_1_3_0_load_loc_channel_dout",
+    "port": "p_read168",
+    "registers": [
+      "p_read_248_reg_97962",
+      "p_read_248_reg_97962_pp0_iter1_reg",
+      "p_read_248_reg_97962_pp0_iter2_reg",
+      "p_read_248_reg_97962_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_3_1": {
+    "fifo": "W_hn_1_3_1_load_loc_channel_dout",
+    "port": "p_read169",
+    "registers": [
+      "p_read_247_reg_97957",
+      "p_read_247_reg_97957_pp0_iter1_reg",
+      "p_read_247_reg_97957_pp0_iter2_reg",
+      "p_read_247_reg_97957_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_3_2": {
+    "fifo": "W_hn_1_3_2_load_loc_channel_dout",
+    "port": "p_read170",
+    "registers": [
+      "p_read_246_reg_97952",
+      "p_read_246_reg_97952_pp0_iter1_reg",
+      "p_read_246_reg_97952_pp0_iter2_reg",
+      "p_read_246_reg_97952_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_3_3": {
+    "fifo": "W_hn_1_3_3_load_loc_channel_dout",
+    "port": "p_read171",
+    "registers": [
+      "p_read_245_reg_97947",
+      "p_read_245_reg_97947_pp0_iter1_reg",
+      "p_read_245_reg_97947_pp0_iter2_reg",
+      "p_read_245_reg_97947_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_3_4": {
+    "fifo": "W_hn_1_3_4_load_loc_channel_dout",
+    "port": "p_read172",
+    "registers": [
+      "p_read_244_reg_97942",
+      "p_read_244_reg_97942_pp0_iter1_reg",
+      "p_read_244_reg_97942_pp0_iter2_reg",
+      "p_read_244_reg_97942_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_4_0": {
+    "fifo": "W_hn_1_4_0_load_loc_channel_dout",
+    "port": "p_read173",
+    "registers": [
+      "p_read_243_reg_97937",
+      "p_read_243_reg_97937_pp0_iter1_reg",
+      "p_read_243_reg_97937_pp0_iter2_reg",
+      "p_read_243_reg_97937_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_4_1": {
+    "fifo": "W_hn_1_4_1_load_loc_channel_dout",
+    "port": "p_read174",
+    "registers": [
+      "p_read_242_reg_97932",
+      "p_read_242_reg_97932_pp0_iter1_reg",
+      "p_read_242_reg_97932_pp0_iter2_reg",
+      "p_read_242_reg_97932_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_4_2": {
+    "fifo": "W_hn_1_4_2_load_loc_channel_dout",
+    "port": "p_read175",
+    "registers": [
+      "p_read_241_reg_97927",
+      "p_read_241_reg_97927_pp0_iter1_reg",
+      "p_read_241_reg_97927_pp0_iter2_reg",
+      "p_read_241_reg_97927_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_4_3": {
+    "fifo": "W_hn_1_4_3_load_loc_channel_dout",
+    "port": "p_read176",
+    "registers": [
+      "p_read_240_reg_97922",
+      "p_read_240_reg_97922_pp0_iter1_reg",
+      "p_read_240_reg_97922_pp0_iter2_reg",
+      "p_read_240_reg_97922_pp0_iter3_reg"
+    ]
+  },
+  "W_hn_1_4_4": {
+    "fifo": "W_hn_1_4_4_load_loc_channel_dout",
+    "port": "p_read177",
+    "registers": [
+      "p_read_239_reg_97917",
+      "p_read_239_reg_97917_pp0_iter1_reg",
+      "p_read_239_reg_97917_pp0_iter2_reg",
+      "p_read_239_reg_97917_pp0_iter3_reg"
+    ]
+  }
+}
