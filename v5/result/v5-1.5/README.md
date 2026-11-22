@@ -1,4 +1,4 @@
-# v5-1.4 + v4.7 · GRU 2층 가중치 지연 우회
+# v5-1.5 · GRU 2층 가중치 지연 우회
 
 [v5-1.4](../v5-1.4/README.md)에 [v4.7의 전달 방식](../../../v4/result/v4.7/README.md)을 적용했다. 2층 가중치 `W_ir`, `W_iz`, `W_in`, `W_hn` 각 25개를 처음 받아 둔 소비 블록 레지스터에서 곱셈 입력으로 연결해, 뒤로 전달하던 지연 레지스터 3단을 우회한다. [가중치 100개의 전달 경로](weight_paths.json)
 
@@ -12,7 +12,7 @@ RTL 시뮬레이션에서 고정 가중치로 I/Q 7,680샘플이 비트 단위�
 
 Vivado 2024.1, `xczu7ev-ffvc1156-2-e`, 15 ns, `AreaOptimized_high` 조건이다. Setup·hold 위반과 배선 오류는 0개였다. 기존 HLS 샘플 루프의 II는 2이며, 이번 RTL 변경으로 샘플 처리 스케줄을 다시 합성하지 않았다.
 
-| 항목 | v5-1.4 | v5-1.4 + v4.7 | 변화 |
+| 항목 | v5-1.4 | v5-1.5 | 변화 |
 |---|---:|---:|---:|
 | 전체 LUT | 17,682 | 16,905 | −777 (−4.4%) |
 | 지연 저장용 LUT | 2,211 | 1,346 | −865 (−39.1%) |
@@ -29,5 +29,5 @@ Vivado 2024.1, `xczu7ev-ffvc1156-2-e`, 15 ns, `AreaOptimized_high` 조건이다.
 [v5-1.4 RTL](../v5-1.4/rtl)에서 `ResGRU_Loop_LOOP_T_proc.v`를 [이 폴더의 수정본](rtl/ResGRU_Loop_LOOP_T_proc.v)으로 교체하면 배선에 사용한 RTL을 구성할 수 있다. Python과 Icarus Verilog가 설치된 환경에서 아래 명령으로 수정 파일과 출력 일치를 확인할 수 있다.
 
 ```sh
-python v5/result/v5-1.4-v47/verify.py
+python v5/result/v5-1.5/verify.py
 ```
