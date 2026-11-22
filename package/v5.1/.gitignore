@@ -1,0 +1,7 @@
+build/
+.Xil/
+__pycache__/
+*.pyc
+*.log
+*.jou
+clockInfo.txt

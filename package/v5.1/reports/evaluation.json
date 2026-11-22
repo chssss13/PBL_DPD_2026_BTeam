@@ -1,0 +1,247 @@
+{
+  "experiment": {
+    "name": "E43_v5_1_layer2_weight_delays",
+    "version": "v5.1",
+    "parent": "verified v5.0 / E42",
+    "objective": "Reduce layer-two weight transport SRLs without changing arithmetic, widths, coefficient loading or sample II",
+    "change": "150 second-GRU-layer input/recurrent matrix operands use the first stable capture instead of a delayed copy",
+    "evidence": {
+      "baseline_total_SRL_LUTs": 3039,
+      "historical_v47_SRL_reduction": 1279,
+      "historical_v47_LUT_reduction": 1591
+    },
+    "numerical_change": false,
+    "retraining": false,
+    "weights": "E42 retrained 591-parameter model, identical 42 coefficient files",
+    "clock_ns": 15,
+    "II": 2,
+    "samples_per_call": 64,
+    "latency_limit": 144,
+    "interval_limit": 134,
+    "standard_samples": 7680,
+    "stress_samples": 5120,
+    "stress": "Seed4574; all591 parameter entries updated per call, I/Q rotations, reset at 2560 samples",
+    "implementation": "Matched control and candidate, AreaOptimized_high, Explore opt/place/route, AggressiveExplore physical optimization before and after route",
+    "adoption_rule": "All functional/timing/throughput gates; LUT reduction >=5%, FF increase <=1%, DSP and BRAM no increase relative to matched control",
+    "baseline_policy": "Keep package/v5_baseline unchanged; report v5.1 as an independent candidate",
+    "monitoring": false,
+    "created_at": "2026-11-21T21:03:04.312888+09:00"
+  },
+  "status": "COMPLETE",
+  "started_at": "2026-11-21T21:04:46.752334+09:00",
+  "completed_tools": [
+    {
+      "stage": "csim",
+      "returncode": 0
+    },
+    {
+      "stage": "control_standard_setup",
+      "returncode": 0
+    },
+    {
+      "stage": "control_standard_rtl",
+      "returncode": 0
+    },
+    {
+      "stage": "control_stress_setup",
+      "returncode": 0
+    },
+    {
+      "stage": "control_stress_rtl",
+      "returncode": 0
+    },
+    {
+      "stage": "candidate_standard_setup",
+      "returncode": 0
+    },
+    {
+      "stage": "candidate_standard_rtl",
+      "returncode": 0
+    },
+    {
+      "stage": "candidate_stress_setup",
+      "returncode": 0
+    },
+    {
+      "stage": "candidate_stress_rtl",
+      "returncode": 0
+    },
+    {
+      "stage": "implementation_control",
+      "returncode": 0
+    },
+    {
+      "stage": "implementation_candidate",
+      "returncode": 0
+    }
+  ],
+  "inherited_HLS_loop_II": [
+    {
+      "report": "Loop_LOOP_T_proc_csynth.xml",
+      "loop": "LOOP_T",
+      "II": 2
+    }
+  ],
+  "current_stage": "implementation_candidate",
+  "csim_standard": {
+    "samples": 7680,
+    "Q12_mismatches": 0,
+    "passed": true
+  },
+  "control_standard_comparison": {
+    "samples": 7680,
+    "Q12_mismatches": 0,
+    "passed": true
+  },
+  "control_standard_RTL": {
+    "transactions": 120,
+    "steady_latency_max": 144,
+    "steady_interval_max": 134,
+    "clock_ns": 15,
+    "throughput_MSps": 31.840796019900502,
+    "native_checker_passed": true
+  },
+  "control_stress_comparison": {
+    "samples": 5120,
+    "Q12_mismatches": 0,
+    "passed": true
+  },
+  "control_stress_RTL": {
+    "transactions": 80,
+    "steady_latency_max": 144,
+    "steady_interval_max": 134,
+    "clock_ns": 15,
+    "throughput_MSps": 31.840796019900502,
+    "native_checker_passed": true
+  },
+  "candidate_standard_comparison": {
+    "samples": 7680,
+    "Q12_mismatches": 0,
+    "passed": true
+  },
+  "candidate_standard_RTL": {
+    "transactions": 120,
+    "steady_latency_max": 144,
+    "steady_interval_max": 134,
+    "clock_ns": 15,
+    "throughput_MSps": 31.840796019900502,
+    "native_checker_passed": true
+  },
+  "candidate_stress_comparison": {
+    "samples": 5120,
+    "Q12_mismatches": 0,
+    "passed": true
+  },
+  "candidate_stress_RTL": {
+    "transactions": 80,
+    "steady_latency_max": 144,
+    "steady_interval_max": 134,
+    "clock_ns": 15,
+    "throughput_MSps": 31.840796019900502,
+    "native_checker_passed": true
+  },
+  "cross_standard": {
+    "samples": 7680,
+    "Q12_mismatches": 0,
+    "passed": true
+  },
+  "cross_stress": {
+    "samples": 5120,
+    "Q12_mismatches": 0,
+    "passed": true
+  },
+  "accuracy": {
+    "NMSE_dB": -45.2337760925293,
+    "EVM_dB": -49.032879414488534,
+    "ACPR_L_dBc": -53.24899361352383,
+    "ACPR_R_dBc": -50.11915907776761
+  },
+  "accuracy_scope": "v5 PA metrics reused only after 7680 candidate output samples matched v5 Q12 exactly; no new PA or retraining run",
+  "control_PnR": {
+    "WNS_ns": 0.013,
+    "clocks": [
+      {
+        "name": "ap_clk",
+        "period_ns": 15.0
+      }
+    ],
+    "resources": {
+      "LUT": 21818,
+      "FF": 19299,
+      "DSP": 347,
+      "BRAM_tiles": 7.5,
+      "URAM": 0
+    },
+    "WHS_ns": 0.019,
+    "failing_endpoints": {
+      "setup": 0,
+      "hold": 0,
+      "pulse_width": 0
+    },
+    "unrouted_nets": 0,
+    "routing_errors": 0,
+    "no_clock_registers": 0,
+    "clock_resources": {
+      "MMCM": 0,
+      "PLL": 0,
+      "BUFGCE": 0,
+      "BUFGCE_DIV": 0,
+      "BUFGCTRL*": 0
+    },
+    "timing_pass": true,
+    "routing_pass": true,
+    "SRL_LUTs": 3039,
+    "CLBs": 5319
+  },
+  "candidate_PnR": {
+    "WNS_ns": 0.006,
+    "clocks": [
+      {
+        "name": "ap_clk",
+        "period_ns": 15.0
+      }
+    ],
+    "resources": {
+      "LUT": 20130,
+      "FF": 19355,
+      "DSP": 347,
+      "BRAM_tiles": 7.5,
+      "URAM": 0
+    },
+    "WHS_ns": 0.019,
+    "failing_endpoints": {
+      "setup": 0,
+      "hold": 0,
+      "pulse_width": 0
+    },
+    "unrouted_nets": 0,
+    "routing_errors": 0,
+    "no_clock_registers": 0,
+    "clock_resources": {
+      "MMCM": 0,
+      "PLL": 0,
+      "BUFGCE": 1,
+      "BUFGCE_DIV": 0,
+      "BUFGCTRL*": 0
+    },
+    "timing_pass": true,
+    "routing_pass": true,
+    "SRL_LUTs": 1760,
+    "CLBs": 5546
+  },
+  "resource_delta": {
+    "LUT": -1688,
+    "FF": 56,
+    "DSP": 0,
+    "BRAM_tiles": 0.0,
+    "URAM": 0
+  },
+  "LUT_reduction_percent": 7.736731139426167,
+  "FF_increase_percent": 0.29017047515416117,
+  "SRL_delta": -1279,
+  "target_constraints_pass": true,
+  "resource_goal_pass": true,
+  "adoption_recommended": true,
+  "baseline_preserved": true,
+  "finished_at": "2026-11-22T00:23:55.503885+09:00"
+}

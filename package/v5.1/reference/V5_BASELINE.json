@@ -1,0 +1,55 @@
+{
+  "status": "VERIFIED",
+  "version": "v5.0",
+  "path": "package/v5_baseline",
+  "experiment": "package/results/E42_v5_baseline_v46_retrain",
+  "promoted_at": "2026-11-21T18:31:22.523543+09:00",
+  "hardware": {
+    "WNS_ns": 0.013,
+    "clocks": [
+      {
+        "name": "ap_clk",
+        "period_ns": 15.0
+      }
+    ],
+    "resources": {
+      "LUT": 21818,
+      "FF": 19299,
+      "DSP": 347,
+      "BRAM_tiles": 7.5,
+      "URAM": 0
+    },
+    "WHS_ns": 0.019,
+    "failing_endpoints": {
+      "setup": 0,
+      "hold": 0,
+      "pulse_width": 0
+    },
+    "unrouted_nets": 0,
+    "routing_errors": 0,
+    "no_clock_registers": 0,
+    "clock_resources": {
+      "MMCM": 0,
+      "PLL": 0,
+      "BUFGCE": 0,
+      "BUFGCE_DIV": 0,
+      "BUFGCTRL*": 0
+    },
+    "timing_pass": true,
+    "routing_pass": true
+  },
+  "accuracy": {
+    "NMSE_dB": -45.2337760925293,
+    "EVM_dB": -49.032879414488534,
+    "ACPR_L_dBc": -53.24899361352383,
+    "ACPR_R_dBc": -50.11915907776761
+  },
+  "rtl": {
+    "transactions": 120,
+    "steady_latency_max": 144,
+    "steady_interval_max": 134,
+    "throughput_MSps": 31.840796019900502,
+    "native_checker_passed": true
+  },
+  "comparison_policy": "Future v5 experiments compare against these verified routed resources, exact coefficient hashes and held-out accuracy."
+}
