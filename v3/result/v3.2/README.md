@@ -1,6 +1,6 @@
 # v3.2 — recurrent 곱셈 결과 포화 제거
 
-2026-11-07 사용자 채택. sehyeon v1 기반 v2 최종 → sigmoid 대칭표 v3.1 → **P08 / v3.2**. v3.1의 sigmoid 256구간 보간 표를 대칭으로 128항만 저장하는 방식과 Vivado `AreaOptimized_high` 설정을 유지한다.
+2026-11-07 사용자 채택. sehyeon v1 기반 v2.4 최종 → sigmoid 대칭표 v3.1 → **P08 / v3.2**. v3.1의 sigmoid 256구간 보간 표를 대칭으로 128항만 저장하는 방식과 Vivado `AreaOptimized_high` 설정을 유지한다.
 
 `gru_cell.h`의 `Recurrent_Gate_MAC`(r/z)과 `Recurrent_N_Row_MAC`(n)에서 개별 recurrent 곱 결과를 signed 18/3으로 변환할 때 `AP_SAT`을 `AP_WRAP`으로 변경한다. 폭과 `AP_RND` 반올림, 입력 MAC 및 누산 이후 포화는 유지한다. [변경 diff](changes/p08.diff). 값이 표현 범위를 벗어나면 결과가 달라질 수 있다.
 

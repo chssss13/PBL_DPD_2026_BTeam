@@ -1,4 +1,4 @@
-# LW-ResGRU 최종 구현
+# v2.4 · LW-ResGRU 최종 구현
 
 2026-11-04. 이 폴더만 복사하면 변경 이력을 읽고 최종 C++의 C-sim·HLS 합성·Vivado 배치·배선을 실행할 수 있다. 기준 구현은 `v1_gru_accum_wide_z_unsigned12_state_nosat_csynth`이며, 기존 v2.1 이후 채택한 변경15번까지 포함한다.
 
@@ -50,7 +50,7 @@
 
 - Vitis HLS 2024.1, Vivado 2024.1 및 대상 디바이스 지원 설치.
 - Python 3.9 이상. 제공 검증 스크립트는 표준 라이브러리만 사용한다.
-- 폴더는 `C:/PBL/PBL_DPD_2026_BTeam/v2/result/final`처럼 공백 없는 영문 경로에 둔다. Vitis HLS 2024.1은 공백이 있는 프로젝트 경로를 거부한다.
+- 폴더는 `C:/PBL/PBL_DPD_2026_BTeam/v2/result/v2.4`처럼 공백 없는 영문 경로에 둔다. Vitis HLS 2024.1은 공백이 있는 프로젝트 경로를 거부한다.
 - 디바이스 `xczu7ev-ffvc1156-2-e`, 클록15ns, HLS uncertainty1ns, DSP full reg false, LOOP_T II=2 요청.
 - H=5, L=3, 입력7,680개, 상태 리셋2,560개마다. data15,3·weight14,4, sigmoid/tanh256구간.
 
