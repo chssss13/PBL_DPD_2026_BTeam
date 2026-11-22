@@ -1,6 +1,6 @@
 # v2 — v1에서 15 ns를 통과하기까지
 
-main의 채택 흐름은 **세현 v1 → v2.1 → v2.2 → v2.3 → v2.4 최종**이다. 과거 v2.4-S를 v2.1로 정리했다. 현서 v1.7 기반의 초기 세 실험은 미채택 탐색본으로 별도 보관한다.
+main의 채택 흐름은 **세현 v1 → v2.1 → v2.2 → v2.3 → v2.4 → v2.5 → v2.6 최종**이다. 과거 v2.4-S를 v2.1로 정리했다. 현서 v1.7 기반의 초기 세 실험은 미채택 탐색본으로 별도 보관한다.
 
 ## 미채택 초기 탐색 · 현서 v1.7 기반
 
@@ -21,11 +21,13 @@ main의 채택 흐름은 **세현 v1 → v2.1 → v2.2 → v2.3 → v2.4 최종*
 | sehyeon v1 기준 → v2.1 | ① sigmoid·tanh의 4,096칸 직접 LUT를 256구간 선형 보간으로 바꾸고, data를 16/3→15/3, weight를 16/4→14/4로 줄임. ② recurrent 곱셈을 r·z·n 게이트별로 분리 | PA NMSE와 FPGA 자원이 개선됐다. 배선 후 비교 주기는 17.506→17.524 ns로 거의 같았다. |
 | v2.2 | GRU 입력·recurrent 누산 21/6, 최종 18/3 변환 유지 | 17.310 ns, LUT 42,163 / FF 41,689 / DSP 333 |
 | v2.3 | recurrent 곱셈을 게이트와 입력 항별로 분리 | 16.427 ns, LUT 41,735 / FF 41,383 / DSP 337 |
-| v2.4 최종 | n recurrent 출력 행별 분리, z를 unsigned 12/0으로 변환, 최종 상태 포화만 제거 | 14.907 ns, 15 ns 통과. 동일 벡터 Q12 출력 일치 |
+| [v2.4](result/v2.4/README.md) | n recurrent 곱셈을 출력 행과 입력 항별로 분리 | 15.266 ns, LUT 41,806 / FF 41,161 / DSP 347 |
+| [v2.5](result/v2.5/README.md) | 상태 갱신용 z를 unsigned 12/0으로 변환 | 15.146 ns, LUT 41,781 / FF 41,175 / DSP 347 |
+| [v2.6 최종](result/v2.6/README.md) | 최종 상태 포화만 제거하고 반올림 유지 | 14.907 ns, 15 ns 통과. 동일 벡터 Q12 출력 일치 |
 
 비트폭은 전체 비트 수/정수부 비트 수 순서다.
 
-| 지표 | sehyeon v1 | v2.1 | v2.4 최종 |
+| 지표 | sehyeon v1 | v2.1 | v2.6 최종 |
 |---|---:|---:|---:|
 | PA NMSE (dB) | −43.57 | −44.97 | −44.97¹ |
 | PA ACPR 좌 / 우 (dBc) | −51.26 / −48.02 | −53.35 / −50.08 | −53.35 / −50.08¹ |
@@ -37,11 +39,11 @@ main의 채택 흐름은 **세현 v1 → v2.1 → v2.2 → v2.3 → v2.4 최종*
 | P&R 비교 주기 (ns) | 17.506 | 17.524 | **14.907** |
 | HLS 샘플 루프 II | 2 | 2 | 2 |
 
-¹ v2.4 최종은 같은 7,680샘플에서 Q12 출력이 일치해 v2.1 PA 결과를 이어 적었다. 비교 주기는 `15 ns − WNS`다.
+¹ v2.6 최종은 같은 7,680샘플에서 Q12 출력이 일치해 v2.1 PA 결과를 이어 적었다. 비교 주기는 `15 ns − WNS`다.
 
 - [sehyeon v1 측정 결과](https://github.com/chssss13/PBL_DPD_2026_BTeam/blob/d2e722658631957c278a8910b0666f243bd99cd1/result/07_lut_lookup/02_implementation/README.md)
 - v2.1 [배치·배선 자원](result/v2.1/reports/implementation/utilization.rpt) · [타이밍](result/v2.1/reports/implementation/timing_summary.rpt)
-- v2.4 최종 [소스·재현 안내](result/v2.4/README.md) · [단계별 코드 변경](result/v2.4/changes/코드변경.md)
+- v2.6 최종 [소스·재현 안내](result/v2.6/README.md) · [단계별 코드 변경](result/v2.6/changes/코드변경.md)
 
 ## 현서 v1.7과 초기 탐색 첫 단계 비교
 

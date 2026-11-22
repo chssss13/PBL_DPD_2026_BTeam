@@ -10,7 +10,9 @@ sehyeon 브랜치의 구 v2.1~v2.3 초기 탐색 자료를 main에도 보관한�
 | [v2.1](v2.1/README.md) | sehyeon v1에서 별도 분기; 보간·비트 축소·게이트 분리 | 17.524 ns | [P&R 자원](v2.1/reports/implementation/utilization.rpt)·[타이밍](v2.1/reports/implementation/timing_summary.rpt) |
 | [v2.2](v2.2/README.md) | GRU 누산 조정 | 17.310 ns | 상세 변경 이력 참조 |
 | [v2.3](v2.3/README.md) | recurrent 곱셈 입력 항별 분리 | 16.427 ns | 상세 변경 이력 참조 |
-| [v2.4 최종](v2.4/README.md) | v2.1 이후 누산·항/행 분리·상태 갱신 개선 | 14.907 ns | 독립 재현 보관본·검증 결과 |
+| [v2.4](v2.4/README.md) | n recurrent 곱셈 출력 행별 분리 | 15.266 ns | 변경 이력·코드 diff |
+| [v2.5](v2.5/README.md) | 상태 갱신용 z를 unsigned 12/0으로 변환 | 15.146 ns | 변경 이력·코드 diff |
+| [v2.6 최종](v2.6/README.md) | 반올림 유지·최종 상태 포화 제거. 앞 단계의 변경 누적 | 14.907 ns | 독립 재현 보관본·검증 결과 |
 
 작업자는 sehyeon이며, 초기 구 v2.1~v2.3의 코드 출발점이 현서 v1.7이다. 현서 브랜치에서 같은 번호를 사용한 BRAM ROM·균형 MAC 실험과 구분한다. 상세 수치·판정은 [v2 개요](../README.md)와 각 버전 README를 따른다.
 
