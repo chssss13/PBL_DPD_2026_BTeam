@@ -14,3 +14,5 @@ v4.5와 v4.6의 RTL에서 `rtl_changes.json`에 기록된 75개 피연산자 연
 원본 ZIP SHA-256은 `6a78f159af3fce8b45915e07f12d7d1add86e8cde9a4a65ac41d88c1110fea5d`다.
 
 Vivado 2024.1의 `xvlog` 및 `xelab`로 네 버전의 `ResGRU` 컴파일과 elaboration을 확인했다. 기존 co-sim과 배치·배선 보고서는 당시 실행 결과다.
+
+세현 브랜치에서 가져온 채택 최종본 v4.7의 [최종 RTL](result/v4.7/final_rtl/)과 [검증·배선 후 보고서](result/v4.7/README.md)를 함께 보관한다.

@@ -13,3 +13,7 @@ v3.3에서 v4.6까지 채택한 변경과 검증 기록이다. FPGA xczu7ev-ffvc
 | v4.6 | v4.5 | [GRU 1층 가중치 직접 전달](v4.6_direct_weights.md) | [측정·검증](../result/v4.6/README.md) |
 
 [누적 PPA 이력표](ppa_history_template.md) · [버전별 결과](../results/README.md)
+
+## v4.7 채택 최종본
+
+세현 v4.7에서 GRU 2층의 가중치 전달 경로를 단축했다. 배선 후 LUT 20,069개, FF 19,200개, WNS +0.051 ns를 기록했다. [검증 및 최종 RTL](../result/v4.7/README.md)
