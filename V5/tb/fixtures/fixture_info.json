@@ -1,0 +1,40 @@
+{
+  "trained": false,
+  "purpose": "Interface/rounding regression only; not DPD performance",
+  "parameters": 237,
+  "samples": 128,
+  "baseline_helpers": [
+    {
+      "name": "activations.h",
+      "sha256": "389908580e149c18dbeb8fd8ab275deaa1a0623517609496c1fdb1e531ca5ec2"
+    },
+    {
+      "name": "activation_interp.h",
+      "sha256": "15e6d8a55643fdcbef3f70b659ea4c0016dd3c892120e5e33d36091af9173203"
+    },
+    {
+      "name": "activation_comb_tables.h",
+      "sha256": "4ba44dd92dbcbc91f758b0a41178160e2b82068410946852d5b961183a2d9a22"
+    },
+    {
+      "name": "nnet_common.h",
+      "sha256": "15a462cbf7db40a6391b14e454e5c2c84b48967a09e44e4a77bba85648fdd456"
+    },
+    {
+      "name": "linear_layer.h",
+      "sha256": "97558709f698dcb34f549932d587205626c02f37b6700f142c0512e10354668b"
+    },
+    {
+      "name": "fex_inverse_rom.h",
+      "sha256": "c4dd6ec49af927d7d140fddbde31d0d891ba8bc8e199e335f6ab02b0352e032d"
+    },
+    {
+      "name": "fxp_sqrt.h",
+      "sha256": "57e1fdcb14a22f4e5da4f1b1be03596d08424089408915950656d3515ab34fbf"
+    },
+    {
+      "name": "nr_poly_tables.h",
+      "sha256": "02023e1ec90d54c2731f49cac78dfb2ed8689f91c32e7d8dada7a454823304eb"
+    }
+  ]
+}

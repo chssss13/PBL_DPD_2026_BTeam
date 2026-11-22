@@ -1,0 +1,83 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1 (64-bit)
+  **** SW Build 5069499 on May 21 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Sun Nov 22 22:52:26 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source C:/Xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user '정태수' on host 'desktop-fj2of03' (Windows NT_amd64 version 10.0) on Sun Nov 22 22:52:27 +0900 2026
+INFO: [HLS 200-10] In directory 'C:/pbl_project/PBL_DPD_2026_BTeam'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'fastGRNN/scripts/run_trained_csim.tcl'
+INFO: [HLS 200-1510] Running: open_project prj 
+INFO: [HLS 200-10] Creating and opening project 'C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/build/trained_check01/prj'.
+INFO: [HLS 200-1510] Running: set_top ResFastGRNN 
+INFO: [HLS 200-1510] Running: add_files C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/src/res_fastgrnn.cpp -cflags -IC:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/src 
+INFO: [HLS 200-10] Adding design file 'C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/src/res_fastgrnn.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/tb/tb_fastgrnn.cpp -cflags -IC:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/src 
+INFO: [HLS 200-10] Adding test bench file 'C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/tb/tb_fastgrnn.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution sol1 
+INFO: [HLS 200-10] Creating and opening solution 'C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/build/trained_check01/prj/sol1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu7ev-ffvc1156-2-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu7ev-ffvc1156-2-e'
+INFO: [HLS 200-1510] Running: create_clock -period 15 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 15ns.
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 1.0 
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1ns.
+INFO: [HLS 200-1510] Running: config_schedule -enable_dsp_full_reg=false 
+INFO: [HLS 200-1510] Running: csim_design -argv C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/golden/parameters.txt C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/golden/test_input.txt 7680 C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/build/trained_check01/trained_hls_out.txt 2560 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../../../tb/tb_fastgrnn.cpp in debug mode
+   Compiling ../../../../../../src/res_fastgrnn.cpp in debug mode
+   Generating csim.exe
+In file included from ../../../../../../tb/tb_fastgrnn.cpp:1:
+In file included from C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/src/res_fastgrnn.h:2:
+In file included from C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/src/config.h:2:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/ap_fixed.h:9:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_common.h:658:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_private.h:68:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_half.h:26:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/hls_half_fpo.h:19:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_fpo.h:140:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/Xilinx/Vitis_HLS/2024.1/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+In file included from ../../../../../../src/res_fastgrnn.cpp:1:
+In file included from C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/src/res_fastgrnn.h:2:
+In file included from C:/pbl_project/PBL_DPD_2026_BTeam/fastGRNN/src/config.h:2:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/ap_fixed.h:9:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_common.h:658:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_private.h:68:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_half.h:26:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/hls_half_fpo.h:19:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_fpo.h:140:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/Xilinx/Vitis_HLS/2024.1/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+[TB] 2000 input linear cases PASS; accumulator clamps=21750
+[TB] 2000 output linear cases PASS; accumulator clamps=1437; output clamps=3936
+[TB] 10000 cell cases PASS; saturated updates=828
+[TB] 6 top calls (384 samples), continuation/reset/parameter changes PASS
+[TB] PASS; compact parameter count=237
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:14; Allocated memory: 1.082 MB.
+INFO: [HLS 200-1510] Running: close_project 
+INFO: [HLS 200-112] Total CPU user time: 1 seconds. Total CPU system time: 1 seconds. Total elapsed time: 16.332 seconds; peak allocated memory: 152.840 MB.

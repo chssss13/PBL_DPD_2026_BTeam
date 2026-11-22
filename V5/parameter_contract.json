@@ -1,0 +1,159 @@
+{
+  "top": "ResFastGRNN",
+  "parameters": 237,
+  "logical_parameter_bits": 3355,
+  "order": "C row-major; layer, output, input",
+  "coefficients": "sigmoid already applied, range [0,1]",
+  "groups": [
+    {
+      "name": "W_inj",
+      "shape": [
+        5,
+        6
+      ],
+      "offset": 0,
+      "count": 30,
+      "bits": 14,
+      "integer_bits": 4,
+      "fractional_bits": 10,
+      "unit_interval": false
+    },
+    {
+      "name": "b_inj",
+      "shape": [
+        5
+      ],
+      "offset": 30,
+      "count": 5,
+      "bits": 15,
+      "integer_bits": 3,
+      "fractional_bits": 12,
+      "unit_interval": false
+    },
+    {
+      "name": "prelu",
+      "shape": [],
+      "offset": 35,
+      "count": 1,
+      "bits": 14,
+      "integer_bits": 4,
+      "fractional_bits": 10,
+      "unit_interval": false
+    },
+    {
+      "name": "gating",
+      "shape": [
+        3
+      ],
+      "offset": 36,
+      "count": 3,
+      "bits": 14,
+      "integer_bits": 4,
+      "fractional_bits": 10,
+      "unit_interval": true
+    },
+    {
+      "name": "W",
+      "shape": [
+        3,
+        5,
+        5
+      ],
+      "offset": 39,
+      "count": 75,
+      "bits": 14,
+      "integer_bits": 4,
+      "fractional_bits": 10,
+      "unit_interval": false
+    },
+    {
+      "name": "U",
+      "shape": [
+        3,
+        5,
+        5
+      ],
+      "offset": 114,
+      "count": 75,
+      "bits": 14,
+      "integer_bits": 4,
+      "fractional_bits": 10,
+      "unit_interval": false
+    },
+    {
+      "name": "b_z",
+      "shape": [
+        3,
+        5
+      ],
+      "offset": 189,
+      "count": 15,
+      "bits": 15,
+      "integer_bits": 3,
+      "fractional_bits": 12,
+      "unit_interval": false
+    },
+    {
+      "name": "b_h",
+      "shape": [
+        3,
+        5
+      ],
+      "offset": 204,
+      "count": 15,
+      "bits": 15,
+      "integer_bits": 3,
+      "fractional_bits": 12,
+      "unit_interval": false
+    },
+    {
+      "name": "zeta",
+      "shape": [
+        3
+      ],
+      "offset": 219,
+      "count": 3,
+      "bits": 14,
+      "integer_bits": 4,
+      "fractional_bits": 10,
+      "unit_interval": true
+    },
+    {
+      "name": "nu",
+      "shape": [
+        3
+      ],
+      "offset": 222,
+      "count": 3,
+      "bits": 14,
+      "integer_bits": 4,
+      "fractional_bits": 10,
+      "unit_interval": true
+    },
+    {
+      "name": "W_out",
+      "shape": [
+        2,
+        5
+      ],
+      "offset": 225,
+      "count": 10,
+      "bits": 14,
+      "integer_bits": 4,
+      "fractional_bits": 10,
+      "unit_interval": false
+    },
+    {
+      "name": "b_out",
+      "shape": [
+        2
+      ],
+      "offset": 235,
+      "count": 2,
+      "bits": 15,
+      "integer_bits": 3,
+      "fractional_bits": 12,
+      "unit_interval": false
+    }
+  ]
+}
