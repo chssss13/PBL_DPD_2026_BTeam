@@ -32,7 +32,14 @@ def main():
         prefix = f'backbone.rnn.rnn_layers.{layer}.'
         for filename, key in [('W_i', 'weight_ih_l0'), ('W_h', 'weight_hh_l0'),
                               ('b_i', 'bias_ih_l0'), ('b_h', 'bias_hh_l0')]:
-            packed = state[prefix + key]
+            if prefix + 'weight_hn' in state:
+                if key == 'weight_hh_l0':
+                    candidate = state[prefix + 'weight_hn']
+                    packed = torch.cat((torch.zeros_like(candidate), torch.zeros_like(candidate), candidate))
+                else:
+                    packed = state[prefix + key.removesuffix('_l0')]
+            else:
+                packed = state[prefix + key]
             if packed.shape[0] == 10:
                 z, n = packed.chunk(2)
                 gates = (torch.zeros_like(z), z, n)

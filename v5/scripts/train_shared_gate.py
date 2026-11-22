@@ -40,15 +40,58 @@ class SharedGateGRU(nn.Module):
         return torch.stack(result, dim=1), hidden.unsqueeze(0)
 
 
+class InputOnlyGatesGRU(nn.Module):
+    def __init__(self, source):
+        super().__init__()
+        self.weight_ih = nn.Parameter(source.weight_ih_l0.detach().clone())
+        self.bias_ih = nn.Parameter(source.bias_ih_l0.detach().clone())
+        self.bias_hh = nn.Parameter(source.bias_hh_l0.detach().clone())
+        self.weight_hn = nn.Parameter(source.weight_hh_l0.detach().chunk(3)[2].clone())
+
+    def forward(self, x):
+        b_r, b_z, b_n = self.bias_hh.chunk(3)
+        x_r, x_z, x_n = F.linear(x, self.weight_ih, self.bias_ih).chunk(3, dim=-1)
+        reset = torch.sigmoid(x_r + b_r)
+        update = torch.sigmoid(x_z + b_z)
+        hidden = x.new_zeros(x.shape[0], self.weight_hn.shape[0])
+        result = []
+        for r, z, n_input in zip(reset.unbind(1), update.unbind(1), x_n.unbind(1)):
+            n = torch.tanh(n_input + r * F.linear(hidden, self.weight_hn, b_n))
+            hidden = n + z * (hidden - n)
+            result.append(hidden)
+        return torch.stack(result, dim=1), hidden.unsqueeze(0)
+
+
 def protect_zero(iq):
     offset = (iq == 0).all(dim=-1) * 1e-9
     return iq + torch.stack((offset, torch.zeros_like(offset)), dim=-1)
 
 
+def qat_forward(model, data):
+    """Apply parameter quantization with a straight-through gradient."""
+    parameters = {}
+    for name, value in model.named_parameters():
+        bias = name.rsplit('.', 1)[-1].startswith('bias')
+        width, fractional = (15, 12) if bias else (14, 10)
+        residual_gate = '.gates.' in name
+        quant_input = value.sigmoid() if residual_gate else value
+        scale = 2 ** fractional
+        code = torch.floor(quant_input * scale + 0.5).clamp(-2 ** (width - 1), 2 ** (width - 1) - 1)
+        quantized = code / scale
+        if residual_gate:
+            quantized = torch.logit(quantized, eps=1e-7)
+        parameters[name] = value + (quantized - value).detach()
+    return torch.func.functional_call(model, parameters, (data,))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scope', choices=['layer2', 'all'], required=True)
+    parser.add_argument('--scope', choices=['layer2', 'all', 'input23', 'original'], required=True)
     parser.add_argument('--epochs', type=int, default=100)
+    parser.add_argument('--qat', action='store_true', help='Quantize DPD parameters in the forward pass.')
+    initialization = parser.add_mutually_exclusive_group()
+    initialization.add_argument('--scratch', action='store_true', help='Start with freshly initialized DPD parameters.')
+    initialization.add_argument('--init-dpd', type=Path, help='Load a checkpoint with this candidate architecture.')
     stopping = parser.add_mutually_exclusive_group()
     stopping.add_argument('--early-stop', action='store_true', help='Stop after five epochs without validation improvement.')
     stopping.add_argument('--no-early-stop', dest='early_stop', action='store_false')
@@ -56,6 +99,7 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     out = args.out.resolve()
+    init_dpd = args.init_dpd.resolve() if args.init_dpd else None
     if args.epochs < 0 or out.exists():
         parser.error('Choose a new output directory and a nonnegative epoch count.')
     os.chdir(DATA)
@@ -69,15 +113,22 @@ def main():
     checkpoints = {}
     for model, stage in [(dpd, 'train_dpd'), (pa, 'train_pa')]:
         checkpoint, = (Path('save/DPA_200MHz') / stage).glob('*.pt')
-        model.load_state_dict(torch.load(checkpoint, map_location='cpu', weights_only=True))
+        if stage == 'train_pa' or not (args.scratch or init_dpd):
+            model.load_state_dict(torch.load(checkpoint, map_location='cpu', weights_only=True))
         model.eval()
         checkpoints[stage] = checkpoint
     pa.requires_grad_(False)
-    baseline = copy.deepcopy(dpd).requires_grad_(False)
-    layers = [1] if args.scope == 'layer2' else [0, 1, 2]
+    baseline = copy.deepcopy(dpd).requires_grad_(False) if not (args.scratch or init_dpd) else None
+    layers = {'layer2': [1], 'all': [0, 1, 2], 'input23': [1, 2], 'original': []}[args.scope]
+    cell_type = InputOnlyGatesGRU if args.scope == 'input23' else SharedGateGRU
     for index in layers:
         gru = dpd.backbone.rnn.rnn_layers[index]
-        dpd.backbone.rnn.rnn_layers[index] = SharedGateGRU(gru)
+        dpd.backbone.rnn.rnn_layers[index] = cell_type(gru)
+
+    if init_dpd:
+        dpd.load_state_dict(torch.load(init_dpd, map_location='cpu', weights_only=True))
+    if baseline is None:
+        baseline = copy.deepcopy(dpd).requires_grad_(False)
 
     train_x, train_y, val_x, _, test_x, _ = load_dataset('DPA_200MHz')
     gain = float(set_target_gain(train_x, train_y))
@@ -86,9 +137,13 @@ def main():
                         for x in (train_x, val_x, test_x)]
     optimizer = torch.optim.Adam(dpd.parameters(), lr=0.00025, foreach=False)
 
+    def predict(model, data):
+        data = protect_zero(data)
+        return qat_forward(model, data) if args.qat else model(data)
+
     def loss(model, data):
         target = data * gain
-        prediction = pa(protect_zero(model(protect_zero(data))))
+        prediction = pa(protect_zero(predict(model, data)))
         return (prediction - target).square().mean() / target.square().mean()
 
     best, best_epoch, history = float('inf'), 0, []
@@ -115,7 +170,7 @@ def main():
     torch.save(best_state, out / 'dpd.pt')
     for name, model in [('baseline', baseline), ('candidate', dpd)]:
         with torch.no_grad():
-            values = model(protect_zero(test)).reshape(-1, 2).numpy()
+            values = predict(model, test).reshape(-1, 2).numpy()
         np.savetxt(out / f'{name}.txt', values)
     report = subprocess.run([sys.executable, str(TOOLS / 'eval_pa.py'), '--pa',
                              str(checkpoints['train_pa']), str(out / 'baseline.txt'),
@@ -123,8 +178,10 @@ def main():
                             text=True, encoding='utf-8', check=True,
                             env={**os.environ, 'PYTHONIOENCODING': 'utf-8'})
     (out / 'evaluation.txt').write_text(report.stdout, encoding='utf-8')
-    summary = dict(scope=args.scope, shared_layers=[i + 1 for i in layers],
-                   best_epoch=best_epoch, validation_nmse_db=history, seed=4574)
+    summary = dict(scope=args.scope, modified_layers=[i + 1 for i in layers],
+                   best_epoch=best_epoch, validation_nmse_db=history, seed=4574,
+                   parameter_qat=args.qat,
+                   initialization='scratch' if args.scratch else str(init_dpd or 'pretrained'))
     (out / 'validation.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
     print(report.stdout)
 
