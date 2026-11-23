@@ -1,0 +1,2 @@
+PASS: 16 calls with varying GRU weights, positive/negative PReLU coefficient, and induced backpressure.
+PASS: 7680 I/Q pairs and WRITE/ACCEPT/DONE cycles match the FIFO-only parent.

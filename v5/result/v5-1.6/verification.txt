@@ -1,0 +1,2 @@
+PASS: all groups preserve 16 dynamic calls, output and handshake cycles, and blocked writes.
+PASS: 416 -> 13 flags; fixed-weight 7680 I/Q pairs and WRITE/DONE cycles match.
