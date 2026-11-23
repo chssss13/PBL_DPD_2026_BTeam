@@ -1,0 +1,9 @@
+{
+  "strategy": "each W/U matrix connection bypasses exactly one delay stage",
+  "connections": 150,
+  "co_sim": "PASS",
+  "dynamic_weights": "PASS",
+  "trained_128_output": "identical to original",
+  "candidate_sha256": "4903ecf99c021e4b2c08f57a9c393c91447f8b2576bb816c94ece92dc2d586ff",
+  "failed_full_bypass_file": "direct_bypass_failed.v"
+}

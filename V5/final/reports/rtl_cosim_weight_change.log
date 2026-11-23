@@ -1,0 +1,258 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1 (64-bit)
+  **** SW Build 5069499 on May 21 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Mon Nov 23 11:16:38 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source C:/Xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user '정태수' on host 'desktop-fj2of03' (Windows NT_amd64 version 10.0) on Mon Nov 23 11:16:38 +0900 2026
+INFO: [HLS 200-10] In directory 'C:/pbl_project/PBL_DPD_2026_BTeam'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'v4.7_fastgrnn_weight_bypass/scripts/cosim_variant.tcl'
+INFO: [HLS 200-1510] Running: open_project prj 
+INFO: [HLS 200-10] Opening project 'C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj'.
+INFO: [HLS 200-1510] Running: open_solution sol1 
+INFO: [HLS 200-10] Opening solution 'C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 15ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu7ev-ffvc1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_schedule -enable_dsp_full_reg=0
+INFO: [HLS 200-1510] Running: cosim_design -rtl verilog -tool xsim -trace_level none -argv C:/pbl_project/PBL_DPD_2026_BTeam/V5/golden/parameters.txt C:/pbl_project/PBL_DPD_2026_BTeam/V5/golden/test_input.txt 128 C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/trained_out.txt 128 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "C:/Xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang++"
+   Compiling res_fastgrnn.cpp_pre.cpp.tb.cpp
+   Compiling apatb_ResFastGRNN.cpp
+   Compiling tb_fastgrnn.cpp_pre.cpp.tb.cpp
+   Compiling apatb_ResFastGRNN_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+[TB] 2000 input linear cases PASS; accumulator clamps=21750
+[TB] 2000 output linear cases PASS; accumulator clamps=1437; output clamps=3936
+[TB] 10000 cell cases PASS; saturated updates=828
+TOP_CALL 0
+TOP_CALL 1
+TOP_CALL 2
+TOP_CALL 3
+TOP_CALL 4
+TOP_CALL 5
+[TB] 6 top calls (384 samples), continuation/reset/parameter changes PASS
+[TB] PASS; compact parameter count=237
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+
+C:\pbl_project\PBL_DPD_2026_BTeam\v4.7_fastgrnn_weight_bypass\variants\stepback\prj\sol1\sim\verilog>set PATH= 
+
+C:\pbl_project\PBL_DPD_2026_BTeam\v4.7_fastgrnn_weight_bypass\variants\stepback\prj\sol1\sim\verilog>call C:/Xilinx/Vivado/2024.1/bin/xelab xil_defaultlib.apatb_ResFastGRNN_top glbl -Oenable_linking_all_libraries  -prj ResFastGRNN.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm  -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib "ieee_proposed=./ieee_proposed" -s ResFastGRNN  
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_ResFastGRNN_top glbl -Oenable_linking_all_libraries -prj ResFastGRNN.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib ieee_proposed=./ieee_proposed -s ResFastGRNN 
+Multi-threading is on. Using 18 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/AESL_automem_IQ_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_IQ_seq
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/AESL_automem_OUT_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_OUT_seq
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_ResFastGRNN_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_ama_submuladd_25s_26s_15s_39s_41_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_ama_submuladd_25s_26s_15s_39s_41_1_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_ama_submuladd_25s_26s_15s_39s_41_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_Block_entry_split_proc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_Block_entry_split_proc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_FeatureRegister.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_FeatureRegister
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_InputMACRegister.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_InputMACRegister
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_OutputMACRegister.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_OutputMACRegister
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_PrepareStage_0_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_PrepareStage_0_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_PrepareStage_1_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_PrepareStage_1_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_PrepareStage_2_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_PrepareStage_2_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_StateRegister_0_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_StateRegister_0_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_StateRegister_1_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_StateRegister_1_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_FastGRNN_StateRegister_2_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_FastGRNN_StateRegister_2_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_fifo_w14_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w14_d2_S
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w14_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_fifo_w18_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w18_d2_S
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w18_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_fifo_w19_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w19_d2_S
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w19_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_fifo_w22_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w22_d2_S
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w22_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_fifo_w29_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w29_d2_S
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w29_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_fifo_w32_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w32_d2_S
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_fifo_w32_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_flow_control_loop_delay_pipe.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_flow_control_loop_delay_pipe
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_Loop_LOOP_T_proc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_Loop_LOOP_T_proc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_Loop_LOOP_T_proc_fex_inverse_rom_ROM_1P_BRAM_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_Loop_LOOP_T_proc_fex_inverse_rom_ROM_1P_BRAM_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_mul_15ns_15s_30_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_mul_15ns_15s_30_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_mul_15s_14s_29_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_mul_15s_14s_29_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_mul_15s_15ns_30_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_mul_15s_15ns_30_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_mul_15s_15s_30_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_mul_15s_15s_30_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_mul_15s_29s_29_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_mul_15s_29s_29_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_mul_18s_32s_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_mul_18s_32s_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_mul_7ns_6ns_13_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_mul_7ns_6ns_13_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_mul_8ns_7ns_15_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_mul_8ns_7ns_15_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_sigmoid_comb_ap_fixed_15_3_0_0_0_ap_fixed_15_3_0_0_0_activ_config_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_sigmoid_comb_ap_fixed_15_3_0_0_0_ap_fixed_15_3_0_0_0_activ_config_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_sparsemux_257_7_21_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_sparsemux_257_7_21_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_sparsemux_513_8_23_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_sparsemux_513_8_23_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN_tanh_comb_ap_fixed_15_3_0_0_0_ap_fixed_15_3_0_0_0_activ_config_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResFastGRNN_tanh_comb_ap_fixed_15_3_0_0_0_ap_fixed_15_3_0_0_0_activ_config_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.ResFastGRNN_Block_entry_split_pr...
+Compiling module xil_defaultlib.ResFastGRNN_Loop_LOOP_T_proc_fex...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_FeatureRegi...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_InputMACReg...
+Compiling module xil_defaultlib.ResFastGRNN_sparsemux_257_7_21_1...
+Compiling module xil_defaultlib.ResFastGRNN_mul_7ns_6ns_13_1_1(N...
+Compiling module xil_defaultlib.ResFastGRNN_sigmoid_comb_ap_fixe...
+Compiling module xil_defaultlib.ResFastGRNN_sparsemux_513_8_23_1...
+Compiling module xil_defaultlib.ResFastGRNN_mul_8ns_7ns_15_1_1(N...
+Compiling module xil_defaultlib.ResFastGRNN_tanh_comb_ap_fixed_1...
+Compiling module xil_defaultlib.ResFastGRNN_mul_15s_14s_29_1_1(N...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_PrepareStag...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_StateRegist...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_PrepareStag...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_StateRegist...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_PrepareStag...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_StateRegist...
+Compiling module xil_defaultlib.ResFastGRNN_FastGRNN_OutputMACRe...
+Compiling module xil_defaultlib.ResFastGRNN_mul_15s_29s_29_1_1(N...
+Compiling module xil_defaultlib.ResFastGRNN_mul_18s_32s_32_1_1(N...
+Compiling module xil_defaultlib.ResFastGRNN_mul_15s_15s_30_1_1(N...
+Compiling module xil_defaultlib.ResFastGRNN_mul_15s_15ns_30_1_1(...
+Compiling module xil_defaultlib.ResFastGRNN_mul_15ns_15s_30_1_1(...
+Compiling module xil_defaultlib.ResFastGRNN_ama_submuladd_25s_26...
+Compiling module xil_defaultlib.ResFastGRNN_ama_submuladd_25s_26...
+Compiling module xil_defaultlib.ResFastGRNN_flow_control_loop_de...
+Compiling module xil_defaultlib.ResFastGRNN_Loop_LOOP_T_proc
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w32_d2_S_ShiftR...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w32_d2_S_defaul...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w29_d2_S_ShiftR...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w29_d2_S_defaul...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w18_d2_S_ShiftR...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w18_d2_S_defaul...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w19_d2_S_ShiftR...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w19_d2_S_defaul...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w14_d2_S_ShiftR...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w14_d2_S_defaul...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w22_d2_S_ShiftR...
+Compiling module xil_defaultlib.ResFastGRNN_fifo_w22_d2_S_defaul...
+Compiling module xil_defaultlib.ResFastGRNN
+Compiling module xil_defaultlib.AESL_automem_IQ_seq
+Compiling module xil_defaultlib.AESL_automem_OUT_seq
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_report_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detector_2
+Compiling module xil_defaultlib.df_fifo_intf_default
+Compiling module xil_defaultlib.df_process_intf_default
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.upc_loop_intf_default
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_ResFastGRNN_top
+Compiling module work.glbl
+Built simulation snapshot ResFastGRNN
+
+****** xsim v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Mon Nov 23 11:18:21 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/ResFastGRNN/xsim_script.tcl
+# xsim {ResFastGRNN} -autoloadwcfg -tclbatch {ResFastGRNN.tcl}
+Time resolution is 1 ps
+source ResFastGRNN.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 8 [0.00%] @ "143000"
+// RTL Simulation : 1 / 8 [7.64%] @ "2303000"
+// RTL Simulation : 2 / 8 [7.64%] @ "4283000"
+// RTL Simulation : 3 / 8 [7.64%] @ "6263000"
+// RTL Simulation : 4 / 8 [7.64%] @ "8243000"
+// RTL Simulation : 5 / 8 [7.64%] @ "10223000"
+// RTL Simulation : 6 / 8 [7.64%] @ "12203000"
+// RTL Simulation : 7 / 8 [7.64%] @ "14183000"
+// RTL Simulation : 8 / 8 [100.00%] @ "16163000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 16252500 ps : File "C:/pbl_project/PBL_DPD_2026_BTeam/v4.7_fastgrnn_weight_bypass/variants/stepback/prj/sol1/sim/verilog/ResFastGRNN.autotb.v" Line 14580
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Nov 23 11:18:24 2026...
+INFO: [COSIM 212-316] Starting C post checking ...
+[TB] 2000 input linear cases PASS; accumulator clamps=21750
+[TB] 2000 output linear cases PASS; accumulator clamps=1437; output clamps=3936
+[TB] 10000 cell cases PASS; saturated updates=828
+TOP_CALL 0
+TOP_CALL 1
+TOP_CALL 2
+TOP_CALL 3
+TOP_CALL 4
+TOP_CALL 5
+[TB] 6 top calls (384 samples), continuation/reset/parameter changes PASS
+[TB] PASS; compact parameter count=237
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:01:47; Allocated memory: 18.301 MB.
+INFO: [HLS 200-1510] Running: close_project 
+INFO: [HLS 200-112] Total CPU user time: 20 seconds. Total CPU system time: 2 seconds. Total elapsed time: 108.795 seconds; peak allocated memory: 169.703 MB.

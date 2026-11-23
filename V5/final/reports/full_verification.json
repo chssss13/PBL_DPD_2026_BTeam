@@ -1,0 +1,12 @@
+{
+  "samples": 7680,
+  "segment_samples": 2560,
+  "output_values": 15360,
+  "output_sha256": "e6cd5f38906793628b8a0680f7f9493ccd2398992ad92dbcf04332d4eda67b1d",
+  "matches_previous_csim_bytewise": true,
+  "different_values": 0,
+  "max_absolute_difference": 0.0,
+  "sim_and_routed_rtl_sha256": "4903ecf99c021e4b2c08f57a9c393c91447f8b2576bb816c94ece92dc2d586ff",
+  "dynamic_weights_and_reset_cosim": "PASS",
+  "cosim": "PASS"
+}

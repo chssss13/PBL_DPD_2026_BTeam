@@ -1,0 +1,12 @@
+{
+  "samples": 7680,
+  "segment_samples": 2560,
+  "gain": 2.5208089983008746,
+  "pa_input": "test signal directly, without DPD",
+  "nmse_db": -11.067622184753418,
+  "evm_db": -11.705428206496471,
+  "acpr_l_dbc": -31.991074867472037,
+  "acpr_r_dbc": -30.0007177486659,
+  "max_pa_input_amplitude": 1.0,
+  "test_outside_training_amplitude_fraction": 0.0
+}

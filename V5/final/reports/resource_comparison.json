@@ -1,0 +1,37 @@
+{
+  "baseline": {
+    "LUT": 16134.0,
+    "FF": 10113.0,
+    "DSP": 244.0,
+    "BRAM": 7.5,
+    "shift_register_LUT": 724.0,
+    "WNS_ns": 1.165,
+    "TNS_ns": 0.0,
+    "WHS_ns": 0.029,
+    "routing_errors": 0
+  },
+  "candidate": {
+    "LUT": 16134.0,
+    "FF": 8625.0,
+    "DSP": 244.0,
+    "BRAM": 7.5,
+    "shift_register_LUT": 731.0,
+    "WNS_ns": 1.115,
+    "TNS_ns": 0.0,
+    "WHS_ns": 0.029,
+    "routing_errors": 0
+  },
+  "delta": {
+    "LUT": 0.0,
+    "FF": -1488.0,
+    "DSP": 0.0,
+    "BRAM": 0.0,
+    "shift_register_LUT": 7.0,
+    "WNS_ns": -0.05,
+    "TNS_ns": 0.0,
+    "WHS_ns": 0.0,
+    "routing_errors": 0
+  },
+  "setup": "bd_0_wrapper, 15 ns, xczu7ev-ffvc1156-2-e, AreaOptimized_high",
+  "accuracy": "Same expected outputs only as tested; no new PA measurements"
+}

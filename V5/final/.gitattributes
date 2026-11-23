@@ -1,0 +1,5 @@
+# Preserve the exact RTL and vector bytes recorded in validation hashes.
+final_rtl/*.v -text
+final_rtl/*.dat -text
+reference/*.txt -text
+golden/*.txt -text

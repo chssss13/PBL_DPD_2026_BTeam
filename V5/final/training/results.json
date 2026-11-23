@@ -1,0 +1,47 @@
+{
+  "teacher_best_epoch": 100,
+  "teacher_val_nmse_db": -10.462180137634277,
+  "teacher_train_range": {
+    "max_amplitude": 0.6676365733146667,
+    "rms_amplitude": 0.25185126066207886,
+    "percent_over_train_max": 0.0
+  },
+  "teacher_val_range": {
+    "max_amplitude": 0.6197084784507751,
+    "rms_amplitude": 0.2534519135951996,
+    "percent_over_train_max": 0.0
+  },
+  "pa_initial_val_nmse_db": -10.719854354858398,
+  "eligible": true,
+  "pa_selected_epoch": 20,
+  "selected_test": {
+    "nmse_db": -12.205201148986816,
+    "evm_db": -14.011916244279245,
+    "acpr_l_dbc": -19.06169430771727,
+    "acpr_r_dbc": -17.116186758687853
+  },
+  "teacher_test": {
+    "nmse_db": -45.520965576171875,
+    "evm_db": -49.41592236337566,
+    "acpr_l_dbc": -53.58685737770201,
+    "acpr_r_dbc": -50.42763314049637
+  },
+  "test_output_teacher_nmse_db": -11.805968284606934,
+  "selected_train_range": {
+    "max_amplitude": 0.690592885017395,
+    "rms_amplitude": 0.25441282987594604,
+    "percent_over_train_max": 0.0
+  },
+  "selected_val_range": {
+    "max_amplitude": 0.6484167575836182,
+    "rms_amplitude": 0.2563510239124298,
+    "percent_over_train_max": 0.0
+  },
+  "selected_test_range": {
+    "max_amplitude": 0.6640437245368958,
+    "rms_amplitude": 0.26374512910842896,
+    "percent_over_train_max": 0.0
+  },
+  "elapsed_seconds": 680.3129999999655,
+  "selection_note": "If no eligible PA checkpoint, teacher checkpoint reported as diagnostic and eligible=false."
+}
