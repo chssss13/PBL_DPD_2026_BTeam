@@ -1,0 +1,6 @@
+Parent RTL: ../../v5-3.1/rtl
+Candidate RTL: ../rtl
+Change: 25 layer-2 candidate input weights and 25 layer-2 candidate recurrent weights bypass their downstream delay stages.
+Fixed weights: PASS, 120 calls, 7680 I/Q pairs, bit-exact against expected.hex.
+Changing weights: PASS, 16 consecutive calls, 1024 I/Q pairs, bit-exact against unmodified parent RTL. ACCEPT, WRITE and DONE events match cycle for cycle.
+PA metrics inherited on the verified vector. Subsequent routed reports are in this directory.

@@ -1,0 +1,4 @@
+﻿candidate,stage,NMSE_dB,EVM_dB,ACPR_L_dBc,ACPR_R_dBc,accuracy,best_epoch,epochs_run
+L123,best_of_first_50_epoch49,-31.8,-33.66,-36.99,-34.34,FAIL,,
+L123,before_QAT,-31.8,-33.66,-36.99,-34.34,FAIL,,
+L123,after_QAT,-32.26,-34.19,-37.27,-34.83,FAIL,20,20

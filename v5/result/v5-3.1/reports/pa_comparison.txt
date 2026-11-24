@@ -1,0 +1,4 @@
+file                                              T     NMSE      EVM   ACPR_L   ACPR_R   Δ vs first
+parent_out.txt                                 7680   -31.80   -33.66   -36.99   -34.34   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+bias_only_out.txt                              7680   -31.80   -33.66   -36.99   -34.34   NMSE+0.00  ACPR_L+0.00  ACPR_R+0.00
+retrained_out.txt                              7680   -32.26   -34.19   -37.27   -34.83   NMSE-0.46  ACPR_L-0.28  ACPR_R-0.49
