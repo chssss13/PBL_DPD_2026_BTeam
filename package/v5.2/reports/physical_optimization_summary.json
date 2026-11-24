@@ -1,0 +1,19 @@
+{
+  "v5.1": {
+    "source": "package/results/E43_v5_1_layer2_weight_delays/logs/vivado_candidate.log",
+    "source_sha256": "719f588c3e1b14b39beae478ebcac9194f49d147b5ac21559731c0b402e2aca2",
+    "line": 4453,
+    "log_row": "|  DSP Register                                     |          171  |              0  |                     9  |           0  |           1  |  00:00:07  |",
+    "column_meaning": "Optimization | Added Cells | Removed Cells | Optimized Cells/Nets | Dont Touch | Iterations | Elapsed",
+    "DSP_register_added_cells": 171
+  },
+  "v5.2": {
+    "source": "package/results/E44_v5_2_shared_write_state/logs/vivado_candidate.log",
+    "source_sha256": "e5f0e0bdae6021f7dc9173038aa28f5ee74551c3fe8707cf03324240e4a5a6b0",
+    "line": 4442,
+    "log_row": "|  DSP Register                                     |           19  |              0  |                     1  |           0  |           1  |  00:00:01  |",
+    "column_meaning": "Optimization | Added Cells | Removed Cells | Optimized Cells/Nets | Dont Touch | Iterations | Elapsed",
+    "DSP_register_added_cells": 19
+  },
+  "difference": 152
+}
