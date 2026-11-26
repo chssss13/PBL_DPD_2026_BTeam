@@ -1,0 +1,3 @@
+Icarus Verilog simulation of the packaged v5-5 RTL
+Command: python verify.py
+PASS: 120 calls, 7680 I/Q pairs, 15360 fixed-point words match C-sim.
