@@ -36,7 +36,7 @@ z_t^{(3)} &= \sigma\!\left(b_z^{(3)}\right).
 \end{aligned}
 $$
 
-같은 bias를 쓰는 동안 두 게이트는 샘플이 바뀌어도 일정하다. 게이트 계산에서 입력 행렬곱과 순환 행렬곱을 모두 생략한다. [Gate-Variants of Gated Recurrent Unit (GRU) Neural Networks, IEEE MWSCAS, 2017](https://doi.org/10.1109/MWSCAS.2017.8053243) · [저자 공개본](https://arxiv.org/abs/1701.05923)
+같은 bias를 쓰는 동안 두 게이트는 샘플이 바뀌어도 일정하다. 게이트 계산에서 입력 행렬곱과 순환 행렬곱을 모두 생략한다. [Gate-Variants of Gated Recurrent Unit (GRU) Neural Networks, IEEE MWSCAS, 2017](https://ieeexplore.ieee.org/document/8053243)
 
 **세 층 공통 · 후보 상태와 은닉 상태 갱신**
 
