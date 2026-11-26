@@ -101,3 +101,5 @@ HLS로 생성한 RTL에 깊이 1 FIFO와 제어 공유, 입력 준비 블록의 
 - 이 폴더에서 `vitis_hls -f csynth.tcl`로 HLS 소스를 합성할 수 있다. [HLS 소스](src) · [HLS 설정](csynth.tcl) · [HLS 요약](reports/ResGRU_csynth.rpt)
 - Icarus Verilog를 설치한 환경에서 `python verify.py`로 배선용 RTL과 기준 출력을 대조할 수 있다. [검증 스크립트](verify.py) · [검증 벡터](test) · [선택 가중치](weights) · [RTL 검증 결과](reports/verification.txt)
 - 학습 이력에서 검증 지표와 59 epoch가 선택된 근거를 확인할 수 있다. [학습 이력](training/history.csv) · [최종 테스트 지표](training/results_float.json)
+
+후속 배선 결과는 [v5-5.2 PReLU 간소화](../v5-5.2/README.md)와 [v5-5.3 APoT 18개 결합](../v5-5.3/README.md)에 정리했다.
