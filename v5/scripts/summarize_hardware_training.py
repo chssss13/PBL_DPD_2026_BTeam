@@ -31,7 +31,7 @@ def main():
                     nmse, evm, left, right = metrics.groups()
                     values = f'{nmse} | {evm} | {left} / {right}'
                 lines.append(f'| {name} | {label} | {phase} | {values} |')
-    (V5 / 'results/v5.1/HARDWARE_TRAINING.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    (V5 / 'results/experiments/HARDWARE_TRAINING.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
 if __name__ == '__main__':

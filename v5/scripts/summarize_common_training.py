@@ -58,7 +58,7 @@ def main(folder):
                 else:
                     row = [name, str(summary['best_epoch']), *values]
                 lines.append('| ' + ' | '.join(row) + ' |')
-    destination = Path(__file__).resolve().parents[1] / 'results/v5.1/COMMON_TRAINING.md'
+    destination = Path(__file__).resolve().parents[1] / 'results/experiments/COMMON_TRAINING.md'
     destination.write_text('\n'.join(lines) + '\n', encoding='utf-8')
     print(destination)
 

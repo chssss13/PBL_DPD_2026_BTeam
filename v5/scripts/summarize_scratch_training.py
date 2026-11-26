@@ -19,7 +19,7 @@ def main():
             summary = json.loads((run / 'validation.json').read_text())
             assert len(summary['validation_nmse_db']) == 101 and row[1] == '7680'
             lines.append(f'| {scope} | {phase} | {summary["best_epoch"]} | {row[2]} | {row[3]} | {row[4]} / {row[5]} |')
-    (ROOT / 'v5/results/v5.1/SCRATCH_TRAINING.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    (ROOT / 'v5/results/experiments/SCRATCH_TRAINING.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,22 @@
+{
+  "scope": "original",
+  "mode": "float",
+  "frame": 50,
+  "stride": 1,
+  "batch": 64,
+  "shuffle": "torch_randperm",
+  "frames": 22599,
+  "seed": 4574,
+  "lr": 0.00025,
+  "epochs": 100,
+  "target_gain": 2.5208089983008746,
+  "initialization": "pretrained",
+  "selection": "validation fixed-point mean ACLR",
+  "optimizer": "AdamW",
+  "weight_decay": 0.01,
+  "clip": 200,
+  "scheduler_patience": 5,
+  "lr_decay_start_epoch": 0,
+  "early_stop_patience": 12,
+  "early_stop_min_epoch": 20
+}

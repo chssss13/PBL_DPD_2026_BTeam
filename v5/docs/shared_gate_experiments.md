@@ -1,5 +1,7 @@
 # v5.1 GRU 게이트 공유 실험
 
+[v4.7 RTL resource comparison](../results/experiments/V47_RESOURCES.md)
+
 2층만 공유하는 `layer2`와 세 층 모두 공유하는 `all`을 비교했다. 두 후보는 내부 비교용으로 보존한다. v4.6은 성능 비교 기준이다. [v4.6 결과](../../v4/result/v4.6/README.md)
 
 ## 모델과 학습 조건
@@ -40,4 +42,4 @@ v5.1은 Vivado 2024.1 OOC 구현, xczu7ev-ffvc1156-2-e, 15 ns 기준이다. 두 
 - [실행 스크립트](../scripts/)에 학습, 가중치 내보내기, HLS 후보 생성, RTL 변환, Vivado 합성과 배치·배선 스크립트가 있다. 스크립트의 로컬 작업 경로는 `build/v5_<scope>_100/` 및 `v5/prj_shared_<scope>/`다.
 - 학습은 저장소 루트에서 `python v5/scripts/train_shared_gate.py --scope layer2 --out build/v5_layer2_100`으로 실행한다. 전 층 공유는 `--scope all --out build/v5_all_100`을 사용한다. 기본값은 100 epoch이며 조기 종료는 `--early-stop`을 지정할 때 적용한다.
 - 후보 생성은 `python v5/scripts/prepare_shared_hls.py layer2` 후 `SHARED_SCOPE=layer2`를 설정하고 `vitis_hls -f v5/scripts/shared_hls.tcl`을 실행한다. 학습 가중치의 고정소수점 평가는 `v5/scripts/evaluate_shared_hls.ps1 -Scope layer2`를 사용한다. 전 층 후보는 `all`을 지정한다.
-- [2층 산출물](../results/v5.1/layer2/)과 [전 층 산출물](../results/v5.1/all/)에 각각 HLS 소스, 최종 RTL·ROM, 내보낸 가중치, 학습 체크포인트, C-sim·RTL 출력, 변환 감사 기록, HLS·Vivado 리포트와 SHA-256 목록을 보관한다. Vivado 작업 DB와 DCP는 로컬 작업 경로에 보관한다.
+- [2층 산출물](../results/experiments/layer2/)과 [전 층 산출물](../results/experiments/all/)에 각각 HLS 소스, 최종 RTL·ROM, 내보낸 가중치, 학습 체크포인트, C-sim·RTL 출력, 변환 감사 기록, HLS·Vivado 리포트와 SHA-256 목록을 보관한다. Vivado 작업 DB와 DCP는 로컬 작업 경로에 보관한다.
