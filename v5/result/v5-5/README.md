@@ -9,6 +9,48 @@
 | 1·2층 | 현재 층 입력과 bias로 계산하는 [v5-1 방식](../v5-1/README.md) | 현재 층 입력, 이전 은닉 상태, reset 게이트 사용 |
 | 3층 | 학습된 bias로 계산하는 [v5-3 방식](../v5-3/README.md) | 현재 층 입력, 이전 은닉 상태, reset 게이트 사용 |
 
+### 층별 GRU 수식과 논문 출처
+
+v5-5는 **두 논문의 게이트 설계를 층별로 조합한 LW-ResGRU**다. 1·2층은 Gang Li 외의 IGRNN에서 현재 입력으로 게이트를 계산하는 방식을, 3층은 Rahul Dey와 Fathi M. Salem의 GRU3에서 bias만으로 게이트를 계산하는 방식을 가져왔다.
+
+$x_t^{(\ell)}$은 시점 $t$의 $\ell$층 입력, $h_{t-1}^{(\ell)}$은 같은 층의 직전 은닉 상태다. $r$은 reset 게이트, $z$는 update 게이트이며, $\odot$은 원소별 곱이다. 각 층에서 게이트의 입력 bias와 순환 bias를 미리 더해 $b_r=b_{ir}+b_{hr}$, $b_z=b_{iz}+b_{hz}$로 사용한다.
+
+**1·2층 · 현재 입력 기반 게이트**
+
+$$
+\begin{aligned}
+r_t^{(\ell)} &= \sigma\!\left(W_{ir}^{(\ell)} x_t^{(\ell)} + b_r^{(\ell)}\right), \\
+z_t^{(\ell)} &= \sigma\!\left(W_{iz}^{(\ell)} x_t^{(\ell)} + b_z^{(\ell)}\right),
+\qquad \ell \in \{1,2\}.
+\end{aligned}
+$$
+
+두 게이트는 현재 층 입력에 따라 달라진다. 게이트 계산에서 순환 행렬곱 $W_{hr}h_{t-1}$와 $W_{hz}h_{t-1}$를 생략한다. [Instant Gated Recurrent Neural Network Behavioral Model for Digital Predistortion of RF Power Amplifiers, IEEE Access, 2020](https://doi.org/10.1109/ACCESS.2020.2986816)
+
+**3층 · bias-only 게이트**
+
+$$
+\begin{aligned}
+r_t^{(3)} &= \sigma\!\left(b_r^{(3)}\right), \\
+z_t^{(3)} &= \sigma\!\left(b_z^{(3)}\right).
+\end{aligned}
+$$
+
+같은 bias를 쓰는 동안 두 게이트는 샘플이 바뀌어도 일정하다. 게이트 계산에서 입력 행렬곱과 순환 행렬곱을 모두 생략한다. [Gate-Variants of Gated Recurrent Unit (GRU) Neural Networks, IEEE MWSCAS, 2017](https://doi.org/10.1109/MWSCAS.2017.8053243) · [저자 공개본](https://arxiv.org/abs/1701.05923)
+
+**세 층 공통 · 후보 상태와 은닉 상태 갱신**
+
+아래 식에서는 층 표시를 생략했다. 이전 은닉 상태는 후보 상태 $n_t$와 새 은닉 상태 $h_t$를 계산할 때 쓰인다. HLS에서는 sigmoid와 tanh에 구간별 선형 근사를 적용하고, 중간값과 출력에 고정소수점 자료형을 사용한다. [후보 상태와 상태 갱신 코드](src/gru_cell.h#L305) · [층별 호출과 bias 합산 코드](src/multi_gru.cpp#L373)
+
+$$
+\begin{aligned}
+n_t &= \tanh\!\left(W_{in}x_t+b_{in}+r_t\odot(W_{hn}h_{t-1}+b_{hn})\right), \\
+h_t &= n_t + z_t \odot (h_{t-1}-n_t).
+\end{aligned}
+$$
+
+### 재학습
+
 배포된 원본 DPD 체크포인트 `DPD_S_4574_M_RGRUWFEX_H_5_F_50_P_591_D_0_R_2.pt`에서 시작했다. 전 층에서 `W_hr`·`W_hz`를 0으로 고정했고, 3층은 `W_ir`·`W_iz`도 0으로 고정했다. HLS 구현은 해당 행렬곱을 생략한다. AdamW로 float 재학습한 뒤 고정소수점 C-sim 검증 세트의 평균 ACPR이 가장 낮았던 59 epoch 가중치를 선택했다. 학습은 frame 50, stride 1, batch 64, 시작 학습률 0.00025를 사용했다. 최종 RTL 시뮬레이션에서 120회 호출의 I/Q 7,680쌍은 같은 가중치를 쓴 C-sim 출력과 비트 단위로 일치했다.
 
 ## 정확도·자원·타이밍 비교
