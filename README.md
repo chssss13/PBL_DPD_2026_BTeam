@@ -18,7 +18,7 @@ GRU 기반 디지털 전치왜곡(DPD) 모델을 FPGA에 구현하고, 전력증
 
 ## 이전 구현
 
-v4 계열은 **[v4.0 기준선](v4/result/v4.0/README.md)**(기존 v3.4)에서 출력 FC, FEx, FIFO 및 가중치 전달을 순서대로 개선해 **[v4.7](v4/result/v4.7/README.md)**까지 검증했다. [v4.0~v4.7 변경과 결과 비교](v4/README.md).
+v4 계열은 **[v4.0 기준선](v4/result/v4.0/README.md)**(기존 v3.4)에서 출력 FC, FEx, FIFO 및 가중치 전달을 순서대로 개선해 **[v4.7](v4/result/v4.7/README.md)**까지 검증했다. [v4.0~v4.7 변경과 결과 비교](v4/README.md) · [v4.7 이후 추가 구현과 결과](v4_post/README.md).
 
 v5-1~v5-4는 v4.6 자체 재학습 가중치에서 출발했고, v5-5 혼합 모델은 배포된 원본 DPD 체크포인트에서 재학습했다. 전 층 bias-only 게이트에 v4.7의 2층 가중치 우회를 적용한 별도 실험은 [적용 전 v5-3.1](v5/result/v5-3.1/README.md)과 [적용 후 v5-3.2](v5/result/v5-3.2/README.md)에서 비교할 수 있다. 두 후보 모두 15 ns 타이밍을 통과했고 PA 정확도 기준에는 미달했다.
 
