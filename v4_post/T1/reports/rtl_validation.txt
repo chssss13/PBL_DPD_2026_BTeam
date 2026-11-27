@@ -1,0 +1,2 @@
+PASS T1-rounding: 7,680 IQ pairs, write and completion cycles match.
+PASS T1-rounding: 512 IQ pairs and event cycles match with changing weights and residual coefficients.
